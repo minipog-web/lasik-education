@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- GTM disabled for local debugging -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LASIK Journey - Marano Eye Care</title>
+    <script type="module" crossorigin src="./assets/index-nb1vded4_v2.js?v=32"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DhXpI4H_.css?v=27">
+    <style>
+      /* Asymmetrical Editorial Testimonials Grid */
+      @media (min-width: 901px) {
+        .proof-testimonials {
+          display: grid !important;
+          grid-template-columns: repeat(6, 1fr) !important;
+          gap: 28px !important;
+        }
+        .proof-card {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        
+        /* Alternating widths to break the grid monotony */
+        .proof-card:nth-child(1) { grid-column: span 3; }
+        .proof-card:nth-child(2) { grid-column: span 3; }
+        .proof-card:nth-child(3) { grid-column: span 4; }
+        .proof-card:nth-child(4) { grid-column: span 2; }
+        .proof-card:nth-child(5) { grid-column: span 2; }
+        .proof-card:nth-child(6) { grid-column: span 4; }
+        .proof-card:nth-child(7) { grid-column: span 3; }
+        .proof-card:nth-child(8) { grid-column: span 3; }
+        .proof-card:nth-child(9) { grid-column: span 2; }
+        .proof-card:nth-child(10) { grid-column: span 4; }
+
+        /* Typography Hierarchy & Contrast on Featured Columns */
+        .proof-card:nth-child(3) .proof-quote,
+        .proof-card:nth-child(6) .proof-quote,
+        .proof-card:nth-child(10) .proof-quote {
+          font-size: 1.15rem !important;
+          line-height: 1.75 !important;
+          color: #f8fafc !important;
+        }
+        
+        /* Interactive scale for organic responsiveness */
+        .proof-card:hover {
+          transform: translateY(-4px) scale(1.005) !important;
+          border-color: rgba(226, 184, 87, 0.25) !important;
+          box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), 0 0 30px rgba(226, 184, 87, 0.01) !important;
+        }
+      }
+
+      /* Always-Visible Header CTA Button Styles */
+      .header-cta-btn {
+        padding: 10px 20px !important;
+        font-size: 0.85rem !important;
+        margin-left: 16px !important;
+        z-index: 110 !important;
+        display: inline-flex !important;
+      }
+      .cta-desktop { display: inline !important; }
+      .cta-mobile { display: none !important; }
+
+      @media (max-width: 768px) {
+        .header-cta-btn {
+          margin-left: auto !important;
+          padding: 8px 14px !important;
+          font-size: 0.8rem !important;
+        }
+        .cta-desktop { display: none !important; }
+        .cta-mobile { display: inline !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKQN2TS6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="root"></div>
+
+    <!-- Netlify form detection bot helper -->
+    <form name="consultation" data-netlify="true" hidden>
+      <input type="text" name="name" />
+      <input type="tel" name="phone" />
+      <input type="email" name="email" />
+      <input type="radio" name="preferred_contact" />
+      <input type="text" name="location" />
+      <input type="text" name="timeframe" />
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+
+  <script>
+    // ─── Citation System ─────────────────────────────────────────────────────
+
+    var supStyle = 'display:inline-block;font-size:0.6em;font-weight:700;vertical-align:super;line-height:1;color:#00f0ff;margin-left:2px;cursor:pointer;text-decoration:none;font-family:Inter,system-ui,sans-serif;opacity:0.85;';
+
+    var citationMap = [
+      { text: 'FDA approved LASIK is typically for individuals 18 and older', refs: [1] },
+      { text: 'quadrillionth of a second', refs: [4] },
+      { text: 'microscopic carbon dioxide/water gas bubbles', refs: [4] },
+      { text: 'thickness of a human hair', refs: [4] },
+      { text: 'cold excimer laser', refs: [6] },
+      { text: 'cool ultraviolet light', refs: [6] },
+      { text: 'natural osmotic pressure', refs: [5] },
+      { text: 'cellular adhesion', refs: [5] },
+      { text: '24 to 48 hours', refs: [5] },
+      { text: 're-epithelialization', refs: [5] },
+      { text: 'tear film reduction', refs: [8] },
+      { text: 'night glare, halos', refs: [7] },
+      { text: 'LASIK is a surgical procedure', refs: [9] }
+    ];
+
+    // Marker attribute placed directly on the anchor links themselves, NOT on parent
+    var LINK_ATTR = 'data-cite-link';
+
+    function makeSupLink(num) {
+      var a = document.createElement('a');
+      a.href = '#lasik-citations';
+      a.setAttribute('style', supStyle);
+      a.setAttribute('aria-label', 'Reference ' + num);
+      a.setAttribute(LINK_ATTR, '1');
+      a.textContent = '[' + num + ']';
+      return a;
+    }
+
+    function injectInto(rootEl) {
+      var walker = document.createTreeWalker(rootEl, NodeFilter.SHOW_TEXT, null, false);
+      var nodes = [];
+      var n;
+      while ((n = walker.nextNode())) nodes.push(n);
+
+      nodes.forEach(function(node) {
+        var par = node.parentNode;
+        if (!par) return;
+
+        var tag = (par.tagName || '').toUpperCase();
+        if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'A' || tag === 'SUP') return;
+
+        var text = node.nodeValue;
+        if (!text || text.trim().length < 8) return;
+
+        for (var i = 0; i < citationMap.length; i++) {
+          var entry = citationMap[i];
+          var pos = text.indexOf(entry.text);
+          if (pos === -1) continue;
+
+          // Check if parent already has this specific citation link to prevent infinite duplication
+          var alreadyCited = Array.from(par.querySelectorAll('a[' + LINK_ATTR + ']')).some(function(lnk) {
+            return entry.refs.some(function(num) {
+              return lnk.textContent === '[' + num + ']';
+            });
+          });
+          if (alreadyCited) continue;
+
+          var end = pos + entry.text.length;
+
+          // Split: [text before+phrase] | [superscripts] | [text after]
+          var before = document.createTextNode(text.substring(0, end));
+          var after  = document.createTextNode(text.substring(end));
+
+          par.insertBefore(before, node);
+          entry.refs.forEach(function(num) {
+            par.insertBefore(makeSupLink(num), node);
+          });
+          par.insertBefore(after, node);
+          par.removeChild(node);
+          break; // Process one match per text node. Subsequent mutations will handle others if any.
+        }
+      });
+    }
+
+    // ─── References Footer ───────────────────────────────────────────────────
+
+    function buildFooter() {
+      if (document.getElementById('lasik-citations')) return;
+
+      var wrap = document.createElement('div');
+      wrap.id = 'lasik-citations';
+      wrap.setAttribute('style', 'font-family:Inter,system-ui,sans-serif;background:#050505;border-top:1px solid rgba(255,255,255,0.06);padding:48px 32px 64px;color:#64748b;box-sizing:border-box;');
+
+      var inner = document.createElement('div');
+      inner.setAttribute('style', 'max-width:900px;margin:0 auto;');
+
+      var heading = document.createElement('h3');
+      heading.setAttribute('style', 'font-size:0.67rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#475569;margin:0 0 20px 0;font-family:inherit;');
+      heading.textContent = 'References & Citations';
+
+      var refs = [
+        ['1',  'U.S. Food & Drug Administration.',
+               'What is LASIK?',
+               'https://www.fda.gov/medical-devices/surgery-devices/lasik',
+               'fda.gov \u2192 What is LASIK?'],
+        ['2',  'U.S. Food & Drug Administration.',
+               'LASIK Quality of Life Collaboration Project (PROWL Studies).',
+               'https://www.fda.gov/medical-devices/lasik/lasik-quality-life-collaboration-project',
+               'fda.gov \u2192 PROWL Studies'],
+        ['3',  'Solomon KD, et al.',
+               'LASIK World Literature Review: Quality of Life and Patient Satisfaction. Ophthalmology. 2009;116(4):691\u2013701. [Overall satisfaction: 95.4%]',
+               'https://pubmed.ncbi.nlm.nih.gov/19344821/',
+               'PubMed 19344821'],
+        ['4',  'Moshirfar M, et al.',
+               'Femtosecond Laser Refractive Surgery: A Review of Current Concepts. Clinical Ophthalmology. 2021;15:3219\u20133230.',
+               'https://pubmed.ncbi.nlm.nih.gov/34526740/',
+               'PubMed 34526740'],
+        ['5',  'Dupps WJ & Wilson SE.',
+               'Biomechanics and wound healing in the cornea. Exp Eye Res. 2006;83(4):709\u2013720. [Flap adhesion & 24\u201348h epithelial sealing.]',
+               'https://pubmed.ncbi.nlm.nih.gov/16797553/',
+               'PubMed 16797553'],
+        ['6',  'Bower KS, et al.',
+               'Excimer laser refractive surgery: principles and current technology. Curr Opin Ophthalmol. 2001;12(4):264\u2013270. [193 nm UV, nanosecond pulses.]',
+               'https://pubmed.ncbi.nlm.nih.gov/11224726/',
+               'PubMed 11224726'],
+        ['7',  'American Academy of Ophthalmology.',
+               'LASIK \u2014 Laser Eye Surgery Overview.',
+               'https://www.aao.org/eye-health/treatments/lasik-overview',
+               'aao.org \u2192 LASIK Overview'],
+        ['8',  'Shoja MR, et al.',
+               'Incidence of dry eye after LASIK. Cornea. 2007;26(6):646\u2013650.',
+               'https://pubmed.ncbi.nlm.nih.gov/17592310/',
+               'PubMed 17592310'],
+        ['9',  'U.S. National Library of Medicine / StatPearls.',
+               'LASIK Surgery. NCBI Bookshelf.',
+               'https://www.ncbi.nlm.nih.gov/books/NBK470564/',
+               'ncbi.nlm.nih.gov/books/NBK470564'],
+        ['10', 'American Society of Cataract & Refractive Surgery (ASCRS).',
+               'Clinical guidelines on LASIK candidacy.',
+               'https://www.ascrs.org',
+               'ascrs.org']
+      ];
+
+      var ol = document.createElement('ol');
+      ol.setAttribute('style', 'list-style:decimal;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:0.71rem;line-height:1.75;');
+
+      refs.forEach(function(r) {
+        var li = document.createElement('li');
+
+        var authorSpan = document.createTextNode(r[1] + ' ');
+        var em = document.createElement('em');
+        em.textContent = r[2] + ' ';
+        var link = document.createElement('a');
+        link.href = r[3];
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.setAttribute('style', 'color:#00f0ff;text-decoration:none;');
+        link.textContent = r[4];
+
+        li.appendChild(authorSpan);
+        li.appendChild(em);
+        li.appendChild(link);
+        ol.appendChild(li);
+      });
+
+      var note = document.createElement('p');
+      note.setAttribute('style', 'margin-top:18px;font-size:0.64rem;color:#334155;line-height:1.65;');
+      note.innerHTML = '<em>All statistical claims reflect aggregate peer-reviewed clinical data. Individual outcomes vary. This resource is for educational purposes only and does not constitute medical advice. Information submitted via forms on this site is handled in strict compliance with HIPAA (Health Insurance Portability and Accountability Act) standards to protect your health privacy. For more information, please read the <a href="https://www.maranoeyecare.com/privacy-policy/" target="_blank" rel="noopener noreferrer" style="color:#00f0ff;text-decoration:none;">Marano Eye Care Privacy Policy</a>.</em>';
+
+      inner.appendChild(heading);
+      inner.appendChild(ol);
+      inner.appendChild(note);
+      wrap.appendChild(inner);
+
+      var root = document.getElementById('root');
+      if (root) root.parentNode.insertBefore(wrap, root.nextSibling);
+    }
+
+    // ─── Boot ────────────────────────────────────────────────────────────────
+
+    var _sweepTimer = null;
+    function scheduleSweep() {
+      clearTimeout(_sweepTimer);
+      _sweepTimer = setTimeout(function() {
+        injectInto(document.getElementById('root') || document.body);
+      }, 100);
+    }
+
+    window.addEventListener('load', function() {
+      console.log(
+        '%c[ Marano Eye Care - Custom Wavefront-Guided Refractive Suite ]\\n%c"Because 20/20 is just the baseline."\\n\\n🔬 Wavefront optical maps compiled successfully.\\n👉 Schedule a tour of our clinical suite: 973-322-0100',
+        'color: #e2b857; font-weight: bold; font-size: 1.15rem; font-family: system-ui, sans-serif; line-height: 1.5;',
+        'color: #94a3b8; font-style: italic; font-size: 0.95rem; font-family: Georgia, serif; line-height: 1.5;'
+      );
+      buildFooter();
+
+      // Sweep multiple times early on to capture content rendered progressively by React
+      [400, 1000, 2000, 3500, 6000].forEach(function(delay) {
+        setTimeout(function() {
+          injectInto(document.getElementById('root') || document.body);
+        }, delay);
+      });
+
+      // Watch for any DOM changes (tab switching, step selections, dynamic content mounts)
+      var observer = new MutationObserver(scheduleSweep);
+      observer.observe(document.getElementById('root') || document.body, {
+        childList: true,
+        subtree: true,
+        characterData: true
+      });
+    });
+  </script>
+</html>

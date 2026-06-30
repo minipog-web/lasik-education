@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LASIK Journey - Marano Eye Care</title>
-    <script type="module" crossorigin src="./assets/index-nb1vded4_v2.js?v=38"></script>
+    <meta name="description" content="Discover your path to visual freedom with Dr. Matthew J. Marano, Jr., MD. Explore the advanced optics, biophysics, and customized dual-laser technology behind LASIK." />
+    <script type="module" crossorigin src="./assets/index-nb1vded4_v2.js?v=39"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-DhXpI4H_.css?v=27">
     <style>
       /* Asymmetrical Editorial Testimonials Grid */
@@ -83,13 +84,13 @@
 
     <!-- Netlify form detection bot helper -->
     <form name="consultation" data-netlify="true" hidden>
-      <input type="text" name="name" />
-      <input type="tel" name="phone" />
-      <input type="email" name="email" />
-      <input type="radio" name="preferred_contact" />
-      <input type="text" name="location" />
-      <input type="text" name="timeframe" />
-      <textarea name="message"></textarea>
+      <input type="text" name="name" autocomplete="name" aria-label="Full Name" />
+      <input type="tel" name="phone" autocomplete="tel" aria-label="Phone Number" />
+      <input type="email" name="email" autocomplete="email" aria-label="Email Address" />
+      <input type="radio" name="preferred_contact" aria-label="Preferred Contact Method" />
+      <input type="text" name="location" aria-label="Preferred Location" />
+      <input type="text" name="timeframe" aria-label="Preferred Timeframe" />
+      <textarea name="message" aria-label="Additional Message"></textarea>
     </form>
   </body>
 
@@ -264,7 +265,7 @@
 
       var note = document.createElement('p');
       note.setAttribute('style', 'margin-top:18px;font-size:0.64rem;color:#334155;line-height:1.65;');
-      note.innerHTML = '<em>All statistical claims reflect aggregate peer-reviewed clinical data. Individual outcomes vary. This resource is for educational purposes only and does not constitute medical advice. Information submitted via forms on this site is handled in strict compliance with HIPAA (Health Insurance Portability and Accountability Act) standards to protect your health privacy. For more information, please read the <a href="https://www.maranoeyecare.com/privacy-policy/" target="_blank" rel="noopener noreferrer" style="color:#00f0ff;text-decoration:none;">Marano Eye Care Privacy Policy</a>.</em>';
+      note.innerHTML = '<em>All statistical claims reflect aggregate peer-reviewed clinical data. Individual outcomes vary. LASIK is a surgical procedure with inherent benefits and risks; consult a qualified ophthalmologist to determine your candidacy. This resource is for educational purposes only and does not constitute medical advice. Information submitted via forms on this site is handled in strict compliance with HIPAA (Health Insurance Portability and Accountability Act) standards to protect your health privacy. For more information, please read the <a href="https://www.maranoeyecare.com/privacy-policy/" target="_blank" rel="noopener noreferrer" style="color:#00f0ff;text-decoration:none;">Marano Eye Care Privacy Policy</a>.<br><br>© 2026 Marano Eye Care. Livingston Clinic: 200 South Orange Ave, Livingston, NJ 07039 | Newark Clinic: 137 Ferry St, Newark, NJ 07105 | Phone: 973-322-0100</em>';
 
       inner.appendChild(heading);
       inner.appendChild(ol);

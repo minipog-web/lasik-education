@@ -6,88 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LASIK Journey - Marano Eye Care</title>
     <meta name="description" content="Discover your path to visual freedom with Dr. Matthew J. Marano, Jr., MD. Explore the advanced optics, biophysics, and customized dual-laser technology behind LASIK." />
-    <script type="module" crossorigin src="./assets/index-nb1vded4_v2.js?v=44"></script>
+    <script type="module" crossorigin src="./assets/index-nb1vded4_v2.js?v=46"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="./assets/hero-CO3kpQsP.webp" type="image/webp">
     <link rel="stylesheet" crossorigin href="./assets/index-DhXpI4H_.css?v=28">
-    <style>
-      /* Asymmetrical Editorial Testimonials Grid */
-      @media (min-width: 901px) {
-        .proof-testimonials {
-          display: grid !important;
-          grid-template-columns: repeat(6, 1fr) !important;
-          gap: 28px !important;
-        }
-        .proof-card {
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
-        }
-        
-        /* Alternating widths to break the grid monotony */
-        .proof-card:nth-child(1) { grid-column: span 3; }
-        .proof-card:nth-child(2) { grid-column: span 3; }
-        .proof-card:nth-child(3) { grid-column: span 4; }
-        .proof-card:nth-child(4) { grid-column: span 2; }
-        .proof-card:nth-child(5) { grid-column: span 2; }
-        .proof-card:nth-child(6) { grid-column: span 4; }
-        .proof-card:nth-child(7) { grid-column: span 3; }
-        .proof-card:nth-child(8) { grid-column: span 3; }
-        .proof-card:nth-child(9) { grid-column: span 2; }
-        .proof-card:nth-child(10) { grid-column: span 4; }
-
-        /* Typography Hierarchy & Contrast on Featured Columns */
-        .proof-card:nth-child(3) .proof-quote,
-        .proof-card:nth-child(6) .proof-quote,
-        .proof-card:nth-child(10) .proof-quote {
-          font-size: 1.15rem !important;
-          line-height: 1.75 !important;
-          color: #f8fafc !important;
-        }
-        
-        /* Interactive scale for organic responsiveness */
-        .proof-card:hover {
-          transform: translateY(-4px) scale(1.005) !important;
-          border-color: rgba(226, 184, 87, 0.25) !important;
-          box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), 0 0 30px rgba(226, 184, 87, 0.01) !important;
-        }
-      }
-
-      /* Always-Visible Header CTA Button Styles */
-      .header-cta-btn {
-        padding: 10px 20px !important;
-        font-size: 0.85rem !important;
-        margin-left: 16px !important;
-        z-index: 110 !important;
-        display: inline-flex !important;
-      }
-      .cta-desktop { display: inline !important; }
-      .cta-mobile { display: none !important; }
-
-      @media (max-width: 768px) {
-        .header-cta-btn {
-          margin-left: auto !important;
-          padding: 8px 14px !important;
-          font-size: 0.8rem !important;
-        }
-        .cta-desktop { display: none !important; }
-        .cta-mobile { display: inline !important; }
-      }
-    </style>
+    <link rel="stylesheet" href="./assets/custom-styles.css">
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKQN2TS6"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    height="0" width="0" class="hidden-noscript-iframe"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div id="root"></div>
 
     <!-- Netlify form detection bot helper -->
-    <form name="consultation" data-netlify="true" hidden style="display: none;" aria-hidden="true">
+    <form name="consultation" data-netlify="true" hidden class="netlify-form-hidden" aria-hidden="true">
       <label for="netlify-name">Full Name</label>
       <input type="text" id="netlify-name" name="name" autocomplete="name" aria-label="Full Name" />
       
@@ -114,7 +49,7 @@
   <script>
     // ─── Citation System ─────────────────────────────────────────────────────
 
-    var supStyle = 'display:inline-block;font-size:0.6em;font-weight:700;vertical-align:super;line-height:1;color:#00f0ff;margin-left:2px;cursor:pointer;text-decoration:none;font-family:Inter,system-ui,sans-serif;opacity:0.85;';
+    var supStyle = 'display:inline-block;font-size:0.6em;font-weight:700;vertical-align:super;line-height:1;color:#e2b857;margin-left:2px;cursor:pointer;text-decoration:none;font-family:Inter,system-ui,sans-serif;opacity:0.85;';
 
     var citationMap = [
       { text: 'FDA approved LASIK is typically for individuals 18 and older whose eyes have finished growing.', refs: [1] },
@@ -168,6 +103,18 @@
 
         var text = node.nodeValue;
         if (!text || text.trim().length < 8) return;
+
+        // Skip citation injection inside the quiz container to prevent React DOM reconciliation bugs
+        var current = par;
+        var insideQuiz = false;
+        while (current) {
+          if (current.id === 'quiz' || (current.className && typeof current.className === 'string' && current.className.indexOf('quiz') !== -1)) {
+            insideQuiz = true;
+            break;
+          }
+          current = current.parentNode;
+        }
+        if (insideQuiz) return;
 
         for (var i = 0; i < citationMap.length; i++) {
           var entry = citationMap[i];
@@ -271,7 +218,7 @@
         link.href = r[3];
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
-        link.setAttribute('style', 'color:#00f0ff;text-decoration:none;');
+        link.setAttribute('style', 'color:#e2b857;text-decoration:none;');
         link.textContent = r[4];
 
         li.appendChild(authorSpan);
@@ -282,7 +229,7 @@
 
       var note = document.createElement('p');
       note.setAttribute('style', 'margin-top:18px;font-size:0.64rem;color:#334155;line-height:1.65;');
-      note.innerHTML = '<em>All statistical claims reflect aggregate peer-reviewed clinical data. Individual outcomes vary. LASIK is a surgical procedure with inherent benefits and risks; consult a qualified ophthalmologist to determine your candidacy. This resource is for educational purposes only and does not constitute medical advice. Information submitted via forms on this site is handled in strict compliance with HIPAA (Health Insurance Portability and Accountability Act) standards to protect your health privacy. For more information, please read the <a href="https://www.maranoeyecare.com/privacy-policy/" target="_blank" rel="noopener noreferrer" style="color:#00f0ff;text-decoration:none;">Marano Eye Care Privacy Policy</a>.<br><br>© 2026 Marano Eye Care. Livingston Clinic: 200 South Orange Ave, Livingston, NJ 07039 | Newark Clinic: 137 Ferry St, Newark, NJ 07105 | Phone: 973-322-0100</em>';
+      note.innerHTML = '<em>All statistical claims reflect aggregate peer-reviewed clinical data. Individual outcomes vary. LASIK is a surgical procedure with inherent benefits and risks; consult a qualified ophthalmologist to determine your candidacy. This resource is for educational purposes only and does not constitute medical advice. Information submitted via forms on this site is handled in strict compliance with HIPAA (Health Insurance Portability and Accountability Act) standards to protect your health privacy. For more information, please read the <a href="https://www.maranoeyecare.com/privacy-policy/" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:none;">Marano Eye Care Privacy Policy</a>.<br><br>© 2026 Marano Eye Care. Livingston Clinic: 200 South Orange Ave, Livingston, NJ 07039 | Newark Clinic: 137 Ferry St, Newark, NJ 07105 | Phone: 973-322-0100</em>';
 
       inner.appendChild(heading);
       inner.appendChild(ol);

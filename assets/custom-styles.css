@@ -1,0 +1,94 @@
+/* Asymmetrical Editorial Testimonials Grid */
+@media (min-width: 901px) {
+  .proof-testimonials {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 28px !important;
+  }
+  .proof-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+  
+  /* Alternating widths to break the grid monotony */
+  .proof-card:nth-child(1) { grid-column: span 3; }
+  .proof-card:nth-child(2) { grid-column: span 3; }
+  .proof-card:nth-child(3) { grid-column: span 4; }
+  .proof-card:nth-child(4) { grid-column: span 2; }
+  .proof-card:nth-child(5) { grid-column: span 2; }
+  .proof-card:nth-child(6) { grid-column: span 4; }
+  .proof-card:nth-child(7) { grid-column: span 3; }
+  .proof-card:nth-child(8) { grid-column: span 3; }
+  .proof-card:nth-child(9) { grid-column: span 2; }
+  .proof-card:nth-child(10) { grid-column: span 4; }
+
+  /* Typography Hierarchy & Contrast on Featured Columns */
+  .proof-card:nth-child(3) .proof-quote,
+  .proof-card:nth-child(6) .proof-quote,
+  .proof-card:nth-child(10) .proof-quote {
+    font-size: 1.15rem !important;
+    line-height: 1.75 !important;
+    color: #f8fafc !important;
+  }
+  
+  /* Interactive scale for organic responsiveness */
+  .proof-card:hover {
+    transform: translateY(-4px) scale(1.005) !important;
+    border-color: rgba(226, 184, 87, 0.25) !important;
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), 0 0 30px rgba(226, 184, 87, 0.01) !important;
+  }
+}
+
+/* Always-Visible Header CTA Button Styles */
+.header-cta-btn {
+  padding: 10px 20px !important;
+  font-size: 0.85rem !important;
+  margin-left: 16px !important;
+  z-index: 110 !important;
+  display: inline-flex !important;
+}
+.cta-desktop { display: inline !important; }
+.cta-mobile { display: none !important; }
+
+@media (max-width: 768px) {
+  .header-cta-btn {
+    margin-left: auto !important;
+    padding: 8px 14px !important;
+    font-size: 0.8rem !important;
+  }
+  .cta-desktop { display: none !important; }
+  .cta-mobile { display: inline !important; }
+}
+
+/* Typographic scale corrections */
+.hero-serif-title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem) !important;
+}
+.hero-display-title {
+  font-size: clamp(3.2rem, 8vw, 6.5rem) !important;
+}
+.bio-heading {
+  font-size: clamp(1.8rem, 4vw, 2.6rem) !important;
+}
+.proof-title {
+  font-family: var(--font-serif) !important;
+  font-weight: 300 !important;
+  font-style: italic !important;
+}
+.proof-title-accent {
+  font-family: var(--font-sans) !important;
+  font-weight: 800 !important;
+  font-style: normal !important;
+}
+
+/* Utility classes for previously inline styles */
+.hidden-noscript-iframe {
+  display: none;
+  visibility: hidden;
+}
+.netlify-form-hidden {
+  display: none;
+}

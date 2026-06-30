@@ -21,6 +21,7 @@ pinned_version = "1"
   [plugins.inputs]
 
 [build]
+command = ""
 publish = "."
 
 
@@ -28,13 +29,7 @@ publish = "."
   NODE_VERSION = "20"
 
   [build.processing]
+    skip_processing = true
 
-    [build.processing.css]
-
-    [build.processing.html]
-
-    [build.processing.images]
-
-    [build.processing.js]
 
   [build.services]

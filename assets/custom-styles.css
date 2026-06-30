@@ -92,3 +92,95 @@
 .netlify-form-hidden {
   display: none;
 }
+
+/* Premium Edge-to-Edge Hero Image Presentation (Static & Styled) */
+@media (min-width: 901px) {
+  .hero-container {
+    grid-template-columns: 1.1fr 0.9fr !important; /* Allocate more space for the image column */
+    gap: 60px !important; /* Unified spacing */
+  }
+}
+
+.hero-float {
+  animation: none !important;
+  transform: none !important;
+}
+
+.hero-image-wrapper {
+  perspective: none !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 480px !important; /* Significantly larger visual presence */
+  aspect-ratio: 1 / 1 !important;
+  margin: 0 auto !important;
+  position: relative !important;
+}
+
+.hero-image-card {
+  padding: 0 !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: rgba(10, 10, 15, 0.6) !important;
+  box-shadow: 
+    0 30px 70px rgba(0, 0, 0, 0.8),
+    0 0 45px rgba(139, 92, 246, 0.04) !important; /* Subtle violet glow matching the laser beam */
+  width: 100% !important;
+  height: 100% !important;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform: none !important;
+}
+
+.hero-image-card img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  display: block !important;
+  border-radius: 0 !important;
+  object-fit: cover !important;
+  transform: scale(1.01);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@media (max-width: 768px) {
+  .hero-image-wrapper {
+    max-width: 320px !important;
+  }
+}
+
+/* Hover interactions for a premium, tactical feel */
+.hero-image-wrapper:hover .hero-image-card {
+  border-color: rgba(168, 85, 247, 0.25) !important;
+  box-shadow: 
+    0 40px 90px rgba(0, 0, 0, 0.9),
+    0 0 60px rgba(168, 85, 247, 0.15) !important; /* Enhanced laser purple glow */
+}
+
+.hero-image-wrapper:hover .hero-image-card img {
+  transform: scale(1.05);
+}
+
+/* Navigation Procedure Button Color Differentiator */
+#nav-procedure-btn {
+  background: rgba(168, 85, 247, 0.05) !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(168, 85, 247, 0.3) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#nav-procedure-btn:hover {
+  background: rgba(168, 85, 247, 0.15) !important;
+  border-color: rgba(168, 85, 247, 0.6) !important;
+  color: #ffffff !important;
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(168, 85, 247, 0.15) !important;
+  transform: translateY(-2px) scale(1.01) !important;
+}
+
+#nav-procedure-btn:active {
+  transform: translateY(-1px) scale(0.99) !important;
+}

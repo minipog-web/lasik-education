@@ -1,18 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- GTM disabled for local debugging -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LASIK Journey - Marano Eye Care</title>
     <meta name="description" content="Discover your path to visual freedom with Dr. Matthew J. Marano, Jr., MD. Explore the advanced optics, biophysics, and customized dual-laser technology behind LASIK." />
-    <script type="module" crossorigin src="./assets/index-nb1vded4_v2.js?v=46"></script>
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <!-- Google Tag Manager -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-MKQN2TS6');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Conversion & Analytics Event Tracking -->
+    <script>
+      (function() {
+        // 1. Intercept Fetch Submissions (Netlify Forms)
+        var originalFetch = window.fetch;
+        window.fetch = function() {
+          var args = arguments;
+          var url = args[0];
+          var options = args[1];
+          if (url === '/' && options && options.method === 'POST' && typeof options.body === 'string' && options.body.indexOf('form-name=consultation') !== -1) {
+            window.dataLayer.push({
+              event: 'form_submission',
+              form_name: 'consultation',
+              location: getParam(options.body, 'location') || 'Livingston',
+              preferred_contact: getParam(options.body, 'preferred_contact') || 'email'
+            });
+          }
+          return originalFetch.apply(this, args);
+        };
+
+        function getParam(body, key) {
+          var match = new RegExp('(?:^|&)' + key + '=([^&]*)').exec(body);
+          return match ? decodeURIComponent(match[1].replace(/\+/g, ' ')) : null;
+        }
+
+        // 2. Track Interactions (Click-to-Call and CTA buttons)
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+          while (target && target !== document.body) {
+            // Click to Call Tracking
+            if (target.tagName === 'A' && target.href && target.href.indexOf('tel:') === 0) {
+              window.dataLayer.push({
+                event: 'phone_click',
+                phone_number: target.href.replace('tel:', '')
+              });
+              break;
+            }
+            // CTA Button Tracking
+            if (target.tagName === 'BUTTON' || (target.className && typeof target.className === 'string' && target.className.indexOf('btn') !== -1)) {
+              var btnText = target.innerText || target.textContent || '';
+              btnText = btnText.trim().replace(/\s+/g, ' ');
+              if (btnText) {
+                window.dataLayer.push({
+                  event: 'cta_click',
+                  cta_label: btnText
+                });
+              }
+              break;
+            }
+            target = target.parentNode;
+          }
+        }, true);
+
+        // 3. Quiz Completion Tracking (DOM Mutation Monitoring)
+        var quizCompletedSent = false;
+        var observer = new MutationObserver(function() {
+          if (quizCompletedSent) return;
+          var rootEl = document.getElementById('root');
+          if (!rootEl) return;
+          
+          // Check for quiz results indicator
+          var resultsHeader = rootEl.querySelector('h3');
+          if (resultsHeader) {
+            var text = (resultsHeader.innerText || resultsHeader.textContent || '').trim();
+            if (text === 'Initial Biometrics Approved' || text === 'Assessment Report Prepared') {
+              quizCompletedSent = true;
+              window.dataLayer.push({
+                event: 'quiz_complete',
+                quiz_result: text === 'Initial Biometrics Approved' ? 'eligible' : 'review'
+              });
+            }
+          }
+        });
+
+        window.addEventListener('load', function() {
+          var rootEl = document.getElementById('root') || document.body;
+          observer.observe(rootEl, {
+            childList: true,
+            subtree: true
+          });
+        });
+      })();
+    </script>
+
+    <script type="module" crossorigin src="./assets/index-nb1vded4_v2.js?v=47"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="./assets/hero-CO3kpQsP.webp" type="image/webp">
     <link rel="stylesheet" crossorigin href="./assets/index-DhXpI4H_.css?v=28">
-    <link rel="stylesheet" href="./assets/custom-styles.css">
+    <link rel="stylesheet" href="./assets/custom-styles.css?v=2">
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->

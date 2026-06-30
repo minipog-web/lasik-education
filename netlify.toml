@@ -1,5 +1,3 @@
-headers = []
-redirects = []
 
 [[headers]]
   for = "/assets/*"

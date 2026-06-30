@@ -21,10 +21,8 @@ pinned_version = "1"
   [plugins.inputs]
 
 [build]
-publish = "C:\\Users\\adamp\\Downloads\\LASIK-App\\dist"
-publishOrigin = "config"
-commandOrigin = "config"
-command = "npm run build"
+publish = "."
+
 
   [build.environment]
   NODE_VERSION = "20"

@@ -184,3 +184,114 @@
 #nav-procedure-btn:active {
   transform: translateY(-1px) scale(0.99) !important;
 }
+
+/* Color System & Accent Optimizations */
+:root {
+  /* Enhance readability of muted text */
+  --text-muted: #8493a8 !important;
+}
+
+/* Glass panel interactive transitions */
+.glass-panel {
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.glass-panel:hover {
+  border-color: color-mix(in srgb, var(--accent-primary) 25%, transparent) !important;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.6), 
+    0 0 30px color-mix(in srgb, var(--accent-primary) 8%, transparent) !important;
+}
+
+/* Laser-specific styling (Violet for Femtosecond, Gold for Excimer) */
+.steps-progress-dot {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Customize active and completed steps based on laser stage */
+/* Step 3: Femtosecond laser flap creation (Violet) */
+.steps-progress-dot:nth-child(3).active-radar-dot {
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.5) !important;
+  border-color: var(--accent-tertiary) !important;
+  color: var(--accent-tertiary) !important;
+}
+
+/* Step 4: Excimer laser sculpting (Violet / Gold hybrid) */
+.steps-progress-dot:nth-child(4).active-radar-dot {
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.4), 0 0 25px rgba(226, 184, 87, 0.2) !important;
+  border-color: var(--accent-primary) !important;
+  color: var(--accent-primary) !important;
+}
+
+/* Layout Adaptation & Touch Optimizations */
+/* Touch targets comfort boost on progress dots */
+.steps-progress-dot {
+  position: relative !important;
+}
+.steps-progress-dot::after {
+  content: '' !important;
+  position: absolute !important;
+  top: -10px !important;
+  bottom: -10px !important;
+  left: -10px !important;
+  right: -10px !important;
+  cursor: pointer !important;
+}
+
+/* Tablet portrait optimizations (viewports below 1024px) */
+@media (max-width: 1024px) {
+  .marano-profile-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .marano-stats-column {
+    border-left: none !important;
+    padding-left: 0 !important;
+    border-top: 1px solid rgba(226, 184, 87, 0.15) !important;
+    padding-top: 24px !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 24px !important;
+    justify-content: space-around !important;
+  }
+  .marano-stats-column > div {
+    flex: 1 !important;
+    min-width: 150px !important;
+    text-align: center !important;
+  }
+  /* Remove divider lines in row view */
+  .marano-stats-column > div[style*="height: 1px"],
+  .marano-stats-column > div[style*="height:1px"] {
+    display: none !important;
+  }
+  .marano-pillars-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .marano-consultation-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+}
+
+/* Unified Page Layout Spacing */
+.section,
+#social-proof-section,
+.cta-section {
+  padding: clamp(80px, 7vw, 120px) 0 !important;
+}
+
+/* Adjust secondary sections to match the rhythm */
+.trust-metrics-section {
+  padding: 48px 0 !important;
+  margin-top: 0 !important;
+}
+
+.footer-content {
+  padding: 64px 0 32px 0 !important;
+}
+
+.container {
+  padding: 0 24px !important;
+}

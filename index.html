@@ -441,24 +441,6 @@
           }
         }
       }
-
-      // 2. Inject career surgery volume metric into surgeon statistics column
-      var statsCol = document.querySelector('.marano-stats-column');
-      if (statsCol && !document.getElementById('eeat-stat-procedures')) {
-        // Find existing elements to insert after or append
-        var divider = document.createElement('div');
-        divider.setAttribute('style', 'height: 1px; background: rgba(226, 184, 87, 0.15); margin: 4px 0;');
-        divider.className = 'eeat-stat-divider';
-
-        var statItem = document.createElement('div');
-        statItem.id = 'eeat-stat-procedures';
-        statItem.setAttribute('style', 'display: flex; flex-direction: column; gap: 4px;');
-        statItem.innerHTML = '<div class="trust-value" style="font-size: 1.8rem; font-weight: 700; color: #f8fafc; line-height: 1.1; font-family: var(--font-sans);">20,000+</div>' +
-          '<div class="trust-label" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #64748b; font-weight: 600;">Laser Procedures Completed</div>';
-
-        statsCol.appendChild(divider);
-        statsCol.appendChild(statItem);
-      }
     }
 
     // ─── Boot ────────────────────────────────────────────────────────────────

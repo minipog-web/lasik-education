@@ -18,6 +18,38 @@
       "url": "https://lasik.maranoeye.com",
       "telephone": "973-322-0100",
       "priceRange": "$$$",
+      "medicalSpecialty": [
+        "RefractiveSurgery",
+        "Ophthalmology"
+      ],
+      "knowsAbout": [
+        "LASIK",
+        "Laser Vision Correction",
+        "Custom Wavefront-Guided LASIK",
+        "Femtosecond Laser Flap Creation",
+        "Excimer Laser Corneal Sculpting"
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Dr. Matthew J. Marano, Jr., MD",
+        "jobTitle": "Chief of Ophthalmology & Refractive Surgeon",
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "George Washington University School of Medicine"
+        },
+        "memberOf": [
+          {
+            "@type": "MedicalOrganization",
+            "name": "American Academy of Ophthalmology",
+            "alternateName": "AAO"
+          },
+          {
+            "@type": "MedicalOrganization",
+            "name": "American Society of Cataract and Refractive Surgery",
+            "alternateName": "ASCRS"
+          }
+        ]
+      },
       "address": [
         {
           "@type": "PostalAddress",
@@ -369,13 +401,59 @@
       if (root) root.parentNode.insertBefore(wrap, root.nextSibling);
     }
 
+    // ─── E-E-A-T Clinical Credentials Injector ───────────────────────────────
+
+    function injectEEAT() {
+      // 1. Inject surgeon board certifications into the profile section
+      var profileGrid = document.querySelector('.marano-profile-grid');
+      if (profileGrid && !document.getElementById('eeat-credentials')) {
+        var bioHeading = profileGrid.querySelector('.bio-heading');
+        if (bioHeading) {
+          var bioTextCol = bioHeading.parentNode;
+          if (bioTextCol) {
+            var creds = document.createElement('div');
+            creds.id = 'eeat-credentials';
+            creds.setAttribute('style', 'margin-top: 28px; padding: 24px; background: rgba(226, 184, 87, 0.03); border: 1px solid rgba(226, 184, 87, 0.15); border-radius: 16px; font-family: var(--font-sans);');
+            creds.innerHTML = '<h4 style="font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; color: #e2b857; margin-bottom: 14px; font-family: inherit; font-weight: 700;">Clinical Accreditations & Board Standings</h4>' +
+              '<ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">' +
+              '<li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857; flex-shrink: 0; margin-top: 2px;">✦</span> <span><strong>Board Certified:</strong> American Board of Ophthalmology</span></li>' +
+              '<li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857; flex-shrink: 0; margin-top: 2px;">✦</span> <span><strong>Chief of Ophthalmology:</strong> St. Michael\'s Medical Center</span></li>' +
+              '<li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857; flex-shrink: 0; margin-top: 2px;">✦</span> <span><strong>Fellow:</strong> American Academy of Ophthalmology (FAAO)</span></li>' +
+              '<li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857; flex-shrink: 0; margin-top: 2px;">✦</span> <span><strong>Active Member:</strong> American Society of Cataract & Refractive Surgery (ASCRS)</span></li>' +
+              '</ul>';
+            bioTextCol.appendChild(creds);
+          }
+        }
+      }
+
+      // 2. Inject career surgery volume metric into surgeon statistics column
+      var statsCol = document.querySelector('.marano-stats-column');
+      if (statsCol && !document.getElementById('eeat-stat-procedures')) {
+        // Find existing elements to insert after or append
+        var divider = document.createElement('div');
+        divider.setAttribute('style', 'height: 1px; background: rgba(226, 184, 87, 0.15); margin: 4px 0;');
+        divider.className = 'eeat-stat-divider';
+
+        var statItem = document.createElement('div');
+        statItem.id = 'eeat-stat-procedures';
+        statItem.setAttribute('style', 'display: flex; flex-direction: column; gap: 4px;');
+        statItem.innerHTML = '<div class="trust-value" style="font-size: 1.8rem; font-weight: 700; color: #f8fafc; line-height: 1.1; font-family: var(--font-sans);">20,000+</div>' +
+          '<div class="trust-label" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #64748b; font-weight: 600;">Laser Procedures Completed</div>';
+
+        statsCol.appendChild(divider);
+        statsCol.appendChild(statItem);
+      }
+    }
+
     // ─── Boot ────────────────────────────────────────────────────────────────
 
     var _sweepTimer = null;
     function scheduleSweep() {
       clearTimeout(_sweepTimer);
       _sweepTimer = setTimeout(function() {
-        injectInto(document.getElementById('root') || document.body);
+        var root = document.getElementById('root') || document.body;
+        injectInto(root);
+        injectEEAT();
       }, 100);
     }
 
@@ -390,7 +468,9 @@
       // Sweep multiple times early on to capture content rendered progressively by React
       [400, 1000, 2000, 3500, 6000].forEach(function(delay) {
         setTimeout(function() {
-          injectInto(document.getElementById('root') || document.body);
+          var root = document.getElementById('root') || document.body;
+          injectInto(root);
+          injectEEAT();
         }, delay);
       });
 

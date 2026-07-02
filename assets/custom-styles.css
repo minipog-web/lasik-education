@@ -404,3 +404,82 @@ h1, h2, h3, .hero-display-title, .bio-heading {
   background: rgba(13, 20, 30, 0.4) !important;
   box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7) !important;
 }
+
+/* 6. Tactile Noise Overlay to break digital flatness */
+.tactile-grain-overlay {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.012;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* 7. Dr. Matthew Marano Mini-Portrait Styling & Spacing Restoration */
+.marano-mini-portrait {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.mini-portrait-wrapper {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(226, 184, 87, 0.25);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5), 
+    0 0 20px rgba(226, 184, 87, 0.05);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 1025px) {
+  .mini-portrait-wrapper {
+    top: -100px !important;
+  }
+}
+
+.mini-portrait-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mini-portrait-wrapper:hover {
+  transform: scale(1.03);
+  border-color: rgba(226, 184, 87, 0.5);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.6), 
+    0 0 30px rgba(226, 184, 87, 0.1);
+}
+
+.mini-portrait-wrapper:hover .mini-portrait-image {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+.mini-portrait-divider {
+  height: 1px;
+  background: rgba(226, 184, 87, 0.15);
+  margin: 16px 0 24px 0;
+  width: 100%;
+}
+
+/* Responsive Mini Portrait Adapters */
+@media (max-width: 1024px) {
+  .marano-mini-portrait {
+    flex: 1 0 100% !important;
+    margin-bottom: 16px !important;
+  }
+  .mini-portrait-divider {
+    display: none !important;
+  }
+}

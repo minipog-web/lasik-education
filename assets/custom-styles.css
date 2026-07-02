@@ -344,7 +344,7 @@ body::after {
 .steps-progress-dot.active-radar-dot::before {
   content: "SYS_OK" !important;
   position: absolute;
-  bottom: -24px;
+  bottom: calc(100% + 12px) !important; /* Elegant telemetry positioned above the dot */
   left: 50%;
   transform: translateX(-50%);
   font-family: monospace;
@@ -370,7 +370,6 @@ body::after {
 .btn {
   position: relative;
   overflow: hidden !important;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 .btn::before {
   content: '';
@@ -437,7 +436,6 @@ h1, h2, h3, .hero-display-title, .bio-heading {
   box-shadow: 
     0 10px 30px rgba(0, 0, 0, 0.5), 
     0 0 20px rgba(226, 184, 87, 0.05);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (min-width: 1025px) {
@@ -450,7 +448,6 @@ h1, h2, h3, .hero-display-title, .bio-heading {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mini-portrait-wrapper:hover {
@@ -482,4 +479,66 @@ h1, h2, h3, .hero-display-title, .bio-heading {
   .mini-portrait-divider {
     display: none !important;
   }
+}
+
+/* ==========================================
+   MARANO HIGH-END UX POLISH ADDITIONS
+   ========================================== */
+
+/* 8. Cohesive Motion Language Transitions (60fps Cubic-Bezier) */
+.btn, 
+.quiz-option-btn, 
+.science-tab-btn, 
+.steps-progress-dot, 
+.faq-item, 
+.proof-card, 
+.glass-panel, 
+.mini-portrait-wrapper, 
+.contact-phone-box,
+input,
+textarea {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* 9. Premium Keyboard Focus Indicators (WCAG AA Compliance) */
+:focus-visible,
+.btn:focus-visible, 
+.quiz-option-btn:focus-visible, 
+.science-tab-btn:focus-visible, 
+.steps-progress-dot:focus-visible,
+.faq-item:focus-visible {
+  outline: 2px solid #e2b857 !important;
+  outline-offset: 4px !important;
+  box-shadow: 0 0 15px rgba(226, 184, 87, 0.45) !important;
+}
+
+/* Custom indicator for native range inputs/sliders */
+input[type="range"]:focus-visible {
+  outline: 2px solid #e2b857 !important;
+  outline-offset: 6px !important;
+}
+
+/* 10. Mobile Touch Target Calibration (>= 44x44px target bounds) */
+@media (max-width: 768px) {
+  .science-tab-btn {
+    padding: 14px 22px !important; /* height is guaranteed >= 44px */
+  }
+  .quiz-option-btn {
+    padding: 22px 26px !important; /* height is guaranteed >= 44px */
+  }
+  .btn {
+    min-height: 48px !important; /* height is guaranteed >= 44px */
+  }
+  /* Give sliders larger vertical grab areas */
+  input[type="range"] {
+    min-height: 44px !important;
+  }
+}
+
+/* 11. Editorial Typographical Orphans & Widows Protection */
+p, li, .proof-quote, .faq-answer {
+  text-wrap: pretty !important;
+}
+h1, h2, h3, h4, .hero-serif-title, .hero-display-title, .bio-heading {
+  text-wrap: balance !important;
 }

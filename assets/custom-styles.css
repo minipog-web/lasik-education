@@ -65,10 +65,12 @@
 
 /* Typographic scale corrections */
 .hero-serif-title {
-  font-size: clamp(2.2rem, 5vw, 3.8rem) !important;
+  font-size: clamp(1.4rem, 5vw, 3.8rem) !important;
+  white-space: nowrap !important;
 }
 .hero-display-title {
-  font-size: clamp(3.2rem, 8vw, 6.5rem) !important;
+  font-size: clamp(2.0rem, 8vw, 6.5rem) !important;
+  white-space: nowrap !important;
 }
 .bio-heading {
   font-size: clamp(1.8rem, 4vw, 2.6rem) !important;
@@ -542,3 +544,76 @@ p, li, .proof-quote, .faq-answer {
 h1, h2, h3, h4, .hero-serif-title, .hero-display-title, .bio-heading {
   text-wrap: balance !important;
 }
+
+/* ==========================================
+   LIFESTYLE OUTCOME SECTIONS STYLING
+   ========================================== */
+.lifestyle-tab-btn {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 14px 24px !important;
+  border-radius: 100px !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  color: #94a3b8 !important;
+  cursor: pointer !important;
+}
+
+.lifestyle-tab-btn:hover {
+  background: rgba(226, 184, 87, 0.04) !important;
+  border-color: rgba(226, 184, 87, 0.3) !important;
+  color: #f8fafc !important;
+  transform: translateY(-2px) !important;
+}
+
+.lifestyle-tab-btn.active {
+  background: linear-gradient(135deg, rgba(226, 184, 87, 0.15) 0%, rgba(226, 184, 87, 0.03) 100%) !important;
+  border-color: #e2b857 !important;
+  color: #ffe293 !important;
+  box-shadow: 0 8px 24px -4px rgba(226, 184, 87, 0.1) !important;
+}
+
+.tab-icon {
+  width: 18px !important;
+  height: 18px !important;
+  flex-shrink: 0 !important;
+}
+
+.lifestyle-pane-grid {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: tabFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes tabFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 12. Visual Comparison Slider Component - Removed (Simulators deleted per user request) */
+
+/* Tablet portrait adaptations for Lifestyle section */
+@media (max-width: 768px) {
+  .lifestyle-pane-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .lifestyle-slider-container {
+    max-width: 100% !important;
+    height: 240px !important;
+  }
+  .lifestyle-tab-btn {
+    flex: 1 0 calc(50% - 8px) !important;
+    justify-content: center !important;
+  }
+}
+@media (max-width: 480px) {
+  .lifestyle-tab-btn {
+    flex: 1 0 100% !important;
+  }
+}

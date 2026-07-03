@@ -173,7 +173,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="./assets/hero-CO3kpQsP_v2.webp" type="image/webp">
     <link rel="stylesheet" crossorigin href="./assets/index-DhXpI4H_.css?v=28">
-    <link rel="stylesheet" href="./assets/custom-styles.css?v=3">
+    <link rel="stylesheet" href="./assets/custom-styles.css?v=4">
+
   </head>
   <body>
     <div class="tactile-grain-overlay"></div>
@@ -270,7 +271,7 @@
         var current = par;
         var insideQuiz = false;
         while (current) {
-          if (current.id === 'quiz' || (current.className && typeof current.className === 'string' && current.className.indexOf('quiz') !== -1)) {
+          if (current.id === 'quiz' || current.id === 'eeat-lifestyle-section' || (current.className && typeof current.className === 'string' && current.className.indexOf('quiz') !== -1)) {
             insideQuiz = true;
             break;
           }
@@ -443,6 +444,189 @@
       }
     }
 
+    // ─── Outcome-Driven Lifestyle Section & Microcopy Preemption ─────────────────
+
+    var lifestyleTemplates = {
+      active: `
+  <div class="lifestyle-pane-grid" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; text-align: left;">
+    <div>
+      <h3 style="font-family: var(--font-sans); font-size: 1.6rem; font-weight: 700; color: #ffe293; margin-bottom: 18px; letter-spacing: -0.01em; line-height: 1.25;">
+        Elite Acuity under Kinetic Motion
+      </h3>
+      <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 0;">
+        For athletes and outdoor enthusiasts, frames are a liability and contact lenses are an active hazard. Wind, sweat, dust, and rapid head movements can dislodge lenses, while glasses reduce peripheral vision. Custom dual-laser correction maps the microscopic irregularities of your corneal surface, creating a wavefront-guided focal landscape. It restores absolute focus and dynamic peripheral tracking, allowing rapid active recovery within 24 to 48 hours so you can perform with complete visual freedom.
+      </p>
+    </div>
+    <div>
+      <div style="background: rgba(255, 255, 255, 0.015); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 32px; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
+        <h4 style="font-family: var(--font-sans); font-size: 1rem; font-weight: 600; color: #ffffff; margin-bottom: 18px; letter-spacing: 0.05em; text-transform: uppercase;">
+          Target Clinical Outcomes
+        </h4>
+        <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem; color: #94a3b8; line-height: 1.5;">
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Zero Lens Friction:</strong> No risk of fogging, shifting, or dislodging during motion.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Expansive Peripheral Acuity:</strong> True edge-to-edge tracking with zero frame distortion.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Rapid Active Recovery:</strong> Resume high-intensity training with elite-tier visual stability.</span></li>
+        </ul>
+        <button onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
+          Check Your Eligibility
+        </button>
+      </div>
+    </div>
+  </div>
+      `,
+      night: `
+  <div class="lifestyle-pane-grid" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; text-align: left;">
+    <div>
+      <h3 style="font-family: var(--font-sans); font-size: 1.6rem; font-weight: 700; color: #ffe293; margin-bottom: 18px; letter-spacing: -0.01em; line-height: 1.25;">
+        High-Contrast Precision in Dark Environments
+      </h3>
+      <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 0;">
+        Navigating dark roads or flying at night requires pristine contrast sensitivity. Standard glasses and contact lenses frequently fail to resolve higher-order aberrations, leaving patients to suffer from night glare, halos, and starbursts around headlights. Our custom dual-laser treatment targets these microscopic imperfections directly, delivering pristine contrast and crisp visual acuity even in the most challenging nighttime environments.
+      </p>
+    </div>
+    <div>
+      <div style="background: rgba(255, 255, 255, 0.015); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 32px; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
+        <h4 style="font-family: var(--font-sans); font-size: 1rem; font-weight: 600; color: #ffffff; margin-bottom: 18px; letter-spacing: 0.05em; text-transform: uppercase;">
+          Target Clinical Outcomes
+        </h4>
+        <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem; color: #94a3b8; line-height: 1.5;">
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Glare &amp; Halo Reduction:</strong> Direct targeting of higher-order night aberrations.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>High-Contrast Depth Perception:</strong> Distinguish fine details on dark, unlit roads.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Elite Night Reliability:</strong> Clinical-grade optical focus preferred by pilots and night workers.</span></li>
+        </ul>
+        <button onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
+          Check Your Eligibility
+        </button>
+      </div>
+    </div>
+  </div>
+      `,
+      creative: `
+  <div class="lifestyle-pane-grid" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; text-align: left;">
+    <div>
+      <h3 style="font-family: var(--font-sans); font-size: 1.6rem; font-weight: 700; color: #ffe293; margin-bottom: 18px; letter-spacing: -0.01em; line-height: 1.25;">
+        Pristine Contrast for High-Density Screens
+      </h3>
+      <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 0;">
+        High-resolution monitors, complex codebases, and dense spreadsheets create a severe optical strain. Traditional lenses leave minute focus errors uncorrected, leading to digital defocus, blurred character edges, and screen fatigue. Reshaping your cornea using our customized Wavefront-Guided Excimer Laser system maps your optical system across thousands of focal points, rendering sharp character geometry and crisp visual contrast that dramatically reduces near-field fatigue.
+      </p>
+    </div>
+    <div>
+      <div style="background: rgba(255, 255, 255, 0.015); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 32px; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
+        <h4 style="font-family: var(--font-sans); font-size: 1rem; font-weight: 600; color: #ffffff; margin-bottom: 18px; letter-spacing: 0.05em; text-transform: uppercase;">
+          Target Clinical Outcomes
+        </h4>
+        <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem; color: #94a3b8; line-height: 1.5;">
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Absolute Text Geometry:</strong> Completely eliminate display shadow-defocus.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Eradicate Squint Fatigue:</strong> Clear character contrast reduces screen dry-eye.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Seamless Focal Agility:</strong> Fluidly transition from displays to boardroom clients.</span></li>
+        </ul>
+        <button onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
+          Check Your Eligibility
+        </button>
+      </div>
+    </div>
+  </div>
+      `
+    };
+
+    function initLifestyleSection() {
+      var quiz = document.getElementById('quiz');
+      if (quiz && !document.getElementById('eeat-lifestyle-section')) {
+        var section = document.createElement('section');
+        section.id = 'eeat-lifestyle-section';
+        section.className = 'section';
+        section.setAttribute('style', 'padding: clamp(60px, 6vw, 80px) 0; border-top: 1px solid rgba(255,255,255,0.03); background: #030508;');
+        
+        section.innerHTML = `
+          <div style="max-width: 1100px; margin: 0 auto; padding: 0 24px; text-align: center;">
+            <span class="rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.25em] font-semibold bg-white/5 border border-white/10 text-white/70" style="display: inline-block; margin-bottom: 16px;">
+              Outcome-Driven Visual Correction
+            </span>
+            <h2 style="font-family: var(--font-serif); font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 700; color: #ffffff; margin-bottom: 16px; line-height: 1.15; letter-spacing: -0.02em;">
+              Bespoke Vision for <span style="color: #e2b857;">Your Lifestyle</span>
+            </h2>
+            <p style="font-family: var(--font-sans); font-size: clamp(1rem, 2vw, 1.1rem); color: #94a3b8; max-width: 680px; margin: 0 auto 40px auto; line-height: 1.6; font-weight: 400;">
+              Your visual needs are unique to your daily pursuits. Explore how customized, wavefront-guided laser correction calibrates your cornea for peak optical performance in your specific environment.
+            </p>
+            <div class="lifestyle-tabs" style="display: flex; gap: 12px; justify-content: center; margin-bottom: 48px; flex-wrap: wrap;">
+              <button class="lifestyle-tab-btn active" data-tab="active">
+                <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                Active Performance
+              </button>
+              <button class="lifestyle-tab-btn" data-tab="night">
+                <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+                Low-Light & Night
+              </button>
+              <button class="lifestyle-tab-btn" data-tab="creative">
+                <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                Creative & Executive
+              </button>
+            </div>
+            <div id="lifestyle-tab-content"></div>
+          </div>
+        `;
+
+        quiz.parentNode.insertBefore(section, quiz);
+
+        function switchTab(tabId) {
+          var btns = section.querySelectorAll('.lifestyle-tab-btn');
+          btns.forEach(function(btn) {
+            if (btn.getAttribute('data-tab') === tabId) {
+              btn.classList.add('active');
+            } else {
+              btn.classList.remove('active');
+            }
+          });
+
+          var contentEl = document.getElementById('lifestyle-tab-content');
+          if (contentEl) {
+            contentEl.innerHTML = lifestyleTemplates[tabId];
+            
+            // Re-run citation injector to parse newly injected text
+            injectInto(contentEl);
+          }
+        }
+
+        // Bind tab button click listeners
+        var btns = section.querySelectorAll('.lifestyle-tab-btn');
+        btns.forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            switchTab(btn.getAttribute('data-tab'));
+          });
+        });
+
+        // Load default tab
+        switchTab('active');
+      }
+    }
+
+    function injectMicrocopyPreemption() {
+      // 1. Consultation Form Sibling
+      var contactForm = document.querySelector('.contact-form');
+      if (contactForm && !document.getElementById('contact-form-microcopy')) {
+        var microcopy = document.createElement('div');
+        microcopy.id = 'contact-form-microcopy';
+        microcopy.className = 'microcopy-preemption';
+        microcopy.setAttribute('style', 'text-align: center; font-size: 0.8rem; color: #64748b; margin-top: 18px; font-style: italic; line-height: 1.55; width: 100%; max-width: 480px; margin-left: auto; margin-right: auto;');
+        microcopy.innerHTML = 'The laser sculpting itself takes only 10 to 15 seconds per eye. The entire surgical appointment is completed in under an hour. Consultations are entirely free and require only 45 minutes of diagnostics.';
+        contactForm.parentNode.insertBefore(microcopy, contactForm.nextSibling);
+      }
+
+      // 2. Quiz Results Sibling
+      var quizButtonsContainer = Array.from(document.querySelectorAll('#quiz button')).filter(function(btn) {
+        return btn.textContent.indexOf('Schedule Free Consultation') !== -1;
+      })[0]?.parentNode;
+
+      if (quizButtonsContainer && !document.getElementById('quiz-microcopy')) {
+        var quizMicrocopy = document.createElement('div');
+        quizMicrocopy.id = 'quiz-microcopy';
+        quizMicrocopy.setAttribute('style', 'text-align: center; font-size: 0.8rem; color: #64748b; margin-top: 18px; font-style: italic; line-height: 1.5; width: 100%;');
+        quizMicrocopy.textContent = 'Taking this test creates no commitment. Results are processed securely under HIPAA.';
+        quizButtonsContainer.parentNode.insertBefore(quizMicrocopy, quizButtonsContainer.nextSibling);
+      }
+    }
+
     // ─── Boot ────────────────────────────────────────────────────────────────
 
     var _sweepTimer = null;
@@ -452,12 +636,14 @@
         var root = document.getElementById('root') || document.body;
         injectInto(root);
         injectEEAT();
+        initLifestyleSection();
+        injectMicrocopyPreemption();
       }, 100);
     }
 
     window.addEventListener('load', function() {
       console.log(
-        '%c[ Marano Eye Care - Custom Wavefront-Guided Refractive Suite ]\\n%c"Because 20/20 is just the baseline."\\n\\n🔬 Wavefront optical maps compiled successfully.\\n👉 Schedule a tour of our clinical suite: 973-322-0100',
+        '%c[ Marano Eye Care - Custom Wavefront-Guided Refractive Suite ]\n%c"Because 20/20 is just the baseline."\n\n🔬 Wavefront optical maps compiled successfully.\n👉 Schedule a tour of our clinical suite: 973-322-0100',
         'color: #e2b857; font-weight: bold; font-size: 1.15rem; font-family: system-ui, sans-serif; line-height: 1.5;',
         'color: #94a3b8; font-style: italic; font-size: 0.95rem; font-family: Georgia, serif; line-height: 1.5;'
       );
@@ -469,6 +655,8 @@
           var root = document.getElementById('root') || document.body;
           injectInto(root);
           injectEEAT();
+          initLifestyleSection();
+          injectMicrocopyPreemption();
         }, delay);
       });
 

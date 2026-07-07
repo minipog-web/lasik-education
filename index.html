@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-M7XZLSZ9');</script>
-<!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JPKZXX5HVB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JPKZXX5HVB');
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LASIK Journey - Marano Eye Care</title>
+    <title>Custom LASIK for Athletes & Professionals | Marano Eye Care NJ</title>
     <link rel="canonical" href="https://lasik.maranoeye.com/" />
-    <meta name="description" content="Discover your path to visual freedom with Dr. Matthew J. Marano, Jr., MD. Explore the advanced, customized dual-laser technology behind Marano Eye Care LASIK." />
+    <meta name="description" content="Elite athletes and driven professionals choose Dr. Marano's custom dual-laser LASIK for same-day recovery and zero-compromise visual performance. Free consultation — Livingston & Newark NJ." />
+    <meta property="og:title" content="Custom LASIK for Athletes & Professionals | Marano Eye Care" />
+    <meta property="og:description" content="Your eyes are your unfair advantage. Custom wavefront-guided LASIK by Dr. Matthew J. Marano, Jr., MD — 10-second laser, 24-hour recovery." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lasik.maranoeye.com/" />
     
     <!-- Structured Data (Schema Markup) -->
     <script type="application/ld+json">
@@ -79,16 +85,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </script>
 
     <link rel="preconnect" href="https://www.googletagmanager.com">
-    <!-- Google Tag Manager -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-MKQN2TS6');
-    </script>
-    <!-- End Google Tag Manager -->
+
 
     <!-- Conversion & Analytics Event Tracking -->
     <script>
@@ -184,10 +181,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   </head>
   <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7XZLSZ9"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+
     <div class="tactile-grain-overlay"></div>
     <div id="root"></div>
 
@@ -574,7 +568,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         `;
 
-        quiz.parentNode.insertBefore(section, quiz);
+        // P0: Insert lifestyle section after the hero, before the education section
+        var educationSection = document.getElementById('education') || document.querySelector('.section');
+        if (educationSection) {
+          educationSection.parentNode.insertBefore(section, educationSection);
+        } else {
+          quiz.parentNode.insertBefore(section, quiz);
+        }
 
         function switchTab(tabId) {
           var btns = section.querySelectorAll('.lifestyle-tab-btn');
@@ -634,6 +634,102 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     }
 
+    // ─── P1: Speed Timeline Strip ──────────────────────────────────────────
+
+    function injectTimelineStrip() {
+      if (document.getElementById('speed-timeline-strip')) return;
+      var lifestyle = document.getElementById('eeat-lifestyle-section');
+      if (!lifestyle) return;
+
+      var strip = document.createElement('section');
+      strip.id = 'speed-timeline-strip';
+      strip.setAttribute('style', 'padding: 48px 0; background: linear-gradient(180deg, #030508 0%, #080c14 100%); border-top: 1px solid rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.03);');
+      strip.innerHTML = '<div style="max-width:1000px;margin:0 auto;padding:0 24px;"><div style="text-align:center;margin-bottom:36px;"><span style="font-family:var(--font-sans);font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:#e2b857;font-weight:700;">Your Timeline</span><h3 style="font-family:var(--font-serif);font-size:clamp(1.6rem,3vw,2.2rem);color:#fff;margin-top:10px;font-weight:700;letter-spacing:-0.02em;">Back to Your Life in <span style="color:#e2b857;">24 Hours</span></h3></div><div class="timeline-strip-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;"><div class="timeline-card" style="text-align:center;padding:28px 16px;border-radius:16px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);"><div style="font-family:monospace;font-size:2.2rem;font-weight:800;color:#e2b857;margin-bottom:8px;">$0</div><div style="font-size:0.85rem;color:#f8fafc;font-weight:600;margin-bottom:4px;">Consultation</div><div style="font-size:0.78rem;color:#64748b;">45-minute diagnostic</div></div><div class="timeline-card" style="text-align:center;padding:28px 16px;border-radius:16px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);"><div style="font-family:monospace;font-size:2.2rem;font-weight:800;color:#e2b857;margin-bottom:8px;">10s</div><div style="font-size:0.85rem;color:#f8fafc;font-weight:600;margin-bottom:4px;">Laser Per Eye</div><div style="font-size:0.78rem;color:#64748b;">Under 1 hour total</div></div><div class="timeline-card" style="text-align:center;padding:28px 16px;border-radius:16px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);"><div style="font-family:monospace;font-size:2.2rem;font-weight:800;color:#e2b857;margin-bottom:8px;">24h</div><div style="font-size:0.85rem;color:#f8fafc;font-weight:600;margin-bottom:4px;">Back to Screens</div><div style="font-size:0.78rem;color:#64748b;">Most patients next day</div></div><div class="timeline-card" style="text-align:center;padding:28px 16px;border-radius:16px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);"><div style="font-family:monospace;font-size:2.2rem;font-weight:800;color:#e2b857;margin-bottom:8px;">72h</div><div style="font-size:0.85rem;color:#f8fafc;font-weight:600;margin-bottom:4px;">Back to Sports</div><div style="font-size:0.78rem;color:#64748b;">Full active recovery</div></div></div></div>';
+
+      lifestyle.parentNode.insertBefore(strip, lifestyle.nextSibling);
+    }
+
+    // ─── P1: Financial ROI Section ─────────────────────────────────────────
+
+    function injectROISection() {
+      if (document.getElementById('roi-section')) return;
+      var socialProof = document.getElementById('social-proof-section');
+      if (!socialProof) return;
+
+      var roi = document.createElement('section');
+      roi.id = 'roi-section';
+      roi.setAttribute('style', 'padding: clamp(60px, 6vw, 80px) 0; background: #030508; border-top: 1px solid rgba(255,255,255,0.03);');
+      roi.innerHTML = '<div style="max-width:1000px;margin:0 auto;padding:0 24px;text-align:center;"><span style="font-family:var(--font-sans);font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:#e2b857;font-weight:700;display:inline-block;margin-bottom:12px;">Long-Term Value</span><h2 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,2.8rem);color:#fff;margin-bottom:14px;font-weight:700;letter-spacing:-0.02em;">The Last Vision Investment <span style="color:#e2b857;">You&rsquo;ll Ever Make</span></h2><p style="font-family:var(--font-sans);font-size:1rem;color:#94a3b8;max-width:600px;margin:0 auto 48px auto;line-height:1.6;">LASIK isn&rsquo;t an expense &mdash; it&rsquo;s a permanent return on investment that compounds every year.</p><div class="roi-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;"><div style="padding:36px 24px;border-radius:20px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);"><div style="font-family:monospace;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:#64748b;margin-bottom:16px;">Lifetime Contacts &amp; Glasses</div><div style="font-size:2.8rem;font-weight:800;color:#ef4444;margin-bottom:8px;font-family:var(--font-sans);">$15&ndash;25K</div><div style="font-size:0.85rem;color:#94a3b8;line-height:1.5;">Lenses, solutions, exams, frames, replacements &mdash; a recurring tax on your vision.</div></div><div style="padding:36px 24px;border-radius:20px;background:rgba(226,184,87,0.03);border:1px solid rgba(226,184,87,0.2);box-shadow:0 0 40px rgba(226,184,87,0.03);"><div style="font-family:monospace;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:#e2b857;margin-bottom:16px;">Custom Dual-Laser LASIK</div><div style="font-size:2.8rem;font-weight:800;color:#e2b857;margin-bottom:8px;font-family:var(--font-sans);">~$4&ndash;5K</div><div style="font-size:0.85rem;color:#cbd5e1;line-height:1.5;">One investment. Permanent correction. No recurring costs, no maintenance.</div></div><div style="padding:36px 24px;border-radius:20px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);"><div style="font-family:monospace;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:#64748b;margin-bottom:16px;">Break-Even Point</div><div style="font-size:2.8rem;font-weight:800;color:#10b981;margin-bottom:8px;font-family:var(--font-sans);">3&ndash;5 Yrs</div><div style="font-size:0.85rem;color:#94a3b8;line-height:1.5;">Then pure savings &mdash; every year after is money back in your pocket.</div></div></div></div>';
+
+      socialProof.parentNode.insertBefore(roi, socialProof);
+    }
+
+    // ─── P1: Outcome Metrics Banner ───────────────────────────────────────
+
+    function injectMetricsBanner() {
+      if (document.getElementById('outcome-metrics-banner')) return;
+      var socialProof = document.getElementById('social-proof-section');
+      if (!socialProof) return;
+
+      var banner = document.createElement('div');
+      banner.id = 'outcome-metrics-banner';
+      banner.setAttribute('style', 'max-width:1100px;margin:0 auto 48px auto;padding:0 24px;');
+      banner.innerHTML = '<div class="metrics-banner-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.04);border-radius:20px;overflow:hidden;"><div style="padding:28px 16px;text-align:center;background:#080c14;"><div style="font-size:2rem;font-weight:800;color:#e2b857;font-family:var(--font-sans);">24hr</div><div style="font-size:0.78rem;color:#94a3b8;margin-top:4px;">Typical Recovery</div></div><div style="padding:28px 16px;text-align:center;background:#080c14;"><div style="font-size:2rem;font-weight:800;color:#e2b857;font-family:var(--font-sans);">10-15s</div><div style="font-size:0.78rem;color:#94a3b8;margin-top:4px;">Laser Per Eye</div></div><div style="padding:28px 16px;text-align:center;background:#080c14;"><div style="font-size:2rem;font-weight:800;color:#e2b857;font-family:var(--font-sans);">$0</div><div style="font-size:0.78rem;color:#94a3b8;margin-top:4px;">Consultation</div></div></div>';
+
+      // Insert at the top of the social proof section inner
+      var inner = socialProof.querySelector('.proof-inner');
+      if (inner) {
+        // Insert after the heading area
+        var firstTestimonials = inner.querySelector('.proof-testimonials');
+        if (firstTestimonials) {
+          inner.insertBefore(banner, firstTestimonials);
+        } else {
+          inner.appendChild(banner);
+        }
+      }
+    }
+
+    // ─── P1: Social Proof Persona Tags ────────────────────────────────────
+
+    function injectPersonaTags() {
+      if (document.querySelector('.persona-tag')) return;
+      var cards = document.querySelectorAll('.proof-card');
+      if (cards.length === 0) return;
+
+      var personas = [
+        'Corporate Strategy Director',
+        'Competitive Triathlete',
+        'Creative Director / Founder',
+        'Software Architect & Marathoner',
+        'Investment Banker',
+        'Executive Chef / Entrepreneur',
+        'High-Performance Coach',
+        'Graphic Designer & Cyclist',
+        'Operations VP / Tennis Player',
+        'Product Design Lead'
+      ];
+      cards.forEach(function(card, i) {
+        if (card.querySelector('.persona-tag')) return;
+        var tag = document.createElement('div');
+        tag.className = 'persona-tag';
+        tag.setAttribute('style', 'font-family:monospace;font-size:0.6rem;letter-spacing:2.5px;text-transform:uppercase;color:#e2b857;font-weight:700;margin-bottom:10px;opacity:0.8;');
+        tag.textContent = personas[i % personas.length];
+        card.insertBefore(tag, card.firstChild);
+      });
+    }
+
+    // ─── P2: Mobile Sticky CTA Bar ────────────────────────────────────────
+
+    function injectMobileCTA() {
+      if (document.getElementById('mobile-sticky-cta')) return;
+
+      var bar = document.createElement('div');
+      bar.id = 'mobile-sticky-cta';
+      bar.className = 'mobile-sticky-cta';
+      bar.innerHTML = '<div style="display:flex;gap:10px;justify-content:center;align-items:center;"><a href="tel:973-322-0100" class="btn btn-secondary" style="padding:10px 16px;font-size:0.82rem;white-space:nowrap;display:flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call</a><button onclick="document.getElementById(\'quiz\').scrollIntoView({behavior:\'smooth\'})" class="btn btn-primary" style="padding:10px 20px;font-size:0.82rem;white-space:nowrap;">60-Sec Eligibility Quiz</button></div>';
+      document.body.appendChild(bar);
+    }
+
     // ─── Boot ────────────────────────────────────────────────────────────────
 
     var _sweepTimer = null;
@@ -644,7 +740,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         injectInto(root);
         injectEEAT();
         initLifestyleSection();
+        injectTimelineStrip();
+        injectROISection();
+        injectMetricsBanner();
+        injectPersonaTags();
         injectMicrocopyPreemption();
+        injectMobileCTA();
       }, 100);
     }
 
@@ -663,7 +764,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           injectInto(root);
           injectEEAT();
           initLifestyleSection();
+          injectTimelineStrip();
+          injectROISection();
+          injectMetricsBanner();
+          injectPersonaTags();
           injectMicrocopyPreemption();
+          injectMobileCTA();
         }, delay);
       });
 

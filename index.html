@@ -463,18 +463,16 @@
         }
       }
 
-      // 2. Inject "Medically Reviewed" badge near the hero top
-      var rootEl = document.getElementById('root') || document.body;
-      var heroH1 = rootEl.querySelector('h1');
-      if (heroH1) {
-        var badgeContainer = heroH1.parentNode;
-        if (badgeContainer && !document.getElementById('eeat-hero-badge')) {
+      // 2. Inject "Medically Reviewed" badge at the bottom of the Science/Education section
+      var scienceSec = document.getElementById('lasik-science');
+      if (scienceSec) {
+        var container = scienceSec.querySelector('.container');
+        if (container && !document.getElementById('eeat-science-badge')) {
           var badge = document.createElement('div');
-          badge.id = 'eeat-hero-badge';
-          badge.className = 'eeat-badge';
-          badge.setAttribute('style', 'display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; padding: 6px 14px; background: rgba(226, 184, 87, 0.05); border: 1px solid rgba(226, 184, 87, 0.25); border-radius: 100px; font-family: var(--font-sans); font-size: 0.72rem; color: #e2b857; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;');
-          badge.innerHTML = '<span style="display: inline-block; width: 6px; height: 6px; background: #e2b857; border-radius: 50%;"></span> Medically Reviewed by Dr. Matthew J. Marano, Jr., MD';
-          badgeContainer.insertBefore(badge, badgeContainer.firstChild);
+          badge.id = 'eeat-science-badge';
+          badge.setAttribute('style', 'display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 40px; padding: 12px 20px; background: rgba(226, 184, 87, 0.02); border: 1px solid rgba(226, 184, 87, 0.12); border-radius: 12px; font-family: var(--font-sans); font-size: 0.8rem; color: #cbd5e1; width: fit-content; margin-left: auto; margin-right: auto;');
+          badge.innerHTML = '<span style="color: #e2b857; font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; border: 1px solid rgba(226,184,87,0.3); padding: 2px 6px; border-radius: 4px; margin-right: 4px;">Medically Reviewed</span> Verified by Dr. Matthew J. Marano, Jr., MD';
+          container.appendChild(badge);
         }
       }
     }

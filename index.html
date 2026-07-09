@@ -864,6 +864,134 @@
       }
     }
 
+    // ─── Dynamic Text Replacement (DTR) for Google Ads ───────────────────────
+    function getQueryParam(name) {
+      name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+      var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+      var results = regex.exec(window.location.search);
+      return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    // Capitalize title text nicely for professional tone
+    function formatAdText(text) {
+      if (!text) return '';
+      var words = text.split(/\s+/);
+      var stopWords = ['a', 'an', 'the', 'and', 'but', 'or', 'for', 'nor', 'on', 'at', 'to', 'from', 'by', 'of', 'in', 'with'];
+      var formattedWords = words.map(function(word, index) {
+        var lower = word.toLowerCase();
+        // Keep acronyms uppercase
+        if (lower === 'lasik' || lower === 'prk' || lower === 'fda' || lower === 'nj' || lower === 'ny' || lower === 'hud' || lower === 'roi') {
+          return lower.toUpperCase();
+        }
+        // Capitalize first letter if it's the first word, or not a stop word
+        if (index === 0 || stopWords.indexOf(lower) === -1) {
+          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        }
+        return lower;
+      });
+      return formattedWords.join(' ');
+    }
+
+    // Cache parameters to prevent parsing on every DOM mutation
+    var dtrParams = null;
+    function getDtrParams() {
+      if (dtrParams) return dtrParams;
+      var headline = getQueryParam('headline') || getQueryParam('heading') || getQueryParam('utm_term') || getQueryParam('keyword');
+      var subheading = getQueryParam('subheading') || getQueryParam('sub') || getQueryParam('desc');
+      var cta = getQueryParam('cta') || getQueryParam('ctatext');
+      var city = getQueryParam('city') || getQueryParam('location') || getQueryParam('loc');
+
+      dtrParams = {
+        headline: formatAdText(headline),
+        subheading: subheading,
+        cta: formatAdText(cta),
+        city: formatAdText(city)
+      };
+      return dtrParams;
+    }
+
+    function applyDynamicTextReplacement(rootEl) {
+      var params = getDtrParams();
+
+      // 1. Headline Replacement (Hero Section)
+      if (params.headline) {
+        var serifTitle = rootEl.querySelector('.hero-serif-title');
+        var displayTitle = rootEl.querySelector('.hero-display-title');
+        
+        if (serifTitle || displayTitle) {
+          var parts = [];
+          if (params.headline.indexOf('|') !== -1) {
+            parts = params.headline.split('|');
+          } else if (params.headline.indexOf('//') !== -1) {
+            parts = params.headline.split('//');
+          } else {
+            var words = params.headline.split(/\s+/);
+            if (words.length > 3) {
+              parts = [words.slice(0, 3).join(' '), words.slice(3).join(' ')];
+            } else {
+              parts = ['', params.headline];
+            }
+          }
+
+          var part1 = parts[0] ? parts[0].trim() : '';
+          var part2 = parts[1] ? parts[1].trim() : '';
+
+          if (serifTitle && serifTitle.textContent !== part1) {
+            serifTitle.textContent = part1;
+            serifTitle.style.display = part1 ? '' : 'none';
+          }
+          if (displayTitle && displayTitle.textContent !== part2) {
+            displayTitle.textContent = part2;
+          }
+        }
+      }
+
+      // 2. Subheading Replacement
+      if (params.subheading) {
+        var heroH1 = rootEl.querySelector('h1.animate-fade-up') || rootEl.querySelector('.hero-serif-title')?.parentNode;
+        if (heroH1) {
+          var siblingP = heroH1.parentNode.querySelector('p.text-secondary');
+          if (siblingP && siblingP.textContent !== params.subheading) {
+            siblingP.textContent = params.subheading;
+          }
+        }
+      }
+
+      // 3. CTA Button text
+      if (params.cta) {
+        var ctaButtons = rootEl.querySelectorAll('.btn-primary');
+        ctaButtons.forEach(function(btn) {
+          if (btn.textContent.trim() !== params.cta && btn.id !== 'quiz-prev-btn') {
+            btn.textContent = params.cta;
+          }
+        });
+      }
+
+      // 4. City / Location customization
+      if (params.city) {
+        var badgeSpan = rootEl.querySelector('.animate-fade-up span[style*="text-transform:uppercase"]') || 
+                         Array.from(rootEl.querySelectorAll('span')).find(function(el) {
+                           return el.textContent.trim() === 'Zero-Compromise Visual Performance';
+                         });
+        if (badgeSpan) {
+          var newBadgeText = 'Zero-Compromise Visual Performance for ' + params.city + ' Patients';
+          if (badgeSpan.textContent !== newBadgeText) {
+            badgeSpan.textContent = newBadgeText;
+          }
+        }
+
+        var headers = rootEl.querySelectorAll('h1, h2, h3, h4');
+        headers.forEach(function(h) {
+          if (h.textContent.indexOf('Livingston & Newark') !== -1) {
+            var updated = h.textContent.replace('Livingston & Newark', params.city);
+            if (h.textContent !== updated) {
+              h.textContent = updated;
+            }
+          }
+        });
+      }
+    }
+
     var _sweepTimer = null;
     function scheduleSweep() {
       clearTimeout(_sweepTimer);
@@ -880,6 +1008,7 @@
         injectMobileCTA();
         ensureAccessibilityLabels();
         clarifyLandingPageCopy();
+        applyDynamicTextReplacement(root);
       }, 100);
     }
 

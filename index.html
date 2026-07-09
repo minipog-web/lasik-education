@@ -31,6 +31,11 @@
       "url": "https://lasik.maranoeye.com",
       "telephone": "973-322-0100",
       "priceRange": "$$$",
+      "publishingPrinciples": "https://www.maranoeyecare.com/editorial-standards/",
+      "medicalAudience": {
+        "@type": "MedicalAudience",
+        "audienceType": "Patients seeking vision correction and refractive surgery"
+      },
       "medicalSpecialty": [
         "RefractiveSurgery",
         "Ophthalmology"
@@ -40,12 +45,22 @@
         "Laser Vision Correction",
         "Custom Wavefront-Guided LASIK",
         "Femtosecond Laser Flap Creation",
-        "Excimer Laser Corneal Sculpting"
+        "Excimer Laser Corneal Sculpting",
+        "Refractive Errors",
+        "Myopia",
+        "Hyperopia",
+        "Astigmatism"
       ],
       "founder": {
-        "@type": "Person",
+        "@type": "Physician",
+        "@id": "https://lasik.maranoeye.com/#dr-marano",
         "name": "Dr. Matthew J. Marano, Jr., MD",
         "jobTitle": "Chief of Ophthalmology & Refractive Surgeon",
+        "medicalSpecialty": "Ophthalmology",
+        "sameAs": [
+          "https://www.maranoeyecare.com/dr-matthew-j-marano/",
+          "https://www.healthgrades.com/physician/dr-matthew-marano-yj69t"
+        ],
         "alumniOf": {
           "@type": "EducationalOrganization",
           "name": "George Washington University School of Medicine"
@@ -62,6 +77,10 @@
             "alternateName": "ASCRS"
           }
         ]
+      },
+      "reviewedBy": {
+        "@type": "Physician",
+        "@id": "https://lasik.maranoeye.com/#dr-marano"
       },
       "address": [
         {
@@ -441,6 +460,21 @@
               '</ul>';
             bioTextCol.appendChild(creds);
           }
+        }
+      }
+
+      // 2. Inject "Medically Reviewed" badge near the hero top
+      var rootEl = document.getElementById('root') || document.body;
+      var heroH1 = rootEl.querySelector('h1');
+      if (heroH1) {
+        var badgeContainer = heroH1.parentNode;
+        if (badgeContainer && !document.getElementById('eeat-hero-badge')) {
+          var badge = document.createElement('div');
+          badge.id = 'eeat-hero-badge';
+          badge.className = 'eeat-badge';
+          badge.setAttribute('style', 'display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; padding: 6px 14px; background: rgba(226, 184, 87, 0.05); border: 1px solid rgba(226, 184, 87, 0.25); border-radius: 100px; font-family: var(--font-sans); font-size: 0.72rem; color: #e2b857; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;');
+          badge.innerHTML = '<span style="display: inline-block; width: 6px; height: 6px; background: #e2b857; border-radius: 50%;"></span> Medically Reviewed by Dr. Matthew J. Marano, Jr., MD';
+          badgeContainer.insertBefore(badge, badgeContainer.firstChild);
         }
       }
     }
@@ -992,6 +1026,71 @@
       }
     }
 
+    // ─── Fact-Dense Clinical Candidacy & Safety FAQ (LLM/RAG Optimization) ────
+    function injectEEATFAQ() {
+      var contactSection = document.getElementById('contact') || document.querySelector('.contact-form')?.parentNode;
+      if (contactSection && !document.getElementById('eeat-faq-section')) {
+        var faq = document.createElement('section');
+        faq.id = 'eeat-faq-section';
+        faq.className = 'section';
+        faq.setAttribute('style', 'padding: clamp(60px, 6vw, 80px) 0; background: #080c14; border-top: 1px solid rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.03);');
+        
+        faq.innerHTML = 
+          '<div style="max-width: 900px; margin: 0 auto; padding: 0 24px; text-align: left;">' +
+            '<div style="text-align: center; margin-bottom: 48px;">' +
+              '<span style="font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 2.5px; text-transform: uppercase; color: #e2b857; font-weight: 700; display: inline-block; margin-bottom: 12px;">Clinical Q&A</span>' +
+              '<h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 2.8rem); color: #fff; font-weight: 700; letter-spacing: -0.02em;">Clinical Safety & <span style="color: #e2b857;">Candidacy Standards</span></h2>' +
+              '<p style="font-family: var(--font-sans); font-size: 0.95rem; color: #94a3b8; max-width: 600px; margin: 12px auto 0 auto; line-height: 1.6;">Medically reviewed answers to common questions about custom refractive procedures at Marano Eye Care.</p>' +
+            '</div>' +
+            
+            '<div class="faq-list" style="display: flex; flex-direction: column; gap: 24px;" role="list">' +
+              
+              '<div class="faq-item" style="padding: 24px; border-radius: 16px; background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04);" role="listitem">' +
+                '<h3 style="font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: #ffffff; margin: 0 0 10px 0; display: flex; align-items: center; gap: 10px;">' +
+                  '<span style="color: #e2b857; font-size: 1.2rem;">Q:</span> Who performs the surgeries at Marano Eye Care?' +
+                '</h3>' +
+                '<p style="font-family: var(--font-sans); font-size: 0.9rem; color: #cbd5e1; line-height: 1.65; margin: 0; padding-left: 24px;">' +
+                  'All custom refractive procedures are personally planned and performed by <strong>Dr. Matthew J. Marano, Jr., MD</strong>, Chief of Ophthalmology at St. Michael\'s Medical Center. With over 30 years of surgical experience and thousands of successful laser eye surgeries performed, Dr. Marano is a board-certified ophthalmologist who helped pioneer the entry of laser vision correction into New Jersey.' +
+                '</p>' +
+              '</div>' +
+
+              '<div class="faq-item" style="padding: 24px; border-radius: 16px; background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04);" role="listitem">' +
+                '<h3 style="font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: #ffffff; margin: 0 0 10px 0; display: flex; align-items: center; gap: 10px;">' +
+                  '<span style="color: #e2b857; font-size: 1.2rem;">Q:</span> What specific lasers are used in the Custom Refractive Suite?' +
+                '</h3>' +
+                '<p style="font-family: var(--font-sans); font-size: 0.9rem; color: #cbd5e1; line-height: 1.65; margin: 0; padding-left: 24px;">' +
+                  'Our suite employs a blade-free, dual-laser workflow. First, a 1053 nm infrared <strong>Femtosecond Laser</strong> is used to create a precise corneal flap using microscopic carbon dioxide/water gas bubbles in a quadrillionth of a second. Next, a cold excimer laser reshapes the cornea using custom wavefront-guided digital mapping, correcting higher-order optical aberrations with sub-micron precision.' +
+                '</p>' +
+              '</div>' +
+
+              '<div class="faq-item" style="padding: 24px; border-radius: 16px; background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04);" role="listitem">' +
+                '<h3 style="font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: #ffffff; margin: 0 0 10px 0; display: flex; align-items: center; gap: 10px;">' +
+                  '<span style="color: #e2b857; font-size: 1.2rem;">Q:</span> What is the safety profile and satisfaction rate of LASIK?' +
+                '</h3>' +
+                '<p style="font-family: var(--font-sans); font-size: 0.9rem; color: #cbd5e1; line-height: 1.65; margin: 0; padding-left: 24px;">' +
+                  'FDA approved LASIK is typically for individuals 18 and older whose eyes have finished growing. Peer-reviewed literature shows that wavefront-guided laser refractive surgery has an exceptionally high safety profile and satisfaction rate, with overall satisfaction exceeding 95% overall. Side effects like tear film reduction or nighttime halos, glare are typically temporary and resolve within 3 to 6 months post-procedure.' +
+                '</p>' +
+              '</div>' +
+
+              '<div class="faq-item" style="padding: 24px; border-radius: 16px; background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04);" role="listitem">' +
+                '<h3 style="font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; color: #ffffff; margin: 0 0 10px 0; display: flex; align-items: center; gap: 10px;">' +
+                  '<span style="color: #e2b857; font-size: 1.2rem;">Q:</span> How is patient data and privacy protected during consultation?' +
+                '</h3>' +
+                '<p style="font-family: var(--font-sans); font-size: 0.9rem; color: #cbd5e1; line-height: 1.65; margin: 0; padding-left: 24px;">' +
+                  'All patient inquiries, form submissions, and diagnostic test results are handled in strict compliance with <strong>HIPAA (Health Insurance Portability and Accountability Act)</strong> standards. We utilize secure encryption for transmission and data storage to ensure your private health credentials remain protected.' +
+                '</p>' +
+              '</div>' +
+
+            '</div>' +
+          '</div>';
+        
+        contactSection.parentNode.insertBefore(faq, contactSection);
+        
+        // Re-inject citations for newly added text nodes
+        injectInto(faq);
+      }
+    }
+
     var _sweepTimer = null;
     function scheduleSweep() {
       clearTimeout(_sweepTimer);
@@ -999,6 +1098,7 @@
         var root = document.getElementById('root') || document.body;
         injectInto(root);
         injectEEAT();
+        injectEEATFAQ();
         initLifestyleSection();
         injectTimelineStrip();
         injectROISection();
@@ -1026,6 +1126,7 @@
           var root = document.getElementById('root') || document.body;
           injectInto(root);
           injectEEAT();
+          injectEEATFAQ();
           initLifestyleSection();
           injectTimelineStrip();
           injectROISection();

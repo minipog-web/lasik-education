@@ -1091,25 +1091,10 @@
     // ─── CustomVue® LASIK Content Deep-Customization ─────────────────────────
 
     function customizeForCustomVue() {
-      // 1. Hero Eyebrow, Title & Subheading Copy
+      // 1. Hero Eyebrow
       var heroEyebrow = document.querySelector('.hero-eyebrow');
-      if (heroEyebrow) {
+      if (heroEyebrow && heroEyebrow.textContent.indexOf('CUSTOMVUE') === -1) {
         heroEyebrow.textContent = 'CUSTOMVUE® WAVEFRONT-GUIDED LASIK | MARANO EYE CARE NJ';
-      }
-
-      var serifTitle = document.querySelector('.hero-serif-title');
-      if (serifTitle && serifTitle.textContent !== 'Your Eyes Are Your Ultimate Unfair Advantage.') {
-        serifTitle.textContent = 'Your Eyes Are Your Ultimate Unfair Advantage.';
-      }
-
-      var displayTitle = document.querySelector('.hero-display-title');
-      if (displayTitle && displayTitle.textContent !== 'Experience 20/15 CustomVue® Vision with 10-Second Laser Precision.') {
-        displayTitle.textContent = 'Experience 20/15 CustomVue® Vision with 10-Second Laser Precision.';
-      }
-
-      var heroSub = document.querySelector('.hero-content p.text-secondary, p.text-secondary');
-      if (heroSub && heroSub.textContent.indexOf('Driven professionals and athletes') === -1) {
-        heroSub.textContent = 'Driven professionals and athletes choose Dr. Matthew Marano, Jr., MD to eliminate contact lens friction and reclaim peak visual performance with 24-hour recovery. Free 45-minute diagnostic evaluation at our flagship Livingston center.';
       }
 
       // 2. Science Section Heading & Tech Cards

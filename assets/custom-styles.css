@@ -70,11 +70,11 @@
 
 /* Typographic scale corrections */
 .hero-serif-title {
-  font-size: clamp(1.4rem, 5vw, 3.8rem) !important;
+  font-size: clamp(1.2rem, 3.2vw, 2.2rem) !important;
   overflow-wrap: break-word !important;
 }
 .hero-display-title {
-  font-size: clamp(2.0rem, 8vw, 6.5rem) !important;
+  font-size: clamp(1.8rem, 5vw, 3.6rem) !important;
   line-height: 1.15 !important;
   padding-bottom: 0.15em !important;
   overflow-wrap: break-word !important;
@@ -82,7 +82,7 @@
 @media (min-width: 769px) {
   .hero-serif-title,
   .hero-display-title {
-    white-space: nowrap !important;
+    white-space: normal !important;
   }
 }
 .bio-heading {

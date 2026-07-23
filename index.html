@@ -1089,10 +1089,15 @@
     // ─── CustomVue® LASIK Content Deep-Customization ─────────────────────────
 
     function customizeForCustomVue() {
-      // 1. Hero Eyebrow
+      // 1. Hero Eyebrow & Subheading
       var heroEyebrow = document.querySelector('.hero-eyebrow');
       if (heroEyebrow && heroEyebrow.textContent.indexOf('CUSTOMVUE') === -1) {
         heroEyebrow.textContent = 'CUSTOMVUE® WAVEFRONT-GUIDED LASIK | MARANO EYE CARE NJ';
+      }
+
+      var heroSub = document.querySelector('.hero-left p.text-secondary, .hero-content p.text-secondary');
+      if (heroSub && heroSub.textContent.indexOf('Peak performers') === -1) {
+        heroSub.textContent = "Peak performers don't settle for visual friction. Reclaim 20/15 optical precision with Dr. Marano’s 10-second custom dual-laser procedure and 24-hour recovery. See if you qualify in 60 seconds.";
       }
 
       // 2. Science Section Heading & Tech Cards

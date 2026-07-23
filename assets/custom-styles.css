@@ -111,8 +111,8 @@
 /* Premium Edge-to-Edge Hero Image Presentation (Static & Styled) */
 @media (min-width: 901px) {
   .hero-container {
-    grid-template-columns: 1.1fr 0.9fr !important; /* Allocate more space for the image column */
-    gap: 60px !important; /* Unified spacing */
+    grid-template-columns: 1fr 1.15fr !important; /* Allocate 53.5% width for hero image column */
+    gap: 48px !important;
   }
 }
 
@@ -127,8 +127,8 @@
   justify-content: center !important;
   align-items: center !important;
   width: 100% !important;
-  max-width: 520px !important; /* Significantly larger visual presence */
-  aspect-ratio: 3 / 2 !important; /* Matches natural landscape format */
+  max-width: 680px !important; /* Significantly larger, bold hero image presence */
+  aspect-ratio: 16 / 10 !important; /* Premium wide landscape aspect ratio */
   margin: 0 auto !important;
   position: relative !important;
 }
@@ -141,7 +141,7 @@
   background: rgba(10, 10, 15, 0.6) !important;
   box-shadow: 
     0 30px 70px rgba(0, 0, 0, 0.8),
-    0 0 45px rgba(226, 184, 87, 0.08) !important; /* Warm champagne gold glow matching the mountain sunlight */
+    0 0 45px rgba(226, 184, 87, 0.08) !important;
   width: 100% !important;
   height: 100% !important;
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -162,7 +162,7 @@
 
 @media (max-width: 768px) {
   .hero-image-wrapper {
-    max-width: 90% !important;
+    max-width: 100% !important;
   }
 }
 

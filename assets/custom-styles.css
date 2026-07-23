@@ -368,34 +368,7 @@
   transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-/* 3. Active Step Progress Diagnostic HUD labels */
-.steps-progress-dot {
-  position: relative;
-}
-.steps-progress-dot.active-radar-dot::before {
-  content: "SYS_OK" !important;
-  position: absolute;
-  bottom: calc(100% + 12px) !important; /* Elegant telemetry positioned above the dot */
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: monospace;
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: var(--accent-primary);
-  white-space: nowrap;
-  opacity: 0.85;
-  pointer-events: none;
-  z-index: 20;
-}
-.steps-progress-dot:nth-child(3).active-radar-dot::before {
-  content: "SYS_OK // 1053nm" !important;
-  color: var(--accent-tertiary) !important;
-}
-.steps-progress-dot:nth-child(4).active-radar-dot::before {
-  content: "SYS_OK // 193nm" !important;
-  color: var(--accent-primary) !important;
-}
+
 
 /* 4. Animated Light-Sweep Shimmer on CTA Buttons */
 .btn {

@@ -408,10 +408,13 @@ h1, h2, h3, .hero-display-title, .bio-heading {
   letter-spacing: -0.015em !important;
 }
 .hero-eyebrow {
-  letter-spacing: 3px !important;
+  letter-spacing: 2px !important;
   font-weight: 600 !important;
   background: rgba(226, 184, 87, 0.05) !important;
   border-color: rgba(226, 184, 87, 0.15) !important;
+  white-space: nowrap !important;
+  font-size: clamp(0.6rem, 1.1vw, 0.75rem) !important;
+  max-width: 100% !important;
 }
 .proof-card {
   border: 1px solid rgba(255, 255, 255, 0.03) !important;

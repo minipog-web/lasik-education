@@ -71,13 +71,13 @@
 /* Typographic scale corrections */
 .hero-serif-title {
   font-size: clamp(1.4rem, 5vw, 3.8rem) !important;
-  text-wrap: balance !important;
+  overflow-wrap: break-word !important;
 }
 .hero-display-title {
   font-size: clamp(2.0rem, 8vw, 6.5rem) !important;
   line-height: 1.15 !important;
   padding-bottom: 0.15em !important;
-  text-wrap: balance !important;
+  overflow-wrap: break-word !important;
 }
 @media (min-width: 769px) {
   .hero-serif-title,
@@ -213,10 +213,10 @@
 }
 
 .glass-panel:hover {
-  border-color: color-mix(in srgb, var(--accent-primary) 25%, transparent) !important;
+  border-color: rgba(226, 184, 87, 0.25) !important;
   box-shadow: 
     0 25px 50px rgba(0, 0, 0, 0.6), 
-    0 0 30px color-mix(in srgb, var(--accent-primary) 8%, transparent) !important;
+    0 0 30px rgba(226, 184, 87, 0.08) !important;
 }
 
 /* Laser-specific styling (Violet for Femtosecond, Gold for Excimer) */
@@ -552,10 +552,10 @@ input[type="range"]:focus-visible {
 
 /* 11. Editorial Typographical Orphans & Widows Protection */
 p, li, .proof-quote, .faq-answer {
-  text-wrap: pretty !important;
+  overflow-wrap: break-word !important;
 }
 h1, h2, h3, h4, .hero-serif-title, .hero-display-title, .bio-heading {
-  text-wrap: balance !important;
+  overflow-wrap: break-word !important;
 }
 
 /* ==========================================
@@ -673,8 +673,8 @@ h1, h2, h3, h4, .hero-serif-title, .hero-display-title, .bio-heading {
     z-index: 9990 !important;
     padding: 12px 16px !important;
     background: rgba(3, 5, 8, 0.95) !important;
-    backdrop-filter: blur(20px) !important;
     -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) !important;
     border-top: 1px solid rgba(226, 184, 87, 0.15) !important;
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6) !important;
   }

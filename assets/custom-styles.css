@@ -127,8 +127,8 @@
   justify-content: center !important;
   align-items: center !important;
   width: 100% !important;
-  max-width: 580px !important; /* Prominent visual size */
-  aspect-ratio: 16 / 10 !important; /* Premium hero aspect ratio */
+  max-width: 520px !important; /* Reverted to baseline hero width */
+  aspect-ratio: 3 / 2 !important; /* Reverted to natural landscape aspect ratio */
   margin: 0 auto !important;
   position: relative !important;
 }
@@ -141,7 +141,7 @@
   background: rgba(10, 10, 15, 0.6) !important;
   box-shadow: 
     0 30px 70px rgba(0, 0, 0, 0.8),
-    0 0 45px rgba(226, 184, 87, 0.08) !important;
+    0 0 45px rgba(226, 184, 87, 0.08) !important; /* Warm champagne gold glow matching the mountain sunlight */
   width: 100% !important;
   height: 100% !important;
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -162,7 +162,7 @@
 
 @media (max-width: 768px) {
   .hero-image-wrapper {
-    max-width: 100% !important;
+    max-width: 90% !important;
   }
 }
 

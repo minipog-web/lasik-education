@@ -96,6 +96,13 @@
 .bio-heading-accent {
   filter: drop-shadow(0 4px 16px rgba(226, 184, 87, 0.25)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.9)) !important;
 }
+.lifestyle-pane-grid h3 {
+  text-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.95), 
+    0 6px 18px rgba(0, 0, 0, 0.75), 
+    0 0 25px rgba(226, 184, 87, 0.18) !important;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.85)) !important;
+}
 .proof-title {
   font-family: var(--font-serif) !important;
   font-weight: 300 !important;

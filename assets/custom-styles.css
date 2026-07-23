@@ -68,21 +68,26 @@
   .cta-mobile { display: inline !important; }
 }
 
-/* Typographic scale corrections */
+/* Typographic scale corrections - Balanced, non-overwhelming Hero Titles */
 .hero-serif-title {
-  font-size: clamp(1.4rem, 5vw, 3.8rem) !important;
+  font-size: clamp(1.2rem, 2.5vw, 2.0rem) !important;
+  font-style: italic !important;
+  font-weight: 300 !important;
+  line-height: 1.2 !important;
+  margin-bottom: 6px !important;
   overflow-wrap: break-word !important;
 }
 .hero-display-title {
-  font-size: clamp(2.0rem, 8vw, 6.5rem) !important;
-  line-height: 1.15 !important;
-  padding-bottom: 0.15em !important;
+  font-size: clamp(1.8rem, 4vw, 3.4rem) !important; /* Scaled down from 6.5rem for elegant proportion */
+  line-height: 1.18 !important;
+  padding-bottom: 0.1em !important;
+  font-weight: 800 !important;
   overflow-wrap: break-word !important;
 }
 @media (min-width: 769px) {
-  .hero-serif-title,
-  .hero-display-title {
-    white-space: nowrap !important;
+  .hero-container {
+    grid-template-columns: 1fr 1.1fr !important; /* Gives the hero image prominent 52% width share */
+    gap: 48px !important;
   }
 }
 .bio-heading {
@@ -127,8 +132,8 @@
   justify-content: center !important;
   align-items: center !important;
   width: 100% !important;
-  max-width: 520px !important; /* Reverted to baseline hero width */
-  aspect-ratio: 3 / 2 !important; /* Reverted to natural landscape aspect ratio */
+  max-width: 660px !important; /* Bold, prominent image presentation */
+  aspect-ratio: 16 / 10 !important; /* Cinematic aspect ratio */
   margin: 0 auto !important;
   position: relative !important;
 }
@@ -141,7 +146,7 @@
   background: rgba(10, 10, 15, 0.6) !important;
   box-shadow: 
     0 30px 70px rgba(0, 0, 0, 0.8),
-    0 0 45px rgba(226, 184, 87, 0.08) !important; /* Warm champagne gold glow matching the mountain sunlight */
+    0 0 45px rgba(226, 184, 87, 0.08) !important;
   width: 100% !important;
   height: 100% !important;
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -162,7 +167,7 @@
 
 @media (max-width: 768px) {
   .hero-image-wrapper {
-    max-width: 90% !important;
+    max-width: 100% !important;
   }
 }
 

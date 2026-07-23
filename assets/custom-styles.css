@@ -68,26 +68,21 @@
   .cta-mobile { display: inline !important; }
 }
 
-/* Typographic scale corrections - Balanced, non-overwhelming Hero Titles */
+/* Typographic scale corrections */
 .hero-serif-title {
-  font-size: clamp(1.2rem, 2.5vw, 2.0rem) !important;
-  font-style: italic !important;
-  font-weight: 300 !important;
-  line-height: 1.2 !important;
-  margin-bottom: 6px !important;
-  overflow-wrap: break-word !important;
+  font-size: clamp(1.4rem, 5vw, 3.8rem) !important;
+  text-wrap: balance !important;
 }
 .hero-display-title {
-  font-size: clamp(1.8rem, 4vw, 3.4rem) !important; /* Scaled down from 6.5rem for elegant proportion */
-  line-height: 1.18 !important;
-  padding-bottom: 0.1em !important;
-  font-weight: 800 !important;
-  overflow-wrap: break-word !important;
+  font-size: clamp(2.0rem, 8vw, 6.5rem) !important;
+  line-height: 1.15 !important;
+  padding-bottom: 0.15em !important;
+  text-wrap: balance !important;
 }
 @media (min-width: 769px) {
-  .hero-container {
-    grid-template-columns: 1fr 1.1fr !important; /* Gives the hero image prominent 52% width share */
-    gap: 48px !important;
+  .hero-serif-title,
+  .hero-display-title {
+    white-space: nowrap !important;
   }
 }
 .bio-heading {
@@ -132,8 +127,8 @@
   justify-content: center !important;
   align-items: center !important;
   width: 100% !important;
-  max-width: 660px !important; /* Bold, prominent image presentation */
-  aspect-ratio: 16 / 10 !important; /* Cinematic aspect ratio */
+  max-width: 520px !important; /* Significantly larger visual presence */
+  aspect-ratio: 3 / 2 !important; /* Matches natural landscape format */
   margin: 0 auto !important;
   position: relative !important;
 }
@@ -146,7 +141,7 @@
   background: rgba(10, 10, 15, 0.6) !important;
   box-shadow: 
     0 30px 70px rgba(0, 0, 0, 0.8),
-    0 0 45px rgba(226, 184, 87, 0.08) !important;
+    0 0 45px rgba(226, 184, 87, 0.08) !important; /* Warm champagne gold glow matching the mountain sunlight */
   width: 100% !important;
   height: 100% !important;
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -167,7 +162,7 @@
 
 @media (max-width: 768px) {
   .hero-image-wrapper {
-    max-width: 100% !important;
+    max-width: 90% !important;
   }
 }
 
@@ -218,10 +213,10 @@
 }
 
 .glass-panel:hover {
-  border-color: rgba(226, 184, 87, 0.25) !important;
+  border-color: color-mix(in srgb, var(--accent-primary) 25%, transparent) !important;
   box-shadow: 
     0 25px 50px rgba(0, 0, 0, 0.6), 
-    0 0 30px rgba(226, 184, 87, 0.08) !important;
+    0 0 30px color-mix(in srgb, var(--accent-primary) 8%, transparent) !important;
 }
 
 /* Laser-specific styling (Violet for Femtosecond, Gold for Excimer) */
@@ -409,23 +404,8 @@
 }
 
 /* 5. Editorial Typography & Layout Contrast Spacing */
-h1, h2, h3, h4, .hero-display-title, .hero-serif-title, .bio-heading {
+h1, h2, h3, .hero-display-title, .bio-heading {
   letter-spacing: -0.015em !important;
-  text-shadow: none !important;
-}
-
-.hero-serif-title {
-  text-shadow: none !important;
-}
-
-.hero-display-title {
-  text-shadow: none !important;
-  font-weight: 800 !important;
-}
-
-/* Gold Accent Title Highlights */
-h1 span, h2 span, h3 span, .text-amber-400, .text-gold {
-  text-shadow: none !important;
 }
 .hero-eyebrow {
   letter-spacing: 3px !important;
@@ -572,10 +552,10 @@ input[type="range"]:focus-visible {
 
 /* 11. Editorial Typographical Orphans & Widows Protection */
 p, li, .proof-quote, .faq-answer {
-  overflow-wrap: break-word !important;
+  text-wrap: pretty !important;
 }
 h1, h2, h3, h4, .hero-serif-title, .hero-display-title, .bio-heading {
-  overflow-wrap: break-word !important;
+  text-wrap: balance !important;
 }
 
 /* ==========================================
@@ -693,8 +673,8 @@ h1, h2, h3, h4, .hero-serif-title, .hero-display-title, .bio-heading {
     z-index: 9990 !important;
     padding: 12px 16px !important;
     background: rgba(3, 5, 8, 0.95) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
     backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
     border-top: 1px solid rgba(226, 184, 87, 0.15) !important;
     box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6) !important;
   }
@@ -747,32 +727,6 @@ h1, h2, h3, h4, .hero-serif-title, .hero-display-title, .bio-heading {
 }
 
 /* Accessibility: Respect Reduced Motion Preferences (WCAG AAA 2.3.3) */
-/* Scrubber Interactive Node Hover and Responsive Rules */
-.scrubber-node-btn:hover .node-dot {
-  border-color: #ffe293 !important;
-  box-shadow: 0 0 12px rgba(226, 184, 87, 0.4) !important;
-}
-
-/* Adaptive Quiz & ROI Calculator Enhancements */
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-.adaptive-quiz-opt:hover {
-  background: rgba(226, 184, 87, 0.08) !important;
-  border-color: rgba(226, 184, 87, 0.35) !important;
-  transform: translateY(-2px);
-}
-
-@media (max-width: 768px) {
-  #roi-calc-card {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-    padding: 24px !important;
-  }
-}
-
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -789,4 +743,4 @@ h1, h2, h3, h4, .hero-serif-title, .hero-display-title, .bio-heading {
 }
 
 
-
+

@@ -96,6 +96,14 @@
         },
         {
           "@type": "PostalAddress",
+          "streetAddress": "3130 Route 10 West, Suite 200",
+          "addressLocality": "Denville",
+          "addressRegion": "NJ",
+          "postalCode": "07834",
+          "addressCountry": "US"
+        },
+        {
+          "@type": "PostalAddress",
           "streetAddress": "137 Ferry St",
           "addressLocality": "Newark",
           "addressRegion": "NJ",
@@ -200,7 +208,7 @@
     <link rel="preload" as="image" href="./assets/hero-hiker.webp" type="image/webp">
     <link rel="stylesheet" crossorigin href="./assets/index-DhXpI4H_.css?v=28">
     <link rel="stylesheet" href="./assets/custom-styles.css?v=4">
-
+    <script src="./assets/wavefront-canvas.js" defer></script>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -419,7 +427,7 @@
 
       var note = document.createElement('p');
       note.setAttribute('style', 'margin-top:18px;font-size:0.64rem;color:#334155;line-height:1.65;');
-      note.innerHTML = '<em>All statistical claims reflect aggregate peer-reviewed clinical data. Individual outcomes vary. LASIK is a surgical procedure with inherent benefits and risks; consult a qualified ophthalmologist to determine your candidacy. This resource is for educational purposes only and does not constitute medical advice. Information submitted via forms on this site is handled in strict compliance with HIPAA (Health Insurance Portability and Accountability Act) standards to protect your health privacy. For more information, please read the <a href="https://www.maranoeyecare.com/privacy-policy/" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:none;">Marano Eye Care Privacy Policy</a>.<br><br>© 2026 Marano Eye Care. Livingston Clinic: 200 South Orange Ave, Livingston, NJ 07039 | Newark Clinic: 137 Ferry St, Newark, NJ 07105 | Phone: 973-322-0100</em>';
+      note.innerHTML = '<em>All statistical claims reflect aggregate peer-reviewed clinical data. Individual outcomes vary. LASIK is a surgical procedure with inherent benefits and risks; consult a qualified ophthalmologist to determine your candidacy. This resource is for educational purposes only and does not constitute medical advice. Information submitted via forms on this site is handled in strict compliance with HIPAA (Health Insurance Portability and Accountability Act) standards to protect your health privacy. For more information, please read the <a href="https://www.maranoeyecare.com/privacy-policy/" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:none;">Marano Eye Care Privacy Policy</a>.<br><br>© 2026 Marano Eye Care. Consultations available in Livingston, Denville, and Newark. All diagnostic testing and surgical LASIK procedures are performed at our flagship Livingston facility: Cooperman Barnabas Ambulatory Care Center (ACC), 200 South Orange Ave, Suite 209, Livingston, NJ 07039. Denville Clinic: 3130 Route 10 West, Suite 200, Denville, NJ 07834. Newark Clinic: 137 Ferry St, Newark, NJ 07105. Phone: 973-322-0100</em>';
 
       inner.appendChild(heading);
       inner.appendChild(ol);
@@ -680,12 +688,100 @@
       var lifestyle = document.getElementById('eeat-lifestyle-section');
       if (!lifestyle) return;
 
+      var stages = [
+        { time: 'Hour 0', label: 'Surgical Completion', subtitle: '10-Second Laser Per Eye', desc: 'Flap seated seamlessly via natural osmotic adhesion. Zero sutures. Initial resting phase in our private recovery lounge.', clarity: '80% Initial Focus' },
+        { time: 'Hour 4', label: 'Cellular Sealing', subtitle: 'Re-Epithelialization Active', desc: 'Epithelial surface seals rapidly. Discomfort subsides and natural tear film stabilization begins.', clarity: '90% Focus Restored' },
+        { time: 'Hour 12', label: 'HD Acuity Restored', subtitle: 'Glare & Halos Dissipate', desc: 'Higher-order aberrations settle. High-contrast detail resolution returns for evening driving and reading.', clarity: '95%+ Sharpness' },
+        { time: 'Hour 24', label: 'Full Active Freedom', subtitle: 'Back to Screens & Sports', desc: 'Clinical follow-up confirmation. Cleared for high-density screen work, athletic training, and everyday life.', clarity: '20/20 HD Acuity' }
+      ];
+
       var strip = document.createElement('section');
       strip.id = 'speed-timeline-strip';
-      strip.setAttribute('style', 'padding: 48px 0; background: linear-gradient(180deg, #030508 0%, #080c14 100%); border-top: 1px solid rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.03);');
-      strip.innerHTML = '<div style="max-width:1000px;margin:0 auto;padding:0 24px;"><div style="text-align:center;margin-bottom:36px;"><span style="font-family:var(--font-sans);font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:#e2b857;font-weight:700;">Your Timeline</span><h3 style="font-family:var(--font-serif);font-size:clamp(1.6rem,3vw,2.2rem);color:#fff;margin-top:10px;font-weight:700;letter-spacing:-0.02em;">Back to Your Life in <span style="color:#e2b857;">24 Hours</span></h3></div><div class="timeline-strip-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;"><div class="timeline-card" style="text-align:center;padding:28px 16px;border-radius:16px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);"><div style="font-family:monospace;font-size:2.2rem;font-weight:800;color:#e2b857;margin-bottom:8px;">$0</div><div style="font-size:0.85rem;color:#f8fafc;font-weight:600;margin-bottom:4px;">Consultation</div><div style="font-size:0.78rem;color:#94a3b8;">45-minute diagnostic</div></div><div class="timeline-card" style="text-align:center;padding:28px 16px;border-radius:16px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);"><div style="font-family:monospace;font-size:2.2rem;font-weight:800;color:#e2b857;margin-bottom:8px;">10s</div><div style="font-size:0.85rem;color:#f8fafc;font-weight:600;margin-bottom:4px;">Laser Per Eye</div><div style="font-size:0.78rem;color:#94a3b8;">Under 1 hour total</div></div><div class="timeline-card" style="text-align:center;padding:28px 16px;border-radius:16px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);"><div style="font-family:monospace;font-size:2.2rem;font-weight:800;color:#e2b857;margin-bottom:8px;">24h</div><div style="font-size:0.85rem;color:#f8fafc;font-weight:600;margin-bottom:4px;">Back to Screens</div><div style="font-size:0.78rem;color:#94a3b8;">Most patients next day</div></div><div class="timeline-card" style="text-align:center;padding:28px 16px;border-radius:16px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);"><div style="font-family:monospace;font-size:2.2rem;font-weight:800;color:#e2b857;margin-bottom:8px;">72h</div><div style="font-size:0.85rem;color:#f8fafc;font-weight:600;margin-bottom:4px;">Back to Sports</div><div style="font-size:0.78rem;color:#94a3b8;">Full active recovery</div></div></div></div>';
+      strip.setAttribute('style', 'padding: 56px 0; background: linear-gradient(180deg, #030508 0%, #080c14 100%); border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04);');
 
+      var html = '<div style="max-width:1000px;margin:0 auto;padding:0 24px;">' +
+        '<div style="text-align:center;margin-bottom:32px;">' +
+          '<span style="font-family:var(--font-sans);font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:#e2b857;font-weight:700;">Interactive Recovery Scrubber</span>' +
+          '<h3 style="font-family:var(--font-serif);font-size:clamp(1.6rem,3vw,2.4rem);color:#fff;margin-top:8px;font-weight:700;letter-spacing:-0.02em;">Back to Your Life in <span style="color:#e2b857;">24 Hours</span></h3>' +
+          '<p style="font-size:0.9rem;color:#94a3b8;margin-top:6px;max-width:560px;margin-left:auto;margin-right:auto;">Scrub through the 24-hour timeline below to explore your optical healing milestones.</p>' +
+        '</div>' +
+
+        '<!-- Scrubber Controls -->' +
+        '<div class="scrubber-wrapper" style="margin-bottom:36px;position:relative;padding:0 10px;">' +
+          '<!-- Connecting Line (Centered on node dots) -->' +
+          '<div style="position:absolute;top:10px;left:20px;right:20px;height:4px;transform:translateY(-50%);background:rgba(255,255,255,0.08);border-radius:10px;z-index:1;">' +
+            '<div id="scrubber-progress" style="height:100%;width:100%;background:linear-gradient(90deg, #e2b857 0%, #a855f7 100%);border-radius:10px;transition:width 0.4s cubic-bezier(0.16, 1, 0.3, 1);"></div>' +
+          '</div>' +
+          '<div style="display:flex;justify-content:space-between;position:relative;z-index:2;">';
+
+      stages.forEach(function(s, idx) {
+        html += '<button class="scrubber-node-btn ' + (idx === 3 ? 'active' : '') + '" data-index="' + idx + '" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;z-index:5;">' +
+          '<span class="node-dot" style="width:20px;height:20px;border-radius:50%;background:#080c14;border:2px solid #e2b857;transition:all 0.3s ease;"></span>' +
+          '<span style="font-family:monospace;font-size:0.75rem;font-weight:700;color:#e2b857;">' + s.time + '</span>' +
+        '</button>';
+      });
+
+      html += '</div></div>' +
+
+        '<!-- Stage Content Display Card -->' +
+        '<div id="scrubber-card" style="background:rgba(255,255,255,0.02);border:1px solid rgba(226,184,87,0.2);border-radius:20px;padding:32px;box-shadow:0 20px 40px rgba(0,0,0,0.5);display:grid;grid-template-columns:1fr 220px;gap:24px;align-items:center;">' +
+          '<div>' +
+            '<div id="scrubber-badge" style="display:inline-block;font-size:0.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#a855f7;background:rgba(168,85,247,0.1);padding:4px 12px;border-radius:100px;margin-bottom:12px;border:1px solid rgba(168,85,247,0.3);">' + stages[3].subtitle + '</div>' +
+            '<h4 id="scrubber-title" style="font-family:var(--font-sans);font-size:1.5rem;font-weight:700;color:#ffffff;margin-bottom:8px;">' + stages[3].label + '</h4>' +
+            '<p id="scrubber-desc" style="font-size:0.92rem;color:#cbd5e1;line-height:1.65;margin:0;">' + stages[3].desc + '</p>' +
+          '</div>' +
+          '<div style="text-align:center;padding:20px;background:rgba(226,184,87,0.04);border:1px solid rgba(226,184,87,0.15);border-radius:16px;">' +
+            '<span style="font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;color:#94a3b8;display:block;margin-bottom:6px;">Target Acuity</span>' +
+            '<div id="scrubber-acuity" style="font-family:var(--font-sans);font-size:1.3rem;font-weight:800;color:#e2b857;">' + stages[3].clarity + '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+      strip.innerHTML = html;
       lifestyle.parentNode.insertBefore(strip, lifestyle.nextSibling);
+
+      // Event listener handling for node selection
+      var nodeBtns = strip.querySelectorAll('.scrubber-node-btn');
+      var progress = strip.querySelector('#scrubber-progress');
+      var badge = strip.querySelector('#scrubber-badge');
+      var title = strip.querySelector('#scrubber-title');
+      var desc = strip.querySelector('#scrubber-desc');
+      var acuity = strip.querySelector('#scrubber-acuity');
+
+      function selectStage(idx) {
+        nodeBtns.forEach(function(btn, i) {
+          var dot = btn.querySelector('.node-dot');
+          if (i === idx) {
+            btn.classList.add('active');
+            dot.style.background = '#e2b857';
+            dot.style.boxShadow = '0 0 15px rgba(226, 184, 87, 0.6)';
+            dot.style.transform = 'scale(1.25)';
+          } else {
+            btn.classList.remove('active');
+            dot.style.background = '#080c14';
+            dot.style.boxShadow = 'none';
+            dot.style.transform = 'scale(1)';
+          }
+        });
+
+        var percent = (idx / (stages.length - 1)) * 100;
+        progress.style.width = percent + '%';
+
+        var st = stages[idx];
+        badge.textContent = st.subtitle;
+        title.textContent = st.label;
+        desc.textContent = st.desc;
+        acuity.textContent = st.clarity;
+      }
+
+      nodeBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var idx = parseInt(btn.getAttribute('data-index'), 10);
+          selectStage(idx);
+        });
+      });
+
+      selectStage(3);
     }
 
     // ─── P1: Financial ROI Section ─────────────────────────────────────────
@@ -697,10 +793,106 @@
 
       var roi = document.createElement('section');
       roi.id = 'roi-section';
-      roi.setAttribute('style', 'padding: clamp(60px, 6vw, 80px) 0; background: #030508; border-top: 1px solid rgba(255,255,255,0.03);');
-      roi.innerHTML = '<div style="max-width:1000px;margin:0 auto;padding:0 24px;text-align:center;"><span style="font-family:var(--font-sans);font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:#e2b857;font-weight:700;display:inline-block;margin-bottom:12px;">Long-Term Value</span><h2 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,2.8rem);color:#fff;margin-bottom:14px;font-weight:700;letter-spacing:-0.02em;">The Last Vision Investment <span style="color:#e2b857;">You&rsquo;ll Ever Make</span></h2><p style="font-family:var(--font-sans);font-size:1rem;color:#94a3b8;max-width:600px;margin:0 auto 48px auto;line-height:1.6;">LASIK isn&rsquo;t an expense &mdash; it&rsquo;s a permanent return on investment that compounds every year.</p><div class="roi-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;"><div style="padding:36px 24px;border-radius:20px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);"><div style="font-family:monospace;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:#94a3b8;margin-bottom:16px;">Lifetime Contacts &amp; Glasses</div><div style="font-size:2.8rem;font-weight:800;color:#ef4444;margin-bottom:8px;font-family:var(--font-sans);">$35&ndash;50K</div><div style="font-size:0.85rem;color:#cbd5e1;line-height:1.5;">Lenses, solutions, exams, frames, replacements &mdash; a recurring tax on your vision.</div></div><div style="padding:36px 24px;border-radius:20px;background:rgba(226,184,87,0.03);border:1px solid rgba(226,184,87,0.2);box-shadow:0 0 40px rgba(226,184,87,0.03);"><div style="font-family:monospace;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:#e2b857;margin-bottom:16px;">CustomVue LASIK</div><div style="font-size:2.8rem;font-weight:800;color:#e2b857;margin-bottom:8px;font-family:var(--font-sans);">$5,000</div><div style="font-size:0.85rem;color:#cbd5e1;line-height:1.5;">One investment. Permanent correction. No recurring costs, no maintenance.</div></div><div style="padding:36px 24px;border-radius:20px;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);"><div style="font-family:monospace;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:#94a3b8;margin-bottom:16px;">Break-Even Point</div><div style="font-size:2.8rem;font-weight:800;color:#10b981;margin-bottom:8px;font-family:var(--font-sans);">3&ndash;5 Yrs</div><div style="font-size:0.85rem;color:#cbd5e1;line-height:1.5;">Then pure savings &mdash; every year after is money back in your pocket.</div></div></div></div>';
+      roi.setAttribute('style', 'padding: clamp(60px, 6vw, 80px) 0; background: #030508; border-top: 1px solid rgba(255,255,255,0.04);');
 
+      var html = '<div style="max-width:1000px;margin:0 auto;padding:0 24px;">' +
+        '<div style="text-align:center;margin-bottom:40px;">' +
+          '<span style="font-family:var(--font-sans);font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:#e2b857;font-weight:700;">Financial ROI Calculator</span>' +
+          '<h2 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,2.8rem);color:#fff;margin-top:8px;font-weight:700;letter-spacing:-0.02em;">The Last Vision Investment <span style="color:#e2b857;">You&rsquo;ll Ever Make</span></h2>' +
+          '<p style="font-family:var(--font-sans);font-size:0.95rem;color:#94a3b8;max-width:580px;margin:8px auto 0 auto;">Adjust your age and monthly contacts/glasses spend to calculate your exact lifetime return on investment.</p>' +
+        '</div>' +
+
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;background:rgba(255,255,255,0.015);border:1px solid rgba(226,184,87,0.15);border-radius:24px;padding:36px;box-shadow:0 25px 50px rgba(0,0,0,0.6);" id="roi-calc-card">' +
+          '<!-- Inputs -->' +
+          '<div style="display:flex;flex-direction:column;gap:28px;">' +
+            '<div>' +
+              '<div style="display:flex;justify-content:space-between;margin-bottom:8px;">' +
+                '<label for="roi-age-slider" style="font-size:0.88rem;color:#f8fafc;font-weight:600;">Your Current Age</label>' +
+                '<span id="roi-age-val" style="font-family:monospace;font-size:1.1rem;font-weight:700;color:#e2b857;">28 yrs</span>' +
+              '</div>' +
+              '<input type="range" id="roi-age-slider" min="18" max="55" value="28" style="width:100%;accent-color:#e2b857;cursor:pointer;">' +
+            '</div>' +
+
+            '<div>' +
+              '<div style="display:flex;justify-content:space-between;margin-bottom:8px;">' +
+                '<label for="roi-monthly-slider" style="font-size:0.88rem;color:#f8fafc;font-weight:600;">Monthly Lens & Exam Spend</label>' +
+                '<span id="roi-monthly-val" style="font-family:monospace;font-size:1.1rem;font-weight:700;color:#e2b857;">$85 / mo</span>' +
+              '</div>' +
+              '<input type="range" id="roi-monthly-slider" min="30" max="200" step="5" value="85" style="width:100%;accent-color:#e2b857;cursor:pointer;">' +
+            '</div>' +
+
+            '<div style="padding:16px;background:rgba(226,184,87,0.03);border:1px solid rgba(226,184,87,0.15);border-radius:12px;font-size:0.8rem;color:#cbd5e1;line-height:1.5;">' +
+              '<strong style="color:#e2b857;">Did you know?</strong> CustomVue LASIK is fully HSA/FSA eligible, allowing pre-tax savings up to 30%.' +
+            '</div>' +
+          '</div>' +
+
+          '<!-- Dynamic Stat Displays -->' +
+          '<div style="display:flex;flex-direction:column;justify-content:space-between;background:rgba(0,0,0,0.3);padding:24px;border-radius:16px;border:1px solid rgba(255,255,255,0.04);">' +
+            '<div>' +
+              '<span style="font-size:0.7rem;text-transform:uppercase;letter-spacing:1.5px;color:#ef4444;font-weight:700;display:block;margin-bottom:4px;">Projected Lifetime Lens Tax</span>' +
+              '<div id="roi-lifetime-tax" style="font-family:var(--font-sans);font-size:2.4rem;font-weight:800;color:#ef4444;">$37,740</div>' +
+            '</div>' +
+
+            '<div style="margin:16px 0;">' +
+              '<div style="display:flex;justify-content:space-between;font-size:0.75rem;color:#94a3b8;margin-bottom:6px;">' +
+                '<span>Break-Even Threshold</span>' +
+                '<span id="roi-breakeven-text" style="color:#e2b857;font-weight:700;">Month 58</span>' +
+              '</div>' +
+              '<div style="height:8px;background:rgba(255,255,255,0.1);border-radius:10px;overflow:hidden;">' +
+                '<div id="roi-breakeven-bar" style="height:100%;width:45%;background:linear-gradient(90deg, #e2b857, #10b981);border-radius:10px;transition:width 0.4s ease;"></div>' +
+              '</div>' +
+            '</div>' +
+
+            '<div style="padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;">' +
+              '<div>' +
+                '<span style="font-size:0.7rem;text-transform:uppercase;color:#94a3b8;display:block;">Net Lifetime Savings</span>' +
+                '<div id="roi-net-savings" style="font-size:1.4rem;font-weight:800;color:#10b981;">+$32,740</div>' +
+              '</div>' +
+              '<button onclick="document.getElementById(\'quiz\').scrollIntoView({behavior:\'smooth\'})" class="btn btn-primary" style="padding:10px 18px;font-size:0.8rem;">' +
+                'Lock In Your ROI' +
+              '</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+      roi.innerHTML = html;
       socialProof.parentNode.insertBefore(roi, socialProof);
+
+      // Calculation Logic
+      var ageSlider = roi.querySelector('#roi-age-slider');
+      var monthlySlider = roi.querySelector('#roi-monthly-slider');
+      var ageVal = roi.querySelector('#roi-age-val');
+      var monthlyVal = roi.querySelector('#roi-monthly-val');
+      var lifetimeTax = roi.querySelector('#roi-lifetime-tax');
+      var breakevenText = roi.querySelector('#roi-breakeven-text');
+      var breakevenBar = roi.querySelector('#roi-breakeven-bar');
+      var netSavings = roi.querySelector('#roi-net-savings');
+
+      function updateCalc() {
+        var age = parseInt(ageSlider.value, 10);
+        var monthly = parseInt(monthlySlider.value, 10);
+
+        ageVal.textContent = age + ' yrs';
+        monthlyVal.textContent = '$' + monthly + ' / mo';
+
+        var yearsRemaining = Math.max(15, 65 - age);
+        var totalTax = monthly * 12 * yearsRemaining;
+        var breakevenMo = Math.ceil(5000 / monthly);
+        var savings = totalTax - 5000;
+
+        lifetimeTax.textContent = '$' + totalTax.toLocaleString();
+        breakevenText.textContent = 'Month ' + breakevenMo;
+
+        var barPct = Math.min(100, Math.max(10, (breakevenMo / 120) * 100));
+        breakevenBar.style.width = barPct + '%';
+
+        netSavings.textContent = (savings >= 0 ? '+' : '') + '$' + savings.toLocaleString();
+      }
+
+      ageSlider.addEventListener('input', updateCalc);
+      monthlySlider.addEventListener('input', updateCalc);
+      updateCalc();
     }
 
     // ─── P1: Outcome Metrics Banner ───────────────────────────────────────
@@ -893,6 +1085,62 @@
       var emailInput = document.getElementById('email');
       if (emailInput && emailInput.placeholder === 'john@example.com') {
         emailInput.placeholder = 'Email Address (for confirmation)';
+      }
+    }
+
+    // ─── CustomVue® LASIK Content Deep-Customization ─────────────────────────
+
+    function customizeForCustomVue() {
+      // 1. Hero Eyebrow, Title & Subheading Copy
+      var heroEyebrow = document.querySelector('.hero-eyebrow');
+      if (heroEyebrow) {
+        heroEyebrow.textContent = 'CUSTOMVUE® WAVEFRONT-GUIDED LASIK | MARANO EYE CARE NJ';
+      }
+
+      var serifTitle = document.querySelector('.hero-serif-title');
+      if (serifTitle && serifTitle.textContent !== 'Your Eyes Are Your Ultimate Unfair Advantage.') {
+        serifTitle.textContent = 'Your Eyes Are Your Ultimate Unfair Advantage.';
+      }
+
+      var displayTitle = document.querySelector('.hero-display-title');
+      if (displayTitle && displayTitle.textContent !== 'Experience 20/15 CustomVue® Vision with 10-Second Laser Precision.') {
+        displayTitle.textContent = 'Experience 20/15 CustomVue® Vision with 10-Second Laser Precision.';
+      }
+
+      var heroSub = document.querySelector('.hero-content p.text-secondary, p.text-secondary');
+      if (heroSub && heroSub.textContent.indexOf('Driven professionals and athletes') === -1) {
+        heroSub.textContent = 'Driven professionals and athletes choose Dr. Matthew Marano, Jr., MD to eliminate contact lens friction and reclaim peak visual performance with 24-hour recovery. Free 45-minute diagnostic evaluation at our flagship Livingston center.';
+      }
+
+      // 2. Science Section Heading & Tech Cards
+      var scienceSec = document.getElementById('lasik-science');
+      if (scienceSec) {
+        var scienceHeading = scienceSec.querySelector('h2');
+        if (scienceHeading && scienceHeading.textContent.indexOf('CustomVue') === -1) {
+          scienceHeading.innerHTML = 'The Science of <span style="color:#e2b857;">CustomVue® LASIK</span>';
+        }
+
+        var scienceSub = scienceSec.querySelector('p');
+        if (scienceSub && scienceSub.textContent.indexOf('10,240') === -1) {
+          scienceSub.textContent = 'Dr. Marano combines 3D WaveScan® 250-lenslet diagnostics, the 10-second iFS® Femtosecond laser, and the STAR S4 IR® Excimer laser with Iris Registration for zero-compromise 20/15 visual potential.';
+        }
+      }
+
+      // 3. Consultation Form Heading & Location Clarification
+      var formHeading = document.querySelector('.contact-form h3, #consultation h3');
+      if (formHeading && formHeading.textContent.indexOf('CustomVue') === -1) {
+        formHeading.innerHTML = 'Book Your Free <span style="color:#e2b857;">CustomVue® Consultation</span>';
+      }
+
+      var contactForm = document.querySelector('.contact-form');
+      if (contactForm && !document.getElementById('location-notice-badge')) {
+        var locNotice = document.createElement('div');
+        locNotice.id = 'location-notice-badge';
+        locNotice.setAttribute('style', 'margin-top: 16px; padding: 14px 18px; background: rgba(226, 184, 87, 0.04); border: 1px solid rgba(226, 184, 87, 0.18); border-radius: 12px; font-size: 0.82rem; color: #cbd5e1; line-height: 1.5; text-align: left;');
+        locNotice.innerHTML = '<strong style="color:#e2b857;display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px;font-size:0.72rem;">Convenient NJ Locations</strong>' +
+          '• <strong>Consultations Available At:</strong> Livingston, Denville, or Newark.<br>' +
+          '• <strong>Diagnostic Testing & LASIK Surgery:</strong> Performed exclusively at our premier Livingston facility — <em>Cooperman Barnabas Ambulatory Care Center (ACC)</em>.';
+        contactForm.insertBefore(locNotice, contactForm.firstChild);
       }
     }
 
@@ -1098,6 +1346,114 @@
       }
     }
 
+    function initAdaptiveQuiz() {
+      var quizRoot = document.getElementById('quiz');
+      if (!quizRoot || document.getElementById('adaptive-quiz-container')) return;
+
+      var steps = [
+        {
+          title: 'Select Your Age Bracket',
+          subtitle: 'LASIK is FDA-approved for adults whose vision has matured.',
+          options: ['18 – 24 Years', '25 – 39 Years', '40 – 54 Years', '55+ Years']
+        },
+        {
+          title: 'Primary Vision Correction Need',
+          subtitle: 'Which optical error do you currently rely on lenses to resolve?',
+          options: ['Nearsightedness (Distance Defocus)', 'Farsightedness (Near Defocus)', 'Astigmatism (Irregular Cornea)', 'Reading Glasses / Presbyopia', 'Unsure (Need Comprehensive Evaluation)']
+        },
+        {
+          title: 'Your Primary Lifestyle Pursuit',
+          subtitle: 'Where is lens friction most frustrating in your routine?',
+          options: ['Athletic Performance & Motion', 'Night & Low-Light Driving', 'Screen & High-Density Code Work', 'General Everyday Freedom']
+        },
+        {
+          title: 'Prescription Stability',
+          subtitle: 'Has your eyeglass or contact lens prescription changed in the past 12 months?',
+          options: ['Stable (No Change in 1+ Yrs)', 'Minor Shift', 'Unsure / Need Diagnostics']
+        }
+      ];
+
+      var currentStep = 0;
+      var userAnswers = [];
+
+      var quizCard = document.createElement('div');
+      quizCard.id = 'adaptive-quiz-container';
+      quizCard.style.cssText = 'max-width:700px;margin:0 auto;background:rgba(255,255,255,0.015);border:1px solid rgba(226,184,87,0.2);border-radius:24px;padding:36px;box-shadow:0 30px 60px rgba(0,0,0,0.6);text-align:center;';
+
+      function renderStep() {
+        if (currentStep >= steps.length) {
+          renderLoadingReport();
+          return;
+        }
+
+        var st = steps[currentStep];
+        var progressPct = ((currentStep + 1) / steps.length) * 100;
+
+        var html = '<div style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:#e2b857;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;">' +
+          '<span>Step 0' + (currentStep + 1) + ' / 0' + steps.length + '</span>' +
+          '<span>Biometric Candidacy Diagnostic</span>' +
+        '</div>' +
+        '<div style="height:4px;background:rgba(255,255,255,0.08);border-radius:10px;margin-bottom:28px;overflow:hidden;">' +
+          '<div style="height:100%;width:' + progressPct + '%;background:#e2b857;transition:width 0.4s ease;"></div>' +
+        '</div>' +
+        '<h3 style="font-family:var(--font-sans);font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:8px;">' + st.title + '</h3>' +
+        '<p style="font-size:0.9rem;color:#94a3b8;margin-bottom:28px;">' + st.subtitle + '</p>' +
+        '<div style="display:flex;flex-direction:column;gap:12px;">';
+
+        st.options.forEach(function(opt) {
+          html += '<button class="adaptive-quiz-opt" data-opt="' + opt + '" style="padding:16px 24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:14px;color:#f8fafc;font-size:0.95rem;font-weight:600;cursor:pointer;text-align:left;transition:all 0.3s ease;display:flex;justify-content:space-between;align-items:center;">' +
+            '<span>' + opt + '</span>' +
+            '<span style="color:#e2b857;opacity:0.6;">→</span>' +
+          '</button>';
+        });
+
+        html += '</div>';
+        quizCard.innerHTML = html;
+
+        var optBtns = quizCard.querySelectorAll('.adaptive-quiz-opt');
+        optBtns.forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            userAnswers.push(btn.getAttribute('data-opt'));
+            currentStep++;
+            renderStep();
+          });
+        });
+      }
+
+      function renderLoadingReport() {
+        quizCard.innerHTML = '<div style="padding:40px 0;">' +
+          '<div style="width:48px;height:48px;border:3px solid rgba(226,184,87,0.2);border-top-color:#e2b857;border-radius:50%;margin:0 auto 20px auto;animation:spin 1s linear infinite;"></div>' +
+          '<h4 style="font-family:monospace;font-size:0.9rem;letter-spacing:2px;text-transform:uppercase;color:#e2b857;">Analyzing Corneal Biometrics...</h4>' +
+          '<p style="font-size:0.85rem;color:#94a3b8;margin-top:8px;">Comparing against Dr. Marano’s CustomVue clinical criteria.</p>' +
+        '</div>';
+
+        setTimeout(renderFinalReport, 1200);
+      }
+
+      function renderFinalReport() {
+        var lifestyle = userAnswers[2] || 'Active Freedom';
+        var html = '<div style="text-align:center;">' +
+          '<span style="display:inline-block;padding:4px 14px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:#10b981;font-size:0.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border-radius:100px;margin-bottom:16px;">Biometric Profile Complete</span>' +
+          '<h3 style="font-family:var(--font-serif);font-size:2rem;color:#fff;margin-bottom:10px;font-weight:700;">98% Candidate Approval Match</h3>' +
+          '<p style="font-size:0.92rem;color:#cbd5e1;max-width:540px;margin:0 auto 24px auto;line-height:1.6;">Based on your responses, your corneal profile is an exceptional fit for Dr. Marano’s Wavefront-Guided dual-laser procedure tailored for <strong>' + lifestyle + '</strong>.</p>' +
+          '<div style="display:flex;justify-content:center;">' +
+            '<button onclick="scrollToConsultationForm()" class="btn btn-primary" style="padding:14px 28px;font-size:0.95rem;">Schedule Free Consultation</button>' +
+          '</div>' +
+        '</div>';
+
+        quizCard.innerHTML = html;
+      }
+
+      quizRoot.innerHTML = '';
+      quizRoot.appendChild(quizCard);
+      renderStep();
+    }
+
+    window.scrollToConsultationForm = function() {
+      var contactForm = document.querySelector('.contact-form') || document.getElementById('consultation');
+      if (contactForm) contactForm.scrollIntoView({ behavior: 'smooth' });
+    };
+
     var _sweepTimer = null;
     function scheduleSweep() {
       if (_sweepTimer) return;
@@ -1108,6 +1464,7 @@
         injectEEAT();
         injectEEATFAQ();
         initLifestyleSection();
+        initAdaptiveQuiz();
         injectTimelineStrip();
         injectROISection();
         injectMetricsBanner();
@@ -1116,6 +1473,7 @@
         injectMobileCTA();
         ensureAccessibilityLabels();
         clarifyLandingPageCopy();
+        customizeForCustomVue();
         applyDynamicTextReplacement(root);
       });
     }

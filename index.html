@@ -683,8 +683,6 @@
 
     function injectTimelineStrip() {
       if (document.getElementById('speed-timeline-strip')) return;
-      var lifestyle = document.getElementById('eeat-lifestyle-section');
-      if (!lifestyle) return;
 
       var stages = [
         { time: 'Hour 0', label: 'Surgical Completion', subtitle: '10-Second Laser Per Eye', desc: 'Flap seated seamlessly via natural osmotic adhesion. Zero sutures. Initial resting phase in our private recovery lounge.', clarity: '80% Initial Focus' },
@@ -708,12 +706,12 @@
         '<div class="scrubber-wrapper" style="margin-bottom:36px;position:relative;padding:0 10px;">' +
           '<!-- Connecting Line (Centered on node dots) -->' +
           '<div style="position:absolute;top:10px;left:20px;right:20px;height:4px;transform:translateY(-50%);background:rgba(255,255,255,0.08);border-radius:10px;z-index:1;">' +
-            '<div id="scrubber-progress" style="height:100%;width:100%;background:linear-gradient(90deg, #e2b857 0%, #a855f7 100%);border-radius:10px;transition:width 0.4s cubic-bezier(0.16, 1, 0.3, 1);"></div>' +
+            '<div id="scrubber-progress" style="height:100%;width:0%;background:linear-gradient(90deg, #e2b857 0%, #a855f7 100%);border-radius:10px;transition:width 0.4s cubic-bezier(0.16, 1, 0.3, 1);"></div>' +
           '</div>' +
           '<div style="display:flex;justify-content:space-between;position:relative;z-index:2;">';
 
       stages.forEach(function(s, idx) {
-        html += '<button class="scrubber-node-btn ' + (idx === 3 ? 'active' : '') + '" data-index="' + idx + '" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;z-index:5;">' +
+        html += '<button class="scrubber-node-btn ' + (idx === 0 ? 'active' : '') + '" data-index="' + idx + '" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;z-index:5;">' +
           '<span class="node-dot" style="width:20px;height:20px;border-radius:50%;background:#080c14;border:2px solid #e2b857;transition:all 0.3s ease;"></span>' +
           '<span style="font-family:monospace;font-size:0.75rem;font-weight:700;color:#e2b857;">' + s.time + '</span>' +
         '</button>';
@@ -724,19 +722,30 @@
         '<!-- Stage Content Display Card -->' +
         '<div id="scrubber-card" style="background:rgba(255,255,255,0.02);border:1px solid rgba(226,184,87,0.2);border-radius:20px;padding:32px;box-shadow:0 20px 40px rgba(0,0,0,0.5);display:grid;grid-template-columns:1fr 220px;gap:24px;align-items:center;">' +
           '<div>' +
-            '<div id="scrubber-badge" style="display:inline-block;font-size:0.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#a855f7;background:rgba(168,85,247,0.1);padding:4px 12px;border-radius:100px;margin-bottom:12px;border:1px solid rgba(168,85,247,0.3);">' + stages[3].subtitle + '</div>' +
-            '<h4 id="scrubber-title" style="font-family:var(--font-sans);font-size:1.5rem;font-weight:700;color:#ffffff;margin-bottom:8px;">' + stages[3].label + '</h4>' +
-            '<p id="scrubber-desc" style="font-size:0.92rem;color:#cbd5e1;line-height:1.65;margin:0;">' + stages[3].desc + '</p>' +
+            '<div id="scrubber-badge" style="display:inline-block;font-size:0.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#a855f7;background:rgba(168,85,247,0.1);padding:4px 12px;border-radius:100px;margin-bottom:12px;border:1px solid rgba(168,85,247,0.3);">' + stages[0].subtitle + '</div>' +
+            '<h4 id="scrubber-title" style="font-family:var(--font-sans);font-size:1.5rem;font-weight:700;color:#ffffff;margin-bottom:8px;">' + stages[0].label + '</h4>' +
+            '<p id="scrubber-desc" style="font-size:0.92rem;color:#cbd5e1;line-height:1.65;margin:0;">' + stages[0].desc + '</p>' +
           '</div>' +
           '<div style="text-align:center;padding:20px;background:rgba(226,184,87,0.04);border:1px solid rgba(226,184,87,0.15);border-radius:16px;">' +
             '<span style="font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;color:#94a3b8;display:block;margin-bottom:6px;">Target Acuity</span>' +
-            '<div id="scrubber-acuity" style="font-family:var(--font-sans);font-size:1.3rem;font-weight:800;color:#e2b857;">' + stages[3].clarity + '</div>' +
+            '<div id="scrubber-acuity" style="font-family:var(--font-sans);font-size:1.3rem;font-weight:800;color:#e2b857;">' + stages[0].clarity + '</div>' +
           '</div>' +
         '</div>' +
       '</div>';
 
       strip.innerHTML = html;
-      lifestyle.parentNode.insertBefore(strip, lifestyle.nextSibling);
+
+      var journeySection = Array.from(document.querySelectorAll('div, section')).find(function(sec) {
+        var h2 = sec.querySelector('h2');
+        return h2 && h2.textContent.indexOf('LASIK') !== -1 && h2.textContent.indexOf('Journey') !== -1;
+      });
+
+      if (journeySection) {
+        journeySection.parentNode.insertBefore(strip, journeySection.nextSibling);
+      } else {
+        var lifestyle = document.getElementById('eeat-lifestyle-section');
+        if (lifestyle) lifestyle.parentNode.insertBefore(strip, lifestyle.nextSibling);
+      }
 
       // Event listener handling for node selection
       var nodeBtns = strip.querySelectorAll('.scrubber-node-btn');
@@ -779,7 +788,7 @@
         });
       });
 
-      selectStage(3);
+      selectStage(0);
     }
 
     // ─── P1: Financial ROI Section ─────────────────────────────────────────

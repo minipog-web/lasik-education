@@ -734,5 +734,14 @@ h1, h2, h3, h4, .hero-serif-title, .hero-display-title, .bio-heading {
   }
 }
 
+/* Remove telemetry label above stage bubbles in The LASIK Journey section */
+.steps-progress-dot::before,
+.active-radar-dot::before,
+.steps-progress-dot::after,
+.active-radar-dot::after {
+  display: none !important;
+  content: none !important;
+}
+
 
 

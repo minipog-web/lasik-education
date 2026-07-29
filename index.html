@@ -237,6 +237,7 @@
     <link rel="preload" as="image" href="./assets/hero-hiker.webp" type="image/webp">
     <link rel="stylesheet" crossorigin href="./assets/index-DhXpI4H_.css?v=28">
     <link rel="stylesheet" href="./assets/custom-styles.css?v=4">
+    <script src="./assets/vision-simulator.js" defer></script>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -1859,70 +1860,18 @@
 
     function injectVisionQualitySimulator() {
       var scienceSec = getScienceSection();
-      if (!scienceSec || document.getElementById('vision-quality-simulator')) return;
+      if (!scienceSec || document.getElementById('vision-simulator-container')) return;
 
       var simulatorSec = document.createElement('div');
-      simulatorSec.id = 'vision-quality-simulator';
+      simulatorSec.id = 'lasik-vision-simulator-section';
       simulatorSec.className = 'section';
-      simulatorSec.style.cssText = 'padding: clamp(60px, 6vw, 90px) 24px; position: relative; border-bottom: 1px solid rgba(255,255,255,0.04); background: linear-gradient(180deg, rgba(6,11,23,0.9) 0%, rgba(3,7,18,0.95) 100%);';
+      simulatorSec.style.cssText = 'padding: clamp(60px, 6vw, 90px) 24px; position: relative; border-bottom: 1px solid rgba(255,255,255,0.04); background: #030508;';
 
       var container = document.createElement('div');
       container.className = 'container';
       container.style.cssText = 'max-width: 1100px; margin: 0 auto;';
+      container.innerHTML = '<div id="vision-simulator-container"></div>';
 
-      var header = document.createElement('div');
-      header.className = 'text-center';
-      header.style.marginBottom = '32px';
-      header.innerHTML = 
-        '<span style="display:inline-block;padding:4px 14px;background:rgba(226,184,87,0.08);border:1px solid rgba(226,184,87,0.25);color:#e2b857;font-size:0.7rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;border-radius:100px;margin-bottom:12px;">Visual Clarity Comparison</span>' +
-        '<h2 class="bio-heading" style="font-size:clamp(1.8rem, 3.5vw, 2.5rem);font-weight:700;color:#fff;margin-bottom:12px;">Experience the Difference: <span class="bio-heading-accent">20/15 CustomVue® Clarity</span></h2>' +
-        '<p style="max-width:780px;margin:0 auto;font-size:1.02rem;color:#cbd5e1;line-height:1.6;font-weight:300;">Drag the interactive slider below to contrast uncorrected night driving vision (halo glare & astigmatism distortion) against Dr. Marano’s 3D WaveScan® 20/15 HD precision.</p>';
-
-      var sliderWrapper = document.createElement('div');
-      sliderWrapper.style.cssText = 'position: relative; width: 100%; height: clamp(380px, 48vw, 520px); border-radius: 24px; overflow: hidden; border: 1px solid rgba(226, 184, 87, 0.25); box-shadow: 0 25px 60px rgba(0,0,0,0.6), 0 0 30px rgba(226,184,87,0.05); user-select: none; touch-action: none; background: #000;';
-
-      sliderWrapper.innerHTML = 
-        '<div style="position:absolute;inset:0;width:100%;height:100%;">' +
-          '<img src="./assets/customvue_american_highway_hd.png" alt="CustomVue 20/15 HD Vision" style="width:100%;height:100%;object-fit:cover;display:block;" />' +
-          '<div style="position:absolute;top:20px;right:20px;padding:8px 16px;background:rgba(6,11,23,0.85);backdrop-filter:blur(12px);border:1px solid rgba(16,185,129,0.4);border-radius:100px;font-family:monospace;font-size:0.75rem;color:#10b981;font-weight:700;letter-spacing:1px;display:flex;align-items:center;gap:8px;box-shadow:0 10px 25px rgba(0,0,0,0.5);">' +
-            '<span style="width:8px;height:8px;border-radius:50%;background:#10b981;" class="animate-ping"></span> 20/15 CUSTOMVUE® HD VISION' +
-          '</div>' +
-          '<div style="position:absolute;bottom:20px;right:20px;padding:10px 18px;background:rgba(3,7,18,0.85);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.08);border-radius:14px;font-family:monospace;font-size:0.75rem;color:#cbd5e1;">' +
-            '<span style="color:#e2b857;display:block;margin-bottom:2px;font-weight:700;letter-spacing:1px;">CLARITY TELEMETRY // POST-LASIK</span>' +
-            '<span>Contrast Sensitivity: <strong style="color:#10b981;">MAXIMUM (20/15)</strong> | Higher-Order Aberrations: <strong style="color:#10b981;">0.00 µm</strong></span>' +
-          '</div>' +
-        '</div>' +
-
-        '<div id="vision-before-layer" style="position:absolute;top:0;left:0;bottom:0;width:50%;overflow:hidden;border-right:2px solid #e2b857;z-index:2;box-shadow:5px 0 25px rgba(0,0,0,0.5);">' +
-          '<div style="position:absolute;top:0;left:0;bottom:0;width:1100px;max-width:none;height:100%;">' +
-            '<img src="./assets/customvue_american_highway_hd.png" alt="Uncorrected Vision with Glare" style="width:100%;height:100%;object-fit:cover;display:block;filter:blur(2.2px) contrast(0.92);transform:scale(1.01);" />' +
-            '<div style="position:absolute;inset:0;background:radial-gradient(circle at 45% 35%, rgba(255,255,255,0.25) 0%, rgba(255,220,150,0.15) 20%, transparent 45%), radial-gradient(circle at 75% 25%, rgba(255,255,255,0.22) 0%, rgba(255,200,100,0.12) 20%, transparent 50%);mix-blend-mode:screen;pointer-events:none;"></div>' +
-          '</div>' +
-          '<div style="position:absolute;top:20px;left:20px;padding:8px 16px;background:rgba(6,11,23,0.85);backdrop-filter:blur(12px);border:1px solid rgba(239,68,68,0.4);border-radius:100px;font-family:monospace;font-size:0.75rem;color:#ef4444;font-weight:700;letter-spacing:1px;display:flex;align-items:center;gap:8px;box-shadow:0 10px 25px rgba(0,0,0,0.5);">' +
-            '<span style="width:8px;height:8px;border-radius:50%;background:#ef4444;" class="animate-pulse"></span> UNCORRECTED (HALOS & ASTIGMATISM BLUR)' +
-          '</div>' +
-          '<div style="position:absolute;bottom:20px;left:20px;padding:10px 18px;background:rgba(3,7,18,0.85);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.08);border-radius:14px;font-family:monospace;font-size:0.75rem;color:#cbd5e1;">' +
-            '<span style="color:#ef4444;display:block;margin-bottom:2px;font-weight:700;letter-spacing:1px;">CLARITY TELEMETRY // UNCORRECTED</span>' +
-            '<span>Night Glare: <strong style="color:#ef4444;">ACTIVE HALOS</strong> | Optical Aberrations: <strong style="color:#ef4444;">HIGH (1.85 µm)</strong></span>' +
-          '</div>' +
-        '</div>' +
-
-        '<div id="vision-slider-handle" style="position:absolute;top:0;bottom:0;left:50%;width:4px;background:#e2b857;transform:translateX(-50%);z-index:10;cursor:ew-resize;box-shadow:0 0 15px rgba(226,184,87,0.8);">' +
-          '<div style="position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg, #FFF9E6 0%, #E2B857 50%, #9E7B2B 100%);border:2px solid #fff;box-shadow:0 0 20px rgba(0,0,0,0.8), 0 0 10px rgba(226,184,87,0.6);display:flex;align-items:center;justify-content:center;color:#030712;font-size:0.85rem;font-weight:900;">' +
-            '◄ ►' +
-          '</div>' +
-        '</div>';
-
-      var presetsBar = document.createElement('div');
-      presetsBar.style.cssText = 'display:flex;justify-content:center;gap:12px;margin-top:24px;flex-wrap:wrap;';
-      presetsBar.innerHTML = 
-        '<button type="button" id="preset-mode-50" class="btn btn-secondary" style="padding:10px 20px;font-size:0.8rem;border-radius:100px;border:1px solid #e2b857;color:#e2b857;background:rgba(226,184,87,0.1);">50/50 Split View</button>' +
-        '<button type="button" id="preset-mode-0" class="btn btn-secondary" style="padding:10px 20px;font-size:0.8rem;border-radius:100px;border:1px solid rgba(255,255,255,0.1);color:#94a3b8;background:transparent;">Full 20/15 CustomVue® HD</button>' +
-        '<button type="button" id="preset-mode-100" class="btn btn-secondary" style="padding:10px 20px;font-size:0.8rem;border-radius:100px;border:1px solid rgba(255,255,255,0.1);color:#94a3b8;background:transparent;">Full Uncorrected Night Glare</button>';
-
-      container.appendChild(header);
-      container.appendChild(sliderWrapper);
-      container.appendChild(presetsBar);
       simulatorSec.appendChild(container);
 
       if (scienceSec.nextSibling) {
@@ -1931,40 +1880,9 @@
         scienceSec.parentNode.appendChild(simulatorSec);
       }
 
-      var isDragging = false;
-      function setSliderPosition(percent) {
-        percent = Math.max(0, Math.min(100, percent));
-        var beforeLayer = document.getElementById('vision-before-layer');
-        var handle = document.getElementById('vision-slider-handle');
-        if (beforeLayer && handle) {
-          beforeLayer.style.width = percent + '%';
-          handle.style.left = percent + '%';
-        }
+      if (typeof window.initVisionSimulator === 'function') {
+        window.initVisionSimulator();
       }
-
-      function handleMove(e) {
-        if (!isDragging) return;
-        var rect = sliderWrapper.getBoundingClientRect();
-        var clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        var offsetX = clientX - rect.left;
-        var percent = (offsetX / rect.width) * 100;
-        setSliderPosition(percent);
-      }
-
-      sliderWrapper.addEventListener('mousedown', function(e) { isDragging = true; handleMove(e); });
-      sliderWrapper.addEventListener('mousemove', handleMove);
-      window.addEventListener('mouseup', function() { isDragging = false; });
-
-      sliderWrapper.addEventListener('touchstart', function(e) { isDragging = true; handleMove(e); }, { passive: true });
-      sliderWrapper.addEventListener('touchmove', handleMove, { passive: true });
-      window.addEventListener('touchend', function() { isDragging = false; });
-
-      var btn50 = document.getElementById('preset-mode-50');
-      var btn0 = document.getElementById('preset-mode-0');
-      var btn100 = document.getElementById('preset-mode-100');
-      if (btn50) btn50.addEventListener('click', function() { setSliderPosition(50); });
-      if (btn0) btn0.addEventListener('click', function() { setSliderPosition(0); });
-      if (btn100) btn100.addEventListener('click', function() { setSliderPosition(100); });
     }
 
     var _sweepTimer = null;
@@ -2167,8 +2085,276 @@
       }
     }
 
+    // ─── Hero Interactive 2-Step Micro-Commitment Flow (Commitment + Reciprocity) ───
+    function initHeroMicroCommitmentFlow() {
+      var heroFormCard = document.querySelector('.hero-right .contact-form') || document.querySelector('.hero-right') || document.querySelector('.contact-form');
+      if (!heroFormCard || document.getElementById('hero-mc-card')) return;
+
+      var mcCard = document.createElement('div');
+      mcCard.id = 'hero-mc-card';
+      mcCard.className = 'micro-commitment-card';
+      
+      var state = {
+        step: 1,
+        struggle: '',
+        timeframe: '',
+        name: '',
+        phone: '',
+        email: '',
+        location: 'Livingston'
+      };
+
+      function render() {
+        var html = '';
+
+        if (state.step === 1) {
+          html = 
+            '<div class="mc-step-container">' +
+              '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">' +
+                '<span style="font-family:monospace;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:#e2b857;font-weight:700;">Step 1 of 3 &bull; Biometric Readiness</span>' +
+                '<span style="font-size:0.72rem;color:#94a3b8;font-weight:600;">60-Sec Audit</span>' +
+              '</div>' +
+              '<div class="mc-progress-bar"><div class="mc-progress-fill" style="width:33%;"></div></div>' +
+              '<h3 style="font-family:var(--font-sans);font-size:1.25rem;font-weight:700;color:#ffffff;margin:12px 0 4px 0;line-height:1.25;">What is your primary vision frustration?</h3>' +
+              '<p style="font-size:0.82rem;color:#cbd5e1;margin-bottom:12px;line-height:1.4;">Select your biggest daily obstacle to see your treatment compatibility.</p>' +
+
+              '<div class="mc-option-card ' + (state.struggle === 'contacts' ? 'selected' : '') + '" data-val="contacts">' +
+                '<div class="mc-radio-dot"><div class="mc-radio-dot-inner"></div></div>' +
+                '<div>' +
+                  '<strong style="color:#ffffff;font-size:0.9rem;display:block;">Dry / Irritated Contact Lenses</strong>' +
+                  '<span style="font-size:0.78rem;color:#94a3b8;">Lenses shift, dry out, or cause discomfort during long work hours</span>' +
+                '</div>' +
+              '</div>' +
+
+              '<div class="mc-option-card ' + (state.struggle === 'active' ? 'selected' : '') + '" data-val="active">' +
+                '<div class="mc-radio-dot"><div class="mc-radio-dot-inner"></div></div>' +
+                '<div>' +
+                  '<strong style="color:#ffffff;font-size:0.9rem;display:block;">Glasses Fog / Slip During Motion</strong>' +
+                  '<span style="font-size:0.78rem;color:#94a3b8;">Frames restrict peripheral vision during workouts or sports</span>' +
+                '</div>' +
+              '</div>' +
+
+              '<div class="mc-option-card ' + (state.struggle === 'night' ? 'selected' : '') + '" data-val="night">' +
+                '<div class="mc-radio-dot"><div class="mc-radio-dot-inner"></div></div>' +
+                '<div>' +
+                  '<strong style="color:#ffffff;font-size:0.9rem;display:block;">Astigmatism & Night Driving Glare</strong>' +
+                  '<span style="font-size:0.78rem;color:#94a3b8;">Headlight halos and blur make dark roads stressful</span>' +
+                '</div>' +
+              '</div>' +
+
+              '<div class="mc-option-card ' + (state.struggle === 'freedom' ? 'selected' : '') + '" data-val="freedom">' +
+                '<div class="mc-radio-dot"><div class="mc-radio-dot-inner"></div></div>' +
+                '<div>' +
+                  '<strong style="color:#ffffff;font-size:0.9rem;display:block;">Tired of Daily Glasses Maintenance</strong>' +
+                  '<span style="font-size:0.78rem;color:#94a3b8;">Want 20/20 HD vision without morning lens rituals</span>' +
+                '</div>' +
+              '</div>' +
+
+              '<button type="button" id="mc-next-1" class="btn btn-primary" style="width:100%;padding:14px;margin-top:8px;font-size:0.9rem;justify-content:center;" ' + (!state.struggle ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : '') + '>' +
+                'Continue to Step 2 &rarr;' +
+              '</button>' +
+            '</div>';
+        } else if (state.step === 2) {
+          html = 
+            '<div class="mc-step-container">' +
+              '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">' +
+                '<span style="font-family:monospace;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:#e2b857;font-weight:700;">Step 2 of 3 &bull; Desired Timeframe</span>' +
+                '<span style="font-size:0.72rem;color:#a855f7;font-weight:600;">66% Complete</span>' +
+              '</div>' +
+              '<div class="mc-progress-bar"><div class="mc-progress-fill" style="width:66%;"></div></div>' +
+              '<h3 style="font-family:var(--font-sans);font-size:1.25rem;font-weight:700;color:#ffffff;margin:12px 0 4px 0;line-height:1.25;">When would you like visual freedom?</h3>' +
+              '<p style="font-size:0.82rem;color:#cbd5e1;margin-bottom:12px;line-height:1.4;">Dr. Marano limits surgery to 12 custom procedures per week to ensure precision.</p>' +
+
+              '<div class="mc-option-card ' + (state.timeframe === 'asap' ? 'selected' : '') + '" data-val="asap">' +
+                '<div class="mc-radio-dot"><div class="mc-radio-dot-inner"></div></div>' +
+                '<div>' +
+                  '<strong style="color:#ffffff;font-size:0.9rem;display:block;">As Soon As Possible (This Month)</strong>' +
+                  '<span style="font-size:0.78rem;color:#10b981;font-weight:600;">⚡ Expedited 24-hr consultation slot</span>' +
+                '</div>' +
+              '</div>' +
+
+              '<div class="mc-option-card ' + (state.timeframe === '30days' ? 'selected' : '') + '" data-val="30days">' +
+                '<div class="mc-radio-dot"><div class="mc-radio-dot-inner"></div></div>' +
+                '<div>' +
+                  '<strong style="color:#ffffff;font-size:0.9rem;display:block;">Within Next 1 to 3 Months</strong>' +
+                  '<span style="font-size:0.78rem;color:#94a3b8;">Planning upcoming work/vacation window</span>' +
+                '</div>' +
+              '</div>' +
+
+              '<div class="mc-option-card ' + (state.timeframe === 'researching' ? 'selected' : '') + '" data-val="researching">' +
+                '<div class="mc-radio-dot"><div class="mc-radio-dot-inner"></div></div>' +
+                '<div>' +
+                  '<strong style="color:#ffffff;font-size:0.9rem;display:block;">Just Researching & Comparing Options</strong>' +
+                  '<span style="font-size:0.78rem;color:#94a3b8;">Gathering clinical information & pricing</span>' +
+                '</div>' +
+              '</div>' +
+
+              '<div style="display:flex;gap:10px;margin-top:8px;">' +
+                '<button type="button" id="mc-back-1" class="btn btn-secondary" style="padding:12px 18px;font-size:0.85rem;">&larr; Back</button>' +
+                '<button type="button" id="mc-next-2" class="btn btn-primary" style="flex:1;padding:14px;font-size:0.9rem;justify-content:center;" ' + (!state.timeframe ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : '') + '>' +
+                  'Unlock Biometric Report &rarr;' +
+                '</button>' +
+              '</div>' +
+            '</div>';
+        } else if (state.step === 3) {
+          html = 
+            '<div class="mc-step-container">' +
+              '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">' +
+                '<span style="font-family:monospace;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:#10b981;font-weight:700;">Final Step &bull; Instant Report Access</span>' +
+                '<span style="font-size:0.72rem;color:#10b981;font-weight:700;">✓ Candidacy Match High</span>' +
+              '</div>' +
+              '<div class="mc-progress-bar"><div class="mc-progress-fill" style="width:100%;"></div></div>' +
+              
+              '<div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:12px;padding:12px 16px;margin:8px 0;">' +
+                '<span style="font-size:0.8rem;color:#10b981;font-weight:700;display:block;margin-bottom:2px;">✦ High Candidate Probability Detected</span>' +
+                '<span style="font-size:0.75rem;color:#cbd5e1;line-height:1.35;display:block;">Your responses indicate strong alignment with 10-second CustomVue® dual-laser treatment.</span>' +
+              '</div>' +
+
+              '<form id="mc-final-form" style="display:flex;flex-direction:column;gap:12px;text-align:left;">' +
+                '<div>' +
+                  '<label for="mc-name" style="font-size:0.8rem;color:#cbd5e1;font-weight:600;display:block;margin-bottom:4px;">Full Name *</label>' +
+                  '<input type="text" id="mc-name" required placeholder="Your Full Name" value="' + state.name + '" style="width:100%;padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-size:0.9rem;">' +
+                '</div>' +
+                '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">' +
+                  '<div>' +
+                    '<label for="mc-phone" style="font-size:0.8rem;color:#cbd5e1;font-weight:600;display:block;margin-bottom:4px;">Phone Number *</label>' +
+                    '<input type="tel" id="mc-phone" required placeholder="(973) 555-0100" value="' + state.phone + '" style="width:100%;padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-size:0.9rem;">' +
+                  '</div>' +
+                  '<div>' +
+                    '<label for="mc-email" style="font-size:0.8rem;color:#cbd5e1;font-weight:600;display:block;margin-bottom:4px;">Email Address *</label>' +
+                    '<input type="email" id="mc-email" required placeholder="name@domain.com" value="' + state.email + '" style="width:100%;padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-size:0.9rem;">' +
+                  '</div>' +
+                '</div>' +
+                '<div>' +
+                  '<label for="mc-location" style="font-size:0.8rem;color:#cbd5e1;font-weight:600;display:block;margin-bottom:4px;">Preferred NJ Consultation Location</label>' +
+                  '<select id="mc-location" style="width:100%;padding:10px 14px;background:#0b132b;border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-size:0.88rem;">' +
+                    '<option value="Livingston" ' + (state.location === 'Livingston' ? 'selected' : '') + '>Livingston, NJ (Flagship ACC Center)</option>' +
+                    '<option value="Denville" ' + (state.location === 'Denville' ? 'selected' : '') + '>Denville, NJ (Route 10 Suite)</option>' +
+                    '<option value="Newark" ' + (state.location === 'Newark' ? 'selected' : '') + '>Newark, NJ (Ferry St Suite)</option>' +
+                  '</select>' +
+                '</div>' +
+
+                '<div style="display:flex;gap:10px;margin-top:6px;">' +
+                  '<button type="button" id="mc-back-2" class="btn btn-secondary" style="padding:10px 16px;font-size:0.85rem;">&larr; Back</button>' +
+                  '<button type="submit" class="btn btn-primary" style="flex:1;padding:12px;font-size:0.9rem;justify-content:center;">' +
+                    'Claim Custom Report & Free Evaluation &rarr;' +
+                  '</button>' +
+                '</div>' +
+              '</form>' +
+
+              '<span style="font-size:0.72rem;color:#64748b;text-align:center;display:block;margin-top:6px;font-style:italic;">' +
+                '🔒 Zero obligation. Form protected under HIPAA compliance standards.' +
+              '</span>' +
+            '</div>';
+        } else if (state.step === 4) {
+          html = 
+            '<div class="mc-step-container" style="text-align:center;padding:12px 0;">' +
+              '<div style="width:50px;height:50px;border-radius:50%;background:rgba(16,185,129,0.15);border:2px solid #10b981;color:#10b981;display:flex;align-items:center;justify-content:center;margin:0 auto 16px auto;font-size:1.5rem;">✓</div>' +
+              '<h3 style="font-family:var(--font-sans);font-size:1.35rem;font-weight:700;color:#ffffff;margin-bottom:8px;">Biometric Summary Reserved</h3>' +
+              '<p style="font-size:0.88rem;color:#cbd5e1;line-height:1.6;margin-bottom:16px;">Thank you, <strong>' + state.name + '</strong>! Your customized CustomVue® diagnostic candidacy profile has been generated. Dr. Marano’s clinical coordinator will contact you shortly at <strong>' + state.phone + '</strong> to finalize your free consultation timing at our ' + state.location + ' location.</p>' +
+              '<div style="padding:12px 16px;background:rgba(226,184,87,0.05);border:1px solid rgba(226,184,87,0.2);border-radius:12px;font-size:0.8rem;color:#e2b857;">' +
+                '📞 Direct Patient Line: <a href="tel:973-755-1876" style="color:#e2b857;font-weight:700;text-decoration:underline;">(973) 755-1876</a>' +
+              '</div>' +
+            '</div>';
+        }
+
+        mcCard.innerHTML = html;
+        bindEvents();
+      }
+
+      function bindEvents() {
+        if (state.step === 1) {
+          var cards = mcCard.querySelectorAll('.mc-option-card');
+          cards.forEach(function(card) {
+            card.addEventListener('click', function() {
+              state.struggle = card.getAttribute('data-val');
+              render();
+            });
+          });
+          var nextBtn = mcCard.querySelector('#mc-next-1');
+          if (nextBtn) {
+            nextBtn.addEventListener('click', function() {
+              if (state.struggle) {
+                state.step = 2;
+                render();
+              }
+            });
+          }
+        } else if (state.step === 2) {
+          var cards = mcCard.querySelectorAll('.mc-option-card');
+          cards.forEach(function(card) {
+            card.addEventListener('click', function() {
+              state.timeframe = card.getAttribute('data-val');
+              render();
+            });
+          });
+          var backBtn = mcCard.querySelector('#mc-back-1');
+          if (backBtn) {
+            backBtn.addEventListener('click', function() {
+              state.step = 1;
+              render();
+            });
+          }
+          var nextBtn = mcCard.querySelector('#mc-next-2');
+          if (nextBtn) {
+            nextBtn.addEventListener('click', function() {
+              if (state.timeframe) {
+                state.step = 3;
+                render();
+              }
+            });
+          }
+        } else if (state.step === 3) {
+          var backBtn = mcCard.querySelector('#mc-back-2');
+          if (backBtn) {
+            backBtn.addEventListener('click', function() {
+              state.step = 2;
+              render();
+            });
+          }
+          var form = mcCard.querySelector('#mc-final-form');
+          if (form) {
+            form.addEventListener('submit', function(e) {
+              e.preventDefault();
+              state.name = mcCard.querySelector('#mc-name').value;
+              state.phone = mcCard.querySelector('#mc-phone').value;
+              state.email = mcCard.querySelector('#mc-email').value;
+              state.location = mcCard.querySelector('#mc-location').value;
+
+              // Post to Netlify forms endpoint
+              var body = 'form-name=consultation&name=' + encodeURIComponent(state.name) +
+                '&phone=' + encodeURIComponent(state.phone) +
+                '&email=' + encodeURIComponent(state.email) +
+                '&location=' + encodeURIComponent(state.location) +
+                '&timeframe=' + encodeURIComponent(state.timeframe) +
+                '&message=' + encodeURIComponent('Primary struggle: ' + state.struggle);
+
+              fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: body
+              }).catch(function(err) {
+                console.error('Submission error:', err);
+              });
+
+              state.step = 4;
+              render();
+            });
+          }
+        }
+      }
+
+      // Replace existing consultation form card with interactive micro-commitment card
+      var bookingCard = document.querySelector('#booking .glass-panel') || document.querySelector('.contact-form') || heroFormCard;
+      if (bookingCard && bookingCard.parentNode) {
+        bookingCard.parentNode.replaceChild(mcCard, bookingCard);
+        render();
+      }
+    }
+
     window.addEventListener('load', function() {
       buildFooter();
+      initHeroMicroCommitmentFlow();
 
       // Initial single sweep on load
       scheduleSweep();

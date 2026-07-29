@@ -271,7 +271,7 @@
       <textarea id="netlify-message" name="message" aria-label="Additional Message"></textarea>
     </form>
     <!-- CallRail Dynamic Number Insertion (DNI) -->
-    <script type="text/javascript" src="https://cdn.callrail.com/companies/764798499/aff735ebb2e830b3a6df/12/swap.js"></script>
+    <script type="text/javascript" src="//cdn.callrail.com/companies/478981351/ae60e779f2d3568a353d/12/swap.js"></script>
   </body>
 
   <script>
@@ -359,16 +359,14 @@
 
           var end = pos + entry.text.length;
 
-          // Split: [text before+phrase] | [superscripts] | [text after]
-          var before = document.createTextNode(text.substring(0, end));
-          var after  = document.createTextNode(text.substring(end));
-
-          par.insertBefore(before, node);
+          // Update existing text node to contain the text up to end of phrase, keeping node in React DOM
+          node.nodeValue = text.substring(0, end);
+          var next = node.nextSibling;
           entry.refs.forEach(function(num) {
-            par.insertBefore(makeSupLink(num), node);
+            par.insertBefore(makeSupLink(num), next);
           });
-          par.insertBefore(after, node);
-          par.removeChild(node);
+          var afterNode = document.createTextNode(text.substring(end));
+          par.insertBefore(afterNode, next);
           break; // Process one match per text node. Subsequent mutations will handle others if any.
         }
       });
@@ -1786,7 +1784,11 @@
         quizCard.innerHTML = html;
       }
 
-      quizRoot.innerHTML = '';
+      Array.from(quizRoot.children).forEach(function(child) {
+        if (child.id !== 'adaptive-quiz-container') {
+          child.style.display = 'none';
+        }
+      });
       quizRoot.appendChild(quizCard);
       renderStep();
     }
@@ -1822,7 +1824,9 @@
           '<p style="max-width:780px;margin:0 auto;font-size:1.05rem;color:#cbd5e1;line-height:1.6;font-weight:300;">Explore how light rays focus inside the eye and simulate how Excimer laser photoablation alters corneal curvature to achieve 20/20 emmetropia.</p>';
 
         container.appendChild(header);
-        container.appendChild(opticsGrid);
+        var clonedOptics = opticsGrid.cloneNode(true);
+        opticsGrid.style.display = 'none';
+        container.appendChild(clonedOptics);
         standaloneSec.appendChild(container);
 
         scienceSec.parentNode.insertBefore(standaloneSec, scienceSec);
@@ -1964,31 +1968,42 @@
     }
 
     var _sweepTimer = null;
+    var observer = null;
     function scheduleSweep() {
       if (_sweepTimer) return;
       _sweepTimer = requestAnimationFrame(function() {
         _sweepTimer = null;
-        var root = document.getElementById('root') || document.body;
-        reformatTrustPillarsSection();
-        injectInto(root);
-        injectEEAT();
-        injectEEATFAQ();
-        injectGlassmorphicLaserSuite();
-        injectStandaloneRefractiveErrorsSection();
-        injectVisionQualitySimulator();
-        initLifestyleSection();
-        initAdaptiveQuiz();
-        injectTimelineStrip();
-        injectROISection();
-        injectMetricsBanner();
-        injectPersonaTags();
-        injectMicrocopyPreemption();
-        injectMobileCTA();
-        ensureAccessibilityLabels();
-        clarifyLandingPageCopy();
-        customizeForCustomVue();
-        injectCostFAQIntoMainFAQ();
-        applyDynamicTextReplacement(root);
+        if (observer) observer.disconnect();
+        try {
+          var root = document.getElementById('root') || document.body;
+          reformatTrustPillarsSection();
+          injectInto(root);
+          injectEEAT();
+          injectEEATFAQ();
+          injectGlassmorphicLaserSuite();
+          injectStandaloneRefractiveErrorsSection();
+          injectVisionQualitySimulator();
+          initLifestyleSection();
+          initAdaptiveQuiz();
+          injectTimelineStrip();
+          injectROISection();
+          injectMetricsBanner();
+          injectPersonaTags();
+          injectMicrocopyPreemption();
+          injectMobileCTA();
+          ensureAccessibilityLabels();
+          clarifyLandingPageCopy();
+          customizeForCustomVue();
+          injectCostFAQIntoMainFAQ();
+          applyDynamicTextReplacement(root);
+        } catch (e) {
+          console.error("DOM enhancement sweep error (non-fatal):", e);
+        } finally {
+          if (observer) {
+            var rootEl = document.getElementById('root') || document.body;
+            observer.observe(rootEl, { childList: true, subtree: true });
+          }
+        }
       });
     }
 
@@ -2159,7 +2174,7 @@
       scheduleSweep();
 
       // Single observer for dynamic content updates
-      var observer = new MutationObserver(scheduleSweep);
+      observer = new MutationObserver(scheduleSweep);
       observer.observe(document.getElementById('root') || document.body, {
         childList: true,
         subtree: true

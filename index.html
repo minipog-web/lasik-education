@@ -1,29 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JPKZXX5HVB"></script>
+    <!-- Google Consent Mode v2 Default Configuration -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      gtag('consent', 'default', {
+        'ad_storage': 'granted',
+        'analytics_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'wait_for_update': 500
+      });
+    </script>
 
-      gtag('config', 'G-JPKZXX5HVB');
-    </script>
-    <!-- Event snippet for Submit lead form (3) conversion page -->
+    <!-- Google Tag Manager Container -->
     <script>
-      gtag('event', 'conversion', {'send_to': 'AW-17962563730/udUdCIWWp9gcEJLxm_VC'});
-    </script>
-    <!-- Google Tag Manager -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-M7XZLSZ9');
     </script>
-    <!-- End Google Tag Manager -->
+
+    <!-- Google Tag (gtag.js) - Google Analytics 4 & Google Ads -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JPKZXX5HVB"></script>
+    <script>
+      gtag('js', new Date());
+
+      // GA4 Configuration
+      gtag('config', 'G-JPKZXX5HVB', {
+        'send_page_view': true,
+        'cookie_flags': 'SameSite=None;Secure'
+      });
+
+      // Google Ads Configuration with Enhanced Conversions support
+      gtag('config', 'AW-17962563730', {
+        'allow_enhanced_conversions': true
+      });
+    </script>
+
+    <!-- CallRail Dynamic Number Insertion (DNI) -->
+    <script type="text/javascript" src="https://cdn.callrail.com/companies/478981351/ae60e779f2d3568a353d/12/swap.js"></script>
+
+    <!-- Performance & Domain Optimization Hints for Tracking Infrastructure -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+    <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
+    <link rel="dns-prefetch" href="https://cdn.callrail.com" />
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Browser Tab Favicon (Vector Eye Icon) -->
@@ -130,41 +158,23 @@
     }
     </script>
 
-    <link rel="preconnect" href="https://www.googletagmanager.com">
-    <!-- Conversion & Analytics Event Tracking -->
+    <!-- Comprehensive GTM, GA4, & Google Ads Event Tracking Architecture -->
     <script>
       (function() {
         window.dataLayer = window.dataLayer || [];
 
-        // Helper function for reliable dataLayer pushes
+        // Unified helper for dataLayer pushes & gtag events
         function trackEvent(eventName, params) {
-          var payload = Object.assign({ event: eventName }, params || {});
+          params = params || {};
+          var payload = Object.assign({
+            event: eventName,
+            timestamp: new Date().toISOString()
+          }, params);
+
           window.dataLayer.push(payload);
           if (typeof window.gtag === 'function') {
-            window.gtag('event', eventName, params || {});
+            window.gtag('event', eventName, params);
           }
-        }
-
-        // 1. Intercept Fetch Submissions (Netlify Forms)
-        var originalFetch = window.fetch;
-        if (originalFetch) {
-          window.fetch = function() {
-            var args = arguments;
-            var url = args[0];
-            var options = args[1];
-            if (url === '/' && options && options.method === 'POST' && typeof options.body === 'string' && options.body.indexOf('form-name=consultation') !== -1) {
-              trackEvent('form_submission', {
-                form_name: 'consultation',
-                form_destination: getParam(options.body, 'location') || 'Livingston',
-                preferred_contact: getParam(options.body, 'preferred_contact') || 'email'
-              });
-              trackEvent('generate_lead', {
-                lead_type: 'consultation_request',
-                location: getParam(options.body, 'location') || 'Livingston'
-              });
-            }
-            return originalFetch.apply(this, args);
-          };
         }
 
         function getParam(body, key) {
@@ -172,51 +182,188 @@
           return match ? decodeURIComponent(match[1].replace(/\+/g, ' ')) : null;
         }
 
-        // 2. Track Interactions (Click-to-Call and CTA buttons)
+        // 1. Intercept Fetch Consultation Form Submissions & Enhanced Conversions
+        var originalFetch = window.fetch;
+        if (originalFetch) {
+          window.fetch = function() {
+            var args = arguments;
+            var url = args[0];
+            var options = args[1];
+            if (url === '/' && options && options.method === 'POST' && typeof options.body === 'string' && options.body.indexOf('form-name=consultation') !== -1) {
+              var nameVal = getParam(options.body, 'name') || '';
+              var emailVal = getParam(options.body, 'email') || '';
+              var phoneVal = getParam(options.body, 'phone') || '';
+              var locationVal = getParam(options.body, 'location') || 'Livingston';
+              var preferredContact = getParam(options.body, 'preferred_contact') || 'email';
+              var timeframeVal = getParam(options.body, 'timeframe') || '';
+
+              var nameParts = nameVal.trim().split(/\s+/);
+              var firstName = nameParts[0] || '';
+              var lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
+              var cleanPhone = phoneVal.replace(/[^\d+]/g, '');
+              var cleanEmail = emailVal.toLowerCase().trim();
+
+              var userData = {
+                email: cleanEmail,
+                phone_number: cleanPhone,
+                address: {
+                  first_name: firstName,
+                  last_name: lastName
+                }
+              };
+
+              // GA4 Standard Lead Generation Event
+              trackEvent('generate_lead', {
+                lead_type: 'consultation_request',
+                form_name: 'consultation',
+                location: locationVal,
+                preferred_contact: preferredContact,
+                timeframe: timeframeVal,
+                value: 150.00,
+                currency: 'USD'
+              });
+
+              trackEvent('form_submission', {
+                form_name: 'consultation',
+                location: locationVal,
+                preferred_contact: preferredContact
+              });
+
+              // Google Ads Conversion Event with Enhanced Conversion User Data
+              window.dataLayer.push({
+                event: 'ads_conversion_submit_lead',
+                send_to: 'AW-17962563730/udUdCIWWp9gcEJLxm_VC',
+                value: 150.00,
+                currency: 'USD',
+                user_data: userData
+              });
+
+              if (typeof window.gtag === 'function') {
+                window.gtag('event', 'conversion', {
+                  'send_to': 'AW-17962563730/udUdCIWWp9gcEJLxm_VC',
+                  'value': 150.00,
+                  'currency': 'USD',
+                  'user_data': userData
+                });
+              }
+            }
+            return originalFetch.apply(this, args);
+          };
+        }
+
+        // 2. Track Interactions (Click-to-Call, CTAs, Tabs)
         document.addEventListener('click', function(e) {
           var target = e.target;
           while (target && target !== document.body) {
-            // Click to Call Tracking
+            // Click-to-Call Link Tracking
             if (target.tagName === 'A' && target.href && target.href.indexOf('tel:') === 0) {
+              var phoneNum = target.href.replace('tel:', '');
               trackEvent('phone_click', {
-                phone_number: target.href.replace('tel:', ''),
-                link_text: (target.innerText || target.textContent || '').trim()
+                phone_number: phoneNum,
+                link_text: (target.innerText || target.textContent || '').trim(),
+                event_category: 'contact',
+                event_label: 'click_to_call'
+              });
+              window.dataLayer.push({
+                event: 'ads_conversion_phone_call',
+                phone_number: phoneNum
               });
               break;
             }
+
             // CTA Button Tracking
             if (target.tagName === 'BUTTON' || (target.className && typeof target.className === 'string' && target.className.indexOf('btn') !== -1)) {
-              var btnText = target.innerText || target.textContent || '';
-              btnText = btnText.trim().replace(/\s+/g, ' ');
+              var btnText = (target.innerText || target.textContent || '').trim().replace(/\s+/g, ' ');
               if (btnText) {
                 trackEvent('cta_click', {
                   cta_label: btnText,
-                  button_id: target.id || null
+                  button_id: target.id || null,
+                  event_category: 'engagement'
                 });
               }
               break;
             }
+
+            // Lifestyle Tab Switch Tracking
+            if (target.classList && target.classList.contains('lifestyle-tab-btn')) {
+              var tabId = target.getAttribute('data-tab');
+              trackEvent('lifestyle_tab_select', {
+                tab_id: tabId,
+                tab_label: (target.innerText || target.textContent || '').trim()
+              });
+              break;
+            }
+
+            // Technology Tab Switch Tracking
+            if (target.classList && target.classList.contains('laser-suite-tab')) {
+              trackEvent('technology_tab_select', {
+                technology_id: target.id,
+                technology_name: (target.innerText || target.textContent || '').trim()
+              });
+              break;
+            }
+
             target = target.parentNode;
           }
         }, true);
 
-        // 3. Quiz Completion Tracking (DOM Mutation Monitoring)
+        // 3. ROI Cost Calculator Interaction Tracking
+        var calcDebounceTimer = null;
+        document.addEventListener('input', function(e) {
+          if (e.target && e.target.id && e.target.id.indexOf('roi-') === 0) {
+            clearTimeout(calcDebounceTimer);
+            calcDebounceTimer = setTimeout(function() {
+              var ageEl = document.getElementById('roi-age-slider');
+              var monthlyEl = document.getElementById('roi-monthly-slider');
+              var hsaEl = document.getElementById('roi-hsa-toggle');
+              trackEvent('calculator_interaction', {
+                calculator_name: 'lasik_roi_cost',
+                age: ageEl ? ageEl.value : null,
+                monthly_spend: monthlyEl ? monthlyEl.value : null,
+                hsa_applied: hsaEl ? hsaEl.checked : false
+              });
+            }, 800);
+          }
+        });
+
+        // 4. Eligibility Quiz Monitoring
         var quizCompletedSent = false;
+        var quizStartedSent = false;
         var observer = new MutationObserver(function() {
-          if (quizCompletedSent) return;
           var rootEl = document.getElementById('root');
           if (!rootEl) return;
-          
-          // Check for quiz results indicator
-          var resultsHeader = rootEl.querySelector('h3');
-          if (resultsHeader) {
-            var text = (resultsHeader.innerText || resultsHeader.textContent || '').trim();
-            if (text === 'Initial Biometrics Approved' || text === 'Assessment Report Prepared') {
-              quizCompletedSent = true;
-              trackEvent('quiz_complete', {
-                quiz_result: text === 'Initial Biometrics Approved' ? 'eligible' : 'review',
-                assessment_status: text
+
+          // Quiz start detection
+          if (!quizStartedSent) {
+            var quizCard = rootEl.querySelector('#hero-mc-card');
+            if (quizCard) {
+              quizStartedSent = true;
+              trackEvent('quiz_start', {
+                quiz_name: '60_sec_lasik_eligibility'
               });
+            }
+          }
+
+          // Quiz completion detection
+          if (!quizCompletedSent) {
+            var resultsHeader = rootEl.querySelector('h3');
+            if (resultsHeader) {
+              var text = (resultsHeader.innerText || resultsHeader.textContent || '').trim();
+              if (text === 'Initial Biometrics Approved' || text === 'Assessment Report Prepared') {
+                quizCompletedSent = true;
+                var resultType = text === 'Initial Biometrics Approved' ? 'eligible' : 'review';
+                trackEvent('quiz_complete', {
+                  quiz_name: '60_sec_lasik_eligibility',
+                  quiz_result: resultType,
+                  assessment_status: text
+                });
+                trackEvent('generate_lead', {
+                  lead_type: 'quiz_completion',
+                  quiz_result: resultType,
+                  value: 100.00,
+                  currency: 'USD'
+                });
+              }
             }
           }
         });
@@ -228,6 +375,28 @@
             subtree: true
           });
         });
+
+        // 5. Scroll Depth Tracking (25%, 50%, 75%, 90%)
+        var scrollMilestones = { 25: false, 50: false, 75: false, 90: false };
+        window.addEventListener('scroll', function() {
+          var winHeight = window.innerHeight || document.documentElement.clientHeight;
+          var docHeight = Math.max(
+            document.body.scrollHeight, document.documentElement.scrollHeight,
+            document.body.offsetHeight, document.documentElement.offsetHeight
+          ) - winHeight;
+          if (docHeight <= 0) return;
+          
+          var scrollPercent = Math.round((window.scrollY / docHeight) * 100);
+          [25, 50, 75, 90].forEach(function(milestone) {
+            if (scrollPercent >= milestone && !scrollMilestones[milestone]) {
+              scrollMilestones[milestone] = true;
+              trackEvent('scroll_depth', {
+                percent_scrolled: milestone
+              });
+            }
+          });
+        }, { passive: true });
+
       })();
     </script>
 
@@ -271,8 +440,6 @@
       <label for="netlify-message">Additional Message</label>
       <textarea id="netlify-message" name="message" aria-label="Additional Message"></textarea>
     </form>
-    <!-- CallRail Dynamic Number Insertion (DNI) -->
-    <script type="text/javascript" src="https://cdn.callrail.com/companies/478981351/ae60e779f2d3568a353d/12/swap.js"></script>
   </body>
 
   <script>
@@ -623,24 +790,24 @@
   <div class="lifestyle-pane-grid" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; text-align: left;">
     <div>
       <h3 style="font-family: var(--font-sans); font-size: 1.6rem; font-weight: 700; color: #ffe293; margin-bottom: 18px; letter-spacing: -0.01em; line-height: 1.25; text-shadow: 0 2px 8px rgba(0,0,0,0.95), 0 6px 18px rgba(0,0,0,0.75), 0 0 25px rgba(226,184,87,0.18);">
-        Elite Acuity under Kinetic Motion
+        Stop Compromising Kinetic Motion & Performance
       </h3>
       <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 0;">
-        For athletes and outdoor enthusiasts, frames are a liability and contact lenses are an active hazard. Wind, sweat, dust, and rapid head movements can dislodge lenses, while glasses reduce peripheral vision. Custom dual-laser correction maps the microscopic irregularities of your corneal surface, creating a wavefront-guided focal landscape. It restores absolute focus and dynamic peripheral tracking, allowing rapid active recovery within 24 to 48 hours so you can perform with complete visual freedom.
+        Every workout or outdoor pursuit spent adjusting slipping frames or dry contacts costs you vital focus and peak reaction time. Sweat, wind, and sudden movements turn lenses into an active hazard while glasses restrict your peripheral awareness. Dr. Marano’s custom dual-laser treatment maps your corneal surface down to sub-micron irregularities, restoring natural edge-to-edge tracking so you never waste another active day bound to optical friction.
       </p>
     </div>
     <div>
       <div style="background: rgba(255, 255, 255, 0.015); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 32px; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
         <h4 style="font-family: var(--font-sans); font-size: 1rem; font-weight: 600; color: #ffffff; margin-bottom: 18px; letter-spacing: 0.05em; text-transform: uppercase;">
-          Target Clinical Outcomes
+          Opportunity Cost Prevented
         </h4>
         <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem; color: #cbd5e1; line-height: 1.5;">
-          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Zero Lens Friction:</strong> No risk of fogging, shifting, or dislodging during motion.</span></li>
-          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Expansive Peripheral Acuity:</strong> True edge-to-edge tracking with zero frame distortion.</span></li>
-          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Rapid Active Recovery:</strong> Resume high-intensity training with elite-tier visual stability.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #ef4444;">✦</span> <span><strong>Eliminate Motion Interference:</strong> End mid-activity lens shifting, fogging, and dust traps.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Reclaim Full Peripheral Tracking:</strong> Unrestricted 180° visual field with zero frame blind spots.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #10b981;">✦</span> <span><strong>24-Hour Recovery:</strong> Resume high-intensity training with elite optical stability next day.</span></li>
         </ul>
-        <button onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
-          Check Your Eligibility
+        <button onclick="document.getElementById('hero-mc-card').scrollIntoView({behavior:'smooth'})" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
+          Audit Your Active Eligibility
         </button>
       </div>
     </div>
@@ -650,24 +817,24 @@
   <div class="lifestyle-pane-grid" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; text-align: left;">
     <div>
       <h3 style="font-family: var(--font-sans); font-size: 1.6rem; font-weight: 700; color: #ffe293; margin-bottom: 18px; letter-spacing: -0.01em; line-height: 1.25;">
-        High-Contrast Precision in Dark Environments
+        Don't Let Headlight Glare & Halos Limit Your Night Independence
       </h3>
       <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 0;">
-        Navigating dark roads at night requires pristine contrast sensitivity. Standard glasses and contact lenses frequently fail to resolve higher-order aberrations, leaving patients to suffer from night glare, halos, and starbursts around headlights. Our custom dual-laser treatment targets these microscopic imperfections directly, delivering pristine contrast and crisp visual acuity even in the most challenging nighttime environments.
+        Struggling to navigate dark unlit roads due to blinding headlight glare, halos, and starbursts isn't just frustrating—it threatens your evening freedom. Standard contacts and off-the-shelf glasses fail to address higher-order optical aberrations. Custom wavefront-guided excimer sculpting targets microscopic surface defects directly, giving you crisp contrast sensitivity and relaxed confidence during night drives.
       </p>
     </div>
     <div>
       <div style="background: rgba(255, 255, 255, 0.015); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 32px; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
         <h4 style="font-family: var(--font-sans); font-size: 1rem; font-weight: 600; color: #ffffff; margin-bottom: 18px; letter-spacing: 0.05em; text-transform: uppercase;">
-          Target Clinical Outcomes
+          Opportunity Cost Prevented
         </h4>
         <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem; color: #cbd5e1; line-height: 1.5;">
-          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Glare &amp; Halo Reduction:</strong> Direct targeting of higher-order night aberrations.</span></li>
-          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>High-Contrast Depth Perception:</strong> Distinguish fine details on dark, unlit roads.</span></li>
-          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Elite Night Reliability:</strong> Clinical-grade optical focus preferred by pilots and night workers.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #ef4444;">✦</span> <span><strong>Eradicate Night Flare Stress:</strong> Direct wavefront reduction of higher-order night glare.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>High-Contrast Depth Perception:</strong> Resolve subtle road hazards clearly in low light.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #10b981;">✦</span> <span><strong>Clinical Pilot-Grade Focus:</strong> Trusted precision focus for night commute security.</span></li>
         </ul>
-        <button onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
-          Check Your Eligibility
+        <button onclick="document.getElementById('hero-mc-card').scrollIntoView({behavior:'smooth'})" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
+          Audit Your Night Driving Vision
         </button>
       </div>
     </div>
@@ -677,24 +844,24 @@
   <div class="lifestyle-pane-grid" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; text-align: left;">
     <div>
       <h3 style="font-family: var(--font-sans); font-size: 1.6rem; font-weight: 700; color: #ffe293; margin-bottom: 18px; letter-spacing: -0.01em; line-height: 1.25;">
-        Pristine Contrast for High-Density Screens
+        Eradicate Daily Screen Defocus & Eye Strain Tax
       </h3>
       <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 0;">
-        High-resolution monitors, complex codebases, and dense spreadsheets create a severe optical strain. Traditional lenses leave minute focus errors uncorrected, leading to digital defocus, blurred character edges, and screen fatigue. Reshaping your cornea using our customized Wavefront-Guided Excimer Laser system maps your optical system across thousands of focal points, rendering sharp character geometry and crisp visual contrast that dramatically reduces near-field fatigue.
+        Long hours analyzing dense spreadsheets, high-res designs, or codebases compound near-field optical fatigue. Standard lenses leave minute focal errors uncorrected, forcing continuous micro-squinting and dry eye irritation. Reshaping your cornea across 250 wavefront focal points eliminates character shadow-defocus, preserving your cognitive stamina throughout 10+ hour screen days.
       </p>
     </div>
     <div>
       <div style="background: rgba(255, 255, 255, 0.015); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 32px; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
         <h4 style="font-family: var(--font-sans); font-size: 1rem; font-weight: 600; color: #ffffff; margin-bottom: 18px; letter-spacing: 0.05em; text-transform: uppercase;">
-          Target Clinical Outcomes
+          Opportunity Cost Prevented
         </h4>
         <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem; color: #cbd5e1; line-height: 1.5;">
-          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Absolute Text Geometry:</strong> Completely eliminate display shadow-defocus.</span></li>
-          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Eradicate Squint Fatigue:</strong> Clear character contrast reduces screen dry-eye.</span></li>
-          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Seamless Focal Agility:</strong> Fluidly transition from displays to boardroom clients.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #ef4444;">✦</span> <span><strong>End Screen Squint Fatigue:</strong> Eradicate character blur and digital eye-strain headache.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Sharper Text Geometry:</strong> Crystal clear focus across multi-monitor setups.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #10b981;">✦</span> <span><strong>Fluid Screen-to-Client Focus:</strong> Instant focal agility from displays to live meetings.</span></li>
         </ul>
-        <button onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'})" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
-          Check Your Eligibility
+        <button onclick="document.getElementById('hero-mc-card').scrollIntoView({behavior:'smooth'})" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
+          Audit Your Executive Eligibility
         </button>
       </div>
     </div>
@@ -930,14 +1097,15 @@
 
       var html = '<div style="max-width:1040px;margin:0 auto;padding:0 24px;">' +
         '<div style="text-align:center;margin-bottom:40px;">' +
-          '<span style="font-family:var(--font-sans);font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:#e2b857;font-weight:700;display:inline-block;margin-bottom:8px;">Financial Architecture & ROI</span>' +
-          '<h2 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,2.8rem);color:#fff;margin-top:4px;font-weight:700;letter-spacing:-0.02em;">The Best Vision Investment<br><span class="bio-heading-accent">You&rsquo;ll Ever Make</span></h2>' +
-          '<p style="font-family:var(--font-sans);font-size:0.95rem;color:#94a3b8;max-width:620px;margin:10px auto 0 auto;line-height:1.6;">Compare your compounding lifetime contact & glasses tax against CustomVue® LASIK\'s single, all-inclusive investment.</p>' +
+          '<span style="font-family:var(--font-sans);font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:#e2b857;font-weight:700;display:inline-block;margin-bottom:8px;">Compounding Lens Tax vs. One-Time Freedom</span>' +
+          '<h2 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,2.8rem);color:#fff;margin-top:4px;font-weight:700;letter-spacing:-0.02em;">Stop Paying a Compounding Tax<br><span class="bio-heading-accent">on Temporary Vision Lenses</span></h2>' +
+          '<p style="font-family:var(--font-sans);font-size:0.95rem;color:#cbd5e1;max-width:640px;margin:10px auto 0 auto;line-height:1.6;">Every year you delay is money permanently lost to disposable contacts, solution, and frames that never solve the underlying refractive error. Compare your compounding lifetime lens tax against CustomVue® LASIK\'s single investment.</p>' +
         '</div>' +
 
-        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;background:rgba(13, 20, 30, 0.75);border:1px solid rgba(226,184,87,0.2);border-radius:24px;padding:clamp(24px, 4vw, 36px);box-shadow:0 25px 60px rgba(0,0,0,0.6), inset 0 0 30px rgba(226,184,87,0.03);" id="roi-calc-card">' +
-          '<!-- Left Column: Controls & HSA/FSA Toggle -->' +
-          '<div style="display:flex;flex-direction:column;gap:24px;text-align:left;">' +
+        '<div class="doppelrand-shell" id="roi-calc-card">' +
+          '<div class="doppelrand-core" style="display:grid;grid-template-columns:1fr 1fr;gap:36px;">' +
+            '<!-- Left Column: Controls & HSA/FSA Toggle -->' +
+            '<div style="display:flex;flex-direction:column;gap:24px;text-align:left;">' +
             '<div>' +
               '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">' +
                 '<label for="roi-age-slider" style="font-size:0.88rem;color:#f8fafc;font-weight:600;">Your Current Age</label>' +
@@ -1016,8 +1184,9 @@
                 '<span style="font-size:0.68rem;text-transform:uppercase;color:#94a3b8;display:block;letter-spacing:1px;">Net Lifetime Savings</span>' +
                 '<div id="roi-net-savings" style="font-size:1.5rem;font-weight:800;color:#10b981;line-height:1;">+$32,740</div>' +
               '</div>' +
-              '<button onclick="document.getElementById(\'quiz\').scrollIntoView({behavior:\'smooth\'})" class="btn btn-primary" style="padding:12px 22px;font-size:0.85rem;">' +
-                'Lock In Your ROI' +
+              '<button onclick="document.getElementById(\'hero-mc-card\').scrollIntoView({behavior:\'smooth\'})" class="btn-island-primary">' +
+                '<span>Lock In Your ROI</span>' +
+                '<span class="btn-icon-island">&rarr;</span>' +
               '</button>' +
             '</div>' +
           '</div>' +
@@ -1147,8 +1316,13 @@
       var bar = document.createElement('div');
       bar.id = 'mobile-sticky-cta';
       bar.className = 'mobile-sticky-cta';
-      bar.innerHTML = '<div style="display:flex;gap:10px;justify-content:center;align-items:center;"><a href="tel:973-755-1876" class="btn btn-secondary" style="padding:12px 20px;min-height:44px;min-width:44px;font-size:0.85rem;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call (973) 755-1876</a><button onclick="document.getElementById(\'quiz\').scrollIntoView({behavior:\'smooth\'})" class="btn btn-primary" style="padding:12px 20px;min-height:44px;min-width:44px;font-size:0.85rem;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;">60-Sec Eligibility Quiz</button></div>';
+      bar.innerHTML = '<div style="display:flex;gap:10px;justify-content:center;align-items:center;"><a href="tel:973-755-1876" class="btn btn-secondary" style="padding:12px 20px;min-height:44px;min-width:44px;font-size:0.85rem;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call (973) 755-1876</a><button onclick="document.getElementById(\'hero-mc-card\').scrollIntoView({behavior:\'smooth\'})" class="btn btn-primary" style="padding:12px 20px;min-height:44px;min-width:44px;font-size:0.85rem;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;">60-Sec Eligibility Quiz</button></div>';
       document.body.appendChild(bar);
+
+      // Trigger CallRail DNI swap for dynamically injected telephone elements
+      if (window.CallRail && typeof window.CallRail.swap === 'function') {
+        window.CallRail.swap();
+      }
     }
 
     // ─── WCAG & Accessibility Helper ─────────────────────────────────────────
@@ -2150,8 +2324,9 @@
                 '</div>' +
               '</div>' +
 
-              '<button type="button" id="mc-next-1" class="btn btn-primary" style="width:100%;padding:14px;margin-top:8px;font-size:0.9rem;justify-content:center;" ' + (!state.struggle ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : '') + '>' +
-                'Continue to Step 2 &rarr;' +
+              '<button type="button" id="mc-next-1" class="btn-island-primary" style="width:100%;margin-top:8px;" ' + (!state.struggle ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : '') + '>' +
+                '<span>Continue to Step 2</span>' +
+                '<span class="btn-icon-island">&rarr;</span>' +
               '</button>' +
             '</div>';
         } else if (state.step === 2) {
@@ -2191,8 +2366,9 @@
 
               '<div style="display:flex;gap:10px;margin-top:8px;">' +
                 '<button type="button" id="mc-back-1" class="btn btn-secondary" style="padding:12px 18px;font-size:0.85rem;">&larr; Back</button>' +
-                '<button type="button" id="mc-next-2" class="btn btn-primary" style="flex:1;padding:14px;font-size:0.9rem;justify-content:center;" ' + (!state.timeframe ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : '') + '>' +
-                  'Unlock Biometric Report &rarr;' +
+                '<button type="button" id="mc-next-2" class="btn-island-primary" style="flex:1;" ' + (!state.timeframe ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : '') + '>' +
+                  '<span>Unlock Biometric Report</span>' +
+                  '<span class="btn-icon-island">&rarr;</span>' +
                 '</button>' +
               '</div>' +
             '</div>';
@@ -2236,8 +2412,9 @@
 
                 '<div style="display:flex;gap:10px;margin-top:6px;">' +
                   '<button type="button" id="mc-back-2" class="btn btn-secondary" style="padding:10px 16px;font-size:0.85rem;">&larr; Back</button>' +
-                  '<button type="submit" class="btn btn-primary" style="flex:1;padding:12px;font-size:0.9rem;justify-content:center;">' +
-                    'Claim Custom Report & Free Evaluation &rarr;' +
+                  '<button type="submit" class="btn-island-primary" style="flex:1;">' +
+                    '<span>Claim Custom Report & Free Evaluation</span>' +
+                    '<span class="btn-icon-island">&rarr;</span>' +
                   '</button>' +
                 '</div>' +
               '</form>' +
@@ -2260,6 +2437,11 @@
 
         mcCard.innerHTML = html;
         bindEvents();
+
+        // Trigger CallRail DNI swap for dynamically rendered step content
+        if (window.CallRail && typeof window.CallRail.swap === 'function') {
+          window.CallRail.swap();
+        }
       }
 
       function bindEvents() {

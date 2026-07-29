@@ -743,5 +743,36 @@ h1, h2, h3, h4, .hero-serif-title, .hero-display-title, .bio-heading {
   content: none !important;
 }
 
+/* ─── Premium Metallic Gold Title Typography ─── */
+.bio-heading-accent,
+.text-gold,
+.gold-metallic-text,
+.metallic-gold,
+.headline-gold,
+.bio-heading span,
+h1 span[style*="color"],
+h2 span[style*="color"],
+h3 span[style*="color"],
+h4 span[style*="color"] {
+  background: linear-gradient(
+    135deg,
+    #FFF9E6 0%,
+    #FFE599 18%,
+    #E2B857 35%,
+    #9E7B2B 52%,
+    #FDF0AA 70%,
+    #E2B857 85%,
+    #B38B30 100%
+  ) !important;
+  background-size: 200% auto !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  display: inline-block !important;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 1px rgba(255, 230, 160, 0.4)) !important;
+  text-shadow: none !important;
+}
+
 
 

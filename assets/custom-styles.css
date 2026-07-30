@@ -492,7 +492,7 @@ h1, h2, h3, .hero-display-title, .bio-heading {
    MARANO HIGH-END UX POLISH ADDITIONS
    ========================================== */
 
-/* 8. Cohesive Motion Language Transitions (60fps Cubic-Bezier) */
+/* 8. Cohesive Motion Language Transitions & FAQ Box Uniform Spacing */
 .btn, 
 .quiz-option-btn, 
 .science-tab-btn, 
@@ -505,6 +505,24 @@ h1, h2, h3, .hero-display-title, .bio-heading {
 input,
 textarea {
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* FAQ Section Equalized Spacing System */
+.faq-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+}
+
+.faq-item {
+  margin: 0 !important;
+  padding: 24px 28px !important;
+  box-sizing: border-box !important;
+  border-radius: 16px !important;
+  min-height: 120px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
 }
 
 /* 9. Premium Keyboard Focus Indicators (WCAG AA Compliance) */
@@ -1218,6 +1236,8 @@ h4 span[style*="color"] {
   border-color: rgba(226, 184, 87, 0.45) !important;
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4) !important;
 }
+
+/* Restored original Science & History of LASIK tab system */
 
 
 

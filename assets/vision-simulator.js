@@ -3,7 +3,7 @@
 
   window.initVisionSimulator = function initVisionSimulator() {
     var container = document.getElementById('vision-simulator-container');
-    if (!container || container.querySelector('.sim-wrapper')) return;
+    if (!container) return;
 
     var sphere = -2.00;
     var cylinder = -1.50;
@@ -92,6 +92,10 @@
       imgLoaded = true;
       updateSimulation();
     };
+
+    // Trigger initial render immediately
+    setTimeout(updateSimulation, 100);
+    setTimeout(updateSimulation, 500);
 
     // Aspect-ratio preserving Cover Math to prevent stretching/distortion
     function drawImageCover(ctx, img, width, height) {

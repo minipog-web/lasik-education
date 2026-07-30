@@ -1098,7 +1098,7 @@
       var html = '<div style="max-width:1040px;margin:0 auto;padding:0 24px;">' +
         '<div style="text-align:center;margin-bottom:40px;">' +
           '<span style="font-family:var(--font-sans);font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:#e2b857;font-weight:700;display:inline-block;margin-bottom:8px;">Compounding Lens Tax vs. One-Time Freedom</span>' +
-          '<h2 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,2.8rem);color:#fff;margin-top:4px;font-weight:700;letter-spacing:-0.02em;">Stop Paying a Compounding Tax<br><span class="bio-heading-accent">on Temporary Vision Lenses</span></h2>' +
+          '<h2 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,2.8rem);color:#fff;margin-top:4px;font-weight:700;letter-spacing:-0.02em;">Stop Paying a <span class="bio-heading-accent">Compounding Tax</span><br>on <span class="bio-heading-accent">Temporary Lenses</span></h2>' +
           '<p style="font-family:var(--font-sans);font-size:0.95rem;color:#cbd5e1;max-width:640px;margin:10px auto 0 auto;line-height:1.6;">Every year you delay is money permanently lost to disposable contacts, solution, and frames that never solve the underlying refractive error. Compare your compounding lifetime lens tax against CustomVue® LASIK\'s single investment.</p>' +
         '</div>' +
 
@@ -1462,8 +1462,8 @@
       }
 
       var heroSub = document.querySelector('.hero-left p.text-secondary, .hero-content p.text-secondary');
-      if (heroSub && heroSub.textContent.indexOf('Peak performers') === -1) {
-        heroSub.textContent = "Peak performers don't settle for visual friction. Target 20/20 clarity—or superior 20/15 precision (sharper than standard 20/20, achieved by many patients, though individual outcomes vary)—with Dr. Marano’s 10-second custom dual-laser procedure and 24-hour recovery. See if you qualify in 60 seconds.";
+      if (heroSub && heroSub.textContent.indexOf('High performers don\'t compromise') === -1) {
+        heroSub.textContent = "High performers don't compromise on how they see the world. Upgrade beyond standard 20/20 vision to ultra-HD 20/15 precision—sculpted by Dr. Marano’s 10-second dual-laser suite for 24-hour recovery and total visual freedom. Take 60 seconds to unlock your qualification.";
       }
 
       // 2. Science Section Heading & Tech Cards
@@ -1974,62 +1974,8 @@
     };
 
     function injectStandaloneRefractiveErrorsSection() {
-      var scienceSec = getScienceSection();
-      if (!scienceSec) return;
-
-      var opticsGrid = document.querySelector('.optics-grid');
-      if (!opticsGrid) return;
-
-      if (!document.getElementById('refractive-errors-standalone')) {
-        var standaloneSec = document.createElement('div');
-        standaloneSec.id = 'refractive-errors-standalone';
-        standaloneSec.className = 'section';
-        standaloneSec.style.cssText = 'padding: clamp(60px, 6vw, 90px) 24px; position: relative; border-bottom: 1px solid rgba(255,255,255,0.04);';
-
-        var container = document.createElement('div');
-        container.className = 'container';
-        container.style.cssText = 'max-width: 1100px; margin: 0 auto;';
-
-        var header = document.createElement('div');
-        header.className = 'text-center';
-        header.style.marginBottom = '36px';
-        header.innerHTML = 
-          '<span style="display:inline-block;padding:4px 14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);font-size:0.7rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;border-radius:100px;margin-bottom:12px;">Biometric Optics</span>' +
-          '<h2 class="bio-heading" style="font-size:clamp(1.8rem, 3.5vw, 2.5rem);font-weight:700;color:#fff;margin-bottom:12px;">Understanding <span class="bio-heading-accent">Refractive Errors: Myopia & Hyperopia</span></h2>' +
-          '<p style="max-width:780px;margin:0 auto;font-size:1.05rem;color:#cbd5e1;line-height:1.6;font-weight:300;">Explore how light rays focus inside the eye and simulate how Excimer laser photoablation alters corneal curvature to achieve 20/20 emmetropia.</p>';
-
-        container.appendChild(header);
-        var clonedOptics = opticsGrid.cloneNode(true);
-        opticsGrid.style.display = 'none';
-        container.appendChild(clonedOptics);
-        standaloneSec.appendChild(container);
-
-        scienceSec.parentNode.insertBefore(standaloneSec, scienceSec);
-      }
-
-      // Suppress any duplicate Refractive Errors headers/tabs inside #lasik-science
-      if (scienceSec) {
-        var headings = scienceSec.querySelectorAll('h3, h4');
-        for (var i = 0; i < headings.length; i++) {
-          if (headings[i].textContent.indexOf('Understanding Refractive Errors') !== -1) {
-            var tabContent = headings[i].closest('.animate-fade-in') || headings[i].parentNode;
-            if (tabContent && tabContent.parentNode) {
-              tabContent.style.display = 'none';
-            }
-          }
-        }
-
-        // Ensure Tab 0 button is hidden and Tab 1 (Historical Evolution) is active
-        var tabs = scienceSec.querySelectorAll('.glass-panel button, .science-tab-btn');
-        if (tabs && tabs.length > 1) {
-          if (tabs[0].textContent.indexOf('Optical Physics') !== -1 || tabs[0].textContent.indexOf('Refractive') !== -1) {
-            tabs[0].style.display = 'none';
-            if (!tabs[1].classList.contains('active') && !tabs[1].getAttribute('style')?.includes('color: rgb(255, 255, 255)')) {
-              tabs[1].click();
-            }
-          }
-        }
-      }
+      // Preserves original Science & History section tabs intact
+      return;
     }
 
     function injectVisionQualitySimulator() {
@@ -2170,6 +2116,7 @@
     }
 
     function injectCostFAQIntoMainFAQ() {
+      return; // Disabled to prevent uneven extra FAQ cards
       var faqHeaders = Array.from(document.querySelectorAll('h2.bio-heading'));
       var mainFaqHeading = faqHeaders.find(function(h) {
         return h.textContent.indexOf('Frequently Asked') !== -1;
@@ -2188,7 +2135,7 @@
         var costCard = document.createElement('div');
         costCard.id = 'cost-faq-main-item';
         costCard.className = 'glass-panel';
-        costCard.setAttribute('style', 'background: rgba(13, 20, 30, 0.7); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 16px; overflow: hidden; padding: 0; transition: all 0.4s ease; margin-top: 16px; text-align: left;');
+        costCard.setAttribute('style', 'background: rgba(13, 20, 30, 0.7); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 16px; overflow: hidden; padding: 0; transition: all 0.4s ease; margin: 0; text-align: left;');
         
         costCard.innerHTML = 
           '<button type="button" class="cost-faq-trigger-btn" style="width:100%; padding:24px 32px; background:transparent; border:none; outline:none; display:flex; justify-content:space-between; align-items:center; text-align:left; cursor:pointer;">' +
@@ -2226,7 +2173,7 @@
         var monoCard = document.createElement('div');
         monoCard.id = 'monovision-faq-main-item';
         monoCard.className = 'glass-panel';
-        monoCard.setAttribute('style', 'background: rgba(13, 20, 30, 0.7); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 16px; overflow: hidden; padding: 0; transition: all 0.4s ease; margin-top: 16px; text-align: left;');
+        monoCard.setAttribute('style', 'background: rgba(13, 20, 30, 0.7); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 16px; overflow: hidden; padding: 0; transition: all 0.4s ease; margin: 0; text-align: left;');
         
         monoCard.innerHTML = 
           '<button type="button" class="mono-faq-trigger-btn" style="width:100%; padding:24px 32px; background:transparent; border:none; outline:none; display:flex; justify-content:space-between; align-items:center; text-align:left; cursor:pointer;">' +

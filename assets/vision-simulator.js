@@ -64,7 +64,7 @@
 
           <div class="sim-control-group">
             <div class="sim-control-header">
-              <label for="sim-axis-slider">Astigmatism Axis Angle (\(\theta\))</label>
+              <label for="sim-axis-slider">Astigmatism Axis Angle</label>
               <span id="sim-axis-val" class="sim-val-badge">90°</span>
             </div>
             <input type="range" id="sim-axis-slider" min="0" max="180" step="1" value="90" aria-label="Axis Angle Slider">

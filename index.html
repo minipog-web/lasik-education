@@ -1859,6 +1859,8 @@
       document.getElementById('tab-laser-wavescan').addEventListener('click', function() { updateSuite('wavescan'); });
       document.getElementById('tab-laser-femto').addEventListener('click', function() { updateSuite('femto'); });
       document.getElementById('tab-laser-excimer').addEventListener('click', function() { updateSuite('excimer'); });
+
+      container.appendChild(suite);
     }
 
     function initAdaptiveQuiz() {

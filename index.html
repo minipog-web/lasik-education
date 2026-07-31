@@ -23,34 +23,19 @@
       })(window,document,'script','dataLayer','GTM-M7XZLSZ9');
     </script>
 
-    <!-- Google Tag (gtag.js) - Google Analytics 4 & Google Ads -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JPKZXX5HVB"></script>
-    <script>
-      gtag('js', new Date());
-
-      // GA4 Configuration
-      gtag('config', 'G-JPKZXX5HVB', {
-        'send_page_view': true,
-        'cookie_flags': 'SameSite=None;Secure'
-      });
-
-      // Google Ads Configuration with Enhanced Conversions support
-      gtag('config', 'AW-17962563730', {
-        'allow_enhanced_conversions': true
-      });
-    </script>
 
     <!-- CallRail Dynamic Number Insertion (DNI) -->
     <script type="text/javascript" src="https://cdn.callrail.com/companies/478981351/ae60e779f2d3568a353d/12/swap.js"></script>
 
     <!-- Performance & Domain Optimization Hints for Tracking Infrastructure -->
+    <link rel="preconnect" href="https://cdn.callrail.com" crossorigin />
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
     <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.callrail.com" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://www.google-analytics.com" />
     <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
-    <link rel="dns-prefetch" href="https://cdn.callrail.com" />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -251,7 +236,24 @@
           };
         }
 
-        // 2. Track Interactions (Click-to-Call, CTAs, Tabs)
+        // 2. Form Field Engagement & Start Tracking
+        var formStarted = false;
+        document.addEventListener('focusin', function(e) {
+          if (e.target && e.target.form && (e.target.form.name === 'consultation' || e.target.closest('#hero-mc-card'))) {
+            if (!formStarted) {
+              formStarted = true;
+              trackEvent('form_start', {
+                form_name: 'consultation',
+                first_field: e.target.name || e.target.id
+              });
+            }
+            trackEvent('form_field_focus', {
+              field_name: e.target.name || e.target.id
+            });
+          }
+        }, true);
+
+        // 3. Track Interactions (Click-to-Call, Outbound Links, CTAs, Tabs, Vision Simulator)
         document.addEventListener('click', function(e) {
           var target = e.target;
           while (target && target !== document.body) {
@@ -267,6 +269,35 @@
               window.dataLayer.push({
                 event: 'ads_conversion_phone_call',
                 phone_number: phoneNum
+              });
+              break;
+            }
+
+            // Google Maps Directions Click
+            if (target.tagName === 'A' && target.href && target.href.indexOf('google.com/maps') !== -1) {
+              trackEvent('maps_directions_click', {
+                destination: (target.innerText || target.textContent || '').trim(),
+                link_url: target.href
+              });
+              break;
+            }
+
+            // Outbound Practice Network Link Tracking
+            if (target.tagName === 'A' && target.href && target.hostname && target.hostname !== window.location.hostname) {
+              trackEvent('outbound_click', {
+                outbound_domain: target.hostname,
+                link_url: target.href,
+                link_text: (target.innerText || target.textContent || '').trim()
+              });
+            }
+
+            // Vision Simulator Preset & HD Buttons
+            if (target.classList && target.classList.contains('sim-preset-btn')) {
+              var isHD = target.classList.contains('sim-preset-hd');
+              trackEvent(isHD ? 'vision_simulator_hd_click' : 'vision_simulator_preset_click', {
+                preset_name: (target.innerText || target.textContent || '').trim(),
+                sphere: target.getAttribute('data-sphere') || '0',
+                cylinder: target.getAttribute('data-cyl') || '0'
               });
               break;
             }
@@ -307,7 +338,7 @@
           }
         }, true);
 
-        // 3. ROI Cost Calculator Interaction Tracking
+        // 4. ROI Cost Calculator Interaction Tracking
         var calcDebounceTimer = null;
         document.addEventListener('input', function(e) {
           if (e.target && e.target.id && e.target.id.indexOf('roi-') === 0) {
@@ -326,7 +357,7 @@
           }
         });
 
-        // 4. Eligibility Quiz Monitoring
+        // 5. Eligibility Quiz Monitoring
         var quizCompletedSent = false;
         var quizStartedSent = false;
         var observer = new MutationObserver(function() {
@@ -376,7 +407,7 @@
           });
         });
 
-        // 5. Scroll Depth Tracking (25%, 50%, 75%, 90%)
+        // 6. Scroll Depth Tracking (25%, 50%, 75%, 90%)
         var scrollMilestones = { 25: false, 50: false, 75: false, 90: false };
         window.addEventListener('scroll', function() {
           var winHeight = window.innerHeight || document.documentElement.clientHeight;
@@ -397,8 +428,20 @@
           });
         }, { passive: true });
 
+        // 7. Time on Page Engagement Milestones (30s, 60s, 120s)
+        [30, 60, 120].forEach(function(seconds) {
+          setTimeout(function() {
+            if (!document.hidden) {
+              trackEvent('user_engagement_time', {
+                engaged_seconds: seconds
+              });
+            }
+          }, seconds * 1000);
+        });
+
       })();
     </script>
+
 
     <script type="module" crossorigin src="./assets/index-nb1vded4_v2.js?v=49"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">

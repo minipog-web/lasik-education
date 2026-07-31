@@ -41,7 +41,7 @@
           <button class="sim-preset-btn active" data-sphere="-2.00" data-cyl="0" data-axis="0">Mild Myopia (-2.00 D)</button>
           <button class="sim-preset-btn" data-sphere="-6.00" data-cyl="0" data-axis="0">High Myopia (-6.00 D)</button>
           <button class="sim-preset-btn" data-sphere="0" data-cyl="-2.50" data-axis="90">Vertical Astigmatism (-2.50 D @ 90°)</button>
-          <button class="sim-preset-btn" data-sphere="-4.00" data-cyl="-2.00" data-axis="45">Oblique Astigmatism (-4.00D / -2.00D @ 45°)</button>
+          <button class="sim-preset-btn" data-sphere="+3.00" data-cyl="0" data-axis="0">Hyperopia (+3.00 D Farsightedness)</button>
           <button class="sim-preset-btn sim-preset-hd" id="sim-preset-hd">✨ Wavefront 20/15 HD LASIK</button>
         </div>
 

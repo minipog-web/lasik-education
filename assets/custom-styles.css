@@ -1303,6 +1303,201 @@ select:focus {
 
 .btn-primary:hover,
 .cta-btn-primary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.mc-progress-fill {
+  height: 100%;
+  width: 33%;
+  background: linear-gradient(90deg, #e2b857 0%, #10b981 100%);
+  transition: width 0.4s ease;
+}
+
+/* ==========================================================================
+   Awwwards-Tier Design Tokens & Fluid Motion Physics
+   ========================================================================== */
+
+:root {
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* 1. Doppelrand / Double-Bezel Nested Architecture */
+.doppelrand-shell {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(226, 184, 87, 0.18) !important;
+  border-radius: 28px !important;
+  padding: 8px !important;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.6s var(--ease-spring) !important;
+}
+
+.doppelrand-core {
+  background: rgba(6, 11, 23, 0.92) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: calc(28px - 8px) !important;
+  padding: 32px !important;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+.doppelrand-shell:hover {
+  border-color: rgba(226, 184, 87, 0.35) !important;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.85), 0 0 35px rgba(226, 184, 87, 0.12) !important;
+  transform: translateY(-4px) !important;
+}
+
+/* Upgrade Hero Card with Doppelrand Shell */
+.micro-commitment-card {
+  background: rgba(6, 11, 23, 0.92) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(226, 184, 87, 0.25) !important;
+  border-radius: 24px !important;
+  padding: 28px 24px !important;
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.6s var(--ease-spring) !important;
+}
+
+.micro-commitment-card:hover {
+  border-color: rgba(226, 184, 87, 0.4) !important;
+  box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(226, 184, 87, 0.15) !important;
+}
+
+/* 2. Nested CTA "Button-in-Button" Island Architecture */
+.btn-island-primary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  border-radius: 100px !important;
+  padding: 6px 6px 6px 22px !important;
+  background: linear-gradient(135deg, #e2b857 0%, #c99a38 100%) !important;
+  color: #080c14 !important;
+  font-weight: 700 !important;
+  font-size: 0.88rem !important;
+  letter-spacing: 0.2px !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 10px 25px rgba(226, 184, 87, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  cursor: pointer !important;
+  transition: all 0.4s var(--ease-spring) !important;
+  text-decoration: none !important;
+}
+
+.btn-island-primary:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 18px 35px rgba(226, 184, 87, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+}
+
+.btn-island-primary:active {
+  transform: translateY(0) scale(0.98) !important;
+}
+
+.btn-icon-island {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 50% !important;
+  background: rgba(8, 12, 20, 0.9) !important;
+  color: #e2b857 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.4s var(--ease-spring), background 0.3s ease !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+}
+
+.btn-island-primary:hover .btn-icon-island {
+  transform: translateX(3px) scale(1.08) !important;
+  background: #080c14 !important;
+  color: #ffe293 !important;
+}
+
+/* 3. Section Macro-Whitespace Rules */
+.section-macro-breathe {
+  padding: clamp(80px, 8vw, 120px) 0 !important;
+}
+
+/* 4. Fluid Card Interactions */
+.mc-option-card {
+  transition: all 0.35s var(--ease-spring) !important;
+}
+
+.mc-option-card:hover {
+  transform: translateY(-3px) scale(1.01) !important;
+  border-color: rgba(226, 184, 87, 0.45) !important;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Restored original Science & History of LASIK tab system */
+
+/* ─── Anti-UI-Slop & Editorial Aesthetic System Refinements ──────────────── */
+
+/* 1. Tracked Micro-Eyebrows & Luxury Typography */
+.eyebrow,
+.section-eyebrow,
+.sim-badge,
+.sim-overlay-badge,
+.badge-label {
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+}
+
+/* 2. Glassmorphism Focus States for Form Inputs */
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+  border-color: rgba(226, 184, 87, 0.55) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 0 20px rgba(226, 184, 87, 0.16) !important;
+  outline: none !important;
+  transition: all 0.3s ease !important;
+}
+
+/* 3. Live Status Indicator Dot & Animation */
+.pulse-dot-live {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  animation: pulse-dot-glow 2s infinite ease-in-out;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+@keyframes pulse-dot-glow {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+/* 4. Subdued Ambient Glow for Primary CTA Buttons */
+.btn-primary,
+.cta-btn-primary {
+  box-shadow: 0 10px 25px rgba(226, 184, 87, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-primary:hover,
+.cta-btn-primary:hover {
   transform: translateY(-2px) !important;
   box-shadow: 0 16px 35px rgba(226, 184, 87, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
 }
@@ -1311,4 +1506,232 @@ select:focus {
 .section-macro-breathe {
   padding-top: clamp(90px, 9vw, 140px) !important;
   padding-bottom: clamp(90px, 9vw, 140px) !important;
+}
+
+/* 6. Utility & Preemption Component Classes */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.risk-reversal-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 10px;
+  font-size: 0.75rem;
+  color: #10b981;
+  font-weight: 600;
+}
+
+.microcopy-contact-preemption {
+  text-align: center;
+  font-size: 0.82rem;
+  color: #cbd5e1;
+  margin-top: 18px;
+  line-height: 1.6;
+  width: 100%;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 12px 16px;
+  background: rgba(226, 184, 87, 0.03);
+  border: 1px solid rgba(226, 184, 87, 0.12);
+  border-radius: 12px;
+}
+
+.microcopy-quiz-preemption {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-top: 18px;
+  font-style: italic;
+  line-height: 1.5;
+  width: 100%;
+}
+
+.persona-tag-standard {
+  font-family: monospace;
+  font-size: 0.65rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #e2b857;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* 7. Static Pre-rendered HTML Shell Classes */
+.static-header {
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #080b11;
+}
+
+.static-logo {
+  height: 50px;
+}
+
+.static-phone-link {
+  color: #e2b857;
+  font-weight: 700;
+  text-decoration: underline;
+  margin-right: 16px;
+}
+
+.static-location-span {
+  color: #cbd5e1;
+  font-size: 0.85rem;
+}
+
+.static-hero-section {
+  padding: 60px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.static-hero-eyebrow {
+  color: #e2b857;
+  font-family: monospace;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.static-hero-h2 {
+  font-size: 2.8rem;
+  color: #ffffff;
+  margin: 12px 0;
+}
+
+.static-hero-p {
+  font-size: 1.15rem;
+  color: #cbd5e1;
+  max-width: 760px;
+  margin: 0 auto 24px auto;
+  line-height: 1.6;
+}
+
+.static-hero-cta-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.static-hero-cta {
+  background: #e2b857;
+  color: #080b11;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.static-pillars-section {
+  padding: 48px 24px;
+  background: #0d121d;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.static-container-1100 {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.static-pillars-h3 {
+  font-size: 1.8rem;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.static-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  text-align: left;
+}
+
+.static-pillar-card {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(226, 184, 87, 0.15);
+}
+
+.static-pillar-tag {
+  color: #e2b857;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.static-pillar-h4 {
+  color: #fff;
+  font-size: 1.1rem;
+  margin: 6px 0;
+}
+
+.static-pillar-p {
+  color: #cbd5e1;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.static-reviews-section {
+  padding: 48px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.static-reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  text-align: left;
+}
+
+.static-review-card {
+  background: #0d141e;
+  padding: 28px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.static-review-stars {
+  color: #fbbf24;
+  margin-bottom: 8px;
+}
+
+.static-review-quote {
+  color: #e2e8f0;
+  font-style: italic;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.static-review-author {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.static-white-text {
+  color: #fff;
 }

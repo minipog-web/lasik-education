@@ -24,6 +24,8 @@
   .proof-card:nth-child(8) { grid-column: span 3; }
   .proof-card:nth-child(9) { grid-column: span 2; }
   .proof-card:nth-child(10) { grid-column: span 4; }
+  .proof-card:nth-child(11) { grid-column: span 3; }
+  .proof-card:nth-child(12) { grid-column: span 3; }
 
   /* Typography Hierarchy & Contrast on Featured Columns */
   .proof-card:nth-child(3) .proof-quote,
@@ -1734,4 +1736,8 @@ select:focus {
 
 .static-white-text {
   color: #fff;
+}
+
+.bot-honeypot {
+  display: none !important;
 }

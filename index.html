@@ -1421,30 +1421,34 @@
 
       var card1 = document.createElement('div');
       card1.id = 'testimonial-concern-1';
-      card1.className = 'proof-card glass-panel';
-      card1.setAttribute('style', 'padding: 24px; border-radius: 18px; background: rgba(8, 12, 20, 0.7); border: 1px solid rgba(226, 184, 87, 0.2);');
+      card1.className = 'proof-card';
       card1.innerHTML = 
-        '<div class="persona-tag" style="font-family:monospace;font-size:0.65rem;letter-spacing:2.5px;text-transform:uppercase;color:#e2b857;font-weight:700;margin-bottom:10px;">Automated Eye-Tracking & Zero-Pain Reassurance</div>' +
-        '<p class="proof-quote" style="font-size:0.95rem;line-height:1.6;color:#f8fafc;margin-bottom:14px;">' +
-          '"My single biggest fear was moving my eye or flinching during the procedure. Dr. Marano reassured me that the laser\'s automated 3D tracking system follows your eye and instantly pauses if you move even a fraction of a millimeter. In the chair, I felt zero pain—just a quick, gentle pressure for 12 seconds per eye. Knowing the laser protects you the entire time removed all my anxiety."' +
+        '<div class="proof-stars">★★★★★</div>' +
+        '<p class="proof-quote">' +
+          'My single biggest fear was moving my eye or flinching during the procedure. Dr. Marano reassured me that the laser\'s automated 3D tracking system follows your eye and instantly pauses if you move even a fraction of a millimeter. In the chair, I felt zero pain—just a quick, gentle pressure for 12 seconds per eye. Knowing the laser protects you the entire time removed all my anxiety.' +
         '</p>' +
-        '<div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.06);padding-top:12px;font-size:0.8rem;color:#94a3b8;">' +
-          '<div><strong style="color:#ffffff;">Marcus T.</strong> — Financial Analyst</div>' +
-          '<div style="color:#e2b857;">★★★★★ <span style="font-size:0.7rem;color:#64748b;">(Verified Patient)</span></div>' +
+        '<div class="proof-attribution">' +
+          '<div class="proof-avatar proof-avatar-2">MT</div>' +
+          '<div class="proof-author-info">' +
+            '<span class="proof-author-name">Marcus T.</span>' +
+            '<span class="proof-author-detail">Financial Analyst &bull; Verified Patient</span>' +
+          '</div>' +
         '</div>';
 
       var card2 = document.createElement('div');
       card2.id = 'testimonial-concern-2';
-      card2.className = 'proof-card glass-panel';
-      card2.setAttribute('style', 'padding: 24px; border-radius: 18px; background: rgba(8, 12, 20, 0.7); border: 1px solid rgba(226, 184, 87, 0.2);');
+      card2.className = 'proof-card';
       card2.innerHTML = 
-        '<div class="persona-tag" style="font-family:monospace;font-size:0.65rem;letter-spacing:2.5px;text-transform:uppercase;color:#e2b857;font-weight:700;margin-bottom:10px;">Post-Op Surface Comfort & 24hr Recovery</div>' +
-        '<p class="proof-quote" style="font-size:0.95rem;line-height:1.6;color:#f8fafc;margin-bottom:14px;">' +
-          '"I had worn contacts for 14 years and dealt with severe dry eyes every afternoon. I almost backed out of LASIK assuming it would make my dry eyes permanent. Dr. Marano used the blade-free femtosecond laser to create an ultra-thin flap that preserved my corneal surface. By the next morning, I took a 9 AM Zoom call with zero discomfort and sharper vision than I ever had in contacts."' +
+        '<div class="proof-stars">★★★★★</div>' +
+        '<p class="proof-quote">' +
+          'I had worn contacts for 14 years and dealt with severe dry eyes every afternoon. I almost backed out of LASIK assuming it would make my dry eyes permanent. Dr. Marano used the blade-free femtosecond laser to create an ultra-thin flap that preserved my corneal surface. By the next morning, I took a 9 AM Zoom call with zero discomfort and sharper vision than I ever had in contacts.' +
         '</p>' +
-        '<div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.06);padding-top:12px;font-size:0.8rem;color:#94a3b8;">' +
-          '<div><strong style="color:#ffffff;">Elena V.</strong> — Senior Software Engineer</div>' +
-          '<div style="color:#e2b857;">★★★★★ <span style="font-size:0.7rem;color:#64748b;">(Verified Patient)</span></div>' +
+        '<div class="proof-attribution">' +
+          '<div class="proof-avatar proof-avatar-1">EV</div>' +
+          '<div class="proof-author-info">' +
+            '<span class="proof-author-name">Elena V.</span>' +
+            '<span class="proof-author-detail">Senior Software Engineer &bull; Verified Patient</span>' +
+          '</div>' +
         '</div>';
 
       grid.appendChild(card1);
@@ -1454,7 +1458,6 @@
     // ─── P1: Social Proof Persona Tags ────────────────────────────────────
 
     function injectPersonaTags() {
-      if (document.querySelector('.persona-tag')) return;
       var cards = document.querySelectorAll('.proof-card');
       if (cards.length === 0) return;
 
@@ -1468,7 +1471,9 @@
         'Chronic Contact Irritation Relief',
         'HD Skyline Perception over GWB',
         'Two-Decade Stable 20/20 Result',
-        'Night Contrast & Saturated Color Upgrade'
+        'Night Contrast & Saturated Color Upgrade',
+        'Automated Eye-Tracking & Zero-Pain Reassurance',
+        'Post-Op Surface Comfort & 24hr Recovery'
       ];
       cards.forEach(function(card, i) {
         if (card.querySelector('.persona-tag')) return;

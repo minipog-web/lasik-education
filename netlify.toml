@@ -4,6 +4,13 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+
 [functions]
 
   [functions.emails]
@@ -24,12 +31,15 @@ pinned_version = "1"
 command = ""
 publish = "."
 
-
   [build.environment]
   NODE_VERSION = "20"
+  PRERENDER_ENABLE = "true"
 
   [build.processing]
-    skip_processing = true
+    skip_processing = false
 
-
-  [build.services]
+# Prerender Redirects for Search Engine Crawlers & Social Bots
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

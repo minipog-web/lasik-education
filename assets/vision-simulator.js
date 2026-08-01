@@ -223,9 +223,28 @@
       cylinder = parseFloat(cylSlider.value);
       axis = parseInt(axisSlider.value, 10);
 
-      document.getElementById('sim-sphere-val').textContent = (sphere > 0 ? '+' : '') + sphere.toFixed(2) + ' D';
-      document.getElementById('sim-cyl-val').textContent = cylinder.toFixed(2) + ' D';
-      document.getElementById('sim-axis-val').textContent = axis + '°';
+      var sphValEl = document.getElementById('sim-sphere-val');
+      var cylValEl = document.getElementById('sim-cyl-val');
+      var axisValEl = document.getElementById('sim-axis-val');
+
+      if (sphValEl) {
+        sphValEl.textContent = (sphere > 0 ? '+' : '') + sphere.toFixed(2) + ' D';
+        sphValEl.style.transform = 'scale(1.1)';
+        sphValEl.style.transition = 'transform 0.15s cubic-bezier(0.16, 1, 0.3, 1)';
+        setTimeout(function() { sphValEl.style.transform = 'scale(1)'; }, 150);
+      }
+      if (cylValEl) {
+        cylValEl.textContent = cylinder.toFixed(2) + ' D';
+        cylValEl.style.transform = 'scale(1.1)';
+        cylValEl.style.transition = 'transform 0.15s cubic-bezier(0.16, 1, 0.3, 1)';
+        setTimeout(function() { cylValEl.style.transform = 'scale(1)'; }, 150);
+      }
+      if (axisValEl) {
+        axisValEl.textContent = axis + '°';
+        axisValEl.style.transform = 'scale(1.1)';
+        axisValEl.style.transition = 'transform 0.15s cubic-bezier(0.16, 1, 0.3, 1)';
+        setTimeout(function() { axisValEl.style.transform = 'scale(1)'; }, 150);
+      }
 
       updateSimulation();
     }

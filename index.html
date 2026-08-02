@@ -65,6 +65,43 @@
       "@context": "https://schema.org",
       "@graph": [
         {
+          "@type": "WebSite",
+          "@id": "https://lasik.maranoeye.com/#website",
+          "url": "https://lasik.maranoeye.com",
+          "name": "Marano Eye Care LASIK",
+          "publisher": {
+            "@id": "https://lasik.maranoeye.com/#maranoeyecare"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://lasik.maranoeye.com/#webpage",
+          "url": "https://lasik.maranoeye.com",
+          "name": "Custom LASIK for Athletes & Professionals | Marano Eye Care",
+          "isPartOf": {
+            "@id": "https://lasik.maranoeye.com/#website"
+          },
+          "about": {
+            "@id": "https://lasik.maranoeye.com/#maranoeyecare"
+          },
+          "description": "Restore raw visual stamina and crisp nighttime contrast with New Jersey's dual-laser Custom Wavefront-Guided LASIK specialists. Over 98% of patients achieve 20/20 within 24 hours.",
+          "breadcrumb": {
+            "@id": "https://lasik.maranoeye.com/#breadcrumb"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://lasik.maranoeye.com/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://lasik.maranoeye.com"
+            }
+          ]
+        },
+        {
           "@type": "MedicalBusiness",
           "@id": "https://lasik.maranoeye.com/#maranoeyecare",
           "name": "Marano Eye Care",
@@ -284,7 +321,14 @@
                 }
               };
 
-              // GA4 Standard Lead Generation Event
+              // GA4 Standard Lead Generation Event with Advanced Attribution Mapping
+              var utmSrc = getParam(options.body, 'utm_source') || '';
+              var utmMed = getParam(options.body, 'utm_medium') || '';
+              var utmCam = getParam(options.body, 'utm_campaign') || '';
+              var utmCon = getParam(options.body, 'utm_content') || '';
+              var utmTerm = getParam(options.body, 'utm_term') || '';
+              var gclidVal = getParam(options.body, 'gclid') || '';
+
               trackEvent('generate_lead', {
                 lead_type: 'consultation_request',
                 form_name: 'consultation',
@@ -292,13 +336,25 @@
                 preferred_contact: preferredContact,
                 timeframe: timeframeVal,
                 value: 150.00,
-                currency: 'USD'
+                currency: 'USD',
+                utm_source: utmSrc,
+                utm_medium: utmMed,
+                utm_campaign: utmCam,
+                utm_content: utmCon,
+                utm_term: utmTerm,
+                gclid: gclidVal
               });
 
               trackEvent('form_submission', {
                 form_name: 'consultation',
                 location: locationVal,
-                preferred_contact: preferredContact
+                preferred_contact: preferredContact,
+                utm_source: utmSrc,
+                utm_medium: utmMed,
+                utm_campaign: utmCam,
+                utm_content: utmCon,
+                utm_term: utmTerm,
+                gclid: gclidVal
               });
 
               // Google Ads Conversion Event with Enhanced Conversion User Data
@@ -535,8 +591,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="image" href="./assets/hero-hiker.webp" type="image/webp">
     <link rel="stylesheet" crossorigin href="./assets/index-DhXpI4H_.css?v=28">
-    <link rel="stylesheet" href="./assets/custom-styles.css?v=5">
-    <script src="./assets/vision-simulator.js?v=6" defer></script>
+    <link rel="stylesheet" href="./assets/custom-styles.css?v=8">
+    <script src="./assets/vision-simulator.js?v=10" defer></script>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -637,10 +693,37 @@
       
       <label for="netlify-message">Additional Message</label>
       <textarea id="netlify-message" name="message" aria-label="Additional Message"></textarea>
+      
+      <!-- Hidden Google Advertising & UTM Tracking Parameters -->
+      <input type="hidden" name="utm_source" />
+      <input type="hidden" name="utm_medium" />
+      <input type="hidden" name="utm_campaign" />
+      <input type="hidden" name="utm_content" />
+      <input type="hidden" name="utm_term" />
+      <input type="hidden" name="gclid" />
     </form>
   </body>
 
   <script>
+    // ─── Global Scroll Helper ────────────────────────────────────────────────
+    window.scrollToElement = function(id) {
+      var el = document.getElementById(id);
+      if (id === 'hero-mc-card' && el) {
+        var parentForm = el.closest('.glass-panel');
+        if (parentForm) {
+          el = parentForm;
+        }
+      }
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        var fallback = document.getElementById('quiz') || document.getElementById('contact');
+        if (fallback) {
+          fallback.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
     // ─── Citation System ─────────────────────────────────────────────────────
 
     var supStyle = 'display:inline-block;font-size:0.6em;font-weight:700;vertical-align:super;line-height:1;color:#e2b857;margin-left:2px;cursor:pointer;text-decoration:none;font-family:Inter,system-ui,sans-serif;opacity:0.85;';
@@ -891,9 +974,9 @@
       var portalLinks = document.createElement('div');
       portalLinks.setAttribute('style', 'text-align:center;margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.06);font-size:0.82rem;color:#cbd5e1;');
       portalLinks.innerHTML = 'Official Practice Network: <a href="https://www.maranoeyecare.com" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:underline;font-weight:600;margin-right:12px;">www.maranoeyecare.com</a> &bull; <a href="https://www.onjeyecare.com" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:underline;font-weight:600;margin-left:12px;">www.onjeyecare.com</a>';
-      locSection.appendChild(portalLinks);
-
+      
       locSection.appendChild(locGrid);
+      locSection.appendChild(portalLinks);
       inner.appendChild(locSection);
 
       var note = document.createElement('p');
@@ -1004,7 +1087,7 @@
           <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Reclaim Full Peripheral Tracking:</strong> Unrestricted 180° visual field with zero frame blind spots.</span></li>
           <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #10b981;">✦</span> <span><strong>24-Hour Recovery:</strong> Resume high-intensity training with elite optical stability next day.</span></li>
         </ul>
-        <button onclick="document.getElementById('hero-mc-card').scrollIntoView({behavior:'smooth'})" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
+        <button onclick="scrollToElement('quiz')" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
           Audit Your Active Eligibility
         </button>
       </div>
@@ -1031,7 +1114,7 @@
           <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>High-Contrast Depth Perception:</strong> Resolve subtle road hazards clearly in low light.</span></li>
           <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #10b981;">✦</span> <span><strong>Clinical Pilot-Grade Focus:</strong> Trusted precision focus for night commute security.</span></li>
         </ul>
-        <button onclick="document.getElementById('hero-mc-card').scrollIntoView({behavior:'smooth'})" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
+        <button onclick="scrollToElement('quiz')" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
           Audit Your Night Driving Vision
         </button>
       </div>
@@ -1058,7 +1141,7 @@
           <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Sharper Text Geometry:</strong> Crystal clear focus across multi-monitor setups.</span></li>
           <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #10b981;">✦</span> <span><strong>Fluid Screen-to-Client Focus:</strong> Instant focal agility from displays to live meetings.</span></li>
         </ul>
-        <button onclick="document.getElementById('hero-mc-card').scrollIntoView({behavior:'smooth'})" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
+        <button onclick="scrollToElement('quiz')" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
           Audit Your Executive Eligibility
         </button>
       </div>
@@ -1383,7 +1466,7 @@
                 '<span style="font-size:0.68rem;text-transform:uppercase;color:#94a3b8;display:block;letter-spacing:1px;">Net Lifetime Savings</span>' +
                 '<div id="roi-net-savings" style="font-size:1.5rem;font-weight:800;color:#10b981;line-height:1;">+$32,740</div>' +
               '</div>' +
-              '<button onclick="document.getElementById(\'hero-mc-card\').scrollIntoView({behavior:\'smooth\'})" class="btn-island-primary">' +
+              '<button onclick="scrollToElement(\'hero-mc-card\')" class="btn-island-primary">' +
                 '<span>Lock In Your ROI</span>' +
                 '<span class="btn-icon-island">&rarr;</span>' +
               '</button>' +
@@ -1569,7 +1652,7 @@
       var bar = document.createElement('div');
       bar.id = 'mobile-sticky-cta';
       bar.className = 'mobile-sticky-cta';
-      bar.innerHTML = '<div style="display:flex;gap:10px;justify-content:center;align-items:center;"><a href="tel:973-755-1876" class="btn btn-secondary" style="padding:12px 20px;min-height:44px;min-width:44px;font-size:0.85rem;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call (973) 755-1876</a><button onclick="document.getElementById(\'hero-mc-card\').scrollIntoView({behavior:\'smooth\'})" class="btn btn-primary" style="padding:12px 20px;min-height:44px;min-width:44px;font-size:0.85rem;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;">60-Sec Eligibility Quiz</button></div>';
+      bar.innerHTML = '<div style="display:flex;gap:10px;justify-content:center;align-items:center;"><a href="tel:973-755-1876" class="btn btn-secondary" style="padding:12px 20px;min-height:44px;min-width:44px;font-size:0.85rem;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call (973) 755-1876</a><button onclick="scrollToElement(\'quiz\')" class="btn btn-primary" style="padding:12px 20px;min-height:44px;min-width:44px;font-size:0.85rem;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;">60-Sec Eligibility Quiz</button></div>';
       document.body.appendChild(bar);
 
       // Trigger CallRail DNI swap for dynamically injected telephone elements
@@ -1702,6 +1785,17 @@
       var emailInput = document.getElementById('email');
       if (emailInput && emailInput.placeholder === 'john@example.com') {
         emailInput.placeholder = 'Email Address (for confirmation)';
+      }
+
+      // 4. Optimize Dr. Marano's Clinical Foreword quote
+      var quoteEls = Array.from(document.querySelectorAll('p, div, blockquote, span'));
+      var targetQuote = quoteEls.find(function(el) {
+        var txt = el.textContent.trim();
+        return txt.indexOf('True vision correction is an art built on rigorous clinical science') !== -1 && 
+               el.children.length === 0;
+      });
+      if (targetQuote) {
+        targetQuote.innerHTML = '"Elite visual performance is not created in the operating suite alone; it is engineered through relentless diagnostic precision. By mapping your cornea at the sub-micron level, we capture details as unique as your fingerprint. This allows us to calibrate our advanced dual-laser system with absolute mathematical certainty. To me, LASIK is not just about correcting vision—it is about restoring the raw visual stamina and crisp contrast that high-performers need to excel in their daily pursuits."';
       }
     }
 
@@ -2814,13 +2908,27 @@
               state.email = mcCard.querySelector('#mc-email').value;
               state.location = mcCard.querySelector('#mc-location').value;
 
+              // Extract UTM and gclid parameters for Google Advertising attribution
+              var utm_source = getQueryParam('utm_source') || '';
+              var utm_medium = getQueryParam('utm_medium') || '';
+              var utm_campaign = getQueryParam('utm_campaign') || '';
+              var utm_content = getQueryParam('utm_content') || '';
+              var utm_term = getQueryParam('utm_term') || '';
+              var gclid = getQueryParam('gclid') || '';
+
               // Post to Netlify forms endpoint
               var body = 'form-name=consultation&name=' + encodeURIComponent(state.name) +
                 '&phone=' + encodeURIComponent(state.phone) +
                 '&email=' + encodeURIComponent(state.email) +
                 '&location=' + encodeURIComponent(state.location) +
                 '&timeframe=' + encodeURIComponent(state.timeframe) +
-                '&message=' + encodeURIComponent('Primary struggle: ' + state.struggle);
+                '&message=' + encodeURIComponent('Primary struggle: ' + state.struggle) +
+                '&utm_source=' + encodeURIComponent(utm_source) +
+                '&utm_medium=' + encodeURIComponent(utm_medium) +
+                '&utm_campaign=' + encodeURIComponent(utm_campaign) +
+                '&utm_content=' + encodeURIComponent(utm_content) +
+                '&utm_term=' + encodeURIComponent(utm_term) +
+                '&gclid=' + encodeURIComponent(gclid);
 
               fetch('/', {
                 method: 'POST',

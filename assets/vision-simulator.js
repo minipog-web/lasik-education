@@ -23,11 +23,11 @@
           <canvas id="vision-sim-canvas-pre" class="sim-canvas sim-canvas-clipped"></canvas>
 
           <div class="sim-overlay-badge sim-badge-left" id="sim-badge-pre">
-            <span class="sim-status-dot dot-red"></span> PRE-LASIK: <span id="sim-telemetry-pre">UNCORRECTED (-2.00D / -1.50D @ 90°)</span>
+            <span class="sim-status-dot dot-red"></span> PRE: <span id="sim-telemetry-pre">-2.00D / -1.50D @ 90°</span>
           </div>
 
           <div class="sim-overlay-badge sim-badge-right">
-            <span class="sim-status-dot dot-green"></span> POST-LASIK: 20/15 HD ACUITY (0.00D ABERRATION)
+            <span class="sim-status-dot dot-green"></span> POST: 20/15 HD (0.00D)
           </div>
           
           <div class="sim-split-divider" id="sim-divider" style="left: 50%;">
@@ -85,7 +85,7 @@
 
     // High-Resolution 4K HD Night Driving Asset
     var bgImg = new Image();
-    bgImg.src = './assets/hd_night_highway_scene.png';
+    bgImg.src = './assets/hd_night_highway_scene.png?v=5';
 
     var imgLoaded = false;
     bgImg.onload = function () {
@@ -130,7 +130,12 @@
 
       ctxPost.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctxPre.setTransform(dpr, 0, 0, dpr, 0, 0);
-      offCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      
+      // Set high-quality image smoothing
+      ctxPost.imageSmoothingEnabled = true;
+      ctxPost.imageSmoothingQuality = 'high';
+      ctxPre.imageSmoothingEnabled = true;
+      ctxPre.imageSmoothingQuality = 'high';
 
       if (!imgLoaded) {
         ctxPost.fillStyle = '#060b18';
@@ -145,18 +150,14 @@
       ctxPost.clearRect(0, 0, cssW, cssH);
       drawImageCover(ctxPost, bgImg, cssW, cssH);
 
-      // 2. Base Offscreen HD Canvas
-      offCtx.clearRect(0, 0, cssW, cssH);
-      drawImageCover(offCtx, bgImg, cssW, cssH);
-
-      // 3. Pre-LASIK Refractive Error Physics Math
+      // 2. Pre-LASIK Refractive Error Physics Math
       var absSphere = Math.abs(sphere);
       var absCyl = Math.abs(cylinder);
 
       var blurPx = (absSphere * 2.2) + (absCyl * 1.2);
       var rad = (axis - 90) * Math.PI / 180;
-      var scaleX = 1 + (absCyl * 0.12 * Math.cos(rad));
-      var scaleY = 1 + (absCyl * 0.12 * Math.sin(rad));
+      var scaleX = 1 + (absCyl * 0.05 * Math.abs(Math.cos(rad)));
+      var scaleY = 1 + (absCyl * 0.05 * Math.abs(Math.sin(rad)));
 
       ctxPre.clearRect(0, 0, cssW, cssH);
       ctxPre.save();
@@ -169,9 +170,9 @@
         ctxPre.rotate(-rad);
         ctxPre.translate(-cssW / 2, -cssH / 2);
 
-        ctxPre.drawImage(offscreenCanvas, 0, 0, cssW, cssH);
+        drawImageCover(ctxPre, bgImg, cssW, cssH);
       } else {
-        ctxPre.drawImage(offscreenCanvas, 0, 0, cssW, cssH);
+        drawImageCover(ctxPre, bgImg, cssW, cssH);
       }
 
       ctxPre.restore();
@@ -185,12 +186,12 @@
       var telemetryPre = document.getElementById('sim-telemetry-pre');
       if (telemetryPre) {
         if (sphere === 0 && cylinder === 0) {
-          telemetryPre.textContent = 'EMMETROPIA (20/20 NORMAL)';
+          telemetryPre.textContent = '20/20 (0.00D)';
           telemetryPre.style.color = '#10b981';
         } else {
           var sphStr = (sphere > 0 ? '+' : '') + sphere.toFixed(2) + 'D';
           var cylStr = cylinder < 0 ? ' / ' + cylinder.toFixed(2) + 'D @ ' + axis + '°' : '';
-          telemetryPre.textContent = 'UNCORRECTED (' + sphStr + cylStr + ')';
+          telemetryPre.textContent = sphStr + cylStr;
           telemetryPre.style.color = '#ef4444';
         }
       }

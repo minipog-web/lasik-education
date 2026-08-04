@@ -1,0 +1,24 @@
+# Marano Eye Care LASIK Center
+
+Educational resource and premium custom vision correction portal in New Jersey. Specializing in blade-free, custom wavefront-guided LASIK, ICL, and alternative refractive treatments.
+
+## Contact Information
+- **Phone**: (973) 949-7293
+- **Primary Surgical Facility**: Cooperman Barnabas Ambulatory Care Center (ACC), Livingston, NJ
+- **Consultation Locations**: Livingston, Denville, Newark
+
+## Core Offerings
+- **Custom Wavefront-Guided LASIK**: Blade-free dual-laser vision correction utilizing iFS Femtosecond flap creation (1053nm) and STAR S4 IR Excimer reshaping with 3D Active Eye-Tracking.
+- **EVO+ ICL (Implantable Collamer Lens)**: Premium vision correction for high myopia and thin corneas.
+- **PRK (Photorefractive Keratectomy)**: Surface ablation alternative for patients with active lifestyles or unique corneal profiles.
+- **Lifestyle Lenses (Refractive Lens Exchange)**: Dynamic focus implants for patients with age-related presbyopia.
+
+## Clinical Credentials
+- **Surgeon**: Dr. Matthew J. Marano, Jr., MD (Chief of Ophthalmology, Cooperman Barnabas & Saint Michael's Medical Center). Board-certified ophthalmologist with 30+ years of refractive surgery experience.
+- **Compliance**: Fully HIPAA-compliant patient communication and data security standards.
+
+## Key Resources
+- [Marano Eye Care Homepage](https://www.maranoeyecare.com) - Official practice website.
+- [HIPAA & Privacy Policy](https://www.maranoeyecare.com/privacy-policy/) - Health privacy protocols and data security guidelines.
+- [Refractive Surgery Details](https://lasik.maranoeye.com#science) - Technological suite breakdown (Femtosecond flap creation & Excimer laser photoablation).
+- [Candidate Quiz](https://lasik.maranoeye.com#quiz) - Interactive clinical eligibility and biometrics screening.

@@ -1795,7 +1795,7 @@ select:focus {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   padding: 10px 20px;
   border: 1px solid rgba(226, 184, 87, 0.3) !important;
   border-radius: 9999px;

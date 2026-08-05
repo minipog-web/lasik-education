@@ -2979,6 +2979,14 @@
       initHeroMicroCommitmentFlow();
 
       // Initial single sweep on load
+      scheduleSweep();
+
+      // Single observer for dynamic content updates
+      observer = new MutationObserver(scheduleSweep);
+      observer.observe(document.getElementById('root') || document.body, {
+        childList: true,
+        subtree: true
+      });
     });
   </script>
   <!-- CallRail Dynamic Number Insertion (DNI) -->

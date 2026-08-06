@@ -80,9 +80,6 @@
     var stage = document.getElementById('sim-stage');
     var divider = document.getElementById('sim-divider');
 
-    var offscreenCanvas = document.createElement('canvas');
-    var offCtx = offscreenCanvas.getContext('2d');
-
     // High-Resolution 4K HD Night Driving Asset
     var bgImg = new Image();
     bgImg.src = './assets/hd_night_highway_scene.png?v=5';
@@ -125,8 +122,8 @@
       var dpr = Math.max(2, window.devicePixelRatio || 1);
 
       // High-DPI Retina resolution canvas scaling to eliminate blurriness
-      canvasPre.width = canvasPost.width = offscreenCanvas.width = Math.round(cssW * dpr);
-      canvasPre.height = canvasPost.height = offscreenCanvas.height = Math.round(cssH * dpr);
+      canvasPre.width = canvasPost.width = Math.round(cssW * dpr);
+      canvasPre.height = canvasPost.height = Math.round(cssH * dpr);
 
       ctxPost.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctxPre.setTransform(dpr, 0, 0, dpr, 0, 0);

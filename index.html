@@ -1,37 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google Consent Mode v2 Default Configuration -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'ad_storage': 'granted',
-        'analytics_storage': 'granted',
-        'ad_user_data': 'granted',
-        'ad_personalization': 'granted',
-        'wait_for_update': 500
-      });
-    </script>
-
-    <!-- Google Tag Manager Container -->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-M7XZLSZ9');
-    </script>
-
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KBWXBRFV');</script>
+    <!-- End Google Tag Manager -->
 
     <!-- Performance & Domain Optimization Hints for Tracking Infrastructure -->
     <link rel="preconnect" href="https://cdn.callrail.com" crossorigin />
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
-    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
     <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin />
     <link rel="dns-prefetch" href="https://cdn.callrail.com" />
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
     <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
 
     <meta charset="UTF-8" />
@@ -495,7 +476,7 @@
         // 5. Eligibility Quiz Monitoring
         var quizCompletedSent = false;
         var quizStartedSent = false;
-        var observer = new MutationObserver(function() {
+        var quizObserver = new MutationObserver(function() {
           var rootEl = document.getElementById('root');
           if (!rootEl) return;
 
@@ -536,7 +517,7 @@
 
         window.addEventListener('load', function() {
           var rootEl = document.getElementById('root') || document.body;
-          observer.observe(rootEl, {
+          quizObserver.observe(rootEl, {
             childList: true,
             subtree: true
           });
@@ -585,11 +566,10 @@
     <link rel="stylesheet" crossorigin href="./assets/index-DhXpI4H_.css?v=28">
     <link rel="stylesheet" href="./assets/custom-styles.min.css?v=8">
     <script src="./assets/vision-simulator.min.js?v=10" defer></script>
-  </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7XZLSZ9"
-    height="0" width="0" style="display:none;visibility:hidden" class="hidden-noscript-iframe"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KBWXBRFV"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <div class="tactile-grain-overlay"></div>
@@ -2405,11 +2385,6 @@
       if (contactForm) contactForm.scrollIntoView({ behavior: 'smooth' });
     };
 
-    function injectStandaloneRefractiveErrorsSection() {
-      // Preserves original Science & History section tabs intact
-      return;
-    }
-
     function injectVisionQualitySimulator() {
       var scienceSec = getScienceSection();
       if (!scienceSec || document.getElementById('vision-simulator-container')) return;
@@ -2474,7 +2449,6 @@
           injectEEAT();
           injectEEATFAQ();
           injectGlassmorphicLaserSuite();
-          injectStandaloneRefractiveErrorsSection();
           injectVisionQualitySimulator();
           initLifestyleSection();
           initAdaptiveQuiz();
@@ -2573,100 +2547,7 @@
     }
 
     function injectCostFAQIntoMainFAQ() {
-      return; // Disabled to prevent uneven extra FAQ cards
-      var faqHeaders = Array.from(document.querySelectorAll('h2.bio-heading'));
-      var mainFaqHeading = faqHeaders.find(function(h) {
-        return h.textContent.indexOf('Frequently Asked') !== -1;
-      });
-      if (!mainFaqHeading) return;
-
-      var faqContainer = mainFaqHeading.closest('.section') || mainFaqHeading.parentNode.parentNode;
-      if (!faqContainer) return;
-
-      var panels = faqContainer.querySelectorAll('.glass-panel');
-      if (panels.length === 0) return;
-      var lastPanel = panels[panels.length - 1];
-
-      // 1. Cost Card Injection
-      if (!document.getElementById('cost-faq-main-item')) {
-        var costCard = document.createElement('div');
-        costCard.id = 'cost-faq-main-item';
-        costCard.className = 'glass-panel';
-        costCard.setAttribute('style', 'background: rgba(13, 20, 30, 0.7); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 16px; overflow: hidden; padding: 0; transition: all 0.4s ease; margin: 0; text-align: left;');
-        
-        costCard.innerHTML = 
-          '<button type="button" class="cost-faq-trigger-btn" style="width:100%; padding:24px 32px; background:transparent; border:none; outline:none; display:flex; justify-content:space-between; align-items:center; text-align:left; cursor:pointer;">' +
-            '<span class="cost-faq-title" style="font-size:1.05rem; font-weight:500; color:#ffffff; transition:color 0.3s ease; font-family:var(--font-sans);">How much does CustomVue LASIK cost at Marano Eye Care?</span>' +
-            '<svg class="cost-faq-caret" width="14" height="8" viewBox="0 0 14 8" fill="none" style="transform:rotate(0deg); transition:transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); flex-shrink:0; margin-left:16px;">' +
-              '<path d="M1 1L7 7L13 1" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
-            '</svg>' +
-          '</button>' +
-          '<div class="cost-faq-body" style="display:none; padding:0 32px 24px 32px; font-size:0.95rem; line-height:1.7; color:var(--text-secondary); font-weight:300;">' +
-            '<p style="font-family:var(--font-sans); font-size:0.95rem; color:#cbd5e1; line-height:1.7; margin:0 0 12px 0;">' +
-              'CustomVue® LASIK at Marano Eye Care is an all-inclusive investment of <strong style="color:#ffffff;">$5,000</strong> — covering your 3D WaveScan® diagnostic mapping, the custom blade-free dual-laser procedure, and all post-operative follow-up care.' +
-            '</p>' +
-            '<p style="font-family:var(--font-sans); font-size:0.9rem; color:#94a3b8; line-height:1.7; margin:0 0 12px 0;">' +
-              'To put that in context: the average contact lens wearer spends <strong style="color:#ef4444;">$600–$900 per year</strong> on lenses, solution, and eye exams — totaling <strong style="color:#ef4444;">$25,000–$40,000 or more</strong> over a lifetime. CustomVue® LASIK replaces that compounding expense with a single one-time investment that typically breaks even within 5–6 years.' +
-            '</p>' +
-            '<p style="font-family:var(--font-sans); font-size:0.9rem; color:#94a3b8; line-height:1.7; margin:0;">' +
-              '0% APR financing is also available, with payments starting as low as <strong style="color:#00f0ff;">$138/month for 36 months</strong>. HSA and FSA funds may reduce your effective out-of-pocket cost. Ask about eligibility at your free consultation.' +
-            '</p>' +
-          '</div>';
-
-        var triggerBtn = costCard.querySelector('.cost-faq-trigger-btn');
-        var bodyDiv = costCard.querySelector('.cost-faq-body');
-        var caretSvg = costCard.querySelector('.cost-faq-caret');
-        var titleSpan = costCard.querySelector('.cost-faq-title');
-        var caretPath = costCard.querySelector('.cost-faq-caret path');
-
-        triggerBtn.addEventListener('click', function() {
-          var isOpen = bodyDiv.style.display === 'block';
-          bodyDiv.style.display = isOpen ? 'none' : 'block';
-          caretSvg.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
-          titleSpan.style.color = isOpen ? '#ffffff' : 'var(--accent-primary)';
-          if (caretPath) caretPath.setAttribute('stroke', isOpen ? '#64748b' : 'var(--accent-primary)');
-        });
-
-        lastPanel.parentNode.insertBefore(costCard, lastPanel.nextSibling);
-        lastPanel = costCard;
-      }
-
-      // 2. Monovision FAQ Card Injection
-      if (!document.getElementById('monovision-faq-main-item')) {
-        var monoCard = document.createElement('div');
-        monoCard.id = 'monovision-faq-main-item';
-        monoCard.className = 'glass-panel';
-        monoCard.setAttribute('style', 'background: rgba(13, 20, 30, 0.7); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 16px; overflow: hidden; padding: 0; transition: all 0.4s ease; margin: 0; text-align: left;');
-        
-        monoCard.innerHTML = 
-          '<button type="button" class="mono-faq-trigger-btn" style="width:100%; padding:24px 32px; background:transparent; border:none; outline:none; display:flex; justify-content:space-between; align-items:center; text-align:left; cursor:pointer;">' +
-            '<span class="mono-faq-title" style="font-size:1.05rem; font-weight:500; color:#ffffff; transition:color 0.3s ease; font-family:var(--font-sans);">What is Monovision LASIK and is it right for everyone?</span>' +
-            '<svg class="mono-faq-caret" width="14" height="8" viewBox="0 0 14 8" fill="none" style="transform:rotate(0deg); transition:transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); flex-shrink:0; margin-left:16px;">' +
-              '<path d="M1 1L7 7L13 1" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
-            '</svg>' +
-          '</button>' +
-          '<div class="mono-faq-body" style="display:none; padding:0 32px 24px 32px; font-size:0.95rem; line-height:1.7; color:var(--text-secondary); font-weight:300;">' +
-            '<p style="font-family:var(--font-sans); font-size:0.95rem; color:#cbd5e1; line-height:1.7; margin:0;">' +
-              'Monovision corrects one eye for distance focus and the other eye for near vision to reduce reliance on reading glasses. However, monovision can feel visually confusing or difficult to adapt to for some patients. A thorough, one-on-one clinical evaluation and open discussion with Dr. Marano regarding your qualification, lifestyle expectations, and eye dominance is required prior to the procedure. Monovision is not recommended for all patients, and trial contact lenses may be used beforehand to test your visual comfort.' +
-            '</p>' +
-          '</div>';
-
-        var monoBtn = monoCard.querySelector('.mono-faq-trigger-btn');
-        var monoBody = monoCard.querySelector('.mono-faq-body');
-        var monoCaret = monoCard.querySelector('.mono-faq-caret');
-        var monoTitle = monoCard.querySelector('.mono-faq-title');
-        var monoPath = monoCard.querySelector('.mono-faq-caret path');
-
-        monoBtn.addEventListener('click', function() {
-          var isOpen = monoBody.style.display === 'block';
-          monoBody.style.display = isOpen ? 'none' : 'block';
-          monoCaret.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
-          monoTitle.style.color = isOpen ? '#ffffff' : 'var(--accent-primary)';
-          if (monoPath) monoPath.setAttribute('stroke', isOpen ? '#64748b' : 'var(--accent-primary)');
-        });
-
-        lastPanel.parentNode.insertBefore(monoCard, lastPanel.nextSibling);
-      }
+      // Disabled to prevent uneven extra FAQ cards
     }
 
     // ─── Hero Interactive 2-Step Micro-Commitment Flow (Commitment + Reciprocity) ───

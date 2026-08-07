@@ -586,7 +586,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="image" href="./assets/hero-hiker.webp" type="image/webp">
     <link rel="stylesheet" crossorigin href="./assets/index-DhXpI4H_.css?v=28">
-    <link rel="stylesheet" href="./assets/custom-styles.min.css?v=8">
+    <link rel="stylesheet" href="./assets/custom-styles.css?v=9">
     <script src="./assets/vision-simulator.min.js?v=10" defer></script>
   </head>
   <body>
@@ -601,6 +601,7 @@
     
     <!-- Pre-rendered Static HTML Shell inside #root (Instant SEO Crawlability & Zero-JS Fallback) -->
     <div id="root">
+      <div id="static-fallback">
       <header class="static-header">
         <img src="./assets/marano-logo-dw0rx_0b.png" alt="Marano Eye Care Logo" class="static-logo" />
         <div>
@@ -665,6 +666,7 @@
           </div>
         </section>
       </main>
+      </div>
     </div>
 
 
@@ -2688,7 +2690,9 @@
         name: '',
         phone: '',
         email: '',
-        location: 'Livingston'
+        location: 'Livingston',
+        submitting: false,
+        submitError: ''
       };
 
       function render() {
@@ -2789,14 +2793,14 @@
           html = 
             '<div class="mc-step-container">' +
               '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">' +
-                '<span style="font-family:monospace;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:#10b981;font-weight:700;">Final Step &bull; Instant Report Access</span>' +
-                '<span style="font-size:0.72rem;color:#10b981;font-weight:700;">✓ Candidacy Match High</span>' +
+                '<span style="font-family:monospace;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:#10b981;font-weight:700;">Final Step &bull; Consultation Request</span>' +
+                '<span style="font-size:0.72rem;color:#10b981;font-weight:700;">Next: Clinical Evaluation</span>' +
               '</div>' +
               '<div class="mc-progress-bar"><div class="mc-progress-fill" style="width:100%;"></div></div>' +
               
               '<div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:12px;padding:12px 16px;margin:8px 0;">' +
-                '<span style="font-size:0.8rem;color:#10b981;font-weight:700;display:block;margin-bottom:2px;">✦ High Candidate Probability Detected</span>' +
-                '<span style="font-size:0.75rem;color:#cbd5e1;line-height:1.35;display:block;">Your responses indicate strong alignment with 10-second CustomVue® dual-laser treatment.</span>' +
+                '<span style="font-size:0.8rem;color:#10b981;font-weight:700;display:block;margin-bottom:2px;">✦ Learn What to Discuss at Your Consultation</span>' +
+                '<span style="font-size:0.75rem;color:#cbd5e1;line-height:1.35;display:block;">Your responses help our team understand your visual goals. Only a comprehensive eye exam can determine whether LASIK or another option is right for you.</span>' +
               '</div>' +
 
               '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0;">' +
@@ -2815,16 +2819,16 @@
                 '<input type="hidden" name="form-name" value="consultation" />' +
                 '<div>' +
                   '<label for="mc-name" style="font-size:0.8rem;color:#cbd5e1;font-weight:600;display:block;margin-bottom:4px;">Full Name *</label>' +
-                  '<input type="text" id="mc-name" required placeholder="Your Full Name" value="' + state.name + '" style="width:100%;padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-size:0.9rem;">' +
+                  '<input type="text" id="mc-name" name="name" autocomplete="name" required placeholder="Your Full Name" value="' + state.name + '" style="width:100%;padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-size:0.9rem;">' +
                 '</div>' +
                 '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">' +
                   '<div>' +
                     '<label for="mc-phone" style="font-size:0.8rem;color:#cbd5e1;font-weight:600;display:block;margin-bottom:4px;">Phone Number *</label>' +
-                    '<input type="tel" id="mc-phone" required placeholder="(973) 555-0100" value="' + state.phone + '" style="width:100%;padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-size:0.9rem;">' +
+                    '<input type="tel" id="mc-phone" name="phone" autocomplete="tel" required placeholder="(973) 555-0100" value="' + state.phone + '" style="width:100%;padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-size:0.9rem;">' +
                   '</div>' +
                   '<div>' +
                     '<label for="mc-email" style="font-size:0.8rem;color:#cbd5e1;font-weight:600;display:block;margin-bottom:4px;">Email Address *</label>' +
-                    '<input type="email" id="mc-email" required placeholder="name@domain.com" value="' + state.email + '" style="width:100%;padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-size:0.9rem;">' +
+                    '<input type="email" id="mc-email" name="email" autocomplete="email" spellcheck="false" required placeholder="name@domain.com" value="' + state.email + '" style="width:100%;padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-size:0.9rem;">' +
                   '</div>' +
                 '</div>' +
                 '<div>' +
@@ -2836,10 +2840,11 @@
                   '</select>' +
                 '</div>' +
 
+                (state.submitError ? '<p id="mc-submit-error" role="alert" aria-live="polite" style="margin:0;color:#fecaca;font-size:0.8rem;line-height:1.4;">We couldn’t send your request. Please try again or call (973) 949-7293.</p>' : '') +
                 '<div style="display:flex;gap:10px;margin-top:6px;">' +
-                  '<button type="button" id="mc-back-2" class="btn btn-secondary" style="padding:10px 16px;font-size:0.85rem;">&larr; Back</button>' +
-                  '<button type="submit" class="btn-island-primary" style="flex:1;">' +
-                    '<span>Claim Custom Report & Free Evaluation</span>' +
+                  '<button type="button" id="mc-back-2" class="btn btn-secondary" style="padding:10px 16px;font-size:0.85rem;" ' + (state.submitting ? 'disabled' : '') + '>&larr; Back</button>' +
+                  '<button type="submit" class="btn-island-primary" style="flex:1;" ' + (state.submitting ? 'disabled aria-busy="true"' : '') + '>' +
+                    '<span>' + (state.submitting ? 'Sending Request…' : 'Request My Free Consultation') + '</span>' +
                     '<span class="btn-icon-island">&rarr;</span>' +
                   '</button>' +
                 '</div>' +
@@ -2856,8 +2861,8 @@
           html = 
             '<div class="mc-step-container" style="text-align:center;padding:12px 0;">' +
               '<div style="width:50px;height:50px;border-radius:50%;background:rgba(16,185,129,0.15);border:2px solid #10b981;color:#10b981;display:flex;align-items:center;justify-content:center;margin:0 auto 16px auto;font-size:1.5rem;">✓</div>' +
-              '<h3 style="font-family:var(--font-sans);font-size:1.35rem;font-weight:700;color:#ffffff;margin-bottom:8px;">Biometric Summary Reserved</h3>' +
-              '<p style="font-size:0.88rem;color:#cbd5e1;line-height:1.6;margin-bottom:16px;">Thank you, <strong>' + state.name + '</strong>! Your customized CustomVue® diagnostic candidacy profile has been generated. Dr. Marano’s clinical coordinator will contact you shortly at <strong>' + state.phone + '</strong> to finalize your free consultation timing at our ' + state.location + ' location.</p>' +
+              '<h3 style="font-family:var(--font-sans);font-size:1.35rem;font-weight:700;color:#ffffff;margin-bottom:8px;">Consultation Request Received</h3>' +
+              '<p style="font-size:0.88rem;color:#cbd5e1;line-height:1.6;margin-bottom:16px;">Thank you, <strong>' + state.name + '</strong>. Our clinical coordinator will contact you shortly at <strong>' + state.phone + '</strong> to discuss a free consultation at our ' + state.location + ' location. Your consultation and comprehensive eye exam will determine your candidacy and the most appropriate vision-correction option.</p>' +
               '<div style="padding:12px 16px;background:rgba(226,184,87,0.05);border:1px solid rgba(226,184,87,0.2);border-radius:12px;font-size:0.8rem;color:#e2b857;">' +
                 '📞 Direct Patient Line: <a href="tel:973-949-7293" style="color:#e2b857;font-weight:700;text-decoration:underline;">(973) 949-7293</a>' +
               '</div>' +
@@ -2925,7 +2930,7 @@
           }
           var form = mcCard.querySelector('#mc-final-form');
           if (form) {
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', async function(e) {
               e.preventDefault();
               state.name = mcCard.querySelector('#mc-name').value;
               state.phone = mcCard.querySelector('#mc-phone').value;
@@ -2940,7 +2945,11 @@
               var utm_term = getQueryParam('utm_term') || '';
               var gclid = getQueryParam('gclid') || '';
 
-              // Post to Netlify forms endpoint
+              state.submitting = true;
+              state.submitError = '';
+              render();
+
+              // Post to Netlify forms endpoint and confirm that it was accepted.
               var body = 'form-name=consultation&name=' + encodeURIComponent(state.name) +
                 '&phone=' + encodeURIComponent(state.phone) +
                 '&email=' + encodeURIComponent(state.email) +
@@ -2954,15 +2963,20 @@
                 '&utm_term=' + encodeURIComponent(utm_term) +
                 '&gclid=' + encodeURIComponent(gclid);
 
-              fetch('/', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: body
-              }).catch(function(err) {
+              try {
+                var response = await fetch('/', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                  body: body
+                });
+                if (!response.ok) throw new Error('Submission request failed with status ' + response.status);
+                state.submitting = false;
+                state.step = 4;
+              } catch (err) {
                 console.error('Submission error:', err);
-              });
-
-              state.step = 4;
+                state.submitting = false;
+                state.submitError = 'Unable to send request.';
+              }
               render();
             });
           }
@@ -2978,6 +2992,7 @@
     }
 
     window.addEventListener('load', function() {
+      document.body.classList.add('js-ready');
       buildFooter();
       initHeroMicroCommitmentFlow();
 

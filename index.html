@@ -1978,8 +1978,8 @@
 
           '<div style="max-width: 900px; margin: 0 auto; padding: 0 24px; text-align: left; position: relative; z-index: 2;">' +
             '<div style="text-align: center; margin-bottom: 48px;">' +
-              '<span style="font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 2.5px; text-transform: uppercase; color: #e2b857; font-weight: 700; display: inline-block; margin-bottom: 12px;">Frequently Asked Questions</span>' +
-              '<h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 2.8rem); color: #fff; font-weight: 700; letter-spacing: -0.02em;">Frequently Asked <span class="bio-heading-accent">Questions</span></h2>' +
+              '<span style="font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 2.5px; text-transform: uppercase; color: #e2b857; font-weight: 700; display: inline-block; margin-bottom: 12px;">Clinical Q&A</span>' +
+              '<h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 2.8rem); color: #fff; font-weight: 700; letter-spacing: -0.02em;">Clinical Safety & <span class="bio-heading-accent">Candidacy Standards</span></h2>' +
               '<p style="font-family: var(--font-sans); font-size: 0.95rem; color: #94a3b8; max-width: 600px; margin: 12px auto 0 auto; line-height: 1.6;">Medically reviewed answers to common questions about custom refractive procedures at Marano Eye Care.</p>' +
               '<div style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; margin-top: 16px; padding: 6px 16px; background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.22); border-radius: 100px; font-family: var(--font-sans); font-size: 0.8rem; color: #cbd5e1;"><span style="color: #10b981; font-weight: 700; text-transform: uppercase; font-size: 0.65rem; letter-spacing: 1.2px; background: rgba(16, 185, 129, 0.12); padding: 2px 8px; border-radius: 100px;">✓ Medically Reviewed</span> <span style="color: #ffffff; font-weight: 500;">Verified by Dr. Matthew J. Marano, Jr., MD</span></div>' +
             '</div>' +
@@ -2521,6 +2521,7 @@
           ensureAccessibilityLabels();
           clarifyLandingPageCopy();
           customizeForCustomVue();
+          styleMainFAQSection();
           injectCostFAQIntoMainFAQ();
           applyDynamicTextReplacement(root);
         } catch (e) {
@@ -2606,6 +2607,21 @@
         pillarsSec.setAttribute('style', 'padding-top: 16px !important; padding-bottom: 16px !important; margin: 0 !important;');
       }
       pillarsGrid.innerHTML = html;
+    }
+
+    function styleMainFAQSection() {
+      var faqSec = document.getElementById('faq');
+      if (faqSec && !faqSec.hasAttribute('data-styled')) {
+        faqSec.setAttribute('data-styled', 'true');
+        faqSec.setAttribute('style', 'padding: clamp(70px, 7vw, 100px) 24px !important; background: linear-gradient(180deg, #070c17 0%, #03060c 50%, #070c17 100%) !important; border-top: 1px solid rgba(226, 184, 87, 0.2) !important; border-bottom: 1px solid rgba(226, 184, 87, 0.2) !important; position: relative !important; overflow: hidden !important; box-shadow: inset 0 20px 40px rgba(0,0,0,0.8), inset 0 -20px 40px rgba(0,0,0,0.8) !important;');
+
+        if (!faqSec.querySelector('.faq-ambient-orb')) {
+          var orb = document.createElement('div');
+          orb.className = 'faq-ambient-orb';
+          orb.setAttribute('style', 'position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(226, 184, 87, 0.06) 0%, rgba(0, 240, 255, 0.03) 40%, rgba(0,0,0,0) 70%); pointer-events: none; border-radius: 50%; filter: blur(60px); z-index: 1;');
+          faqSec.insertBefore(orb, faqSec.firstChild);
+        }
+      }
     }
 
     function injectCostFAQIntoMainFAQ() {

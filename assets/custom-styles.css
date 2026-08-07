@@ -2094,6 +2094,201 @@ select:focus {
 .aura-gold {
   background: radial-gradient(circle, rgba(226, 184, 87, 0.45) 0%, rgba(180, 130, 40, 0) 70%);
 }
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(226, 184, 87, 0.08);
+  border: 1px solid rgba(226, 184, 87, 0.22);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #e2b857;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.eyebrow-pill-cyan {
+  background: rgba(0, 240, 255, 0.08);
+  border-color: rgba(0, 240, 255, 0.25);
+  color: #00f0ff;
+}
+
+/* 3. Kinetic Island CTA Buttons with Trailing Badge */
+.cta-island-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px 8px 24px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #e2b857 0%, #c99a32 100%);
+  color: #030712;
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 28px -6px rgba(226, 184, 87, 0.4);
+  transition: all 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cta-island-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 36px -6px rgba(226, 184, 87, 0.55), 0 0 20px rgba(226, 184, 87, 0.3);
+  color: #000000;
+}
+
+.cta-island-btn:active {
+  transform: scale(0.98);
+}
+
+.cta-icon-badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(3, 7, 18, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1), background 0.3s ease;
+}
+
+.cta-island-btn:hover .cta-icon-badge {
+  background: rgba(3, 7, 18, 0.25);
+  transform: translate(2px, -2px) scale(1.08);
+}
+
+.cta-icon-badge svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+}
+
+/* ==========================================================================
+   NON-FULLSCREEN & RESPONSIVE HEADER FORMATTING FIXES
+   ========================================================================== */
+#main-navigation {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+}
+
+#main-navigation.scrolled {
+  width: calc(100% - 32px) !important;
+  max-width: 1200px !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 1200px) {
+  #main-navigation {
+    padding: 0 20px !important;
+  }
+  #main-navigation.scrolled {
+    padding: 0 16px !important;
+  }
+  .header-phone-link {
+    margin-left: 12px !important;
+    margin-right: 8px !important;
+    padding: 8px 14px !important;
+    font-size: 0.85rem !important;
+  }
+  .header-cta-btn {
+    margin-left: 8px !important;
+    padding: 8px 16px !important;
+    font-size: 0.82rem !important;
+  }
+  #nav-procedure-btn {
+    padding: 8px 12px !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  #main-navigation .nav-links-group,
+  #nav-candidate-btn,
+  #nav-procedure-btn {
+    display: none !important;
+  }
+  #main-navigation .nav-cta-only {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin-left: auto !important;
+  }
+}
+
+/* Ensure hero content never gets obscured by fixed top header */
+.hero-container,
+.static-hero-section {
+  padding-top: clamp(120px, 12vw, 160px) !important;
+}
+
+@media (max-width: 768px) {
+  #main-navigation {
+    height: 64px !important;
+    padding: 0 16px !important;
+  }
+  #main-navigation.scrolled {
+    top: 8px !important;
+    width: calc(100% - 24px) !important;
+    height: 58px !important;
+    padding: 0 12px !important;
+  }
+  .nav-logo {
+    height: 38px !important;
+  }
+  #main-navigation.scrolled .nav-logo {
+    height: 32px !important;
+  }
+  .header-phone-link {
+    padding: 8px !important;
+    margin-left: auto !important;
+    margin-right: 6px !important;
+    border-radius: 50% !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .header-phone-link .phone-text {
+    display: none !important;
+  }
+  .header-cta-btn {
+    padding: 8px 14px !important;
+    font-size: 0.8rem !important;
+    min-height: 38px !important;
+  }
+}
+
+
+/* ==========================================
+   OPTION 5: PARALLAX AMBIENT MESH & GLOW AURAS
+   ========================================== */
+
+/* Ambient Glowing Background Orbs */
+.ambient-glow-aura {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(90px);
+  opacity: 0.15;
+  z-index: 0;
+  will-change: transform, opacity;
+  animation: ambientMeshPulse 14s ease-in-out infinite alternate;
+}
+
+.aura-cyan {
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.4) 0%, rgba(0, 168, 255, 0) 70%);
+}
+
+.aura-gold {
+  background: radial-gradient(circle, rgba(226, 184, 87, 0.45) 0%, rgba(180, 130, 40, 0) 70%);
+}
 
 .aura-violet {
   background: radial-gradient(circle, rgba(168, 85, 247, 0.35) 0%, rgba(120, 40, 200, 0) 70%);
@@ -2118,10 +2313,8 @@ select:focus {
 .section,
 #lasik-science,
 #lasik-journey,
-#adaptive-quiz-container,
-.marano-profile-grid {
+#adaptive-quiz-container {
   position: relative !important;
-  overflow: hidden !important;
 }
 
 /* Ensure glass containers sit gracefully above ambient glowing mesh */

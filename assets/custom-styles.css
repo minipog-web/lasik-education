@@ -308,6 +308,18 @@
   }
 }
 
+/* Distinct Background Contrast for Doctor Profile Section */
+#doctor-profile-section,
+.doctor-profile-wrapper,
+.marano-profile-grid-container {
+  background: linear-gradient(180deg, rgba(6, 11, 22, 0.95) 0%, rgba(10, 16, 30, 0.98) 50%, rgba(6, 11, 22, 0.95) 100%) !important;
+  border-top: 1px solid rgba(226, 184, 87, 0.15) !important;
+  border-bottom: 1px solid rgba(226, 184, 87, 0.15) !important;
+  position: relative !important;
+  box-shadow: inset 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 -20px 40px rgba(0, 0, 0, 0.6) !important;
+  padding: clamp(60px, 6vw, 90px) 0 !important;
+}
+
 /* Unified Page Layout Spacing */
 .section,
 #social-proof-section,

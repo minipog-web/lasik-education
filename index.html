@@ -977,6 +977,14 @@
       var profileGrid = document.querySelector('.marano-profile-grid');
       var statsCol = document.querySelector('.marano-stats-column');
 
+      if (profileGrid) {
+        var parentSec = profileGrid.closest('.section') || profileGrid.closest('section') || profileGrid.parentNode;
+        if (parentSec && !parentSec.id) {
+          parentSec.id = 'doctor-profile-section';
+          parentSec.classList.add('doctor-profile-wrapper');
+        }
+      }
+
       // Inject Dr. Marano's mini portrait at the top of the stats column (top right area of section)
       if (statsCol && !document.getElementById('marano-portrait-mini')) {
         var miniPortrait = document.createElement('div');

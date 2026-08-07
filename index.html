@@ -598,54 +598,17 @@
 
       <main>
         <section class="static-hero-section">
-          <span class="static-hero-eyebrow">100% Blade-Free Custom LASIK</span>
-          <h2 class="static-hero-h2">Custom Wavefront-Guided LASIK by Dr. Matthew J. Marano, Jr., MD</h2>
+          <span class="static-hero-eyebrow">✨ 100% Blade-Free CustomVue® LASIK • Marano Eye Care</span>
+          <h2 class="static-hero-h2 hero-pop-title">Give Your Eyes an <span class="hero-pop-accent">Unfair Advantage</span></h2>
           <p class="static-hero-p">
-            Designed for high-performing professionals and athletes seeking 20/15 optical acuity, 10-second laser treatment per eye, and 24-hour rapid visual recovery in New Jersey.
+            Most LASIK promises 20/20, but Dr. Marano's CustomVue® procedure targets 20/15, offering vision sharper than the standard "perfect" focus. Treatment takes just 10 seconds per eye with blade-free laser precision and next-day recovery. Backed by over 30 years of experience across our <strong>Livingston</strong>, <strong>Denville</strong>, and <strong>Newark</strong> NJ offices. See if you qualify in 60 seconds.
           </p>
+
           <div class="static-hero-cta-wrapper">
             <a href="tel:973-419-5972" class="static-hero-cta">Schedule Free 3D Diagnostic Scan</a>
           </div>
         </section>
 
-        <section class="static-pillars-section">
-          <div class="static-container-1100">
-            <h3 class="static-pillars-h3">Pillars of Clinical Excellence at Marano Eye Care</h3>
-            <div class="static-pillars-grid">
-              <div class="static-pillar-card">
-                <strong class="static-pillar-tag">30+ Years Experience</strong>
-                <h4 class="static-pillar-h4">Decades of Refractive Leadership</h4>
-                <p class="static-pillar-p">Led by Dr. Matthew J. Marano, M.D., one of New Jersey’s most experienced refractive surgeons with over three decades of specialized surgical precision.</p>
-              </div>
-              <div class="static-pillar-card">
-                <strong class="static-pillar-tag">Automated 3D Safety</strong>
-                <h4 class="static-pillar-h4">Zero-Flinch Pupil Tracking</h4>
-                <p class="static-pillar-p">Active 3D pupil tracking follows your eye in real-time and automatically pauses if you move or blink, guaranteeing zero-risk precision.</p>
-              </div>
-              <div class="static-pillar-card">
-                <strong class="static-pillar-tag">100% Blade-Free &amp; Painless</strong>
-                <h4 class="static-pillar-h4">Zero-Pain Numbing Protection</h4>
-                <p class="static-pillar-p">Topical anesthetic drops completely numb the corneal surface before treatment. Patients feel only a gentle pressure for 10 to 15 seconds.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="static-reviews-section">
-          <h3 class="static-pillars-h3">Verified Patient Reviews</h3>
-          <div class="static-reviews-grid">
-            <div class="static-review-card">
-              <div class="static-review-stars">★★★★★</div>
-              <p class="static-review-quote">"My single biggest fear was moving my eye during surgery. Dr. Marano reassured me that the automated 3D tracking system follows your eye and instantly pauses if you move. In the chair, I felt zero pain—just a quick 12 seconds per eye."</p>
-              <div class="static-review-author"><strong class="static-white-text">Marcus T.</strong> &bull; Financial Analyst</div>
-            </div>
-            <div class="static-review-card">
-              <div class="static-review-stars">★★★★★</div>
-              <p class="static-review-quote">"I wore contacts for 14 years and dealt with severe dry eyes. Dr. Marano used the blade-free laser to create an ultra-thin flap that preserved my corneal surface. Next morning I took a 9 AM Zoom call with zero discomfort."</p>
-              <div class="static-review-author"><strong class="static-white-text">Elena V.</strong> &bull; Senior Software Engineer</div>
-            </div>
-          </div>
-        </section>
       </main>
     </div>
 
@@ -954,7 +917,7 @@
       });
 
       var portalLinks = document.createElement('div');
-      portalLinks.setAttribute('style', 'text-align:center;margin-top:24px;padding-top:18px;padding-bottom:18px;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);font-size:0.82rem;color:#cbd5e1;');
+      portalLinks.setAttribute('style', 'text-align:center;margin-top:24px;padding-top:18px;font-size:0.82rem;color:#cbd5e1;');
       portalLinks.innerHTML = 'Official Practice Network: <a href="https://www.maranoeyecare.com" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:underline;font-weight:600;margin-right:12px;">www.maranoeyecare.com</a> &bull; <a href="https://www.onjeyecare.com" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:underline;font-weight:600;margin-left:12px;">www.onjeyecare.com</a>';
       
       locSection.appendChild(locGrid);
@@ -1533,26 +1496,8 @@
     // ─── P1: Outcome Metrics Banner ───────────────────────────────────────
 
     function injectMetricsBanner() {
-      if (document.getElementById('outcome-metrics-banner')) return;
-      var socialProof = document.getElementById('social-proof-section');
-      if (!socialProof) return;
-
-      var banner = document.createElement('div');
-      banner.id = 'outcome-metrics-banner';
-      banner.setAttribute('style', 'max-width:1100px;margin:0 auto 48px auto;padding:0 24px;');
-      banner.innerHTML = '<div class="metrics-banner-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.04);border-radius:20px;overflow:hidden;"><div style="padding:28px 16px;text-align:center;background:#080c14;"><div style="font-size:2rem;font-weight:800;color:#e2b857;font-family:var(--font-sans);">24hr</div><div style="font-size:0.78rem;color:#94a3b8;margin-top:4px;">Typical Recovery</div></div><div style="padding:28px 16px;text-align:center;background:#080c14;"><div style="font-size:2rem;font-weight:800;color:#e2b857;font-family:var(--font-sans);">10-15s</div><div style="font-size:0.78rem;color:#94a3b8;margin-top:4px;">Laser Per Eye</div></div><div style="padding:28px 16px;text-align:center;background:#080c14;"><div style="font-size:2rem;font-weight:800;color:#e2b857;font-family:var(--font-sans);">$0</div><div style="font-size:0.78rem;color:#94a3b8;margin-top:4px;">Consultation</div></div></div>';
-
-      // Insert at the top of the social proof section inner
-      var inner = socialProof.querySelector('.proof-inner');
-      if (inner) {
-        // Insert after the heading area
-        var firstTestimonials = inner.querySelector('.proof-testimonials');
-        if (firstTestimonials) {
-          inner.insertBefore(banner, firstTestimonials);
-        } else {
-          inner.appendChild(banner);
-        }
-      }
+      // Streamlined: Trust metrics are unified in the primary trust bar and stats hero grid
+      return;
     }
 
     // ─── P1: Customer-Research Assuaging Testimonials ──────────────────────
@@ -1773,27 +1718,51 @@
       var quoteEls = Array.from(document.querySelectorAll('p, div, blockquote, span'));
       var targetQuote = quoteEls.find(function(el) {
         var txt = el.textContent.trim();
-        return txt.indexOf('True vision correction is an art built on rigorous clinical science') !== -1 && 
+        return (txt.indexOf('True vision correction') !== -1 || 
+                txt.indexOf('operating suite') !== -1 || 
+                txt.indexOf('Elite visual performance') !== -1 || 
+                txt.indexOf('Elite vision isn') !== -1 ||
+                txt.indexOf('laser suite') !== -1) && 
                el.children.length === 0;
       });
       if (targetQuote) {
-        targetQuote.innerHTML = '"Elite visual performance is not created in the operating suite alone; it is engineered through relentless diagnostic precision. By mapping your cornea at the sub-micron level, we capture details as unique as your fingerprint. This allows us to calibrate our advanced dual-laser system with absolute mathematical certainty. To me, LASIK is not just about correcting vision—it is about restoring the raw visual stamina and crisp contrast that high-performers need to excel in their daily pursuits."';
+        targetQuote.innerHTML = '"Elite vision is engineered long before you step into the laser suite. By mapping corneal details as unique as your fingerprint, we calibrate your procedure at the sub-micron level. That mathematical precision is what restores the crisp contrast and visual stamina you depend on every day."';
       }
     }
 
     // ─── CustomVue® LASIK Content Deep-Customization ─────────────────────────
 
     function customizeForCustomVue() {
-      // 1. Hero Eyebrow & Subheading
+      // 1. Hero Title, Locations & Eyebrow
       var heroEyebrow = document.querySelector('.hero-eyebrow');
       if (heroEyebrow && heroEyebrow.textContent.indexOf('CUSTOMVUE') === -1) {
-        heroEyebrow.textContent = 'CUSTOMVUE® WAVEFRONT-GUIDED LASIK | MARANO EYE CARE NJ';
+        heroEyebrow.innerHTML = '✨ CUSTOMVUE® WAVEFRONT-GUIDED LASIK • MARANO EYE CARE NJ';
       }
 
-      var heroSub = document.querySelector('.hero-left p.text-secondary, .hero-content p.text-secondary');
-      if (heroSub && heroSub.textContent.indexOf('High performers don\'t compromise') === -1) {
-        heroSub.textContent = "High performers don't compromise on how they see the world. Upgrade beyond standard 20/20 vision to ultra-HD 20/15 precision—sculpted by Dr. Marano’s 10-second dual-laser suite for 24-hour recovery and total visual freedom. Take 60 seconds to unlock your qualification.";
+      // Location SEO is embedded naturally in hero body copy and trust metrics bar
+
+      var staticH2 = document.querySelector('.static-hero-h2');
+      if (staticH2) {
+        staticH2.classList.add('hero-pop-title');
+        staticH2.innerHTML = 'Give Your Eyes an <span class="hero-pop-accent">Unfair Advantage</span>';
       }
+
+      var heroTitles = document.querySelectorAll('h1, h2, .hero-serif-title, .hero-display-title');
+      heroTitles.forEach(function(el) {
+        if (el.classList.contains('sr-only')) return;
+        var text = (el.innerText || el.textContent || '').trim();
+        if (text.indexOf('Custom Wavefront-Guided LASIK') !== -1 || text.indexOf('Experience 20/15') !== -1 || text.indexOf('Your Eyes Are') !== -1) {
+          el.classList.add('hero-pop-title');
+          el.innerHTML = 'Give Your Eyes an <span class="hero-pop-accent">Unfair Advantage</span>';
+        }
+      });
+
+      var heroSub = document.querySelector('.hero-left p.text-secondary, .hero-content p.text-secondary');
+      if (heroSub && heroSub.textContent.indexOf('20/15') === -1) {
+        heroSub.textContent = 'Most LASIK promises 20/20, but Dr. Marano\'s CustomVue® procedure targets 20/15, offering vision sharper than the standard "perfect" focus. Treatment takes just 10 seconds per eye with blade-free laser precision and next-day recovery. Backed by over 30 years of experience across our Livingston, Denville, and Newark offices. See if you qualify in 60 seconds.';
+      }
+
+
 
       // 2. Science Section Heading & Tech Cards
       var scienceSec = getScienceSection();
@@ -2376,11 +2345,19 @@
         quizCard.innerHTML = html;
       }
 
+      var quizHeader = document.createElement('div');
+      quizHeader.id = 'adaptive-quiz-header';
+      quizHeader.setAttribute('style', 'text-align:center;margin-bottom:32px;');
+      quizHeader.innerHTML = '<span style="display:inline-block;padding:5px 16px;background:rgba(226,184,87,0.08);border:1px solid rgba(226,184,87,0.25);border-radius:100px;font-family:monospace;font-size:0.72rem;letter-spacing:2.5px;text-transform:uppercase;color:#e2b857;font-weight:700;margin-bottom:14px;">Instant Candidacy Assessment</span>' +
+        '<h2 style="font-family:var(--font-serif);font-size:clamp(2rem,4.5vw,2.8rem);color:#fff;font-weight:700;line-height:1.2;margin:0 0 10px 0;">Biometric Candidacy <span class="bio-heading-accent">Diagnostic</span></h2>' +
+        '<p style="font-size:0.95rem;color:#94a3b8;max-width:580px;margin:0 auto;line-height:1.6;">Answer 4 quick questions to see if your eyes meet Dr. Marano’s custom laser criteria in under 60 seconds.</p>';
+
       Array.from(quizRoot.children).forEach(function(child) {
-        if (child.id !== 'adaptive-quiz-container') {
+        if (child.id !== 'adaptive-quiz-container' && child.id !== 'adaptive-quiz-header') {
           child.style.display = 'none';
         }
       });
+      quizRoot.appendChild(quizHeader);
       quizRoot.appendChild(quizCard);
       renderStep();
     }

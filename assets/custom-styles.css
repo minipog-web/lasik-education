@@ -331,9 +331,11 @@
   padding: clamp(80px, 7vw, 120px) 0 !important;
 }
 
-#lasik-science {
-  padding-top: clamp(32px, 4vw, 56px) !important;
-  margin-top: 0 !important;
+#lasik-science,
+#lasik-science.section,
+section#lasik-science {
+  padding-top: 16px !important;
+  margin-top: -32px !important;
 }
 
 /* Adjust secondary sections to match the rhythm */

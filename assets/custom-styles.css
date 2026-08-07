@@ -2071,5 +2071,64 @@ select:focus {
 }
 
 
+/* ==========================================
+   OPTION 5: PARALLAX AMBIENT MESH & GLOW AURAS
+   ========================================== */
 
+/* Ambient Glowing Background Orbs */
+.ambient-glow-aura {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(90px);
+  opacity: 0.15;
+  z-index: 0;
+  will-change: transform, opacity;
+  animation: ambientMeshPulse 14s ease-in-out infinite alternate;
+}
 
+.aura-cyan {
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.4) 0%, rgba(0, 168, 255, 0) 70%);
+}
+
+.aura-gold {
+  background: radial-gradient(circle, rgba(226, 184, 87, 0.45) 0%, rgba(180, 130, 40, 0) 70%);
+}
+
+.aura-violet {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.35) 0%, rgba(120, 40, 200, 0) 70%);
+}
+
+@keyframes ambientMeshPulse {
+  0% {
+    transform: scale(1) translateY(0) rotate(0deg);
+    opacity: 0.12;
+  }
+  50% {
+    transform: scale(1.15) translateY(-25px) rotate(180deg);
+    opacity: 0.22;
+  }
+  100% {
+    transform: scale(0.95) translateY(15px) rotate(360deg);
+    opacity: 0.15;
+  }
+}
+
+/* Section Position Adjustments for Ambient Mesh */
+.section,
+#lasik-science,
+#lasik-journey,
+#adaptive-quiz-container,
+.marano-profile-grid {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Ensure glass containers sit gracefully above ambient glowing mesh */
+.glass-panel,
+#glassmorphic-laser-suite,
+.marano-profile-card,
+.adaptive-quiz-card {
+  position: relative !important;
+  z-index: 2 !important;
+}

@@ -2897,9 +2897,35 @@
       }
     }
 
+    // ─── Option 5: Parallax Ambient Glow Auras Injector ──────────────────────
+    function injectAmbientGlowAuras() {
+      var targets = [
+        { selector: '#lasik-science', type: 'aura-cyan', width: '380px', height: '380px', top: '-60px', right: '-40px' },
+        { selector: '#lasik-journey', type: 'aura-gold', width: '420px', height: '420px', bottom: '-80px', left: '-50px' },
+        { selector: '#adaptive-quiz-container', type: 'aura-violet', width: '350px', height: '350px', top: '20px', right: '10px' },
+        { selector: '.marano-profile-grid', type: 'aura-gold', width: '360px', height: '360px', top: '-40px', left: '-30px' }
+      ];
+
+      targets.forEach(function(item) {
+        var el = document.querySelector(item.selector);
+        if (el && !el.querySelector('.ambient-glow-aura')) {
+          var aura = document.createElement('div');
+          aura.className = 'ambient-glow-aura ' + item.type;
+          var styleStr = 'width:' + item.width + ';height:' + item.height + ';';
+          if (item.top) styleStr += 'top:' + item.top + ';';
+          if (item.bottom) styleStr += 'bottom:' + item.bottom + ';';
+          if (item.left) styleStr += 'left:' + item.left + ';';
+          if (item.right) styleStr += 'right:' + item.right + ';';
+          aura.setAttribute('style', styleStr);
+          el.insertBefore(aura, el.firstChild);
+        }
+      });
+    }
+
     window.addEventListener('load', function() {
       buildFooter();
       initHeroMicroCommitmentFlow();
+      injectAmbientGlowAuras();
 
       // Initial single sweep on load
       scheduleSweep();

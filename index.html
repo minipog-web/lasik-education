@@ -1752,6 +1752,7 @@
       });
       if (targetQuote) {
         targetQuote.innerHTML = '"Elite vision is engineered long before you step into the laser suite. By mapping corneal details as unique as your fingerprint, we calibrate your procedure at the sub-micron level. That mathematical precision is what restores the crisp contrast and visual stamina you depend on every day."';
+        reformatTrustPillarsSection();
       }
     }
 
@@ -1792,8 +1793,8 @@
       // 2. Science Section Heading & Tech Cards
       var scienceSec = getScienceSection();
       if (scienceSec) {
-        scienceSec.style.setProperty('padding-top', '12px', 'important');
-        scienceSec.style.setProperty('margin-top', '0px', 'important');
+        scienceSec.style.setProperty('margin-top', '-160px', 'important');
+        scienceSec.style.setProperty('padding-top', '0px', 'important');
         var scienceHeading = scienceSec.querySelector('h2');
         if (scienceHeading) {
           scienceHeading.innerHTML = 'The Science of <span class="bio-heading-accent">LASIK</span>';

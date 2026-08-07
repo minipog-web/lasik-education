@@ -943,10 +943,27 @@
       var headings = document.querySelectorAll('h2, h3');
       for (var i = 0; i < headings.length; i++) {
         var txt = headings[i].textContent || '';
-        if (txt.indexOf('LASIK Journey') !== -1 || txt.indexOf('Science of') !== -1 || txt.indexOf('Biometric') !== -1) {
+        if (txt.indexOf('Science of') !== -1 || txt.indexOf('Biometric') !== -1) {
           var parentSec = headings[i].closest('.section') || headings[i].closest('section');
           if (parentSec) {
             parentSec.id = 'lasik-science';
+            return parentSec;
+          }
+        }
+      }
+      return null;
+    }
+
+    function getJourneySection() {
+      var sec = document.getElementById('lasik-journey');
+      if (sec) return sec;
+      var headings = document.querySelectorAll('h1, h2, h3');
+      for (var i = 0; i < headings.length; i++) {
+        var txt = headings[i].textContent || '';
+        if (txt.indexOf('LASIK Journey') !== -1 || txt.indexOf('Journey') !== -1) {
+          var parentSec = headings[i].closest('.section') || headings[i].closest('section');
+          if (parentSec) {
+            parentSec.id = 'lasik-journey';
             return parentSec;
           }
         }
@@ -1990,69 +2007,76 @@
       }
     }
 
-    // ─── Glassmorphic Laser Technology Breakdown Suite ──────────────────────────
+    // ─── Glassmorphic Laser Technology Suite for LASIK Journey ──────────────────────────
     function injectGlassmorphicLaserSuite() {
-      var scienceSec = getScienceSection();
-      if (!scienceSec || document.getElementById('glassmorphic-laser-suite')) return;
+      var journeySec = getJourneySection();
+      if (!journeySec || document.getElementById('glassmorphic-laser-suite')) return;
 
-      var container = scienceSec.querySelector('.container') || scienceSec;
-      
+      var container = journeySec.querySelector('.container') || journeySec;
+
+      // Hide the redundant old step card in the journey section to replace it with this unified card
+      var oldJourneyCards = journeySec.querySelectorAll('.steps-grid, .lasik-steps-panel, .step-content-col, .steps-progress-wrapper');
+      oldJourneyCards.forEach(function(el) {
+        el.style.display = 'none';
+      });
+
       var suite = document.createElement('div');
       suite.id = 'glassmorphic-laser-suite';
-      suite.style.cssText = 'margin-top: 48px; border: 1px solid rgba(226,184,87,0.18); background: rgba(6, 11, 23, 0.75); backdrop-filter: blur(16px); border-radius: 24px; padding: clamp(24px, 4vw, 40px); boxShadow: 0 25px 60px rgba(0,0,0,0.5), inset 0 0 30px rgba(226,184,87,0.03); text-align: left;';
+      suite.style.cssText = 'margin-top: 36px; border: 1px solid rgba(226,184,87,0.22); background: linear-gradient(165deg, rgba(13,20,32,0.9) 0%, rgba(6,11,20,0.95) 100%); backdrop-filter: blur(20px); border-radius: 28px; padding: clamp(24px, 4vw, 44px); box-shadow: 0 30px 80px rgba(0,0,0,0.7), inset 0 1px 1px rgba(255,255,255,0.15); text-align: left; position: relative; overflow: hidden;';
 
       suite.innerHTML = 
-        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:16px;">' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:16px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:20px;">' +
           '<div>' +
-            '<span style="font-family:monospace;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:#e2b857;font-weight:700;display:block;margin-bottom:6px;">Marano Eye Care\'s Custom Ophthalmic Architecture</span>' +
-            '<h3 style="font-family:var(--font-serif);font-size:clamp(1.4rem, 2.5vw, 1.8rem);color:#fff;margin:0;font-weight:700;">Dual-Laser Technology Suite</h3>' +
+            '<span style="font-family:monospace;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:#e2b857;font-weight:700;display:block;margin-bottom:6px;">Dual-Laser Ophthalmic Suite & Procedure Steps</span>' +
+            '<h3 style="font-family:var(--font-serif);font-size:clamp(1.5rem, 2.8vw, 2rem);color:#fff;margin:0;font-weight:700;">The CustomVue® Dual-Laser Journey</h3>' +
           '</div>' +
-          '<div style="display:flex;gap:8px;background:rgba(255,255,255,0.03);padding:4px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);">' +
-            '<button type="button" id="tab-laser-wavescan" class="laser-suite-tab active" style="padding:10px 18px;border-radius:8px;background:rgba(226,184,87,0.15);border:1px solid #e2b857;color:#fff;font-family:monospace;font-size:0.78rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">1. 3D WaveScan® Diagnostics</button>' +
-            '<button type="button" id="tab-laser-femto" class="laser-suite-tab" style="padding:10px 18px;border-radius:8px;background:transparent;border:1px solid transparent;color:#94a3b8;font-family:monospace;font-size:0.78rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">2. iFS® Femtosecond Laser</button>' +
-            '<button type="button" id="tab-laser-excimer" class="laser-suite-tab" style="padding:10px 18px;border-radius:8px;background:transparent;border:1px solid transparent;color:#94a3b8;font-family:monospace;font-size:0.78rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">3. STAR S4 IR® Excimer</button>' +
+          '<div style="display:flex;gap:8px;background:rgba(255,255,255,0.03);padding:6px;border-radius:14px;border:1px solid rgba(255,255,255,0.08);flex-wrap:wrap;">' +
+            '<button type="button" id="tab-laser-wavescan" class="laser-suite-tab active" style="padding:10px 18px;border-radius:10px;background:rgba(226,184,87,0.18);border:1px solid #e2b857;color:#fff;font-family:monospace;font-size:0.78rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">Step 1: 3D WaveScan® Map</button>' +
+            '<button type="button" id="tab-laser-femto" class="laser-suite-tab" style="padding:10px 18px;border-radius:10px;background:transparent;border:1px solid transparent;color:#94a3b8;font-family:monospace;font-size:0.78rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">Step 2: iFS® 10s Femto Flap</button>' +
+            '<button type="button" id="tab-laser-excimer" class="laser-suite-tab" style="padding:10px 18px;border-radius:10px;background:transparent;border:1px solid transparent;color:#94a3b8;font-family:monospace;font-size:0.78rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">Step 3: STAR S4 IR® Reshaping</button>' +
+            '<button type="button" id="tab-laser-recovery" class="laser-suite-tab" style="padding:10px 18px;border-radius:10px;background:transparent;border:1px solid transparent;color:#94a3b8;font-family:monospace;font-size:0.78rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">Step 4: 24-Hr Active Recovery</button>' +
           '</div>' +
         '</div>' +
 
-        '<div id="laser-pane-content" style="display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:stretch;">' +
-          // Left: Diagnostic Overview & Info Box
-          '<div style="background:rgba(3, 7, 18, 0.65);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:24px;position:relative;overflow:hidden;box-shadow:inset 0 0 20px rgba(0,0,0,0.4);display:flex;flex-direction:column;justify-content:space-between;">' +
+        '<div id="laser-pane-content" style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:32px;align-items:stretch;">' +
+          '<!-- Left: Phase Details & Specs -->' +
+          '<div style="background:rgba(3, 7, 18, 0.65);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:28px;position:relative;overflow:hidden;box-shadow:inset 0 0 25px rgba(0,0,0,0.4);display:flex;flex-direction:column;justify-content:space-between;">' +
             '<div>' +
               '<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:12px;margin-bottom:18px;">' +
-                '<span id="laser-badge-id" style="font-family:monospace;font-size:0.7rem;color:#00f0ff;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;">SPECIFICATION // 250-LENSLET DIAGNOSTICS</span>' +
-                '<span style="display:inline-flex;align-items:center;gap:6px;font-family:monospace;font-size:0.68rem;color:#10b981;background:rgba(16,185,129,0.1);padding:2px 8px;border-radius:4px;border:1px solid rgba(16,185,129,0.2);"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;" class="animate-ping"></span> SUB-MICRON PRECISION</span>' +
+                '<span id="laser-badge-id" style="font-family:monospace;font-size:0.7rem;color:#00f0ff;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;">PHASE 01 // 250-LENSLET DIAGNOSTIC MAP</span>' +
+                '<span style="display:inline-flex;align-items:center;gap:6px;font-family:monospace;font-size:0.68rem;color:#10b981;background:rgba(16,185,129,0.1);padding:3px 10px;border-radius:6px;border:1px solid rgba(16,185,129,0.25);"><span style="width:6px;height:6px;border-radius:50%;background:#10b981;"></span> SUB-MICRON ACCURACY</span>' +
               '</div>' +
-              '<h4 id="laser-title-display" style="font-family:var(--font-sans);font-size:1.25rem;color:#fff;font-weight:700;margin:0 0 10px 0;">3D WaveScan Wavefront® Diagnostic Suite</h4>' +
-              '<p id="laser-desc-display" style="font-size:0.88rem;color:#cbd5e1;line-height:1.6;margin:0 0 18px 0;font-weight:300;">Captures 250 unique optical measurements—25 times more precise than standard phoropter eye exams—to map higher-order aberrations unique to your eye like a visual fingerprint.</p>' +
+              '<h4 id="laser-title-display" style="font-family:var(--font-sans);font-size:1.35rem;color:#fff;font-weight:700;margin:0 0 12px 0;line-height:1.3;">Step 1: 3D WaveScan Wavefront® Diagnostic Mapping</h4>' +
+              '<p id="laser-desc-display" style="font-size:0.9rem;color:#cbd5e1;line-height:1.65;margin:0 0 20px 0;font-weight:300;">Before any laser treatment begins, Dr. Marano uses WaveScan 3D technology to capture 250 unique optical measurements. This maps higher- and lower-order corneal aberrations 25 times more accurately than standard eye exams.</p>' +
             '</div>' +
-            '<div id="laser-metrics-container" style="display:none;grid-template-columns:1fr 1fr;gap:12px;font-family:monospace;font-size:0.75rem;margin-top:auto;">' +
-              '<div style="background:rgba(255,255,255,0.02);padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);"><span style="color:#94a3b8;display:block;margin-bottom:2px;">ACTION TIME</span><strong id="laser-metric-1" style="color:#e2b857;font-size:0.9rem;">10 Seconds</strong></div>' +
-              '<div style="background:rgba(255,255,255,0.02);padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);"><span style="color:#94a3b8;display:block;margin-bottom:2px;">TISSUE IMPACT</span><strong id="laser-metric-2" style="color:#00f0ff;font-size:0.9rem;">0.25 Micron</strong></div>' +
+
+            '<div id="laser-metrics-container" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;font-family:monospace;font-size:0.75rem;margin-top:auto;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);">' +
+              '<div style="background:rgba(255,255,255,0.02);padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);"><span style="color:#94a3b8;display:block;margin-bottom:4px;font-size:0.65rem;">PHASE DURATION</span><strong id="laser-metric-1" style="color:#e2b857;font-size:0.95rem;">Pre-Op Mapping</strong></div>' +
+              '<div style="background:rgba(255,255,255,0.02);padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);"><span style="color:#94a3b8;display:block;margin-bottom:4px;font-size:0.65rem;">CLINICAL IMPACT</span><strong id="laser-metric-2" style="color:#00f0ff;font-size:0.95rem;">250 Focal Points</strong></div>' +
             '</div>' +
           '</div>' +
 
-          // Right: Interactive Visual Medical Image & Clinical Details Card
-          '<div style="background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:24px;box-shadow:0 15px 35px rgba(0,0,0,0.3);display:flex;flex-direction:column;gap:18px;">' +
-            // Medical Image Container
-            '<div style="position:relative;width:100%;height:180px;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:#000;box-shadow:0 10px 25px rgba(0,0,0,0.5);">' +
+          '<!-- Right: Visual Diagram & Advantage Summary -->' +
+          '<div style="background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:24px;box-shadow:0 15px 35px rgba(0,0,0,0.3);display:flex;flex-direction:column;justify-content:space-between;gap:20px;">' +
+            '<div style="position:relative;width:100%;height:190px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);background:#000;box-shadow:0 12px 30px rgba(0,0,0,0.6);">' +
               '<img id="laser-image-display" src="./assets/wavescan_diagnostic_device.png" alt="Laser Technology Illustration" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:all 0.5s ease;" />' +
-              '<div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 50%, rgba(3,7,18,0.85) 100%);pointer-events:none;"></div>' +
-              '<span id="laser-image-caption" style="position:absolute;bottom:8px;left:12px;right:12px;font-family:monospace;font-size:0.68rem;color:#e2b857;letter-spacing:1px;text-transform:uppercase;font-weight:700;">3D WAVEFRONT DIAGNOSTICS // 250-LENSLET TOPOGRAPHY</span>' +
+              '<div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 40%, rgba(3,7,18,0.9) 100%);pointer-events:none;"></div>' +
+              '<span id="laser-image-caption" style="position:absolute;bottom:10px;left:14px;right:14px;font-family:monospace;font-size:0.68rem;color:#e2b857;letter-spacing:1px;text-transform:uppercase;font-weight:700;">STEP 1 DIAGNOSTICS // 250-LENSLET TOPOGRAPHY</span>' +
             '</div>' +
 
             '<div>' +
               '<h5 style="font-family:monospace;font-size:0.75rem;color:#e2b857;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 12px 0;">CLINICAL ADVANTAGE & SAFETY</h5>' +
               '<ul id="laser-list-display" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;font-size:0.85rem;color:#cbd5e1;line-height:1.45;">' +
-                '<li style="display:flex;gap:10px;align-items:start;"><span style="color:#e2b857;">✦</span><span><strong>Custom Map Fingerprint:</strong> Detects subtle glare and halo sources invisible to regular specs.</span></li>' +
-                '<li style="display:flex;gap:10px;align-items:start;"><span style="color:#e2b857;">✦</span><span><strong>Digital Transfer:</strong> Transmits 3D optical map directly to the STAR S4 IR excimer computer.</span></li>' +
-                '<li style="display:flex;gap:10px;align-items:start;"><span style="color:#e2b857;">✦</span><span><strong>Night Vision Optimization:</strong> Significantly reduces post-operative night glare.</span></li>' +
+                '<li style="display:flex;gap:10px;align-items:start;"><span style="color:#e2b857;">✦</span><span><strong>Custom Map Fingerprint:</strong> Detects subtle glare and halo sources unique to your eyes.</span></li>' +
+                '<li style="display:flex;gap:10px;align-items:start;"><span style="color:#e2b857;">✦</span><span><strong>Direct Digital Transfer:</strong> Feeds sub-micron optical data straight to the excimer laser.</span></li>' +
+                '<li style="display:flex;gap:10px;align-items:start;"><span style="color:#e2b857;">✦</span><span><strong>Night Vision Calibration:</strong> Eliminates night glare by correcting micro-irregularities.</span></li>' +
               '</ul>' +
             '</div>' +
           '</div>' +
         '</div>';
 
-      // Insert suite directly into container right below the section header
-      var headerBox = scienceSec.querySelector('.text-center');
+      // Insert suite directly into journeySec container right below its header
+      var headerBox = journeySec.querySelector('.text-center') || journeySec.querySelector('h2, h3');
       if (headerBox && headerBox.nextSibling) {
         container.insertBefore(suite, headerBox.nextSibling);
       } else {
@@ -2062,46 +2086,59 @@
       // Tab switching logic
       var data = {
         wavescan: {
-          badge: 'SPECIFICATION // 250-LENSLET DIAGNOSTICS',
-          title: '3D WaveScan Wavefront® Diagnostic Suite',
-          desc: 'Captures 250 unique optical measurements—25 times more precise than standard phoropter eye exams—to map higher-order aberrations unique to your eye like a visual fingerprint.',
-          showMetrics: false,
+          badge: 'PHASE 01 // 250-LENSLET DIAGNOSTIC MAP',
+          title: 'Step 1: 3D WaveScan Wavefront® Diagnostic Mapping',
+          desc: 'Before any laser treatment begins, Dr. Marano uses WaveScan 3D technology to capture 250 unique optical measurements. This maps higher- and lower-order corneal aberrations 25 times more accurately than standard eye exams.',
+          m1: 'Pre-Op Mapping',
+          m2: '250 Focal Points',
           img: './assets/wavescan_diagnostic_device.png',
-          caption: '3D WAVEFRONT DIAGNOSTICS // 250-LENSLET TOPOGRAPHY',
+          caption: 'STEP 1 DIAGNOSTICS // 250-LENSLET TOPOGRAPHY',
           list: [
-            '<strong>Custom Map Fingerprint:</strong> Detects subtle glare and halo sources invisible to regular specs.',
-            '<strong>Digital Transfer:</strong> Transmits 3D optical map directly to the STAR S4 IR excimer computer.',
-            '<strong>Night Vision Optimization:</strong> Significantly reduces post-operative night glare.'
+            '<strong>Custom Map Fingerprint:</strong> Detects subtle glare and halo sources unique to your eyes.',
+            '<strong>Direct Digital Transfer:</strong> Feeds sub-micron optical data straight to the excimer laser.',
+            '<strong>Night Vision Calibration:</strong> Eliminates night glare by correcting micro-irregularities.'
           ]
         },
         femto: {
-          badge: 'SPECIFICATION // 1053nm IR FEMTOSECOND',
-          title: 'iFS® 10-Second Femtosecond Laser',
-          desc: 'Creates a micro-thin, customized corneal flap using fast 1053 nm infrared pulses at a quadrillionth of a second. Replaces mechanical blades for superior flap border strength and rapid 24-hour cellular adhesion.',
-          showMetrics: true,
-          m1: '10 Seconds',
-          m2: '0.25 Micron',
+          badge: 'PHASE 02 // 1053nm INFRARED FEMTOSECOND',
+          title: 'Step 2: iFS® 10-Second Blade-Free Flap Creation',
+          desc: 'Using ultra-fast 1053 nm infrared laser pulses at a quadrillionth of a second, Dr. Marano creates a customized, micro-thin corneal flap in just 10 seconds per eye. 100% blade-free with zero mechanical friction.',
+          m1: '10 Seconds / Eye',
+          m2: '0.25 Micron Bevel',
           img: './assets/lasik_flap_clean.webp',
-          caption: 'FLAP CREATION // FEMTOSECOND INFRARED PULSE',
+          caption: 'STEP 2 FLAP CREATION // FEMTOSECOND INFRARED PULSE',
           list: [
-            '<strong>Blade-Free Safety:</strong> Eliminates mechanical microkeratome blade risks completely.',
-            '<strong>Custom Flap Architecture:</strong> Inverted bevel edges lock flap in place for smooth healing.',
-            '<strong>Rapid Visual Recovery:</strong> Minimal stromal edema allows clear vision next day.'
+            '<strong>100% Blade-Free Safety:</strong> Replaces mechanical blades with infrared laser precision.',
+            '<strong>Inverted Bevel Lock:</strong> Custom edge architecture secures flap alignment during healing.',
+            '<strong>Next-Day Recovery:</strong> Ultra-smooth corneal bed allows immediate 24-hour cellular adhesion.'
           ]
         },
         excimer: {
-          badge: 'SPECIFICATION // 193nm UV COLD EXCIMER',
-          title: 'STAR S4 IR® Excimer Laser & Iris Registration',
-          desc: 'Emits cold 193 nm ultraviolet photons to break molecular bonds without heat damage. Features Active 3D Eye Tracking and Iris Registration to align laser pulses precisely even if the eye moves.',
-          showMetrics: true,
+          badge: 'PHASE 03 // 193nm COLD UV EXCIMER & 3D TRACKING',
+          title: 'Step 3: STAR S4 IR® Excimer Laser & Iris Registration',
+          desc: 'Cold 193 nm ultraviolet photons reshape corneal curvature to correct your prescription without thermal heat. Active 3D Eye Tracking and Iris Registration align every laser pulse in real-time, even if your eye moves.',
           m1: '0.25µm / Pulse',
-          m2: 'Active Tracking',
+          m2: 'Active 3D Tracking',
           img: './assets/lasik_reshape_clean.webp',
-          caption: 'CORNEAL RESHAPING // ULTRAVIOLET PHOTOABLATION',
+          caption: 'STEP 3 CORNEAL RESHAPING // ULTRAVIOLET PHOTOABLATION',
           list: [
             '<strong>Cold Photoablation:</strong> Zero heat or thermal scarring on surrounding corneal collagen.',
-            '<strong>Iris Registration:</strong> Rotational alignment eliminates astigmatism axis miscalculations.',
-            '<strong>Sub-Micron Precision:</strong> Sculpting accuracy within fraction of a human hair width.'
+            '<strong>Iris Registration:</strong> Rotational tracking eliminates astigmatism axis misalignments.',
+            '<strong>Zero-Flinch Safety:</strong> Automated tracker pauses instantly if pupil moves outside tolerance.'
+          ]
+        },
+        recovery: {
+          badge: 'PHASE 04 // 24-HOUR CLINICAL RECOVERY',
+          title: 'Step 4: Rapid Healing & Return to Active Freedom',
+          desc: 'Because no blades or heat were used, your micro-flap seals naturally within hours. Over 98% of patients achieve 20/20 or better visual acuity and resume screen work, driving, and sports the very next day.',
+          m1: '24-Hour Return',
+          m2: '20/15 Target Acuity',
+          img: './assets/lasik_flap_clean.webp',
+          caption: 'STEP 4 RAPID RECOVERY // NEXT-DAY VISUAL FREEDOM',
+          list: [
+            '<strong>Immediate Flap Adhesion:</strong> Natural osmotic pressure holds flap securely in position.',
+            '<strong>Back to Work & Screens:</strong> Resume high-density laptop, code, and screen tasks in 24 hrs.',
+            '<strong>Zero-Contact Comfort:</strong> Permanently eliminate reliance on dry contacts and glasses.'
           ]
         }
       };
@@ -2116,13 +2153,9 @@
 
         var metricsContainer = document.getElementById('laser-metrics-container');
         if (metricsContainer) {
-          if (d.showMetrics) {
-            metricsContainer.style.display = 'grid';
-            document.getElementById('laser-metric-1').textContent = d.m1;
-            document.getElementById('laser-metric-2').textContent = d.m2;
-          } else {
-            metricsContainer.style.display = 'none';
-          }
+          metricsContainer.style.display = 'grid';
+          document.getElementById('laser-metric-1').textContent = d.m1;
+          document.getElementById('laser-metric-2').textContent = d.m2;
         }
 
         var imgEl = document.getElementById('laser-image-display');
@@ -2140,16 +2173,18 @@
           return '<li style="display:flex;gap:10px;align-items:start;"><span style="color:#e2b857;">✦</span><span>' + item + '</span></li>';
         }).join('');
 
-        ['wavescan', 'femto', 'excimer'].forEach(function(k) {
+        ['wavescan', 'femto', 'excimer', 'recovery'].forEach(function(k) {
           var btn = document.getElementById('tab-laser-' + k);
-          if (k === key) {
-            btn.style.background = 'rgba(226,184,87,0.15)';
-            btn.style.border = '1px solid #e2b857';
-            btn.style.color = '#fff';
-          } else {
-            btn.style.background = 'transparent';
-            btn.style.border = '1px solid transparent';
-            btn.style.color = '#94a3b8';
+          if (btn) {
+            if (k === key) {
+              btn.style.background = 'rgba(226,184,87,0.18)';
+              btn.style.border = '1px solid #e2b857';
+              btn.style.color = '#fff';
+            } else {
+              btn.style.background = 'transparent';
+              btn.style.border = '1px solid transparent';
+              btn.style.color = '#94a3b8';
+            }
           }
         });
       }
@@ -2157,6 +2192,7 @@
       document.getElementById('tab-laser-wavescan').addEventListener('click', function() { updateSuite('wavescan'); });
       document.getElementById('tab-laser-femto').addEventListener('click', function() { updateSuite('femto'); });
       document.getElementById('tab-laser-excimer').addEventListener('click', function() { updateSuite('excimer'); });
+      document.getElementById('tab-laser-recovery').addEventListener('click', function() { updateSuite('recovery'); });
 
       container.appendChild(suite);
     }

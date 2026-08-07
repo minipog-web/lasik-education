@@ -1786,12 +1786,21 @@
       if (scienceSec) {
         var scienceHeading = scienceSec.querySelector('h2');
         if (scienceHeading) {
-          scienceHeading.innerHTML = 'The Science of <span class="bio-heading-accent">CustomVue® LASIK</span>';
+          scienceHeading.innerHTML = 'The Science of <span class="bio-heading-accent">LASIK</span>';
         }
 
         var scienceSub = scienceSec.querySelector('p');
         if (scienceSub && scienceSub.textContent.indexOf('10,240') === -1) {
           scienceSub.textContent = 'Dr. Marano combines 3D WaveScan® 250-lenslet diagnostics, the 10-second iFS® Femtosecond laser, and the STAR S4 IR® Excimer laser with Iris Registration targeting 20/20 vision as the primary goal, while unlocking 20/15 potential (sharper than standard 20/20 vision; individual results may vary).';
+        }
+      }
+
+      // 2b. LASIK Journey Heading
+      var journeySec = getJourneySection();
+      if (journeySec) {
+        var journeyHeading = journeySec.querySelector('h2');
+        if (journeyHeading) {
+          journeyHeading.innerHTML = 'The <span class="bio-heading-accent">CustomVue® LASIK</span> Journey';
         }
       }
 

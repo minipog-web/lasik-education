@@ -1001,6 +1001,25 @@
       // 1. Inject surgeon board certifications into the profile section
       if (profileGrid && !document.getElementById('eeat-credentials')) {
         var bioHeading = profileGrid.querySelector('.bio-heading');
+        var bioEyebrow = profileGrid.querySelector('.bio-eyebrow') || profileGrid.querySelector('span');
+        if (bioHeading) {
+          bioHeading.style.setProperty('text-align', 'center', 'important');
+          bioHeading.style.setProperty('font-size', 'clamp(1.8rem, 3.5vw, 2.5rem)', 'important');
+          bioHeading.style.setProperty('line-height', '1.25', 'important');
+          bioHeading.style.setProperty('margin', '0 auto 20px auto', 'important');
+          bioHeading.style.setProperty('max-width', '750px', 'important');
+
+          var headingBox = bioHeading.parentNode;
+          if (headingBox) {
+            headingBox.style.setProperty('text-align', 'center', 'important');
+          }
+        }
+        if (bioEyebrow) {
+          bioEyebrow.style.setProperty('text-align', 'center', 'important');
+          bioEyebrow.style.setProperty('display', 'block', 'important');
+          bioEyebrow.style.setProperty('margin', '0 auto 8px auto', 'important');
+        }
+
         if (bioHeading) {
           var bioTextCol = bioHeading.parentNode;
           if (bioTextCol) {

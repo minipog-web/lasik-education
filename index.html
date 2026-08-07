@@ -1792,11 +1792,13 @@
       // 2. Science Section Heading & Tech Cards
       var scienceSec = getScienceSection();
       if (scienceSec) {
-        scienceSec.setAttribute('style', 'padding-top: 24px !important; margin-top: 0 !important;');
+        scienceSec.style.setProperty('padding-top', '12px', 'important');
+        scienceSec.style.setProperty('margin-top', '0px', 'important');
         var scienceHeading = scienceSec.querySelector('h2');
         if (scienceHeading) {
           scienceHeading.innerHTML = 'The Science of <span class="bio-heading-accent">LASIK</span>';
-          scienceHeading.setAttribute('style', 'margin-top: 0 !important; padding-top: 0 !important;');
+          scienceHeading.style.setProperty('margin-top', '0px', 'important');
+          scienceHeading.style.setProperty('padding-top', '0px', 'important');
         }
 
         var scienceSub = scienceSec.querySelector('p');
@@ -2594,7 +2596,11 @@
       html += '</div></div>';
 
       pillarsGrid.setAttribute('data-reformatted', 'true');
-      pillarsGrid.setAttribute('style', 'display:block;width:100%;margin-top:40px;');
+      pillarsGrid.setAttribute('style', 'display:block;width:100%;margin-top:16px;margin-bottom:16px;');
+      var pillarsSec = pillarsGrid.closest('.section') || pillarsGrid.closest('section');
+      if (pillarsSec) {
+        pillarsSec.setAttribute('style', 'padding-top: 16px !important; padding-bottom: 16px !important; margin: 0 !important;');
+      }
       pillarsGrid.innerHTML = html;
     }
 

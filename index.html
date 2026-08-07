@@ -2031,10 +2031,11 @@
             '<h3 style="font-family:var(--font-serif);font-size:clamp(1.5rem, 2.8vw, 2rem);color:#fff;margin:0;font-weight:700;">The CustomVue® Dual-Laser Journey</h3>' +
           '</div>' +
           '<div style="display:flex;gap:8px;background:rgba(255,255,255,0.03);padding:6px;border-radius:14px;border:1px solid rgba(255,255,255,0.08);flex-wrap:wrap;">' +
-            '<button type="button" id="tab-laser-wavescan" class="laser-suite-tab active" style="padding:10px 18px;border-radius:10px;background:rgba(226,184,87,0.18);border:1px solid #e2b857;color:#fff;font-family:monospace;font-size:0.78rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">Step 1: 3D WaveScan® Map</button>' +
-            '<button type="button" id="tab-laser-femto" class="laser-suite-tab" style="padding:10px 18px;border-radius:10px;background:transparent;border:1px solid transparent;color:#94a3b8;font-family:monospace;font-size:0.78rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">Step 2: iFS® 10s Femto Flap</button>' +
-            '<button type="button" id="tab-laser-excimer" class="laser-suite-tab" style="padding:10px 18px;border-radius:10px;background:transparent;border:1px solid transparent;color:#94a3b8;font-family:monospace;font-size:0.78rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">Step 3: STAR S4 IR® Reshaping</button>' +
-            '<button type="button" id="tab-laser-recovery" class="laser-suite-tab" style="padding:10px 18px;border-radius:10px;background:transparent;border:1px solid transparent;color:#94a3b8;font-family:monospace;font-size:0.78rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">Step 4: 24-Hr Active Recovery</button>' +
+            '<button type="button" id="tab-laser-wavescan" class="laser-suite-tab active" style="padding:10px 16px;border-radius:10px;background:rgba(226,184,87,0.18);border:1px solid #e2b857;color:#fff;font-family:monospace;font-size:0.76rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">Step 1: 3D Map</button>' +
+            '<button type="button" id="tab-laser-femto" class="laser-suite-tab" style="padding:10px 16px;border-radius:10px;background:transparent;border:1px solid transparent;color:#94a3b8;font-family:monospace;font-size:0.76rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">Step 2: Femto Flap</button>' +
+            '<button type="button" id="tab-laser-excimer" class="laser-suite-tab" style="padding:10px 16px;border-radius:10px;background:transparent;border:1px solid transparent;color:#94a3b8;font-family:monospace;font-size:0.76rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">Step 3: Reshaping</button>' +
+            '<button type="button" id="tab-laser-reposition" class="laser-suite-tab" style="padding:10px 16px;border-radius:10px;background:transparent;border:1px solid transparent;color:#94a3b8;font-family:monospace;font-size:0.76rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">Step 4: Flap Reseal</button>' +
+            '<button type="button" id="tab-laser-recovery" class="laser-suite-tab" style="padding:10px 16px;border-radius:10px;background:transparent;border:1px solid transparent;color:#94a3b8;font-family:monospace;font-size:0.76rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">Step 5: 24-Hr Recovery</button>' +
           '</div>' +
         '</div>' +
 
@@ -2126,14 +2127,28 @@
             '<strong>Zero-Flinch Safety:</strong> Automated tracker pauses instantly if pupil moves outside tolerance.'
           ]
         },
+        reposition: {
+          badge: 'PHASE 04 // PRECISION FLAP REPOSITION & RESEALING',
+          title: 'Step 4: Natural Flap Repositioning & Osmotic Resealing',
+          desc: 'Immediately after corneal sculpting, Dr. Marano smooths the micro-thin corneal flap back into its natural anatomical position. The flap edges interlock seamlessly without stitches, utilizing natural corneal osmotic pressure to seal.',
+          m1: 'Stitch-Free',
+          m2: 'Immediate Adhesion',
+          img: './assets/lasik_reposition_clean.webp',
+          caption: 'STEP 4 FLAP REPOSITIONING // NATURAL OSMOTIC RESEALING',
+          list: [
+            '<strong>Natural Osmotic Seal:</strong> Endothelial pump action creates instantaneous natural suction.',
+            '<strong>Self-Aligning Bevel:</strong> Precise inverted edges fit together like a protective puzzle piece.',
+            '<strong>Zero Stitches Required:</strong> Rapid epithelial cell migration seals the flap border within hours.'
+          ]
+        },
         recovery: {
-          badge: 'PHASE 04 // 24-HOUR CLINICAL RECOVERY',
-          title: 'Step 4: Rapid Healing & Return to Active Freedom',
+          badge: 'PHASE 05 // 24-HOUR CLINICAL RECOVERY',
+          title: 'Step 5: Rapid Healing & Return to Active Freedom',
           desc: 'Because no blades or heat were used, your micro-flap seals naturally within hours. Over 98% of patients achieve 20/20 or better visual acuity and resume screen work, driving, and sports the very next day.',
           m1: '24-Hour Return',
           m2: '20/15 Target Acuity',
           img: './assets/lasik_24hr_recovery.png',
-          caption: 'STEP 4 RAPID RECOVERY // NEXT-DAY VISUAL FREEDOM',
+          caption: 'STEP 5 RAPID RECOVERY // NEXT-DAY VISUAL FREEDOM',
           list: [
             '<strong>Immediate Flap Adhesion:</strong> Natural osmotic pressure holds flap securely in position.',
             '<strong>Back to Work & Screens:</strong> Resume high-density laptop, code, and screen tasks in 24 hrs.',
@@ -2172,7 +2187,7 @@
           return '<li style="display:flex;gap:10px;align-items:start;"><span style="color:#e2b857;">✦</span><span>' + item + '</span></li>';
         }).join('');
 
-        ['wavescan', 'femto', 'excimer', 'recovery'].forEach(function(k) {
+        ['wavescan', 'femto', 'excimer', 'reposition', 'recovery'].forEach(function(k) {
           var btn = document.getElementById('tab-laser-' + k);
           if (btn) {
             if (k === key) {
@@ -2191,6 +2206,7 @@
       document.getElementById('tab-laser-wavescan').addEventListener('click', function() { updateSuite('wavescan'); });
       document.getElementById('tab-laser-femto').addEventListener('click', function() { updateSuite('femto'); });
       document.getElementById('tab-laser-excimer').addEventListener('click', function() { updateSuite('excimer'); });
+      document.getElementById('tab-laser-reposition').addEventListener('click', function() { updateSuite('reposition'); });
       document.getElementById('tab-laser-recovery').addEventListener('click', function() { updateSuite('recovery'); });
 
       container.appendChild(suite);

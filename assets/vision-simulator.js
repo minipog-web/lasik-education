@@ -13,9 +13,9 @@
     container.innerHTML = `
       <div class="sim-wrapper">
         <div class="sim-header">
-          <span class="sim-badge">Wavefront Diagnostic Optical Physics</span>
-          <h3 class="sim-title">LASIK Refractive Error & 20/15 HD Acuity Simulator</h3>
-          <p class="sim-subtitle">Simulate real-world Sphere defocus (Myopia/Hyperopia), corneal Astigmatism axis rotation, and night glare contrast against 20/15 Custom LASIK clarity.</p>
+          <span class="sim-badge">Interactive Vision Simulator</span>
+          <h3 class="sim-title">Interactive Vision & LASIK Clarity Simulator</h3>
+          <p class="sim-subtitle">Compare common vision issues like nearsightedness, farsightedness, and astigmatism against the clear focus of Custom Wavefront LASIK.</p>
         </div>
 
         <div class="sim-stage-container" id="sim-stage">
@@ -27,7 +27,7 @@
           </div>
 
           <div class="sim-overlay-badge sim-badge-right">
-            <span class="sim-status-dot dot-green"></span> POST: 20/15 HD (0.00D)
+            <span class="sim-status-dot dot-green"></span> POST: 20/20 Vision (0.00D)
           </div>
           
           <div class="sim-split-divider" id="sim-divider" style="left: 50%;">
@@ -38,11 +38,11 @@
         </div>
 
         <div class="sim-presets-grid">
-          <button class="sim-preset-btn active" data-sphere="-2.00" data-cyl="0" data-axis="0">Mild Myopia (-2.00 D)</button>
-          <button class="sim-preset-btn" data-sphere="-6.00" data-cyl="0" data-axis="0">High Myopia (-6.00 D)</button>
-          <button class="sim-preset-btn" data-sphere="0" data-cyl="-2.50" data-axis="90">Vertical Astigmatism (-2.50 D @ 90°)</button>
-          <button class="sim-preset-btn" data-sphere="+3.00" data-cyl="0" data-axis="0">Hyperopia (+3.00 D Farsightedness)</button>
-          <button class="sim-preset-btn sim-preset-hd" id="sim-preset-hd">✨ Wavefront 20/15 HD LASIK</button>
+          <button class="sim-preset-btn active" data-sphere="-2.00" data-cyl="0" data-axis="0">Mild Nearsightedness (-2.00 D)</button>
+          <button class="sim-preset-btn" data-sphere="-6.00" data-cyl="0" data-axis="0">High Nearsightedness (-6.00 D)</button>
+          <button class="sim-preset-btn" data-sphere="0" data-cyl="-2.50" data-axis="90">Astigmatism (-2.50 D @ 90°)</button>
+          <button class="sim-preset-btn" data-sphere="+3.00" data-cyl="0" data-axis="0">Farsightedness (+3.00 D)</button>
+          <button class="sim-preset-btn sim-preset-hd" id="sim-preset-hd">✨ Custom Wavefront LASIK</button>
         </div>
 
         <div class="sim-controls-panel">

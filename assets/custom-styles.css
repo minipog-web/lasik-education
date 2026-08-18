@@ -87,34 +87,57 @@
     white-space: normal !important;
   }
 }
-.bio-heading {
-  font-size: clamp(1.8rem, 4vw, 2.6rem) !important;
-  text-shadow: 
-    0 2px 10px rgba(0, 0, 0, 0.95), 
-    0 8px 24px rgba(0, 0, 0, 0.75),
-    0 0 35px rgba(0, 0, 0, 0.5) !important;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.85)) !important;
-}
-.bio-heading-accent {
-  filter: none !important;
-  text-shadow: none !important;
-}
+/* Universal 3D Pop Shadowing System for Solid Heading Titles */
+h1:not(.sr-only),
+h2:not(.text-gradient),
+h3:not(.text-gradient),
+.hero-display-title,
+.hero-serif-title,
+.bio-heading,
+.section-title,
+.static-hero-h2,
+.static-pillars-h3,
+.sim-title,
+.timeline-title,
+.faq-title,
 .lifestyle-pane-grid h3 {
   text-shadow: 
     0 2px 8px rgba(0, 0, 0, 0.95), 
-    0 6px 18px rgba(0, 0, 0, 0.75), 
-    0 0 25px rgba(226, 184, 87, 0.18) !important;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.85)) !important;
+    0 6px 20px rgba(0, 0, 0, 0.8),
+    0 12px 35px rgba(0, 0, 0, 0.6) !important;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.85)) !important;
 }
+
+.bio-heading {
+  font-size: clamp(1.8rem, 4vw, 2.6rem) !important;
+}
+
+/* Crisp, Radiant Depth for Gold Gradient Titles & Metallic Accents (Zero text-shadow bleeding) */
+.text-gradient,
+.bio-heading-accent,
+.proof-title-accent,
+h1 .bio-heading-accent,
+h2 .bio-heading-accent,
+h3 .bio-heading-accent,
+h1 .text-gradient,
+h2 .text-gradient,
+h3 .text-gradient {
+  -webkit-text-shadow: none !important;
+  text-shadow: none !important;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.8)) !important;
+}
+
 .proof-title {
   font-family: var(--font-serif) !important;
   font-weight: 300 !important;
   font-style: italic !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 6px 20px rgba(0, 0, 0, 0.8) !important;
 }
 .proof-title-accent {
   font-family: var(--font-sans) !important;
   font-weight: 800 !important;
   font-style: normal !important;
+  text-shadow: none !important;
 }
 
 /* Utility classes for previously inline styles */
@@ -249,12 +272,45 @@
   transform: translateY(0) scale(0.98) !important;
 }
 
-/* Color System & Accent Optimizations */
+/* ==========================================================================
+   CHIC & MODERN LUXURY DESIGN SYSTEM (Agency-Tier Aesthetic)
+   ========================================================================== */
+
 :root {
-  /* Enhance readability of muted text for WCAG AAA 7:1 compliance */
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  
+  --text-primary: #ffffff !important;
+  --text-secondary: #e2e8f0 !important;
   --text-muted: #cbd5e1 !important;
+  
+  --gold-primary: #e2b857;
+  --gold-champagne: #f3d89d;
+  --gold-deep: #c99a38;
+  
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-cinematic: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Global Editorial Typography */
+h1, h2, h3,
+.hero-display-title,
+.hero-serif-title,
+.bio-heading,
+.section-title,
+.static-hero-h2,
+.static-pillars-h3 {
+  font-family: var(--font-serif) !important;
+  letter-spacing: -0.02em !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+}
+
+body, p, li, input, button, select, textarea {
+  font-family: var(--font-sans) !important;
 }
 
 /* Glass panel interactive transitions */
@@ -348,17 +404,17 @@
   padding: 0 24px !important;
 }
 
-/* Unified Page Layout Spacing */
+/* Unified Macro-Whitespace Page Layout Spacing (Editorial Pacing) */
 .section,
 #social-proof-section,
-.cta-section {
-  padding: clamp(80px, 7vw, 120px) 0 !important;
-}
-
+.cta-section,
 #lasik-science,
 #lasik-science.section,
-section#lasik-science {
-  padding: clamp(80px, 7vw, 120px) 0 !important;
+section#lasik-science,
+#doctor-profile-section,
+#quiz,
+#roi-section {
+  padding: clamp(96px, 8.5vw, 136px) 0 !important;
   margin-top: 0 !important;
 }
 
@@ -1240,16 +1296,29 @@ h4 span[style*="color"] {
 
 /* ─── Anti-UI-Slop & Editorial Aesthetic System Refinements ──────────────── */
 
-/* 1. Tracked Micro-Eyebrows & Luxury Typography */
+/* 1. Tracked Micro-Eyebrows & Luxury Capsule Badges */
 .eyebrow,
 .section-eyebrow,
 .sim-badge,
 .sim-overlay-badge,
-.badge-label {
-  letter-spacing: 0.14em !important;
-  text-transform: uppercase !important;
-  font-size: 0.72rem !important;
+.badge-label,
+.static-hero-eyebrow,
+.static-pillar-tag,
+.eyebrow-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 6px 14px !important;
+  border-radius: 9999px !important;
+  background: rgba(226, 184, 87, 0.08) !important;
+  border: 1px solid rgba(226, 184, 87, 0.24) !important;
+  color: #e2b857 !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.68rem !important;
   font-weight: 700 !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
 }
 
 /* 2. Glassmorphism Focus States for Form Inputs */

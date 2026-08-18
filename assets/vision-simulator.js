@@ -41,7 +41,7 @@
           <button class="sim-preset-btn active" data-sphere="-2.00" data-cyl="0" data-axis="0">Mild Nearsightedness (-2.00 D)</button>
           <button class="sim-preset-btn" data-sphere="-6.00" data-cyl="0" data-axis="0">High Nearsightedness (-6.00 D)</button>
           <button class="sim-preset-btn" data-sphere="0" data-cyl="-2.50" data-axis="90">Astigmatism (-2.50 D @ 90°)</button>
-          <button class="sim-preset-btn" data-sphere="+3.00" data-cyl="0" data-axis="0">Farsightedness (+3.00 D)</button>
+          <button class="sim-preset-btn" data-sphere="3.00" data-cyl="0" data-axis="0">Farsightedness (+3.00 D)</button>
           <button class="sim-preset-btn sim-preset-hd" id="sim-preset-hd">✨ Custom Wavefront LASIK</button>
         </div>
 
@@ -263,9 +263,9 @@
           cylSlider.value = 0;
           axisSlider.value = 0;
         } else {
-          sphereSlider.value = btn.getAttribute('data-sphere');
-          cylSlider.value = btn.getAttribute('data-cyl');
-          axisSlider.value = btn.getAttribute('data-axis');
+          sphereSlider.value = parseFloat(btn.getAttribute('data-sphere')) || 0;
+          cylSlider.value = parseFloat(btn.getAttribute('data-cyl')) || 0;
+          axisSlider.value = parseInt(btn.getAttribute('data-axis'), 10) || 0;
         }
         syncInputValues();
       });

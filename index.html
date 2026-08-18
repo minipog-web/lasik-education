@@ -569,9 +569,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="./assets/hero-hiker.webp" type="image/webp">
     <link rel="stylesheet" crossorigin href="./assets/index-DhXpI4H_.css?v=28">
-    <link rel="stylesheet" href="./assets/custom-styles.css?v=29">
+    <link rel="stylesheet" href="./assets/custom-styles.css?v=32">
     <script type="module" crossorigin src="./assets/index-nb1vded4_v2.js?v=49"></script>
-    <script src="./assets/vision-simulator.min.js?v=10" defer></script>
+    <script src="./assets/vision-simulator.min.js?v=11" defer></script>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -1435,7 +1435,7 @@
                 '</span>' +
                 '<span style="font-size:0.75rem;color:#cbd5e1;display:block;margin-top:2px;">Saves up to ~30% in pre-tax healthcare dollars</span>' +
               '</div>' +
-              '<label style="position:relative;display:inline-block;width:46px;height:24px;flex-shrink:0;cursor:pointer;">' +
+              '<label for="roi-hsa-toggle" aria-label="Toggle Pre-Tax HSA/FSA Tax Savings" style="position:relative;display:inline-block;width:46px;height:24px;flex-shrink:0;cursor:pointer;">' +
                 '<input type="checkbox" id="roi-hsa-toggle" style="opacity:0;width:0;height:0;">' +
                 '<span id="roi-hsa-slider" style="position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:#334155;transition:.3s;border-radius:24px;"></span>' +
               '</label>' +
@@ -2513,6 +2513,7 @@
           clarifyLandingPageCopy();
           customizeForCustomVue();
           applyDynamicTextReplacement(root);
+          wireAllButtons();
         } catch (e) {
           console.error("DOM enhancement sweep error (non-fatal):", e);
         } finally {
@@ -2520,6 +2521,119 @@
             var rootEl = document.getElementById('root') || document.body;
             observer.observe(rootEl, { childList: true, subtree: true });
           }
+        }
+      });
+    }
+
+    function wireAllButtons() {
+      function scrollToTarget(targetId) {
+        var el = document.getElementById(targetId);
+        if (!el) return;
+        var headerOffset = 80;
+        var elPos = el.getBoundingClientRect().top;
+        var offsetPos = elPos + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: offsetPos,
+          behavior: 'smooth'
+        });
+      }
+
+      // 1. Header Buttons & Procedure Link
+      var headerCta = document.getElementById('header-cta-btn');
+      if (headerCta && !headerCta.dataset.wired) {
+        headerCta.dataset.wired = 'true';
+        headerCta.addEventListener('click', function(e) {
+          e.preventDefault();
+          scrollToTarget('contact');
+        });
+      }
+
+      var navProcBtn = document.getElementById('nav-procedure-btn');
+      if (navProcBtn && !navProcBtn.dataset.wired) {
+        navProcBtn.dataset.wired = 'true';
+        navProcBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          scrollToTarget('lasik-science');
+        });
+      }
+
+      // 2. Navigation bar links
+      var navLinks = document.querySelectorAll('#main-navigation a, #main-navigation button, .nav-links-group a, .nav-links-group button');
+      navLinks.forEach(function(link) {
+        if (link.dataset.wired) return;
+        var txt = link.textContent.trim().toLowerCase();
+        if (txt.includes('candidate') || txt.includes('qualify') || txt.includes('quiz') || txt.includes('self-test')) {
+          link.dataset.wired = 'true';
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            scrollToTarget('quiz');
+          });
+        } else if (txt.includes('how it works') || txt.includes('procedure') || txt.includes('technology') || txt.includes('science')) {
+          link.dataset.wired = 'true';
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            scrollToTarget('lasik-science');
+          });
+        } else if (txt.includes('consultation') || txt.includes('schedule') || txt.includes('book')) {
+          link.dataset.wired = 'true';
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            scrollToTarget('contact');
+          });
+        }
+      });
+
+      // 3. Hero Section CTA Buttons
+      var heroBtns = document.querySelectorAll('.hero-container button, .hero-container a, .hero-left button, .hero-left a');
+      heroBtns.forEach(function(btn) {
+        if (btn.dataset.wired) return;
+        var txt = btn.textContent.trim().toLowerCase();
+        if (txt.includes('qualify') || txt.includes('60 seconds') || txt.includes('candidate') || txt.includes('self-test')) {
+          btn.dataset.wired = 'true';
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            scrollToTarget('quiz');
+          });
+        } else if (txt.includes('technology') || txt.includes('how it works') || txt.includes('science') || txt.includes('procedure')) {
+          btn.dataset.wired = 'true';
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            scrollToTarget('lasik-science');
+          });
+        } else if (txt.includes('consultation') || txt.includes('schedule') || txt.includes('book')) {
+          btn.dataset.wired = 'true';
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            scrollToTarget('contact');
+          });
+        }
+      });
+
+      // 4. Section CTA Buttons across the page
+      var allCtas = document.querySelectorAll('.btn, .cta-btn-primary, .btn-island-primary, .consultation-trigger-btn, .static-hero-cta');
+      allCtas.forEach(function(btn) {
+        if (btn.dataset.wired) return;
+        if (btn.id === 'roi-hsa-toggle' || btn.closest('.sim-presets-grid') || btn.closest('.mobile-step-nav') || btn.classList.contains('steps-progress-dot') || btn.classList.contains('telemetry-toggle-btn') || btn.closest('#adaptive-quiz-container') || btn.closest('.marano-consultation-grid')) return;
+        
+        var txt = btn.textContent.trim().toLowerCase();
+        if (txt.includes('qualify') || txt.includes('quiz') || txt.includes('self-test') || txt.includes('60 seconds')) {
+          btn.dataset.wired = 'true';
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            scrollToTarget('quiz');
+          });
+        } else if (txt.includes('consultation') || txt.includes('schedule') || txt.includes('priority reservation') || txt.includes('claim your') || txt.includes('book') || txt.includes('pricing')) {
+          btn.dataset.wired = 'true';
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            scrollToTarget('contact');
+          });
+        } else if (txt.includes('how the technology works') || txt.includes('how it works') || txt.includes('explore technology')) {
+          btn.dataset.wired = 'true';
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            scrollToTarget('lasik-science');
+          });
         }
       });
     }

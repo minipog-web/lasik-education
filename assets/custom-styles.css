@@ -2372,6 +2372,39 @@ section#about-marano {
   padding: clamp(80px, 7vw, 110px) 0 !important;
 }
 
+/* FAQ Accordion Spacing & Breathing Room Enhancement */
+#faq .glass-panel button[type="button"],
+.faq-section .glass-panel button[type="button"] {
+  padding: 24px 32px 18px 32px !important;
+  line-height: 1.5 !important;
+}
+
+#faq .glass-panel > div[style*="maxHeight"],
+.faq-section .glass-panel > div[style*="maxHeight"] {
+  max-height: 600px !important; /* ensure full text expands comfortably */
+}
+
+#faq .glass-panel > div[style*="maxHeight"] > div,
+.faq-section .glass-panel > div[style*="maxHeight"] > div {
+  padding: 16px 32px 32px 32px !important;
+  margin-top: 6px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+  line-height: 1.8 !important;
+  font-size: 0.98rem !important;
+  color: #cbd5e1 !important;
+}
+
+@media (max-width: 768px) {
+  #faq .glass-panel button[type="button"],
+  .faq-section .glass-panel button[type="button"] {
+    padding: 20px 20px 14px 20px !important;
+  }
+  #faq .glass-panel > div[style*="maxHeight"] > div,
+  .faq-section .glass-panel > div[style*="maxHeight"] > div {
+    padding: 14px 20px 24px 20px !important;
+  }
+}
+
 /* Hide duplicate / redundant injected FAQ */
 #eeat-faq-section {
   display: none !important;

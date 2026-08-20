@@ -1,6 +1,6 @@
 # Marano Eye Care LASIK Center
 
-Educational resource and premium custom vision correction portal in New Jersey. Specializing in blade-free, custom wavefront-guided LASIK, ICL, and alternative refractive treatments.
+Educational resource and premium custom vision correction portal in New Jersey. Specializing in blade-free, custom wavefront-guided LASIK, PRK, and alternative refractive treatments.
 
 ## Contact Information
 - **Phone**: (973) 419-5972
@@ -9,7 +9,6 @@ Educational resource and premium custom vision correction portal in New Jersey. 
 
 ## Core Offerings
 - **Custom Wavefront-Guided LASIK**: Blade-free dual-laser vision correction utilizing iFS Femtosecond flap creation (1053nm) and STAR S4 IR Excimer reshaping with 3D Active Eye-Tracking.
-- **EVO+ ICL (Implantable Collamer Lens)**: Premium vision correction for high myopia and thin corneas.
 - **PRK (Photorefractive Keratectomy)**: Surface ablation alternative for patients with active lifestyles or unique corneal profiles.
 - **Lifestyle Lenses (Refractive Lens Exchange)**: Dynamic focus implants for patients with age-related presbyopia.
 

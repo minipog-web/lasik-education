@@ -700,7 +700,7 @@
           <div class="hero-left">
             <div class="hero-eyebrow animate-fade-up delay-1">✨ CUSTOMVUE® WAVEFRONT-GUIDED LASIK • MARANO EYE CARE NJ</div>
             <h1 class="animate-fade-up delay-2 hero-pop-title hero-h1-shell">Goodbye Lenses. <span class="hero-pop-accent">Hello High-Definition Living.</span></h1>
-            <p class="text-secondary animate-fade-up delay-3 hero-body-shell">Most people think of 20/20 as perfect vision. With Dr. Marano's CustomVue® wavefront-guided technology, 20/15 acuity is a frequent outcome, giving you crisp clarity tailored to your unique eyes. The blade-free laser treatment takes just 10 seconds per eye, and most patients return to work and driving the very next day. Backed by over 30 years of ophthalmic experience in Livingston, Denville, and Newark. See if you qualify in 60 seconds.</p>
+            <p class="text-secondary animate-fade-up delay-3 hero-body-shell">Imagine waking up to crystal-clear, high-definition sight. Whether you're an athlete chasing peak performance, an artist demanding razor-sharp detail, a driven professional on the move, or simply ready to live free from glasses and contacts—Dr. Marano's CustomVue® wavefront-guided LASIK delivers customized HD vision often sharper than 20/20. The blade-free laser treatment takes just 10 seconds per eye, and most patients return to work and driving the very next day. Backed by over 30 years of ophthalmic experience in Livingston, Denville, and Newark.</p>
             <div class="responsive-flex-col animate-fade-up delay-4">
               <button type="button" class="btn btn-primary hero-cta-btn-shell">See If You Qualify in 60 Seconds<span class="btn-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg></span></button>
               <button type="button" class="btn btn-secondary hero-cta-btn-shell">How the Technology Works</button>
@@ -1078,7 +1078,101 @@
       }
     }
 
+    function injectContactSectionOffices() {
+      var phoneBox = document.querySelector('.contact-phone-box');
+      if (!phoneBox) {
+        var h2 = Array.from(document.querySelectorAll('h2')).find(function(el) {
+          return (el.textContent || '').indexOf('How Much Longer Will You Wait') !== -1;
+        });
+        if (h2) {
+          var ctaCol = h2.closest('.contact-cta-col') || h2.parentElement;
+          if (ctaCol) {
+            phoneBox = ctaCol.querySelector('.contact-phone-box') || ctaCol.querySelector('a[href^="tel:"]')?.parentElement;
+          }
+        }
+      }
+      if (!phoneBox) return;
 
+      // 1. Ensure the main direct consultation line is clearly labeled and accurate
+      var mainSpan = phoneBox.querySelector('span.text-muted');
+      if (mainSpan) {
+        mainSpan.textContent = 'Main Consultation Line';
+      }
+      var mainPhoneLink = phoneBox.querySelector('a[href^="tel:"]');
+      if (mainPhoneLink) {
+        if (!mainPhoneLink.getAttribute('data-updated-label')) {
+          mainPhoneLink.setAttribute('data-updated-label', '1');
+          mainPhoneLink.href = 'tel:973-419-5972';
+          mainPhoneLink.textContent = '(973) 419-5972';
+        }
+      }
+
+      // 2. Inject Office Locations and Direct Numbers below the main phone box if not already present
+      if (document.getElementById('contact-cta-offices-list')) return;
+
+      var officesList = document.createElement('div');
+      officesList.id = 'contact-cta-offices-list';
+      officesList.setAttribute('style', 'margin-top: 24px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 12px; width: 100%;');
+      officesList.innerHTML = 
+        '<div style="font-size: 0.72rem; font-family: monospace; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #e2b857; margin-bottom: 2px;">' +
+          'Direct Office Locations &amp; Phone Numbers' +
+        '</div>' +
+        // Livingston Flagship ACC
+        '<div class="glass-panel" style="background: rgba(255, 255, 255, 0.025); border: 1px solid rgba(226, 184, 87, 0.28); border-radius: 14px; padding: 14px 18px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.25); transition: border-color 0.3s ease;">' +
+          '<div style="min-width: 0;">' +
+            '<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">' +
+              '<strong style="color: #ffffff; font-size: 0.95rem; font-family: var(--font-sans);">Livingston, NJ</strong>' +
+              '<span style="font-size: 0.62rem; font-family: monospace; font-weight: 700; color: #e2b857; background: rgba(226, 184, 87, 0.12); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(226, 184, 87, 0.3); white-space: nowrap;">FLAGSHIP ACC CENTER</span>' +
+            '</div>' +
+            '<span style="font-size: 0.8rem; color: #94a3b8; display: block; margin-top: 3px; line-height: 1.4;">200 South Orange Ave, Suite 209 (Cooperman Barnabas ACC)</span>' +
+            '<span style="font-size: 0.74rem; color: #cbd5e1; display: block; margin-top: 2px; font-style: italic; line-height: 1.35;">Consultations, 3D Diagnostics &amp; LASIK Surgery</span>' +
+          '</div>' +
+          '<a href="tel:973-322-0100" class="btn btn-secondary" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; color: #e2b857; font-weight: 700; font-size: 0.92rem; text-decoration: none; padding: 8px 14px; border-radius: 8px; min-height: 44px; min-width: 155px; white-space: nowrap; flex-shrink: 0;">' +
+            '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>' +
+            '(973) 322-0100' +
+          '</a>' +
+        '</div>' +
+        // Denville Suite
+        '<div class="glass-panel" style="background: rgba(255, 255, 255, 0.025); border: 1px solid rgba(0, 212, 255, 0.22); border-radius: 14px; padding: 14px 18px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.25); transition: border-color 0.3s ease;">' +
+          '<div style="min-width: 0;">' +
+            '<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">' +
+              '<strong style="color: #ffffff; font-size: 0.95rem; font-family: var(--font-sans);">Denville, NJ</strong>' +
+              '<span style="font-size: 0.62rem; font-family: monospace; font-weight: 700; color: #00d4ff; background: rgba(0, 212, 255, 0.1); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(0, 212, 255, 0.25); white-space: nowrap;">ROUTE 10 SUITE</span>' +
+            '</div>' +
+            '<span style="font-size: 0.8rem; color: #94a3b8; display: block; margin-top: 3px; line-height: 1.4;">16 Pocono Road, Suite 301</span>' +
+            '<span style="font-size: 0.74rem; color: #cbd5e1; display: block; margin-top: 2px; font-style: italic; line-height: 1.35;">Complimentary Consultations &amp; Post-Op Care</span>' +
+          '</div>' +
+          '<a href="tel:973-625-7970" class="btn btn-secondary" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; color: #00d4ff; font-weight: 700; font-size: 0.92rem; text-decoration: none; padding: 8px 14px; border-radius: 8px; min-height: 44px; min-width: 155px; white-space: nowrap; flex-shrink: 0;">' +
+            '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>' +
+            '(973) 625-7970' +
+          '</a>' +
+        '</div>' +
+        // Newark Suite
+        '<div class="glass-panel" style="background: rgba(255, 255, 255, 0.025); border: 1px solid rgba(16, 185, 129, 0.22); border-radius: 14px; padding: 14px 18px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.25); transition: border-color 0.3s ease;">' +
+          '<div style="min-width: 0;">' +
+            '<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">' +
+              '<strong style="color: #ffffff; font-size: 0.95rem; font-family: var(--font-sans);">Newark, NJ</strong>' +
+              '<span style="font-size: 0.62rem; font-family: monospace; font-weight: 700; color: #10b981; background: rgba(16, 185, 129, 0.1); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.25); white-space: nowrap;">FERRY ST SUITE</span>' +
+            '</div>' +
+            '<span style="font-size: 0.8rem; color: #94a3b8; display: block; margin-top: 3px; line-height: 1.4;">306 Martin L. King Blvd</span>' +
+            '<span style="font-size: 0.74rem; color: #cbd5e1; display: block; margin-top: 2px; font-style: italic; line-height: 1.35;">Complimentary Consultations &amp; Post-Op Care</span>' +
+          '</div>' +
+          '<a href="tel:973-877-5534" class="btn btn-secondary" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; color: #10b981; font-weight: 700; font-size: 0.92rem; text-decoration: none; padding: 8px 14px; border-radius: 8px; min-height: 44px; min-width: 155px; white-space: nowrap; flex-shrink: 0;">' +
+            '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>' +
+            '(973) 877-5534' +
+          '</a>' +
+        '</div>';
+
+      if (phoneBox.nextSibling) {
+        phoneBox.parentNode.insertBefore(officesList, phoneBox.nextSibling);
+      } else {
+        phoneBox.parentNode.appendChild(officesList);
+      }
+
+      if (window.CallRail && typeof window.CallRail.swap === 'function') {
+        window.CallRail.swap();
+      }
+    }
 
     function getScienceSection() {
       var sec = document.getElementById('lasik-science') || document.getElementById('education');
@@ -2009,8 +2103,8 @@
       });
 
       var heroSub = document.querySelector('.hero-left p.text-secondary, .hero-content p.text-secondary');
-      if (heroSub && heroSub.textContent.indexOf('CustomVue') === -1) {
-        heroSub.textContent = 'Most people think of 20/20 as perfect vision. With Dr. Marano\'s CustomVue® wavefront-guided technology, 20/15 acuity is a frequent outcome, giving you crisp clarity tailored to your unique eyes. The blade-free laser treatment takes just 10 seconds per eye, and most patients return to work and driving the very next day. Backed by over 30 years of ophthalmic experience in Livingston, Denville, and Newark. See if you qualify in 60 seconds.';
+      if (heroSub && heroSub.textContent.indexOf('ophthalmic experience') === -1) {
+        heroSub.textContent = 'Imagine waking up to crystal-clear, high-definition sight. Whether you\'re an athlete chasing peak performance, an artist demanding razor-sharp detail, a driven professional on the move, or simply ready to live free from glasses and contacts—Dr. Marano\'s CustomVue® wavefront-guided LASIK delivers customized HD vision often sharper than 20/20. The blade-free laser treatment takes just 10 seconds per eye, and most patients return to work and driving the very next day. Backed by over 30 years of ophthalmic experience in Livingston, Denville, and Newark.';
       }
 
       // Enforce Hero Image Asset
@@ -2725,6 +2819,7 @@
           injectPersonaTags();
           initHeroMicroCommitmentFlow();
           injectPracticeLocationsSection();
+          injectContactSectionOffices();
           buildFooter();
           injectMicrocopyPreemption();
           injectMobileCTA();

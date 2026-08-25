@@ -3396,3 +3396,91 @@ p,
   border: 1px solid rgba(255, 255, 255, 0.04);
   box-shadow: rgba(0, 0, 0, 0.7) 0px 30px 60px, rgba(0, 0, 0, 0) 0px 0px 45px;
 }
+
+/* ─── Hero Micro-Commitment Card & Goal-Gradient Progress Bar ─── */
+.micro-commitment-card {
+  background: linear-gradient(165deg, rgba(13, 20, 32, 0.94) 0%, rgba(6, 11, 20, 0.98) 100%) !important;
+  border: 1px solid rgba(226, 184, 87, 0.25) !important;
+  border-radius: 24px !important;
+  padding: clamp(20px, 3.5vw, 32px) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+.mc-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  overflow: hidden;
+  margin: 6px 0 14px 0;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mc-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #e2b857 0%, #10b981 100%);
+  border-radius: 9999px;
+  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.mc-option-card {
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.mc-option-card:hover {
+  background: rgba(226, 184, 87, 0.08);
+  border-color: rgba(226, 184, 87, 0.35);
+  transform: translateY(-1px);
+}
+
+.mc-option-card.selected {
+  background: rgba(226, 184, 87, 0.12);
+  border-color: #e2b857;
+  box-shadow: 0 0 16px rgba(226, 184, 87, 0.22);
+}
+
+.mc-radio-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.mc-option-card.selected .mc-radio-dot {
+  border-color: #e2b857;
+  background: rgba(226, 184, 87, 0.25);
+}
+
+.mc-radio-dot-inner {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e2b857;
+  display: none;
+}
+
+.mc-option-card.selected .mc-radio-dot-inner {
+  display: block;
+}
+

@@ -10,10 +10,14 @@
     <!-- End Google Tag Manager -->
 
     <!-- Performance & Domain Optimization Hints for Tracking Infrastructure -->
-    <link rel="preconnect" href="https://cdn.callrail.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
     <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin />
-    <link rel="dns-prefetch" href="https://cdn.callrail.com" />
+    <link rel="preconnect" href="https://cdn.callrail.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
     <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
+    <link rel="dns-prefetch" href="https://cdn.callrail.com" />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -342,9 +346,13 @@
 
     <!-- Comprehensive GTM, GA4, & Google Ads Event Tracking Architecture -->
     <script>
-      (function() {
-        window.dataLayer = window.dataLayer || [];
+      // 1. Google Tag (gtag.js) & dataLayer Initialization Stub
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){window.dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
 
+      (function() {
         // Unified helper for dataLayer pushes & gtag events
         function trackEvent(eventName, params) {
           params = params || {};
@@ -663,6 +671,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="./assets/hero_wavefront_iris.webp?v=2" type="image/webp">
+    <!-- CustomVue Experience Suite Image Prefetches for Instant Tab Transitions -->
+    <link rel="prefetch" as="image" href="./assets/wavescan_diagnostic_device.webp" type="image/webp">
+    <link rel="prefetch" as="image" href="./assets/lasik_flap_clean.webp" type="image/webp">
+    <link rel="prefetch" as="image" href="./assets/lasik_excimer_3d_tracking.webp" type="image/webp">
+    <link rel="prefetch" as="image" href="./assets/lasik_flap_reposition_spatula.webp" type="image/webp">
+    <link rel="prefetch" as="image" href="./assets/lasik_24hr_recovery.webp" type="image/webp">
     <link rel="stylesheet" crossorigin href="./assets/index-DhXpI4H_.css?v=28">
     <link rel="stylesheet" href="./assets/custom-styles.css?v=44">
     <script type="module" crossorigin src="./assets/index-nb1vded4_v2.js?v=50"></script>
@@ -955,7 +969,7 @@
 
       var note = document.createElement('p');
       note.setAttribute('style', 'margin-top:18px;font-size:0.64rem;color:#334155;line-height:1.65;');
-      note.innerHTML = '<em>All statistical claims reflect aggregate peer-reviewed clinical data. Individual outcomes vary. LASIK is a surgical procedure with inherent benefits and risks; consult a qualified ophthalmologist to determine your candidacy. This resource is for educational purposes only and does not constitute medical advice. Information submitted via forms on this site is handled in strict compliance with HIPAA (Health Insurance Portability and Actability Act) standards to protect your health privacy. For more information, please read the <a href="https://sa1s3.patientpop.com/assets/docs/425417.pdf" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:none;">Marano Eye Care Privacy Policy</a>.<br><br>© 2026 <a href="https://www.maranoeyecare.com" target="_blank" rel="noopener noreferrer" style="color:#64748b;text-decoration:none;">Marano Eye Care</a> | Member of <a href="https://www.onjeyecare.com" target="_blank" rel="noopener noreferrer" style="color:#64748b;text-decoration:none;">ONJ Eye Care Practice Network</a>. Phone: (973) 419-5972. Consultations available in Livingston, Denville, and Newark. All diagnostic testing and surgical LASIK procedures are performed at our flagship Livingston facility: Cooperman Barnabas Ambulatory Care Center (ACC).</em>';
+      note.innerHTML = '<em>All statistical claims reflect aggregate peer-reviewed clinical data. Individual outcomes vary. LASIK is a surgical procedure with inherent benefits and risks; consult a qualified ophthalmologist to determine your candidacy. This resource is for educational purposes only and does not constitute medical advice. Information submitted via forms on this site is handled in strict compliance with HIPAA (Health Insurance Portability and Accountability Act) standards to protect your health privacy. For more information, please read the <a href="https://sa1s3.patientpop.com/assets/docs/425417.pdf" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:none;">Marano Eye Care Privacy Policy</a>.<br><br>© 2026 <a href="https://www.maranoeyecare.com" target="_blank" rel="noopener noreferrer" style="color:#64748b;text-decoration:none;">Marano Eye Care</a> | Member of <a href="https://www.onjeyecare.com" target="_blank" rel="noopener noreferrer" style="color:#64748b;text-decoration:none;">ONJ Eye Care Practice Network</a> &bull; <a href="/sitemap.html" style="color:#64748b;text-decoration:underline;">HTML Sitemap</a> &bull; <a href="/sitemap.xml" target="_blank" style="color:#64748b;text-decoration:underline;">XML Sitemap</a>. Phone: (973) 419-5972. Consultations available in Livingston, Denville, and Newark. All diagnostic testing and surgical LASIK procedures are performed at our flagship Livingston facility: Cooperman Barnabas Ambulatory Care Center (ACC).</em>';
 
       inner.appendChild(heading);
       inner.appendChild(ol);
@@ -1137,7 +1151,7 @@
           '<div style="min-width: 0;">' +
             '<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">' +
               '<strong style="color: #ffffff; font-size: 0.95rem; font-family: var(--font-sans);">Denville, NJ</strong>' +
-              '<span style="font-size: 0.62rem; font-family: monospace; font-weight: 700; color: #00d4ff; background: rgba(0, 212, 255, 0.1); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(0, 212, 255, 0.25); white-space: nowrap;">ROUTE 10 SUITE</span>' +
+              '<span style="font-size: 0.62rem; font-family: monospace; font-weight: 700; color: #00d4ff; background: rgba(0, 212, 255, 0.1); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(0, 212, 255, 0.25); white-space: nowrap;">POCONO RD SUITE</span>' +
             '</div>' +
             '<span style="font-size: 0.8rem; color: #94a3b8; display: block; margin-top: 3px; line-height: 1.4;">16 Pocono Road, Suite 301</span>' +
             '<span style="font-size: 0.74rem; color: #cbd5e1; display: block; margin-top: 2px; font-style: italic; line-height: 1.35;">Complimentary Consultations &amp; Post-Op Care</span>' +
@@ -1152,7 +1166,7 @@
           '<div style="min-width: 0;">' +
             '<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">' +
               '<strong style="color: #ffffff; font-size: 0.95rem; font-family: var(--font-sans);">Newark, NJ</strong>' +
-              '<span style="font-size: 0.62rem; font-family: monospace; font-weight: 700; color: #10b981; background: rgba(16, 185, 129, 0.1); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.25); white-space: nowrap;">FERRY ST SUITE</span>' +
+              '<span style="font-size: 0.62rem; font-family: monospace; font-weight: 700; color: #10b981; background: rgba(16, 185, 129, 0.1); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.25); white-space: nowrap;">MLK BLVD SUITE</span>' +
             '</div>' +
             '<span style="font-size: 0.8rem; color: #94a3b8; display: block; margin-top: 3px; line-height: 1.4;">306 Martin L. King Blvd</span>' +
             '<span style="font-size: 0.74rem; color: #cbd5e1; display: block; margin-top: 2px; font-style: italic; line-height: 1.35;">Complimentary Consultations &amp; Post-Op Care</span>' +
@@ -2361,7 +2375,7 @@
           '<!-- Right: Visual Diagram & Advantage Summary -->' +
           '<div style="background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:24px;box-shadow:0 15px 35px rgba(0,0,0,0.3);display:flex;flex-direction:column;justify-content:space-between;gap:20px;">' +
             '<div style="position:relative;width:100%;height:190px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);background:#000;box-shadow:0 12px 30px rgba(0,0,0,0.6);">' +
-              '<img id="laser-image-display" src="./assets/wavescan_diagnostic_device.webp" alt="Laser Technology Illustration" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:all 0.5s ease;" />' +
+              '<img id="laser-image-display" src="./assets/wavescan_diagnostic_device.webp" alt="Laser Technology Illustration" loading="eager" decoding="async" fetchpriority="high" style="width:100%;height:100%;object-fit:cover;display:block;transition:opacity 0.25s ease;" />' +
               '<div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 40%, rgba(3,7,18,0.9) 100%);pointer-events:none;"></div>' +
               '<span id="laser-image-caption" style="position:absolute;bottom:10px;left:14px;right:14px;font-family:monospace;font-size:0.68rem;color:#e2b857;letter-spacing:1px;text-transform:uppercase;font-weight:700;">STEP 1 DIAGNOSTICS // WAVESCAN & PENTACAM 3D TOMOGRAPHY</span>' +
             '</div>' +
@@ -2504,6 +2518,16 @@
           }
         });
       }
+
+      // Preload and cache all 5 laser suite images into memory immediately for instantaneous tab switching
+      var preloadedCache = {};
+      Object.keys(data).forEach(function(k) {
+        if (data[k] && data[k].img) {
+          var img = new Image();
+          img.src = data[k].img;
+          preloadedCache[data[k].img] = img;
+        }
+      });
 
       document.getElementById('tab-laser-wavescan').addEventListener('click', function() { updateSuite('wavescan'); });
       document.getElementById('tab-laser-femto').addEventListener('click', function() { updateSuite('femto'); });
@@ -3037,6 +3061,15 @@
       mcCard.id = 'hero-mc-card';
       mcCard.className = 'micro-commitment-card';
       
+      // Cognitive Psychology Optimization: Smart Location Pre-selection from URL / Geo Intent
+      var urlLoc = (getQueryParam('loc') || getQueryParam('location') || getQueryParam('city') || '').toLowerCase();
+      var defaultLocation = 'Livingston';
+      if (urlLoc.indexOf('denville') !== -1) {
+        defaultLocation = 'Denville';
+      } else if (urlLoc.indexOf('newark') !== -1) {
+        defaultLocation = 'Newark';
+      }
+
       var state = {
         step: 1,
         struggle: '',
@@ -3044,7 +3077,7 @@
         name: '',
         phone: '',
         email: '',
-        location: 'Livingston'
+        location: defaultLocation
       };
 
       function render() {
@@ -3055,7 +3088,7 @@
             '<div class="mc-step-container">' +
               '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">' +
                 '<span style="font-family:monospace;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:#e2b857;font-weight:700;">Step 1 of 3 &bull; Quick Candidacy Check</span>' +
-                '<span style="font-size:0.72rem;color:#94a3b8;font-weight:600;">60-Sec Check</span>' +
+                '<span style="font-size:0.72rem;color:#e2b857;font-weight:700;font-family:monospace;">33% Complete</span>' +
               '</div>' +
               '<div class="mc-progress-bar"><div class="mc-progress-fill" style="width:33%;"></div></div>' +
               '<h3 style="font-family:var(--font-sans);font-size:1.25rem;font-weight:700;color:#ffffff;margin:12px 0 4px 0;line-height:1.25;">What is your main reason for considering LASIK?</h3>' +
@@ -3103,7 +3136,7 @@
             '<div class="mc-step-container">' +
               '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">' +
                 '<span style="font-family:monospace;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:#e2b857;font-weight:700;">Step 2 of 3 &bull; Desired Timeframe</span>' +
-                '<span style="font-size:0.72rem;color:#a855f7;font-weight:600;">66% Complete</span>' +
+                '<span style="font-size:0.72rem;color:#a855f7;font-weight:700;font-family:monospace;">66% Complete</span>' +
               '</div>' +
               '<div class="mc-progress-bar"><div class="mc-progress-fill" style="width:66%;"></div></div>' +
               '<h3 style="font-family:var(--font-sans);font-size:1.25rem;font-weight:700;color:#ffffff;margin:12px 0 4px 0;line-height:1.25;">When would you like to improve your vision?</h3>' +
@@ -3146,9 +3179,9 @@
             '<div class="mc-step-container">' +
               '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">' +
                 '<span style="font-family:monospace;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:#10b981;font-weight:700;">Final Step &bull; Confirmation</span>' +
-                '<span style="font-size:0.72rem;color:#10b981;font-weight:700;">✓ Candidacy Match High</span>' +
+                '<span style="font-size:0.72rem;color:#10b981;font-weight:700;font-family:monospace;">90% &bull; Almost Done!</span>' +
               '</div>' +
-              '<div class="mc-progress-bar"><div class="mc-progress-fill" style="width:100%;"></div></div>' +
+              '<div class="mc-progress-bar"><div class="mc-progress-fill" style="width:90%;"></div></div>' +
               
               '<div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:12px;padding:12px 16px;margin:8px 0;">' +
                 '<span style="font-size:0.8rem;color:#10b981;font-weight:700;display:block;margin-bottom:2px;">✦ High Candidate Compatibility</span>' +
@@ -3157,7 +3190,7 @@
 
               '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0;">' +
                 '<div style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.18);border-radius:10px;padding:10px 12px;text-align:center;">' +
-                  '<span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:1px;color:#ef4444;font-weight:700;display:block;margin-bottom:2px;">Avg. Lifetime Lens Spend</span>' +
+                  '<span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:1px;color:#ef4444;font-weight:700;display:block;margin-bottom:2px;">Avg. Lifetime Spend on Lenses</span>' +
                   '<span style="font-size:1.1rem;font-weight:800;color:#ef4444;font-family:var(--font-sans);">$30,000+</span>' +
                 '</div>' +
                 '<div style="background:rgba(226,184,87,0.06);border:1px solid rgba(226,184,87,0.25);border-radius:10px;padding:10px 12px;text-align:center;">' +
@@ -3177,6 +3210,7 @@
                   '<div>' +
                     '<label for="mc-phone" style="font-size:0.8rem;color:#cbd5e1;font-weight:600;display:block;margin-bottom:4px;">Phone Number *</label>' +
                     '<input type="tel" id="mc-phone" required placeholder="(973) 555-0100" value="' + state.phone + '" style="width:100%;padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-size:0.9rem;">' +
+                    '<span id="mc-phone-reassurance" style="font-size:0.68rem;color:#94a3b8;display:block;margin-top:4px;line-height:1.3;transition:all 0.25s ease;">🔒 Zero spam. Dr. Marano\'s coordinator calls to confirm your date.</span>' +
                   '</div>' +
                   '<div>' +
                     '<label for="mc-email" style="font-size:0.8rem;color:#cbd5e1;font-weight:600;display:block;margin-bottom:4px;">Email Address *</label>' +
@@ -3187,8 +3221,8 @@
                   '<label for="mc-location" style="font-size:0.8rem;color:#cbd5e1;font-weight:600;display:block;margin-bottom:4px;">Preferred NJ Consultation Location</label>' +
                   '<select id="mc-location" style="width:100%;padding:10px 14px;background:#0b132b;border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;font-size:0.88rem;">' +
                     '<option value="Livingston" ' + (state.location === 'Livingston' ? 'selected' : '') + '>Livingston, NJ (Flagship ACC Center)</option>' +
-                    '<option value="Denville" ' + (state.location === 'Denville' ? 'selected' : '') + '>Denville, NJ (Route 10 Suite)</option>' +
-                    '<option value="Newark" ' + (state.location === 'Newark' ? 'selected' : '') + '>Newark, NJ (Ferry St Suite)</option>' +
+                    '<option value="Denville" ' + (state.location === 'Denville' ? 'selected' : '') + '>Denville, NJ (Pocono Rd Suite)</option>' +
+                    '<option value="Newark" ' + (state.location === 'Newark' ? 'selected' : '') + '>Newark, NJ (MLK Blvd Suite)</option>' +
                   '</select>' +
                 '</div>' +
 
@@ -3279,6 +3313,23 @@
               render();
             });
           }
+
+          // Privacy Reassurance Interactive Focus Hook
+          var phoneInput = mcCard.querySelector('#mc-phone');
+          var phoneReassurance = mcCard.querySelector('#mc-phone-reassurance');
+          if (phoneInput && phoneReassurance) {
+            phoneInput.addEventListener('focus', function() {
+              phoneReassurance.style.color = '#10b981';
+              phoneReassurance.textContent = '✓ Privacy protected: Dr. Marano\'s surgical coordinator will call to confirm your appointment.';
+            });
+            phoneInput.addEventListener('blur', function() {
+              if (!phoneInput.value) {
+                phoneReassurance.style.color = '#94a3b8';
+                phoneReassurance.textContent = '🔒 Zero spam. Dr. Marano\'s coordinator calls to confirm your date.';
+              }
+            });
+          }
+
           var form = mcCard.querySelector('#mc-final-form');
           if (form) {
             form.addEventListener('submit', function(e) {

@@ -63,10 +63,14 @@ const server = http.createServer((req, res) => {
 
     const ext = path.extname(filePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+    const isHtml = ext === '.html';
+    const cacheControl = isHtml 
+      ? 'no-cache' 
+      : 'public, max-age=86400, stale-while-revalidate=604800';
 
     res.writeHead(200, {
       'Content-Type': contentType,
-      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Cache-Control': cacheControl,
       'Access-Control-Allow-Origin': '*'
     });
 

@@ -1056,18 +1056,18 @@ h4 span[style*="color"] {
    LASIK OPTICAL VISION SIMULATOR STYLES
    ========================================== */
 .sim-wrapper {
-  background: rgba(13, 20, 30, 0.7);
-  border: 1px solid rgba(226, 184, 87, 0.2);
+  background: rgba(13, 20, 30, 0.75);
+  border: 1px solid rgba(226, 184, 87, 0.22);
   border-radius: 24px;
   padding: 32px;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(226, 184, 87, 0.05);
-  margin: 40px auto;
+  margin: 32px auto;
   max-width: 900px;
 }
 
 .sim-header {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .sim-badge {
@@ -1081,23 +1081,24 @@ h4 span[style*="color"] {
   border: 1px solid rgba(226, 184, 87, 0.25);
   padding: 4px 14px;
   border-radius: 100px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .sim-title {
   font-family: var(--font-sans);
-  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-size: clamp(1.3rem, 2.8vw, 1.9rem);
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  line-height: 1.25;
 }
 
 .sim-subtitle {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: #cbd5e1;
   max-width: 620px;
   margin: 0 auto;
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
 .sim-stage-container {
@@ -1106,12 +1107,13 @@ h4 span[style*="color"] {
   height: 380px;
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9);
   -webkit-user-select: none;
   user-select: none;
   cursor: ew-resize;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+  touch-action: pan-y;
 }
 
 .sim-canvas {
@@ -1149,6 +1151,7 @@ h4 span[style*="color"] {
   align-items: center;
   justify-content: center;
   box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+  cursor: ew-resize;
 }
 
 .sim-label {
@@ -1171,7 +1174,7 @@ h4 span[style*="color"] {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
 .sim-preset-btn {
@@ -1183,7 +1186,8 @@ h4 span[style*="color"] {
   font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
+  min-height: 40px;
 }
 
 .sim-preset-btn:hover {
@@ -1206,12 +1210,17 @@ h4 span[style*="color"] {
   box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
 }
 
+/* Mobile Tab Switcher (hidden on desktop) */
+.sim-mobile-tabs {
+  display: none;
+}
+
 .sim-controls-panel {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   padding: 20px;
   border-radius: 16px;
 }
@@ -1238,18 +1247,25 @@ h4 span[style*="color"] {
   font-weight: 700;
 }
 
-.sim-control-group input[type="range"] {
+.sim-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   width: 100%;
-  accent-color: #e2b857;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  .sim-wrapper { padding: 20px 16px; }
-  .sim-stage-container { height: 280px; }
+.sim-step-btn {
+  display: none;
+}
+
+.sim-control-group input[type="range"] {
+  flex: 1;
+  width: 100%;
+  accent-color: #e2b857;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .sim-overlay-badge {
@@ -1284,10 +1300,162 @@ h4 span[style*="color"] {
 .dot-red { background: #ef4444; box-shadow: 0 0 8px #ef4444; }
 .dot-green { background: #10b981; box-shadow: 0 0 8px #10b981; }
 
+/* Mobile Viewport Adaptation: Single-Screen Co-existence */
 @media (max-width: 768px) {
-  .sim-overlay-badge { font-size: 0.65rem; padding: 5px 12px; }
-  .sim-badge-left { top: 10px; left: 10px; }
-  .sim-badge-right { top: auto; bottom: 10px; right: 10px; }
+  .sim-wrapper {
+    padding: 14px 12px;
+    margin: 0 auto;
+    border-radius: 18px;
+    background: rgba(10, 16, 26, 0.85);
+  }
+  
+  .sim-header {
+    margin-bottom: 8px;
+  }
+  
+  .sim-badge {
+    font-size: 0.6rem;
+    letter-spacing: 1.5px;
+    padding: 2px 10px;
+    margin-bottom: 4px;
+  }
+  
+  .sim-title {
+    font-size: 1.15rem;
+    margin-bottom: 2px;
+    line-height: 1.25;
+  }
+  
+  .sim-subtitle {
+    font-size: 0.76rem;
+    line-height: 1.35;
+    margin-bottom: 6px;
+    color: #94a3b8;
+  }
+  
+  .sim-stage-container {
+    height: clamp(175px, 28vh, 215px);
+    margin-bottom: 8px;
+    border-radius: 12px;
+  }
+  
+  .sim-handle {
+    width: 38px;
+    height: 38px;
+  }
+  
+  .sim-overlay-badge {
+    font-size: 0.62rem;
+    padding: 3px 8px;
+  }
+  .sim-badge-left { top: 8px; left: 8px; }
+  .sim-badge-right { top: auto; bottom: 8px; right: 8px; }
+
+  /* Swipeable Horizontal Presets Track */
+  .sim-presets-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 6px;
+    justify-content: flex-start;
+    margin-bottom: 8px;
+    padding: 2px 2px 6px 2px;
+    scrollbar-width: none;
+  }
+  .sim-presets-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .sim-preset-btn {
+    flex: 0 0 auto;
+    padding: 6px 12px;
+    font-size: 0.74rem;
+    border-radius: 20px;
+    white-space: nowrap;
+    min-height: 36px;
+  }
+
+  /* Mobile Parameter Tabs */
+  .sim-mobile-tabs {
+    display: flex;
+    gap: 4px;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 3px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+  .sim-tab-btn {
+    flex: 1;
+    min-height: 36px;
+    padding: 6px 4px;
+    border: none;
+    background: transparent;
+    color: #94a3b8;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sim-tab-btn.active {
+    background: rgba(226, 184, 87, 0.2);
+    color: #ffe293;
+    border: 1px solid rgba(226, 184, 87, 0.35);
+    font-weight: 700;
+  }
+
+  /* Compact Controls Panel */
+  .sim-controls-panel {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .sim-control-group {
+    display: none;
+  }
+  .sim-control-group.mobile-active {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .sim-control-header {
+    font-size: 0.78rem;
+    margin-bottom: 2px;
+  }
+  .sim-val-badge {
+    font-size: 0.85rem;
+  }
+
+  /* Touch-Friendly Stepper Buttons on Mobile */
+  .sim-step-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.15s ease;
+  }
+  .sim-step-btn:active {
+    background: rgba(226, 184, 87, 0.3);
+    border-color: #e2b857;
+    transform: scale(0.92);
+  }
 }
 
 /* ==========================================================================
@@ -2025,23 +2193,9 @@ select:focus {
 }
 
 @media (max-width: 768px) {
-  .header-phone-link {
-    padding: 8px;
-    margin-right: 8px;
-    margin-left: auto;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .header-phone-link .phone-text {
-    display: none;
-  }
-  .header-phone-link svg {
-    width: 16px;
-    height: 16px;
+  .header-phone-link,
+  #header-phone-link {
+    display: none !important;
   }
 }
 
@@ -2585,14 +2739,14 @@ section#about-marano {
   display: none !important;
 }
 
-/* 14. CONSULTATION BOOKING & LOCATION: Warm Gold Halo & Slate Sanctuary */
+/* 14. CONSULTATION BOOKING & LOCATION: Diffuse Ambient Gold & Slate Sanctuary */
 #contact,
 #consultation,
 .contact-form-section {
-  background: radial-gradient(ellipse at 50% 0%, rgba(226, 184, 87, 0.13) 0%, rgba(13, 21, 38, 0.96) 50%, #060a13 100%) !important;
+  background: radial-gradient(circle at 75% 30%, rgba(226, 184, 87, 0.07) 0%, transparent 60%), radial-gradient(circle at 25% 70%, rgba(16, 185, 129, 0.03) 0%, transparent 50%), linear-gradient(180deg, #090e1c 0%, #0c1426 50%, #060a13 100%) !important;
   border-top: none !important;
   border-bottom: 1px solid rgba(226, 184, 87, 0.18) !important;
-  box-shadow: 0 0 80px rgba(226, 184, 87, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(226, 184, 87, 0.12) !important;
   position: relative !important;
   margin: 0 !important;
   padding: clamp(80px, 7vw, 110px) 0 !important;
@@ -3006,7 +3160,6 @@ h2.hero-pop-title,
   #clinical-pillars-section,
   #eeat-lifestyle-section,
   #lasik-science,
-  #lasik-vision-simulator-section,
   #lasik-journey,
   #speed-timeline-strip,
   #roi-section,
@@ -3018,6 +3171,13 @@ h2.hero-pop-title,
   .static-footer {
     padding-top: clamp(40px, 5.5vw, 56px) !important;
     padding-bottom: clamp(40px, 5.5vw, 56px) !important;
+  }
+
+  #lasik-vision-simulator-section,
+  .vision-simulator-section,
+  #vision-simulator-section {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
   }
 
   /* Hero header & container need dedicated clearance for fixed mobile header (60px) + breathing room */
@@ -3747,5 +3907,40 @@ p,
   -webkit-text-fill-color: #ffffff !important;
   background: none !important;
 }
+
+/* ==========================================================================
+   PERFORMANCE & CORE WEB VITALS OPTIMIZATIONS (LCP, CLS, INP, TBT)
+   ========================================================================== */
+
+/* 1. Off-screen Layout & Paint Deferral */
+#eeat-references-footer,
+#marano-practice-locations,
+.proof-testimonials,
+#eeat-lifestyle-section,
+#laser-diagnostics-section,
+#financial-calculator-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+/* 2. Hardware Acceleration on Key Interactive & Persistent Elements */
+#main-navigation {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.tactile-grain-overlay {
+  transform: translateZ(0);
+  pointer-events: none;
+  will-change: opacity;
+}
+
+/* 3. Smooth Sub-pixel Font Rendering */
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 
 

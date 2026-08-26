@@ -13,9 +13,9 @@
     container.innerHTML = `
       <div class="sim-wrapper">
         <div class="sim-header">
-          <span class="sim-badge">Interactive Vision Simulator</span>
-          <h3 class="sim-title">Interactive Vision & LASIK Clarity Simulator</h3>
-          <p class="sim-subtitle">Compare common vision issues like nearsightedness, farsightedness, and astigmatism against the clear focus of Custom Wavefront LASIK.</p>
+          <span class="sim-badge">Interactive Optical Lab</span>
+          <h3 class="sim-title">Interactive Vision &amp; LASIK Clarity Simulator</h3>
+          <p class="sim-subtitle">Slide the split-divider or adjust prescription sliders to simulate your optical focus before vs. after Custom Wavefront LASIK.</p>
         </div>
 
         <div class="sim-stage-container" id="sim-stage">
@@ -27,47 +27,68 @@
           </div>
 
           <div class="sim-overlay-badge sim-badge-right">
-            <span class="sim-status-dot dot-green"></span> POST: 20/20 Vision (0.00D)
+            <span class="sim-status-dot dot-green"></span> POST: 20/15 HD (0.00D)
           </div>
           
           <div class="sim-split-divider" id="sim-divider" style="left: 50%;">
-            <div class="sim-handle">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 8L22 12L18 16M6 8L2 12L6 16"/></svg>
+            <div class="sim-handle" aria-label="Drag to compare pre and post LASIK vision">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 8L22 12L18 16M6 8L2 12L6 16"/></svg>
             </div>
           </div>
         </div>
 
-        <div class="sim-presets-grid">
-          <button class="sim-preset-btn active" data-sphere="-2.00" data-cyl="0" data-axis="0">Mild Nearsightedness (-2.00 D)</button>
-          <button class="sim-preset-btn" data-sphere="-6.00" data-cyl="0" data-axis="0">High Nearsightedness (-6.00 D)</button>
-          <button class="sim-preset-btn" data-sphere="0" data-cyl="-2.50" data-axis="90">Astigmatism (-2.50 D @ 90°)</button>
-          <button class="sim-preset-btn" data-sphere="3.00" data-cyl="0" data-axis="0">Farsightedness (+3.00 D)</button>
-          <button class="sim-preset-btn sim-preset-hd" id="sim-preset-hd">✨ Custom Wavefront LASIK</button>
+        <!-- Horizontal Scroll / Swipe Presets Bar -->
+        <div class="sim-presets-grid" role="group" aria-label="Vision Condition Presets">
+          <button type="button" class="sim-preset-btn active" data-sphere="-2.00" data-cyl="0" data-axis="0">Mild Nearsighted (-2.00 D)</button>
+          <button type="button" class="sim-preset-btn" data-sphere="-6.00" data-cyl="0" data-axis="0">High Nearsighted (-6.00 D)</button>
+          <button type="button" class="sim-preset-btn" data-sphere="0" data-cyl="-2.50" data-axis="90">Astigmatism (-2.50 D @ 90°)</button>
+          <button type="button" class="sim-preset-btn" data-sphere="3.00" data-cyl="0" data-axis="0">Farsightedness (+3.00 D)</button>
+          <button type="button" class="sim-preset-btn sim-preset-hd" id="sim-preset-hd">✨ CustomWavefront LASIK</button>
         </div>
 
+        <!-- Mobile Parameter Tab Switcher -->
+        <div class="sim-mobile-tabs" role="tablist" aria-label="Optical Parameter Controls">
+          <button type="button" class="sim-tab-btn active" data-tab="sphere" role="tab" aria-selected="true" aria-controls="sim-group-sphere">Sphere (Myopia)</button>
+          <button type="button" class="sim-tab-btn" data-tab="cyl" role="tab" aria-selected="false" aria-controls="sim-group-cyl">Cylinder (Astigmatism)</button>
+          <button type="button" class="sim-tab-btn" data-tab="axis" role="tab" aria-selected="false" aria-controls="sim-group-axis">Axis Angle</button>
+        </div>
+
+        <!-- Controls Panel (Desktop 3-col / Mobile Active Single-Row with Step Buttons) -->
         <div class="sim-controls-panel">
-          <div class="sim-control-group">
+          <div class="sim-control-group mobile-active" id="sim-group-sphere">
             <div class="sim-control-header">
-              <label for="sim-sphere-slider">Sphere (Myopia / Hyperopia Defocus)</label>
+              <label for="sim-sphere-slider">Sphere (Myopia / Hyperopia)</label>
               <span id="sim-sphere-val" class="sim-val-badge">-2.00 D</span>
             </div>
-            <input type="range" id="sim-sphere-slider" min="-10.00" max="4.00" step="0.25" value="-2.00" aria-label="Sphere Diopter Slider">
+            <div class="sim-slider-row">
+              <button type="button" class="sim-step-btn sim-step-minus" data-slider="sim-sphere-slider" data-step="-0.25" aria-label="Decrease Sphere by 0.25 Diopters">−</button>
+              <input type="range" id="sim-sphere-slider" min="-10.00" max="4.00" step="0.25" value="-2.00" aria-label="Sphere Diopter Slider">
+              <button type="button" class="sim-step-btn sim-step-plus" data-slider="sim-sphere-slider" data-step="0.25" aria-label="Increase Sphere by 0.25 Diopters">+</button>
+            </div>
           </div>
 
-          <div class="sim-control-group">
+          <div class="sim-control-group" id="sim-group-cyl">
             <div class="sim-control-header">
-              <label for="sim-cyl-slider">Cylinder (Astigmatism Magnitude)</label>
+              <label for="sim-cyl-slider">Cylinder (Astigmatism Power)</label>
               <span id="sim-cyl-val" class="sim-val-badge">-1.50 D</span>
             </div>
-            <input type="range" id="sim-cyl-slider" min="-5.00" max="0.00" step="0.25" value="-1.50" aria-label="Cylinder Magnitude Slider">
+            <div class="sim-slider-row">
+              <button type="button" class="sim-step-btn sim-step-minus" data-slider="sim-cyl-slider" data-step="-0.25" aria-label="Decrease Cylinder by 0.25 Diopters">−</button>
+              <input type="range" id="sim-cyl-slider" min="-5.00" max="0.00" step="0.25" value="-1.50" aria-label="Cylinder Magnitude Slider">
+              <button type="button" class="sim-step-btn sim-step-plus" data-slider="sim-cyl-slider" data-step="0.25" aria-label="Increase Cylinder by 0.25 Diopters">+</button>
+            </div>
           </div>
 
-          <div class="sim-control-group">
+          <div class="sim-control-group" id="sim-group-axis">
             <div class="sim-control-header">
               <label for="sim-axis-slider">Astigmatism Axis Angle</label>
               <span id="sim-axis-val" class="sim-val-badge">90°</span>
             </div>
-            <input type="range" id="sim-axis-slider" min="0" max="180" step="1" value="90" aria-label="Axis Angle Slider">
+            <div class="sim-slider-row">
+              <button type="button" class="sim-step-btn sim-step-minus" data-slider="sim-axis-slider" data-step="-5" aria-label="Decrease Axis by 5 degrees">−</button>
+              <input type="range" id="sim-axis-slider" min="0" max="180" step="1" value="90" aria-label="Axis Angle Slider">
+              <button type="button" class="sim-step-btn sim-step-plus" data-slider="sim-axis-slider" data-step="5" aria-label="Increase Axis by 5 degrees">+</button>
+            </div>
           </div>
         </div>
       </div>
@@ -92,7 +113,7 @@
 
     // Trigger initial render immediately
     setTimeout(updateSimulation, 100);
-    setTimeout(updateSimulation, 500);
+    setTimeout(updateSimulation, 400);
 
     // Aspect-ratio preserving Cover Math to prevent stretching/distortion
     function drawImageCover(ctx, img, width, height) {
@@ -117,8 +138,9 @@
     }
 
     function updateSimulation() {
+      if (!stage) return;
       var cssW = stage.clientWidth || 800;
-      var cssH = stage.clientHeight || 450;
+      var cssH = stage.clientHeight || 380;
       var dpr = Math.max(2, window.devicePixelRatio || 1);
 
       // High-DPI Retina resolution canvas scaling to eliminate blurriness
@@ -138,12 +160,12 @@
         ctxPost.fillStyle = '#060b18';
         ctxPost.fillRect(0, 0, cssW, cssH);
         ctxPost.fillStyle = '#e2b857';
-        ctxPost.font = '700 14px Inter, sans-serif';
-        ctxPost.fillText('Loading 4K HD Scene...', cssW / 2 - 80, cssH / 2);
+        ctxPost.font = '700 13px Inter, sans-serif';
+        ctxPost.fillText('Loading 4K HD Scene...', cssW / 2 - 70, cssH / 2);
         return;
       }
 
-      // 1. Post-LASIK HD 20/15 Canvas (Crisp Aspect-Ratio Preserved Image)
+      // 1. Post-LASIK HD 20/15 Canvas
       ctxPost.clearRect(0, 0, cssW, cssH);
       drawImageCover(ctxPost, bgImg, cssW, cssH);
 
@@ -198,16 +220,17 @@
     var isDragging = false;
     function setSplitFromMouse(e) {
       var rect = stage.getBoundingClientRect();
-      var pageX = e.touches ? e.touches[0].clientX : e.clientX;
+      var pageX = (e.touches && e.touches[0]) ? e.touches[0].clientX : e.clientX;
+      if (typeof pageX !== 'number') return;
       var x = pageX - rect.left;
       splitPos = Math.max(0.05, Math.min(0.95, x / rect.width));
       updateSimulation();
     }
 
     stage.addEventListener('mousedown', function (e) { isDragging = true; setSplitFromMouse(e); });
-    stage.addEventListener('touchstart', function (e) { isDragging = true; setSplitFromMouse(e); });
+    stage.addEventListener('touchstart', function (e) { isDragging = true; setSplitFromMouse(e); }, { passive: true });
     window.addEventListener('mousemove', function (e) { if (isDragging) setSplitFromMouse(e); });
-    window.addEventListener('touchmove', function (e) { if (isDragging) setSplitFromMouse(e); });
+    window.addEventListener('touchmove', function (e) { if (isDragging) setSplitFromMouse(e); }, { passive: true });
     window.addEventListener('mouseup', function () { isDragging = false; });
     window.addEventListener('touchend', function () { isDragging = false; });
 
@@ -251,7 +274,53 @@
     cylSlider.addEventListener('input', syncInputValues);
     axisSlider.addEventListener('input', syncInputValues);
 
-    // Presets
+    // Stepper Button Listeners (− / +)
+    var stepBtns = container.querySelectorAll('.sim-step-btn');
+    stepBtns.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        var targetSliderId = btn.getAttribute('data-slider');
+        var stepVal = parseFloat(btn.getAttribute('data-step')) || 0;
+        var targetInput = document.getElementById(targetSliderId);
+        if (targetInput) {
+          var minVal = parseFloat(targetInput.min);
+          var maxVal = parseFloat(targetInput.max);
+          var curVal = parseFloat(targetInput.value);
+          var nextVal = Math.min(maxVal, Math.max(minVal, curVal + stepVal));
+          if (targetSliderId === 'sim-axis-slider') {
+            targetInput.value = Math.round(nextVal);
+          } else {
+            targetInput.value = nextVal.toFixed(2);
+          }
+          syncInputValues();
+        }
+      });
+    });
+
+    // Mobile Tab Switcher Logic
+    var mobileTabBtns = container.querySelectorAll('.sim-tab-btn');
+    var controlGroups = container.querySelectorAll('.sim-control-group');
+
+    function setActiveTab(tabKey) {
+      mobileTabBtns.forEach(function(btn) {
+        var isMatch = btn.getAttribute('data-tab') === tabKey;
+        btn.classList.toggle('active', isMatch);
+        btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+      });
+      controlGroups.forEach(function(grp) {
+        var isMatch = grp.id === 'sim-group-' + tabKey;
+        grp.classList.toggle('mobile-active', isMatch);
+      });
+    }
+
+    mobileTabBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var tabKey = btn.getAttribute('data-tab');
+        setActiveTab(tabKey);
+      });
+    });
+
+    // Presets Click Handler
     var presetBtns = container.querySelectorAll('.sim-preset-btn');
     presetBtns.forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -263,15 +332,25 @@
           cylSlider.value = 0;
           axisSlider.value = 0;
         } else {
-          sphereSlider.value = parseFloat(btn.getAttribute('data-sphere')) || 0;
-          cylSlider.value = parseFloat(btn.getAttribute('data-cyl')) || 0;
-          axisSlider.value = parseInt(btn.getAttribute('data-axis'), 10) || 0;
+          var sph = parseFloat(btn.getAttribute('data-sphere')) || 0;
+          var cyl = parseFloat(btn.getAttribute('data-cyl')) || 0;
+          var ax = parseInt(btn.getAttribute('data-axis'), 10) || 0;
+          sphereSlider.value = sph;
+          cylSlider.value = cyl;
+          axisSlider.value = ax;
+
+          // If astigmatism preset, smartly switch mobile tab to Cylinder
+          if (cyl !== 0 && window.innerWidth <= 768) {
+            setActiveTab('cyl');
+          } else if (sph !== 0 && window.innerWidth <= 768) {
+            setActiveTab('sphere');
+          }
         }
         syncInputValues();
       });
     });
 
-    window.addEventListener('resize', updateSimulation);
+    window.addEventListener('resize', updateSimulation, { passive: true });
     updateSimulation();
   };
 

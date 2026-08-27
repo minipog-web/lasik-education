@@ -11,6 +11,42 @@
       gtag('config', 'GT-WKTZM5GN');
     </script>
 
+    <!-- Google tag (gtag.js) event - delayed navigation helper -->
+    <script>
+      // Helper function to delay opening a URL until a gtag event is sent.
+      // Call it in response to an action that should navigate to a URL.
+      function gtagSendEvent(url) {
+        var callback = function () {
+          if (typeof url === 'string') {
+            window.location = url;
+          }
+        };
+        gtag('event', 'ads_conversion_Form_1', {
+          'event_callback': callback,
+          'event_timeout': 2000,
+          // <event_parameters>
+        });
+        return false;
+      }
+    </script>
+
+    <!-- Event snippet for Book appointment conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+    <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-17962563730/IsEZCL66_dscEJLxm_VC',
+          'event_callback': callback
+      });
+      return false;
+    }
+    </script>
+
     <!-- Performance & Domain Optimization Hints for Tracking Infrastructure -->
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
@@ -198,9 +234,7 @@
             "VISX STAR S4 IR Excimer Laser 3D Iris Registration",
             "WaveScan Wavefront & Pentacam 3D Corneal Diagnostics",
             "Photorefractive Keratectomy (PRK / Surface Ablation)",
-            "EVO ICL (Implantable Collamer Lens)",
-            "Refractive Lens Exchange (RLE / Lifestyle Lenses)",
-            "Myopia, Hyperopia, Astigmatism & Presbyopia Correction",
+            "Myopia, Hyperopia & Astigmatism Laser Correction",
             "Refractive Surgery Safety & Outcomes"
           ],
           "founder": {
@@ -220,12 +254,6 @@
             },
             {
               "@id": "https://lasik.maranoeye.com/#prk-procedure"
-            },
-            {
-              "@id": "https://lasik.maranoeye.com/#icl-procedure"
-            },
-            {
-              "@id": "https://lasik.maranoeye.com/#rle-procedure"
             }
           ],
           "hasOfferCatalog": {
@@ -414,8 +442,6 @@
             "CustomVue Wavefront-Guided Refractive Surgery",
             "Blade-Free Femtosecond LASIK",
             "Photorefractive Keratectomy (PRK)",
-            "EVO ICL Implantation",
-            "Refractive Lens Exchange (RLE)",
             "Corneal Topography & Tomography Analysis",
             "Active 3D Iris Registration Eye Tracking"
           ]
@@ -509,40 +535,6 @@
           "outcome": "Equivalent high-definition visual acuity to LASIK for patients with thinner corneas or dry eye predisposition."
         },
         {
-          "@type": "MedicalProcedure",
-          "@id": "https://lasik.maranoeye.com/#icl-procedure",
-          "name": "EVO ICL (Implantable Collamer Lens) Surgery",
-          "procedureType": "https://schema.org/SurgicalProcedure",
-          "relevantSpecialty": {
-            "@type": "MedicalSpecialty",
-            "name": "Ophthalmology"
-          },
-          "bodyLocation": {
-            "@type": "AnatomicalStructure",
-            "name": "Posterior Chamber of Eye"
-          },
-          "howPerformed": "Micro-insertion of an ultra-thin, biocompatible Collamer lens positioned behind the iris and in front of the natural lens without removing corneal tissue.",
-          "preparation": "Anterior chamber depth measurement and endothelial cell density analysis.",
-          "outcome": "Sharp, high-definition visual correction for moderate to extreme nearsightedness and astigmatism with permanent yet removable lens technology."
-        },
-        {
-          "@type": "MedicalProcedure",
-          "@id": "https://lasik.maranoeye.com/#rle-procedure",
-          "name": "Refractive Lens Exchange (RLE / Lifestyle Lenses)",
-          "procedureType": "https://schema.org/SurgicalProcedure",
-          "relevantSpecialty": {
-            "@type": "MedicalSpecialty",
-            "name": "Ophthalmology"
-          },
-          "bodyLocation": {
-            "@type": "AnatomicalStructure",
-            "name": "Crystalline Lens"
-          },
-          "howPerformed": "Gentle replacement of the natural crystalline lens with an advanced multifocal, trifocal, or toric premium intraocular lens (IOL).",
-          "preparation": "Biometry optical coherence diagnostics and lifestyle visual demand profiling.",
-          "outcome": "Simultaneous restoration of distance, intermediate, and near reading vision, eliminating reading glasses and permanently preventing cataracts."
-        },
-        {
           "@type": "FAQPage",
           "@id": "https://lasik.maranoeye.com/#faq",
           "mainEntity": [
@@ -592,6 +584,22 @@
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "Traditional LASIK used a mechanical microkeratome blade to create the corneal flap. Blade-free iFS femtosecond LASIK uses ultra-fast light pulses to create a microscopic, highly precise flap, preserving corneal tissue integrity and significantly reducing post-op dry eye symptoms."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Who is NOT a candidate for LASIK?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "While candidacy is broad, you may not be an ideal candidate for LASIK if you have thin or irregular corneas, severe dry eye disease, are currently pregnant or breastfeeding, have active autoimmune conditions that impair healing, or have structural corneal conditions like keratoconus. Alternatives like PRK are available for patients who do not qualify for LASIK."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "I am over 40. Will LASIK eliminate my need for reading glasses?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "LASIK permanently corrects distance vision. Around age 40–45, the eye's natural lens loses flexibility (presbyopia), meaning reading glasses will eventually be needed for close-up tasks. Monovision LASIK is only considered in cases where patients have already demonstrated an ability to function with both eyes set for different focal distances or are naturally hyperopic in one eye and myopic in the other, as monovision is not well tolerated unless this history is present."
               }
             }
           ]
@@ -933,16 +941,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="preload" as="image" href="./assets/hero_wavefront_iris.webp?v=2" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="./assets/hero_wavefront_iris.webp?v=2" type="image/webp" importance="high">
     <!-- CustomVue Experience Suite Image Prefetches for Instant Tab Transitions -->
     <link rel="prefetch" as="image" href="./assets/wavescan_diagnostic_device.webp" type="image/webp">
     <link rel="prefetch" as="image" href="./assets/lasik_flap_clean.webp" type="image/webp">
     <link rel="prefetch" as="image" href="./assets/lasik_excimer_3d_tracking.webp" type="image/webp">
     <link rel="prefetch" as="image" href="./assets/lasik_flap_reposition_spatula.webp" type="image/webp">
     <link rel="prefetch" as="image" href="./assets/lasik_24hr_recovery.webp" type="image/webp">
-    <link rel="stylesheet" href="./assets/index-DhXpI4H_.css?v=28">
-    <link rel="stylesheet" href="./assets/custom-styles.css?v=77">
-    <script src="./assets/index-nb1vded4_v2.js?v=55" defer></script>
+    <link rel="stylesheet" href="./assets/index-DhXpI4H_.css?v=29">
+    <link rel="stylesheet" href="./assets/custom-styles.css?v=80">
+    <script src="./assets/index-nb1vded4_v2.js?v=56" defer></script>
     <script src="./assets/vision-simulator.min.js?v=12" defer></script>
   </head>
   <body>
@@ -970,11 +978,27 @@
       <section class="section hero-section-shell">
         <div class="container hero-container">
           <div class="hero-left">
-            <div class="hero-eyebrow animate-fade-up delay-1">CUSTOMVUE® WAVEFRONT-GUIDED LASIK • MARANO EYE CARE NJ</div>
             <h1 class="animate-fade-up delay-2 hero-pop-title hero-h1-shell">Goodbye Lenses. <span class="hero-pop-accent"><span class="hero-pop-line">Hello High-Definition</span><br><span class="hero-pop-line">Freedom.</span></span></h1>
-            <p class="text-secondary animate-fade-up delay-3 hero-body-shell">Imagine waking up tomorrow and experiencing the world with effortless, razor-sharp clarity. Powered by custom 3D WaveScan® mapping and blade-free femtosecond lasers, our CustomVue® LASIK sculpts your vision in just 10 painless seconds per eye—unlocking the potential for better than 20/20 high-definition vision with over 98% achieving 20/20 or better and next-day return to driving, workouts, and work. Backed by 30+ years of ophthalmic leadership, 40,000+ completed procedures, and 680+ verified 5-star reviews across Livingston, Denville, and Newark. Discover your visual potential below.</p>
+            <div class="hero-body-content animate-fade-up delay-3">
+              <h2 class="hero-subtitle">
+                Your Vision Unleashed.
+              </h2>
+              <p class="text-secondary hero-body-lead">
+                What if you could see <em>better</em> than perfect? Wake up to razor-sharp, high-definition clarity — no glasses, no contacts. CustomVue® LASIK patients routinely achieve sharper than 20/20 vision<a href="#lasik-citations" class="citation-sup" aria-label="Reference 2, 11">[2,11]</a> in just <strong class="hero-highlight-cyan">10 painless seconds per eye</strong><a href="#lasik-citations" class="citation-sup" aria-label="Reference 4">[4]</a> — unlocking your best performance, confidence, perception, and comfort.
+              </p>
+              <p class="text-secondary hero-body-sub">
+                Personalized 3D mapping. Blade-free laser precision.<a href="#lasik-citations" class="citation-sup" aria-label="Reference 12">[12]</a> Consultations in <strong>Livingston, Denville,</strong> and <strong>Newark</strong> — all surgery at our flagship <strong>Livingston</strong> center.
+              </p>
+              <p class="hero-proof-text">
+                <span>40,000+ Procedures<a href="#lasik-citations" class="citation-sup" aria-label="Reference 13">[13]</a></span>
+                <span class="hero-proof-dot">·</span>
+                <span>30+ Years of Expertise</span>
+                <span class="hero-proof-dot">·</span>
+                <span>680+ 5-Star Google Reviews<a href="#lasik-citations" class="citation-sup" aria-label="Reference 14">[14]</a></span>
+              </p>
+            </div>
             <div class="responsive-flex-col animate-fade-up delay-4">
-              <button type="button" class="btn btn-primary hero-cta-btn-shell">See If You Qualify in 60 Seconds<span class="btn-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg></span></button>
+              <button type="button" class="btn btn-primary hero-cta-btn-shell">Discover Your Candidacy →</button>
               <button type="button" class="btn btn-secondary hero-cta-btn-shell">How the Technology Works</button>
             </div>
           </div>
@@ -984,7 +1008,7 @@
             <div class="hero-corner hero-corner-bl"></div>
             <div class="hero-corner hero-corner-br"></div>
             <div class="hero-image-card hero-float hero-image-card-shell">
-              <img alt="CustomVue 3D Wavefront Iris Registration & Sub-Micron Corneal Mapping" loading="eager" fetchpriority="high" decoding="async" src="./assets/hero_wavefront_iris.webp?v=2" width="480" height="360" />
+              <img alt="CustomVue 3D Wavefront Iris Registration & Sub-Micron Corneal Mapping" loading="eager" importance="high" decoding="async" src="./assets/hero_wavefront_iris.webp?v=2" width="480" height="360" />
             </div>
           </div>
         </div>
@@ -1030,7 +1054,12 @@
   <script>
     // ─── Global Scroll Helper ────────────────────────────────────────────────
     window.scrollToElement = function(id) {
-      var el = document.getElementById(id);
+      if (id === 'booking' || id === 'schedule' || id === 'consultation') {
+        id = 'hero-mc-card';
+      } else if (id === 'vision-simulator-section') {
+        id = 'lasik-vision-simulator-section';
+      }
+      var el = document.getElementById(id) || document.querySelector('.' + id);
       if (id === 'hero-mc-card' && el) {
         var parentForm = el.closest('.glass-panel');
         if (parentForm) {
@@ -1119,17 +1148,17 @@
         var text = node.nodeValue;
         if (!text || text.trim().length < 8) return;
 
-        // Skip citation injection inside the quiz container to prevent React DOM reconciliation bugs
+        // Skip citation injection inside the hero or quiz containers to prevent duplicate citations
         var current = par;
-        var insideQuiz = false;
+        var skipContainer = false;
         while (current) {
-          if (current.id === 'quiz' || current.id === 'eeat-lifestyle-section' || (current.className && typeof current.className === 'string' && current.className.indexOf('quiz') !== -1)) {
-            insideQuiz = true;
+          if (current.id === 'quiz' || current.id === 'eeat-lifestyle-section' || current.classList?.contains('hero-left') || current.classList?.contains('hero-container') || current.classList?.contains('hero-section-shell') || (current.className && typeof current.className === 'string' && current.className.indexOf('quiz') !== -1)) {
+            skipContainer = true;
             break;
           }
           current = current.parentNode;
         }
-        if (insideQuiz) return;
+        if (skipContainer) return;
 
         for (var i = 0; i < citationMap.length; i++) {
           var entry = citationMap[i];
@@ -1835,6 +1864,9 @@
           btns.forEach(function(btn) {
             if (btn.getAttribute('data-tab') === tabId) {
               btn.classList.add('active');
+              if (btn.scrollIntoView && window.innerWidth < 768) {
+                btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+              }
             } else {
               btn.classList.remove('active');
             }
@@ -2496,6 +2528,66 @@
         if (dispLabel) {
           dispLabel.textContent = 'RETINAL BLUR DIAMETER:';
         }
+
+        // Add mobile bottom step navigator to Science card for effortless linear browsing
+        var sciencePanel = scienceSec.querySelector('.glass-panel');
+        var tabBtns = Array.from(scienceSec.querySelectorAll('.science-tab-btn'));
+        if (sciencePanel && tabBtns.length >= 4 && !document.getElementById('science-mobile-nav')) {
+          var activeTabIdx = tabBtns.findIndex(function(b) {
+            return b.style.fontWeight === '700' || b.classList.contains('active') || b.getAttribute('aria-selected') === 'true';
+          });
+          if (activeTabIdx < 0) activeTabIdx = 0;
+
+          var navBar = document.createElement('div');
+          navBar.id = 'science-mobile-nav';
+          navBar.className = 'science-mobile-nav-bar';
+          
+          var prevBtn = document.createElement('button');
+          prevBtn.type = 'button';
+          prevBtn.className = 'btn btn-secondary science-mobile-nav-btn';
+          prevBtn.innerHTML = '← Previous Module';
+          prevBtn.disabled = (activeTabIdx === 0);
+          prevBtn.onclick = function() {
+            var currentBtns = Array.from(scienceSec.querySelectorAll('.science-tab-btn'));
+            var curIdx = currentBtns.findIndex(function(b) {
+              return b.style.fontWeight === '700' || b.classList.contains('active') || b.getAttribute('aria-selected') === 'true';
+            });
+            if (curIdx > 0 && currentBtns[curIdx - 1]) {
+              currentBtns[curIdx - 1].click();
+            }
+          };
+
+          var nextBtn = document.createElement('button');
+          nextBtn.type = 'button';
+          nextBtn.className = 'btn btn-primary science-mobile-nav-btn';
+          nextBtn.innerHTML = (activeTabIdx === tabBtns.length - 1) ? 'Next: Free Candidacy Test →' : 'Next Module →';
+          nextBtn.onclick = function() {
+            var currentBtns = Array.from(scienceSec.querySelectorAll('.science-tab-btn'));
+            var curIdx = currentBtns.findIndex(function(b) {
+              return b.style.fontWeight === '700' || b.classList.contains('active') || b.getAttribute('aria-selected') === 'true';
+            });
+            if (curIdx >= 0 && curIdx < currentBtns.length - 1 && currentBtns[curIdx + 1]) {
+              currentBtns[curIdx + 1].click();
+            } else {
+              var quizTarget = document.getElementById('quiz') || document.getElementById('contact');
+              if (quizTarget) quizTarget.scrollIntoView({ behavior: 'smooth' });
+            }
+          };
+
+          navBar.appendChild(prevBtn);
+          navBar.appendChild(nextBtn);
+          sciencePanel.appendChild(navBar);
+        } else if (document.getElementById('science-mobile-nav')) {
+          var curActiveIdx = tabBtns.findIndex(function(b) {
+            return b.style.fontWeight === '700' || b.classList.contains('active') || b.getAttribute('aria-selected') === 'true';
+          });
+          var pBtn = document.querySelector('#science-mobile-nav .btn-secondary');
+          var nBtn = document.querySelector('#science-mobile-nav .btn-primary');
+          if (pBtn) pBtn.disabled = (curActiveIdx <= 0);
+          if (nBtn) {
+            nBtn.innerHTML = (curActiveIdx === tabBtns.length - 1) ? 'Next: Free Candidacy Test →' : 'Next Module →';
+          }
+        }
       }
 
       // 2. Clarify Quiz Results Dashboard
@@ -2563,13 +2655,11 @@
     // ─── CustomVue® LASIK Content Deep-Customization ─────────────────────────
 
     function customizeForCustomVue() {
-      // 1. Hero Title, Locations & Eyebrow
+      // 1. Hero Content & Eyebrow
       var heroEyebrow = document.querySelector('.hero-eyebrow');
       if (heroEyebrow && heroEyebrow.textContent.indexOf('CUSTOMVUE') === -1) {
         heroEyebrow.innerHTML = 'CUSTOMVUE® WAVEFRONT-GUIDED LASIK • MARANO EYE CARE NJ';
       }
-
-      // Location SEO is embedded naturally in hero body copy and trust metrics bar
 
       var staticH2 = document.querySelector('.static-hero-h2');
       if (staticH2) {
@@ -2579,17 +2669,52 @@
 
       var heroTitles = document.querySelectorAll('h1, h2, .hero-serif-title, .hero-display-title');
       heroTitles.forEach(function(el) {
-        if (el.classList.contains('sr-only')) return;
+        if (el.classList.contains('sr-only') || el.classList.contains('hero-subtitle')) return;
         var text = (el.innerText || el.textContent || '').trim();
-        if (text.indexOf('Custom Wavefront-Guided LASIK') !== -1 || text.indexOf('Experience 20/15') !== -1 || text.indexOf('Your Eyes Are') !== -1 || text.indexOf('Unfair Advantage') !== -1 || text.indexOf('Clear, Natural Vision') !== -1 || text.indexOf('High-Definition') !== -1) {
+        if (text.indexOf('Custom Wavefront-Guided LASIK') !== -1 || text.indexOf('Experience 20/15') !== -1 || text.indexOf('Your Eyes Are') !== -1 || text.indexOf('Unfair Advantage') !== -1 || text.indexOf('Clear, Natural Vision') !== -1 || text.indexOf('See Beyond') !== -1) {
           el.classList.add('hero-pop-title');
           el.innerHTML = 'Goodbye Lenses. <span class="hero-pop-accent"><span class="hero-pop-line">Hello High-Definition</span><br><span class="hero-pop-line">Freedom.</span></span>';
         }
       });
 
-      var heroSub = document.querySelector('.hero-left p.text-secondary, .hero-content p.text-secondary');
-      if (heroSub && heroSub.textContent.indexOf('better than 20/20') === -1) {
-        heroSub.textContent = 'Imagine waking up tomorrow and experiencing the world with effortless, razor-sharp clarity. Powered by custom 3D WaveScan® mapping and blade-free femtosecond lasers, our CustomVue® LASIK sculpts your vision in just 10 painless seconds per eye—unlocking the potential for better than 20/20 high-definition vision with over 98% achieving 20/20 or better and next-day return to driving, workouts, and work. Backed by 30+ years of ophthalmic leadership, 40,000+ completed procedures, and 680+ verified 5-star reviews across Livingston, Denville, and Newark. Discover your visual potential below.';
+      // Ensure full hero copy structure (Subtitle, Lead text, Secondary feature text, Proof text)
+      var heroLeft = document.querySelector('.hero-left, .hero-content');
+      if (heroLeft && !heroLeft.querySelector('.hero-proof-text')) {
+        var existingParas = heroLeft.querySelectorAll('p.text-secondary, .hero-body-shell, .hero-body-lead, .hero-subtitle, .hero-proof-bar');
+        existingParas.forEach(function(p) { p.remove(); });
+        
+        var bodyContainer = document.createElement('div');
+        bodyContainer.className = 'hero-body-content animate-fade-up delay-3';
+        bodyContainer.innerHTML = 
+          '<h2 class="hero-subtitle">' +
+            'Your Vision Unleashed.' +
+          '</h2>' +
+          '<p class="text-secondary hero-body-lead">' +
+            'What if you could see <em>better</em> than perfect? Wake up to razor-sharp, high-definition clarity — no glasses, no contacts. CustomVue® LASIK patients routinely achieve sharper than 20/20 vision<a href="#lasik-citations" class="citation-sup" aria-label="Reference 2, 11">[2,11]</a> in just <strong class="hero-highlight-cyan">10 painless seconds per eye</strong><a href="#lasik-citations" class="citation-sup" aria-label="Reference 4">[4]</a> — unlocking your best performance, confidence, perception, and comfort.' +
+          '</p>' +
+          '<p class="text-secondary hero-body-sub">' +
+            'Personalized 3D mapping. Blade-free laser precision.<a href="#lasik-citations" class="citation-sup" aria-label="Reference 12">[12]</a> Consultations in <strong>Livingston, Denville,</strong> and <strong>Newark</strong> — all surgery at our flagship <strong>Livingston</strong> center.' +
+          '</p>' +
+          '<p class="hero-proof-text">' +
+            '<span>40,000+ Procedures<a href="#lasik-citations" class="citation-sup" aria-label="Reference 13">[13]</a></span>' +
+            '<span class="hero-proof-dot">·</span>' +
+            '<span>30+ Years of Expertise</span>' +
+            '<span class="hero-proof-dot">·</span>' +
+            '<span>680+ 5-Star Google Reviews<a href="#lasik-citations" class="citation-sup" aria-label="Reference 14">[14]</a></span>' +
+          '</p>';
+
+        var ctaContainer = heroLeft.querySelector('.responsive-flex-col, .hero-cta-group, button, a');
+        if (ctaContainer) {
+          heroLeft.insertBefore(bodyContainer, ctaContainer);
+        } else {
+          heroLeft.appendChild(bodyContainer);
+        }
+      }
+
+      // Update primary hero CTA button copy
+      var primaryCtaBtn = document.querySelector('.hero-left .btn-primary, .hero-container .btn-primary, .hero-cta-btn-shell');
+      if (primaryCtaBtn && primaryCtaBtn.textContent.indexOf('Candidacy') === -1) {
+        primaryCtaBtn.innerHTML = 'Discover Your Candidacy →';
       }
 
       // Enforce Hero Image Asset
@@ -2646,10 +2771,16 @@
         }
       }
 
-      // 3. Consultation Form Heading & Location Clarification
+      // 3. Consultation Form Heading & Subtitle
       var formHeading = document.querySelector('.contact-form h3, #consultation h3');
-      if (formHeading && formHeading.textContent.indexOf('CustomVue') === -1) {
+      if (formHeading) {
         formHeading.innerHTML = 'Book Your Free <span style="color:#e2b857;">CustomVue® Consultation</span>';
+      }
+
+      var formSub = document.querySelector('.contact-form p, #consultation p');
+      if (formSub && !formSub.classList.contains('location-notice-text')) {
+        formSub.textContent = 'Schedule your complimentary, no-obligation consultation today. Most patients say their only regret is not doing it sooner.';
+        formSub.style.color = '#f1f5f9';
       }
 
       var contactForm = document.querySelector('.contact-form');
@@ -2807,57 +2938,84 @@
 
       var suite = document.createElement('div');
       suite.id = 'glassmorphic-laser-suite';
-      suite.style.cssText = 'margin-top: 36px; border: 1px solid rgba(226,184,87,0.22); background: linear-gradient(165deg, rgba(13,20,32,0.9) 0%, rgba(6,11,20,0.95) 100%); backdrop-filter: blur(20px); border-radius: 28px; padding: clamp(24px, 4vw, 44px); box-shadow: 0 30px 80px rgba(0,0,0,0.7), inset 0 1px 1px rgba(255,255,255,0.15); text-align: left; position: relative; overflow: hidden;';
+      suite.setAttribute('role', 'region');
+      suite.setAttribute('aria-label', 'The CustomVue® LASIK Experience Step-by-Step Suite');
 
       suite.innerHTML = 
-        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:16px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:20px;">' +
-          '<div>' +
-            '<span style="font-family:monospace;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:#e2b857;font-weight:700;display:block;margin-bottom:6px;">Dual-Laser Ophthalmic Suite & Procedure Steps</span>' +
-            '<h3 style="font-family:var(--font-serif);font-size:clamp(1.5rem, 2.8vw, 2rem);color:#fff;margin:0;font-weight:700;">The CustomVue® LASIK Experience</h3>' +
+        '<div class="laser-suite-top-bar">' +
+          '<div class="laser-suite-header-block">' +
+            '<span class="laser-suite-eyebrow">Dual-Laser Ophthalmic Suite & Procedure Steps</span>' +
+            '<h3 class="laser-suite-heading">The CustomVue® LASIK Experience</h3>' +
           '</div>' +
-          '<div class="laser-suite-tabs-wrapper" style="display:flex;gap:8px;background:rgba(255,255,255,0.03);padding:6px;border-radius:14px;border:1px solid rgba(255,255,255,0.08);flex-wrap:wrap;">' +
-            '<button type="button" id="tab-laser-wavescan" class="laser-suite-tab active" style="padding:10px 16px;border-radius:10px;background:rgba(226,184,87,0.18);border:1px solid #e2b857;color:#fff;font-family:monospace;font-size:0.76rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">Step 1: 3D Map</button>' +
-            '<button type="button" id="tab-laser-femto" class="laser-suite-tab" style="padding:10px 16px;border-radius:10px;background:transparent;border:1px solid transparent;color:#94a3b8;font-family:monospace;font-size:0.76rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">Step 2: Femto Flap</button>' +
-            '<button type="button" id="tab-laser-excimer" class="laser-suite-tab" style="padding:10px 16px;border-radius:10px;background:transparent;border:1px solid transparent;color:#94a3b8;font-family:monospace;font-size:0.76rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">Step 3: Reshaping</button>' +
-            '<button type="button" id="tab-laser-reposition" class="laser-suite-tab" style="padding:10px 16px;border-radius:10px;background:transparent;border:1px solid transparent;color:#94a3b8;font-family:monospace;font-size:0.76rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">Step 4: Flap Reseal</button>' +
-            '<button type="button" id="tab-laser-recovery" class="laser-suite-tab" style="padding:10px 16px;border-radius:10px;background:transparent;border:1px solid transparent;color:#94a3b8;font-family:monospace;font-size:0.76rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;">Step 5: 24-Hr Recovery</button>' +
+          '<div class="laser-suite-tabs-scroll-area">' +
+            '<div class="laser-suite-tabs-wrapper" role="tablist" aria-label="LASIK Procedure Steps">' +
+              '<button type="button" role="tab" id="tab-laser-wavescan" class="laser-suite-tab active" aria-selected="true" aria-controls="laser-pane-content"><span class="laser-suite-tab-num">01</span><span class="laser-suite-tab-text">3D WaveScan</span></button>' +
+              '<button type="button" role="tab" id="tab-laser-femto" class="laser-suite-tab" aria-selected="false" aria-controls="laser-pane-content"><span class="laser-suite-tab-num">02</span><span class="laser-suite-tab-text">Femto Flap</span></button>' +
+              '<button type="button" role="tab" id="tab-laser-excimer" class="laser-suite-tab" aria-selected="false" aria-controls="laser-pane-content"><span class="laser-suite-tab-num">03</span><span class="laser-suite-tab-text">UV Reshaping</span></button>' +
+              '<button type="button" role="tab" id="tab-laser-reposition" class="laser-suite-tab" aria-selected="false" aria-controls="laser-pane-content"><span class="laser-suite-tab-num">04</span><span class="laser-suite-tab-text">Flap Reseal</span></button>' +
+              '<button type="button" role="tab" id="tab-laser-recovery" class="laser-suite-tab" aria-selected="false" aria-controls="laser-pane-content"><span class="laser-suite-tab-num">05</span><span class="laser-suite-tab-text">24h Recovery</span></button>' +
+            '</div>' +
           '</div>' +
         '</div>' +
 
-        '<div id="laser-pane-content">' +
+        '<div class="laser-suite-progress-track" aria-hidden="true">' +
+          '<div id="laser-progress-fill" class="laser-suite-progress-fill" style="width: 20%;"></div>' +
+        '</div>' +
+
+        '<div id="laser-pane-content" role="tabpanel" aria-labelledby="tab-laser-wavescan">' +
           '<!-- Left: Phase Details & Specs -->' +
-          '<div style="background:rgba(3, 7, 18, 0.65);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:28px;position:relative;overflow:hidden;box-shadow:inset 0 0 25px rgba(0,0,0,0.4);display:flex;flex-direction:column;justify-content:space-between;">' +
+          '<div class="laser-pane-left-col">' +
             '<div>' +
-              '<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:12px;margin-bottom:18px;">' +
-                '<span id="laser-badge-id" style="font-family:monospace;font-size:0.7rem;color:#00f0ff;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;">PHASE 01 // WAVESCAN® & PENTACAM® DIAGNOSTICS</span>' +
+              '<div class="laser-pane-badge-row">' +
+                '<span id="laser-badge-id" class="laser-pane-phase-badge">PHASE 01 // WAVESCAN® & PENTACAM® DIAGNOSTICS</span>' +
               '</div>' +
-              '<h4 id="laser-title-display" style="font-family:var(--font-sans);font-size:1.35rem;color:#fff;font-weight:700;margin:0 0 12px 0;line-height:1.3;">Step 1: WaveScan Wavefront® & Pentacam® 3D Diagnostic Mapping</h4>' +
-              '<p id="laser-desc-display" style="font-size:0.9rem;color:#cbd5e1;line-height:1.65;margin:0 0 20px 0;font-weight:300;">Before any treatment begins, our surgeons Dr. Marano and Dr. Raouf combine 3D WaveScan Wavefront® 250-lenslet sensors with the Oculus Pentacam® 3D corneal tomographer. This dual-diagnostic suite maps 250 optical focal points and captures 25,000 elevation points across the entire anterior and posterior corneal surface.</p>' +
+              '<h4 id="laser-title-display" class="laser-pane-title">Step 1: WaveScan Wavefront® & Pentacam® 3D Diagnostic Mapping</h4>' +
+              '<p id="laser-desc-display" class="laser-pane-desc">Before any treatment begins, our surgeons Dr. Marano and Dr. Raouf combine 3D WaveScan Wavefront® 250-lenslet sensors with the Oculus Pentacam® 3D corneal tomographer. This dual-diagnostic suite maps 250 optical focal points and captures 25,000 elevation points across the entire anterior and posterior corneal surface.</p>' +
             '</div>' +
 
-            '<div id="laser-metrics-container" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;font-family:monospace;font-size:0.75rem;margin-top:auto;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);">' +
-              '<div style="background:rgba(255,255,255,0.02);padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);"><span style="color:#94a3b8;display:block;margin-bottom:4px;font-size:0.65rem;">PHASE DURATION</span><strong id="laser-metric-1" style="color:#e2b857;font-size:0.95rem;">Pre-Op Mapping</strong></div>' +
-              '<div style="background:rgba(255,255,255,0.02);padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);"><span style="color:#94a3b8;display:block;margin-bottom:4px;font-size:0.65rem;">CLINICAL IMPACT</span><strong id="laser-metric-2" style="color:#00f0ff;font-size:0.95rem;">WaveScan + Pentacam</strong></div>' +
+            '<div id="laser-metrics-container" class="laser-pane-metrics-row">' +
+              '<div class="laser-metric-card"><span class="laser-metric-label">PHASE DURATION</span><strong id="laser-metric-1" class="laser-metric-value-gold">Pre-Op Mapping</strong></div>' +
+              '<div class="laser-metric-card"><span class="laser-metric-label">CLINICAL IMPACT</span><strong id="laser-metric-2" class="laser-metric-value-cyan">WaveScan + Pentacam</strong></div>' +
             '</div>' +
           '</div>' +
 
           '<!-- Right: Visual Diagram & Advantage Summary -->' +
-          '<div style="background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:24px;box-shadow:0 15px 35px rgba(0,0,0,0.3);display:flex;flex-direction:column;justify-content:space-between;gap:20px;">' +
-            '<div style="position:relative;width:100%;height:190px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);background:#000;box-shadow:0 12px 30px rgba(0,0,0,0.6);">' +
-              '<img id="laser-image-display" src="./assets/wavescan_diagnostic_device.webp" alt="Laser Technology Illustration" loading="eager" decoding="async" fetchpriority="high" style="width:100%;height:100%;object-fit:cover;display:block;transition:opacity 0.25s ease;" />' +
-              '<div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 40%, rgba(3,7,18,0.9) 100%);pointer-events:none;"></div>' +
-              '<span id="laser-image-caption" style="position:absolute;bottom:10px;left:14px;right:14px;font-family:monospace;font-size:0.68rem;color:#e2b857;letter-spacing:1px;text-transform:uppercase;font-weight:700;">STEP 1 DIAGNOSTICS // WAVESCAN & PENTACAM 3D TOMOGRAPHY</span>' +
+          '<div class="laser-pane-right-col">' +
+            '<div class="laser-pane-image-card">' +
+              '<img id="laser-image-display" src="./assets/wavescan_diagnostic_device.webp" alt="WaveScan Diagnostic Device" loading="eager" decoding="async" fetchpriority="high" />' +
+              '<div class="laser-pane-image-overlay"></div>' +
+              '<span id="laser-image-caption" class="laser-pane-image-caption">STEP 1 DIAGNOSTICS // WAVESCAN & PENTACAM 3D TOMOGRAPHY</span>' +
             '</div>' +
 
-            '<div>' +
-              '<h5 style="font-family:monospace;font-size:0.75rem;color:#e2b857;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 12px 0;">CLINICAL ADVANTAGE & SAFETY</h5>' +
-              '<ul id="laser-list-display" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;font-size:0.85rem;color:#cbd5e1;line-height:1.45;">' +
-                '<li style="display:flex;gap:10px;align-items:start;"><span style="color:#e2b857;">✦</span><span><strong>Anterior & Posterior Elevation:</strong> Pentacam® 3D Scheimpflug imaging measures front and back corneal curvature for complete structural safety.</span></li>' +
-                '<li style="display:flex;gap:10px;align-items:start;"><span style="color:#e2b857;">✦</span><span><strong>Custom Optical Fingerprint:</strong> WaveScan 250-lenslet sensors capture higher-order aberrations 25 times more accurately than standard eye exams.</span></li>' +
-                '<li style="display:flex;gap:10px;align-items:start;"><span style="color:#e2b857;">✦</span><span><strong>Direct Digital Transfer:</strong> Feeds sub-micron optical data directly to the excimer laser for ultra-precise sculpting.</span></li>' +
+            '<div class="laser-pane-advantages">' +
+              '<h5 class="laser-advantages-title">CLINICAL ADVANTAGE & SAFETY</h5>' +
+              '<ul id="laser-list-display" class="laser-advantages-list">' +
+                '<li><span class="laser-adv-bullet">✦</span><span><strong>Anterior & Posterior Elevation:</strong> Pentacam® 3D Scheimpflug imaging measures front and back corneal curvature for complete structural safety.</span></li>' +
+                '<li><span class="laser-adv-bullet">✦</span><span><strong>Custom Optical Fingerprint:</strong> WaveScan 250-lenslet sensors capture higher-order aberrations 25 times more accurately than standard eye exams.</span></li>' +
+                '<li><span class="laser-adv-bullet">✦</span><span><strong>Direct Digital Transfer:</strong> Feeds sub-micron optical data directly to the excimer laser for ultra-precise sculpting.</span></li>' +
               '</ul>' +
             '</div>' +
           '</div>' +
+        '</div>' +
+
+        '<!-- Bottom Step Navigator Bar (Optimized for Mobile & Desktop) -->' +
+        '<div class="laser-suite-bottom-nav">' +
+          '<button type="button" id="laser-prev-step-btn" class="laser-nav-ctrl-btn" aria-label="Go to previous procedure step" disabled>' +
+            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>' +
+            '<span>Previous Step</span>' +
+          '</button>' +
+          '<div class="laser-nav-step-dots" aria-hidden="true">' +
+            '<span class="laser-dot-pill active" data-step="0"></span>' +
+            '<span class="laser-dot-pill" data-step="1"></span>' +
+            '<span class="laser-dot-pill" data-step="2"></span>' +
+            '<span class="laser-dot-pill" data-step="3"></span>' +
+            '<span class="laser-dot-pill" data-step="4"></span>' +
+            '<span class="laser-mobile-step-counter">Step <strong id="laser-step-current-num">1</strong> of 5</span>' +
+          '</div>' +
+          '<button type="button" id="laser-next-step-btn" class="laser-nav-ctrl-btn laser-nav-ctrl-btn-primary" aria-label="Go to next procedure step">' +
+            '<span id="laser-next-step-text">Next Step</span>' +
+            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>' +
+          '</button>' +
         '</div>';
 
       // Insert suite directly into journeySec container right below its header
@@ -2942,20 +3100,30 @@
         }
       };
 
+      var stepKeys = ['wavescan', 'femto', 'excimer', 'reposition', 'recovery'];
+      var currentStepIndex = 0;
+
       function updateSuite(key) {
-        var d = data[key];
+        var idx = typeof key === 'number' ? key : stepKeys.indexOf(key);
+        if (idx < 0) idx = 0;
+        currentStepIndex = idx;
+        var k = stepKeys[idx];
+        var d = data[k];
         if (!d) return;
         
-        document.getElementById('laser-badge-id').textContent = d.badge;
-        document.getElementById('laser-title-display').textContent = d.title;
-        document.getElementById('laser-desc-display').textContent = d.desc;
+        var badgeEl = document.getElementById('laser-badge-id');
+        if (badgeEl) badgeEl.textContent = d.badge;
 
-        var metricsContainer = document.getElementById('laser-metrics-container');
-        if (metricsContainer) {
-          metricsContainer.style.display = 'grid';
-          document.getElementById('laser-metric-1').textContent = d.m1;
-          document.getElementById('laser-metric-2').textContent = d.m2;
-        }
+        var titleEl = document.getElementById('laser-title-display');
+        if (titleEl) titleEl.textContent = d.title;
+
+        var descEl = document.getElementById('laser-desc-display');
+        if (descEl) descEl.textContent = d.desc;
+
+        var m1El = document.getElementById('laser-metric-1');
+        var m2El = document.getElementById('laser-metric-2');
+        if (m1El) m1El.textContent = d.m1;
+        if (m2El) m2El.textContent = d.m2;
 
         var imgEl = document.getElementById('laser-image-display');
         if (imgEl) {
@@ -2968,24 +3136,69 @@
         }
 
         var listEl = document.getElementById('laser-list-display');
-        listEl.innerHTML = d.list.map(function(item) {
-          return '<li style="display:flex;gap:10px;align-items:start;"><span style="color:#e2b857;">✦</span><span>' + item + '</span></li>';
-        }).join('');
+        if (listEl) {
+          listEl.innerHTML = d.list.map(function(item) {
+            return '<li><span class="laser-adv-bullet">✦</span><span>' + item + '</span></li>';
+          }).join('');
+        }
 
-        ['wavescan', 'femto', 'excimer', 'reposition', 'recovery'].forEach(function(k) {
-          var btn = document.getElementById('tab-laser-' + k);
+        // Progress bar fill
+        var progressEl = document.getElementById('laser-progress-fill');
+        if (progressEl) {
+          progressEl.style.width = ((idx + 1) * 20) + '%';
+        }
+
+        // Step counter text
+        var numDisplay = document.getElementById('laser-step-current-num');
+        if (numDisplay) {
+          numDisplay.textContent = (idx + 1);
+        }
+
+        // Dot indicators
+        var dots = suite.querySelectorAll('.laser-dot-pill');
+        dots.forEach(function(dot, dIdx) {
+          if (dIdx <= idx) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+
+        // Tabs state
+        stepKeys.forEach(function(stepKey, sIdx) {
+          var btn = document.getElementById('tab-laser-' + stepKey);
           if (btn) {
-            if (k === key) {
-              btn.style.background = 'rgba(226,184,87,0.18)';
-              btn.style.border = '1px solid #e2b857';
-              btn.style.color = '#fff';
+            if (sIdx === idx) {
+              btn.classList.add('active');
+              btn.setAttribute('aria-selected', 'true');
+              if (btn.scrollIntoView && window.innerWidth < 768) {
+                btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+              }
             } else {
-              btn.style.background = 'transparent';
-              btn.style.border = '1px solid transparent';
-              btn.style.color = '#94a3b8';
+              btn.classList.remove('active');
+              btn.setAttribute('aria-selected', 'false');
             }
           }
         });
+
+        // Bottom Nav Prev/Next Buttons
+        var prevBtn = document.getElementById('laser-prev-step-btn');
+        var nextBtn = document.getElementById('laser-next-step-btn');
+        var nextText = document.getElementById('laser-next-step-text');
+
+        if (prevBtn) {
+          prevBtn.disabled = (idx === 0);
+        }
+
+        if (nextBtn && nextText) {
+          if (idx === stepKeys.length - 1) {
+            nextText.textContent = 'Free Consultation';
+            nextBtn.classList.add('laser-nav-consult-cta');
+          } else {
+            nextText.textContent = 'Next Step';
+            nextBtn.classList.remove('laser-nav-consult-cta');
+          }
+        }
       }
 
       // Preload and cache all 5 laser suite images into memory immediately for instantaneous tab switching
@@ -2998,100 +3211,46 @@
         }
       });
 
-      document.getElementById('tab-laser-wavescan').addEventListener('click', function() { updateSuite('wavescan'); });
-      document.getElementById('tab-laser-femto').addEventListener('click', function() { updateSuite('femto'); });
-      document.getElementById('tab-laser-excimer').addEventListener('click', function() { updateSuite('excimer'); });
-      document.getElementById('tab-laser-reposition').addEventListener('click', function() { updateSuite('reposition'); });
-      document.getElementById('tab-laser-recovery').addEventListener('click', function() { updateSuite('recovery'); });
+      // Tab click events
+      stepKeys.forEach(function(k, idx) {
+        var btn = document.getElementById('tab-laser-' + k);
+        if (btn) {
+          btn.addEventListener('click', function() { updateSuite(idx); });
+        }
+      });
 
-      container.appendChild(suite);
-    }
+      // Dot pill click events
+      var dots = suite.querySelectorAll('.laser-dot-pill');
+      dots.forEach(function(dot) {
+        dot.addEventListener('click', function() {
+          var step = parseInt(dot.getAttribute('data-step'), 10);
+          if (!isNaN(step)) updateSuite(step);
+        });
+      });
 
-    // ─── Not a LASIK Candidate? Alternatives Section ──────────────────────────
-    function injectAlternativesSection() {
-      if (document.getElementById('alternatives-section')) return;
+      // Bottom Nav click events
+      var prevBtn = document.getElementById('laser-prev-step-btn');
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+          if (currentStepIndex > 0) {
+            updateSuite(currentStepIndex - 1);
+          }
+        });
+      }
 
-      // Insert before the FAQ section if it exists, or before the contact section
-      var faqSection = document.getElementById('eeat-faq-section');
-      var contactSection = document.getElementById('contact') || document.querySelector('.contact-form');
-      var insertBefore = faqSection || (contactSection && contactSection.parentNode !== document.body ? contactSection.parentNode : contactSection);
-      if (!insertBefore) return;
-
-      var section = document.createElement('section');
-      section.id = 'alternatives-section';
-      section.className = 'section alternatives-section';
-      section.setAttribute('aria-label', 'Vision Correction Alternatives to LASIK');
-      section.style.cssText = 'padding: clamp(72px, 8vw, 110px) 0; background: radial-gradient(circle at 20% 30%, rgba(0, 212, 255, 0.05) 0%, transparent 45%), radial-gradient(circle at 50% 70%, rgba(226, 184, 87, 0.05) 0%, transparent 45%), radial-gradient(circle at 80% 30%, rgba(16, 185, 129, 0.05) 0%, transparent 45%), linear-gradient(180deg, #09101f 0%, #0e182c 100%); border-top: 1px solid rgba(226, 184, 87, 0.2); border-bottom: 1px solid rgba(226, 184, 87, 0.2);';
-
-      section.innerHTML =
-        '<div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px);">' +
-
-          // Eyebrow
-          '<div style="text-align: center; margin-bottom: 56px;">' +
-            '<span style="display: inline-block; padding: 5px 16px; background: rgba(226,184,87,0.08); border: 1px solid rgba(226,184,87,0.25); border-radius: 100px; font-family: monospace; font-size: 0.72rem; letter-spacing: 2.5px; text-transform: uppercase; color: #e2b857; font-weight: 700; margin-bottom: 18px;">Not a LASIK Candidate?</span>' +
-            '<h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 4.5vw, 3rem); color: #fff; font-weight: 700; line-height: 1.2; margin: 0 0 14px 0;">Every Eye Has a <span style="color: #e2b857;">Right Solution</span></h2>' +
-            '<p style="font-size: 1rem; color: #94a3b8; max-width: 620px; margin: 0 auto; line-height: 1.7;">Higher prescriptions, thin corneas, dry eyes, or presbyopia may mean LASIK isn\'t the right match, but you can still achieve clear, glasses-free vision. Our surgeons Dr. Matthew Marano and Dr. Sherief Raouf offer clinically proven alternatives tailored to your eyes.</p>' +
-          '</div>' +
-
-          // 3-card grid
-          '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 48px;">' +
-
-            // PRK
-            '<div style="position: relative; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 24px; padding: 32px; transition: all 0.4s cubic-bezier(0.16,1,0.3,1);" onmouseenter="this.style.borderColor=\'rgba(226,184,87,0.3)\';this.style.transform=\'translateY(-4px)\';this.style.boxShadow=\'0 24px 48px rgba(0,0,0,0.5)\'" onmouseleave="this.style.borderColor=\'rgba(255,255,255,0.07)\';this.style.transform=\'translateY(0)\';this.style.boxShadow=\'none\'">' +
-              '<span style="display: inline-block; font-family: monospace; font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: #00d4ff; background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); padding: 4px 10px; border-radius: 6px; font-weight: 700; margin-bottom: 20px;">Flap-Free Surface Treatment</span>' +
-              '<h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: #fff; font-weight: 700; margin: 0 0 10px 0;">PRK</h3>' +
-              '<p style="font-size: 0.78rem; color: #00d4ff; font-family: monospace; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 14px 0;">Photorefractive Keratectomy</p>' +
-              '<p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.65; margin: 0 0 20px 0;">A trusted alternative recommended by Dr. Marano and Dr. Raouf for patients who are not ideal LASIK candidates due to <strong style="color: #fff;">thin corneas or unique surface shapes</strong>. It uses the same precision excimer laser to reshape the cornea without creating a flap. Surface healing takes 3 to 5 days, delivering the same crisp long-term visual results.</p>' +
-              '<ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.86rem; color: #cbd5e1;">' +
-                '<li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: #00d4ff; flex-shrink: 0;">✓</span> Ideal for thinner corneas or higher astigmatism</li>' +
-                '<li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: #00d4ff; flex-shrink: 0;">✓</span> Popular with contact sports athletes &amp; first responders</li>' +
-                '<li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: #00d4ff; flex-shrink: 0;">✓</span> Proven laser precision with zero corneal flap</li>' +
-              '</ul>' +
-              '<a href="tel:973-419-5972" class="btn btn-secondary" style="width: 100%; display: flex; align-items: center; justify-content: center; padding: 12px 20px; font-size: 0.85rem; min-height: 44px;">Ask About PRK Eligibility</a>' +
-            '</div>' +
-
-            // ICL
-            '<div style="position: relative; background: rgba(226,184,87,0.03); border: 1px solid rgba(226,184,87,0.2); border-radius: 24px; padding: 32px; transition: all 0.4s cubic-bezier(0.16,1,0.3,1);" onmouseenter="this.style.borderColor=\'rgba(226,184,87,0.5)\';this.style.transform=\'translateY(-4px)\';this.style.boxShadow=\'0 24px 48px rgba(0,0,0,0.5), 0 0 40px rgba(226,184,87,0.07)\'" onmouseleave="this.style.borderColor=\'rgba(226,184,87,0.2)\';this.style.transform=\'translateY(0)\';this.style.boxShadow=\'none\'">' +
-              '<span style="display: inline-block; font-family: monospace; font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: #e2b857; background: rgba(226,184,87,1); border: 1px solid rgba(226,184,87,0.3); padding: 4px 10px; border-radius: 6px; font-weight: 700; margin-bottom: 20px;">Implantable Lens &bull; Popular Alternative</span>' +
-              '<h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: #fff; font-weight: 700; margin: 0 0 10px 0;">ICL</h3>' +
-              '<p style="font-size: 0.78rem; color: #e2b857; font-family: monospace; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 14px 0;">Implantable Collamer® Lens</p>' +
-              '<p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.65; margin: 0 0 20px 0;">A biocompatible micro-lens placed gently behind the iris without removing any corneal tissue. It corrects <strong style="color: #fff;">higher prescriptions</strong> (up to −20.00 D) while preserving natural corneal structure. It is also fully removable if your vision needs ever change.</p>' +
-              '<ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.86rem; color: #cbd5e1;">' +
-              '<li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: #e2b857; flex-shrink: 0;">✓</span> High nearsightedness (−6 D to −20 D)</li>' +
-              '<li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: #e2b857; flex-shrink: 0;">✓</span> Excellent option for thin or dry corneas</li>' +
-              '<li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: #e2b857; flex-shrink: 0;">✓</span> Fully removable and upgradeable</li>' +
-              '</ul>' +
-              '<a href="tel:973-419-5972" class="btn btn-primary" style="width: 100%; display: flex; align-items: center; justify-content: center; padding: 12px 20px; font-size: 0.85rem; min-height: 44px;">Ask About ICL Eligibility</a>' +
-            '</div>' +
-
-            // Lifestyle Lenses
-            '<div style="position: relative; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 24px; padding: 32px; transition: all 0.4s cubic-bezier(0.16,1,0.3,1);" onmouseenter="this.style.borderColor=\'rgba(16,185,129,0.3)\';this.style.transform=\'translateY(-4px)\';this.style.boxShadow=\'0 24px 48px rgba(0,0,0,0.5)\'" onmouseleave="this.style.borderColor=\'rgba(255,255,255,0.07)\';this.style.transform=\'translateY(0)\';this.style.boxShadow=\'none\'">' +
-              '<span style="display: inline-block; font-family: monospace; font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: #10b981; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); padding: 4px 10px; border-radius: 6px; font-weight: 700; margin-bottom: 20px;">Reading Glasses &amp; Presbyopia Care</span>' +
-              '<h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: #fff; font-weight: 700; margin: 0 0 10px 0;">Lifestyle Lenses</h3>' +
-              '<p style="font-size: 0.78rem; color: #10b981; font-family: monospace; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 14px 0;">Premium Intraocular Lens Replacement</p>' +
-              '<p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.65; margin: 0 0 20px 0;">Replaces the eye\'s aging natural lens with an advanced multifocal or extended-depth-of-focus lens. This restores distance, intermediate, and reading vision simultaneously, eliminating dependency on reading glasses and preventing future cataracts.</p>' +
-              '<ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.86rem; color: #cbd5e1;">' +
-              '<li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: #10b981; flex-shrink: 0;">✓</span> Adults 45+ relying on reading glasses</li>' +
-              '<li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: #10b981; flex-shrink: 0;">✓</span> Permanent protection against cataract formation</li>' +
-              '<li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: #10b981; flex-shrink: 0;">✓</span> Full range of focus from phone to horizon</li>' +
-              '</ul>' +
-              '<a href="tel:973-419-5972" class="btn btn-secondary" style="width: 100%; display: flex; align-items: center; justify-content: center; padding: 12px 20px; font-size: 0.85rem; min-height: 44px;">Ask About Lifestyle Lenses</a>' +
-            '</div>' +
-
-          '</div>' + // end grid
-
-          // Bottom callout
-          '<div style="text-align: center; padding: 28px 32px; background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px;">' +
-            '<p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.65; margin: 0 0 18px 0;"><strong style="color: #fff;">Not sure which procedure fits your eyes?</strong> Our surgeons Dr. Marano and Dr. Raouf personally review your corneal maps during your free consultation. A comprehensive 3D scan and eye evaluation will determine the best path for your vision, with zero pressure and no obligation.</p>' +
-            '<a href="tel:973-419-5972" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; font-size: 0.9rem; min-height: 44px;">' +
-              '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>' +
-              'Schedule Free Consultation: (973) 419-5972' +
-            '</a>' +
-          '</div>' +
-
-        '</div>';
-
-      insertBefore.parentNode.insertBefore(section, insertBefore);
+      var nextBtn = document.getElementById('laser-next-step-btn');
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+          if (currentStepIndex < stepKeys.length - 1) {
+            updateSuite(currentStepIndex + 1);
+          } else {
+            var consultTarget = document.getElementById('consultation') || document.querySelector('.consultation-section, .quiz-section, #schedule');
+            if (consultTarget) {
+              consultTarget.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        });
+      }
     }
 
     function initAdaptiveQuiz() {
@@ -3211,6 +3370,20 @@
     }
 
     function enhanceFaqAccordionSpacing() {
+      var faqSection = document.getElementById('faq') || document.querySelector('.faq-section');
+      if (!faqSection) {
+        var headings = document.querySelectorAll('h2, h3');
+        for (var i = 0; i < headings.length; i++) {
+          if ((headings[i].textContent || '').indexOf('Frequently Asked') !== -1 || (headings[i].textContent || '').indexOf('FAQ') !== -1) {
+            var pSec = headings[i].closest('.section') || headings[i].closest('section');
+            if (pSec) {
+              pSec.id = 'faq';
+              faqSection = pSec;
+              break;
+            }
+          }
+        }
+      }
       var faqContainers = document.querySelectorAll('#faq .glass-panel, .faq-section .glass-panel');
       faqContainers.forEach(function(panel) {
         var btn = panel.querySelector('button[type="button"]');
@@ -3230,6 +3403,10 @@
               div.innerHTML = '<strong>No. Dr. Marano and Dr. Raouf use a 100% all-laser, blade-free technique.</strong> Traditional older LASIK methods used a mechanical microkeratome oscillating metal blade to create the corneal flap. At Marano Eye Care, our surgeons use the advanced <strong>iFS® 1053nm Femtosecond infrared laser</strong>, which emits pulses at a quadrillionth of a second to create a customized, ultra-thin protective flap in just 10 seconds per eye. This eliminates mechanical blade friction, preserves corneal architecture, and delivers significantly faster 24-hour visual recovery.';
             } else if (questionText.indexOf('successful') !== -1 || questionText.indexOf('Successful') !== -1) {
               div.innerHTML = '<strong>The success rate of CustomVue® Wavefront LASIK is exceptionally high.</strong> Over <strong>98% of Marano Eye Care patients achieve 20/20 visual acuity or better</strong> within 24 hours of treatment—with many unlocking 20/15 high-definition clarity. Nationally, custom Wavefront LASIK maintains a <strong>99%+ patient satisfaction rate</strong> (the highest of any elective medical procedure), giving our patients immediate freedom from glasses and contacts for daily life, workouts, and work.';
+            } else if (questionText.indexOf('NOT a candidate') !== -1 || questionText.indexOf('not a candidate') !== -1 || questionText.indexOf('Candidate') !== -1) {
+              div.innerHTML = '<strong>While candidacy is broad,</strong> you may not be an ideal candidate for LASIK if you have <strong>thin or irregular corneas</strong>, <strong>severe dry eye disease</strong>, are currently pregnant or breastfeeding (hormonal shifts temporarily alter corneal curvature), have active autoimmune conditions that impair corneal healing, or have conditions like keratoconus. For patients with thin corneas or ocular surface sensitivities, Dr. Marano and Dr. Raouf offer outstanding alternatives such as <strong>PRK (Photorefractive Keratectomy)</strong>, which corrects vision without creating a corneal flap.';
+            } else if (questionText.indexOf('over 40') !== -1 || questionText.indexOf('reading glasses') !== -1 || questionText.indexOf('Reading Glasses') !== -1) {
+              div.innerHTML = '<strong>LASIK permanently corrects distance vision.</strong> However, around age 40–45, the eye\'s natural lens gradually loses flexibility—a universal condition known as presbyopia—meaning reading glasses will eventually be needed for close-up tasks. <strong>Monovision LASIK</strong> (correcting one eye for distance and the other for near vision) is <strong>only considered in cases where patients have already demonstrated an established ability to function with different focal distances</strong> (such as through prior successful monovision contact lens wear) or are naturally hyperopic in one eye and myopic in the other. Monovision is not well tolerated without this prior history, which is why Dr. Marano and Dr. Raouf recommend it exclusively in specific, carefully screened candidates.';
             }
             div.style.setProperty('padding', '20px 32px 32px 32px', 'important');
             div.style.setProperty('margin-top', '8px', 'important');
@@ -3248,7 +3425,7 @@
 
       var simulatorSec = document.createElement('div');
       simulatorSec.id = 'lasik-vision-simulator-section';
-      simulatorSec.className = 'section';
+      simulatorSec.className = 'section vision-simulator-section';
       simulatorSec.style.cssText = 'padding: clamp(60px, 6vw, 90px) 24px; position: relative; border-bottom: 1px solid rgba(255,255,255,0.04); background: #030508;';
 
       var container = document.createElement('div');
@@ -3399,7 +3576,7 @@
       heroBtns.forEach(function(btn) {
         if (btn.dataset.wired) return;
         var txt = btn.textContent.trim().toLowerCase();
-        if (txt.includes('qualify') || txt.includes('60 seconds') || txt.includes('candidate') || txt.includes('self-test')) {
+        if (txt.includes('qualify') || txt.includes('60 seconds') || txt.includes('candidate') || txt.includes('self-test') || txt.includes('visual potential') || txt.includes('discover your')) {
           btn.dataset.wired = 'true';
           btn.addEventListener('click', function(e) {
             e.preventDefault();

@@ -69,6 +69,7 @@
     <title>Custom LASIK in New Jersey | Blade-Free Wavefront LASIK – Marano Eye Care</title>
     <link rel="canonical" href="https://lasik.maranoeye.com/" />
     <meta name="description" content="Upgrade to 20/15 LASIK with Dr. Matthew Marano &amp; Dr. Sherief Raouf at Marano Eye Care. Blade-free, dual-laser, 24-hour recovery. Free consultation in Livingston, Denville, and Newark." />
+    <meta name="keywords" content="Custom LASIK NJ, Blade-Free LASIK New Jersey, Wavefront LASIK Livingston NJ, LASIK eye surgery cost NJ, best LASIK surgeon NJ, LASIK Denville, LASIK Newark, Marano Eye Care, Dr Matthew Marano, Dr Sherief Raouf" />
     <meta property="og:title" content="Custom LASIK in New Jersey | Blade-Free Wavefront LASIK – Marano Eye Care" />
     <meta property="og:description" content="Upgrade to 20/15 LASIK with Dr. Matthew Marano &amp; Dr. Sherief Raouf at Marano Eye Care. Blade-free, dual-laser, 24-hour recovery. Free consultation in Livingston, Denville, and Newark." />
     <meta property="og:type" content="website" />
@@ -952,7 +953,7 @@
     <link rel="prefetch" as="image" href="./assets/lasik_flap_reposition_spatula.webp" type="image/webp">
     <link rel="prefetch" as="image" href="./assets/lasik_24hr_recovery.webp" type="image/webp">
     <link rel="stylesheet" href="./assets/index-DhXpI4H_.css?v=29">
-    <link rel="stylesheet" href="./assets/custom-styles.css?v=82">
+    <link rel="stylesheet" href="./assets/custom-styles.css?v=83">
     <script src="./assets/index-nb1vded4_v2.js?v=56" defer></script>
     <script src="./assets/vision-simulator.min.js?v=12" defer></script>
   </head>
@@ -981,10 +982,14 @@
       <section class="section hero-section-shell">
         <div class="container hero-container">
           <div class="hero-left">
-            <h1 class="animate-fade-up delay-2 hero-pop-title hero-h1-shell">Goodbye Lenses. <span class="hero-pop-accent"><span class="hero-pop-line">Hello High-Definition</span><br><span class="hero-pop-line">Freedom.</span></span></h1>
+            <div class="editorial-eyebrow animate-fade-up delay-1" id="hero-kicker-eyebrow">
+              <span class="live-status-beacon" aria-hidden="true"></span>
+              <span id="hero-kicker-text">Blade-Free Custom Wavefront LASIK &bull; New Jersey</span>
+            </div>
+            <h1 class="animate-fade-up delay-2 hero-pop-title hero-h1-shell">Goodbye Lenses. <span class="hero-pop-accent"><span class="hero-pop-line">Hello High-Definition</span><br><span class="hero-pop-line"><span class="editorial-italic-accent">Freedom.</span></span></span></h1>
             <div class="hero-body-content animate-fade-up delay-3">
               <h2 class="hero-subtitle">
-                Your Vision Unleashed.
+                Your Vision <span class="editorial-italic-accent">Unleashed</span>.
               </h2>
               <p class="text-secondary hero-body-lead">
                 What if you could see <em>better</em> than in your glasses or contacts? Wake up to razor-sharp, high-definition clarity — no glasses, no contacts. CustomVue® LASIK patients routinely achieve sharper than 20/20 vision<a href="#lasik-citations" class="citation-sup" aria-label="Reference 2, 11">[2,11]</a> in just <strong class="hero-highlight-cyan">10 painless seconds per eye</strong><a href="#lasik-citations" class="citation-sup" aria-label="Reference 4">[4]</a> — unlocking your best performance, confidence, awareness and comfort.
@@ -1288,9 +1293,17 @@
         ol.appendChild(li);
       });
 
-      var note = document.createElement('p');
-      note.setAttribute('style', 'margin-top:20px;font-size:0.75rem;color:#cbd5e1;line-height:1.75;');
-      note.innerHTML = '<em>All statistical claims reflect aggregate peer-reviewed clinical data. Individual outcomes vary. LASIK is a surgical procedure with inherent benefits and risks; consult a qualified ophthalmologist to determine your candidacy. This resource is for educational purposes only and does not constitute medical advice. Information submitted via forms on this site is handled in strict compliance with HIPAA (Health Insurance Portability and Accountability Act) standards to protect your health privacy. For more information, please read the <a href="https://sa1s3.patientpop.com/assets/docs/425417.pdf" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:underline;">Marano Eye Care Privacy Policy</a>.<br><br>© 2026 <a href="https://www.maranoeyecare.com" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:none;font-weight:600;">Marano Eye Care</a> | Member of <a href="https://www.onjeyecare.com" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:none;font-weight:600;">ONJ Eye Care Practice Network</a> &bull; <a href="/sitemap.html" style="color:#e2b857;text-decoration:underline;padding:4px 2px;">HTML Sitemap</a> &bull; <a href="/sitemap.xml" target="_blank" style="color:#e2b857;text-decoration:underline;padding:4px 2px;">XML Sitemap</a>. Phone: (973) 419-5972. Consultations available in Livingston, Denville, and Newark. All diagnostic testing and surgical LASIK procedures are performed at our flagship Livingston facility: Cooperman Barnabas Ambulatory Care Center (ACC).</em>';
+      var note = document.createElement('div');
+      note.setAttribute('style', 'margin-top:28px;padding:24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:16px;font-size:0.75rem;color:#94a3b8;line-height:1.75;box-sizing:border-box;');
+      note.innerHTML = 
+        '<strong style="color:#ffffff;display:block;margin-bottom:8px;font-size:0.8rem;letter-spacing:0.5px;text-transform:uppercase;">Medical & Regulatory Disclosures</strong>' +
+        'LASIK and PRK are FDA-approved elective laser vision correction surgical procedures. While over 98% of Marano Eye Care patients achieve 20/20 visual acuity or better based on peer-reviewed clinical cohorts and FDA trials, individual physiological healing, corneal biomechanics, and candidacy vary. A comprehensive diagnostic evaluation—including corneal topography, pachymetry, and WaveScan wavefront analysis—performed by a board-certified refractive surgeon is required to determine surgical eligibility. This educational website does not constitute medical advice or a doctor-patient relationship until an in-person clinical exam is completed.<br><br>' +
+        '<strong>Privacy & Patient Data Protection (HIPAA):</strong> Information submitted via consultation forms on this website is encrypted and transmitted in strict accordance with the Health Insurance Portability and Accountability Act (HIPAA) to safeguard protected health information (PHI). We never sell, rent, or distribute personal data to third parties. For full details, review the <a href="https://sa1s3.patientpop.com/assets/docs/425417.pdf" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:underline;font-weight:600;">Marano Eye Care HIPAA Notice of Privacy Practices</a>.<br><br>' +
+        '<strong>Financing & Pricing Transparency:</strong> All-inclusive pricing covers WaveScan 3D diagnostics, dual-laser surgery, and 24-hour post-op care. 0% APR promotional financing available through CareCredit and Alphaeon Credit subject to credit approval. Health Savings Accounts (HSA) and Flexible Spending Accounts (FSA) eligibility determined by IRS regulations.<br><br>' +
+        '<div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;margin-top:12px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;color:#64748b;">' +
+          '<span>&copy; 2026 <a href="https://www.maranoeyecare.com" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:none;font-weight:600;">Marano Eye Care</a> | Dr. Matthew J. Marano, Jr., MD &amp; Dr. Sherief Raouf, MD</span>' +
+          '<span>Member of <a href="https://www.onjeyecare.com" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:none;font-weight:600;">ONJ Eye Care Network</a> &bull; <a href="/sitemap.html" style="color:#e2b857;text-decoration:underline;">HTML Sitemap</a> &bull; <a href="/sitemap.xml" target="_blank" style="color:#e2b857;text-decoration:underline;">XML Sitemap</a></span>' +
+        '</div>';
 
       inner.appendChild(heading);
       inner.appendChild(ol);
@@ -2071,7 +2084,7 @@
       var html = '<div class="roi-container-wrap">' +
         '<div style="text-align:center;margin-bottom:40px;">' +
           '<span style="font-family:var(--font-sans);font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:#e2b857;font-weight:700;display:inline-block;margin-bottom:8px;">A Smarter Long-Term Financial Decision</span>' +
-          '<h2 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,2.8rem);color:#fff;margin-top:4px;font-weight:700;letter-spacing:-0.02em;">Stop Surrendering Thousands to Lenses vs. a <span class="bio-heading-accent">One-Time Investment</span></h2>' +
+          '<h2 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,2.8rem);color:#fff;margin-top:4px;font-weight:700;letter-spacing:-0.02em;">A Lifetime of Lens Expenses vs. a <span class="bio-heading-accent">One-Time Investment</span></h2>' +
           '<p style="font-family:var(--font-sans);font-size:0.95rem;color:#cbd5e1;max-width:680px;margin:10px auto 0 auto;line-height:1.6;">Between annual optometrist fees, replacement contact boxes, specialty solutions, and designer frames, vision maintenance is a perpetual lifestyle tax. Calculate how much you are projected to surrender over 20+ years compared to all-inclusive CustomVue® Wavefront LASIK.</p>' +
         '</div>' +
 
@@ -2754,7 +2767,7 @@
         scienceSec.style.removeProperty('padding-top');
         var scienceHeading = scienceSec.querySelector('h2');
         if (scienceHeading) {
-          scienceHeading.innerHTML = 'The Science of <span class="bio-heading-accent">LASIK</span>';
+          scienceHeading.innerHTML = 'The <span class="bio-heading-accent">Science of LASIK</span>';
           scienceHeading.style.setProperty('margin-top', '0px', 'important');
           scienceHeading.style.setProperty('padding-top', '0px', 'important');
         }
@@ -2847,73 +2860,60 @@
     function applyDynamicTextReplacement(rootEl) {
       var params = getDtrParams();
 
-      // 1. Headline Replacement (Hero Section)
-      if (params.headline) {
-        var serifTitle = rootEl.querySelector('.hero-serif-title');
-        var displayTitle = rootEl.querySelector('.hero-display-title');
-        
-        if (serifTitle || displayTitle) {
-          var parts = [];
-          if (params.headline.indexOf('|') !== -1) {
-            parts = params.headline.split('|');
-          } else if (params.headline.indexOf('//') !== -1) {
-            parts = params.headline.split('//');
-          } else {
-            var words = params.headline.split(/\s+/);
-            if (words.length > 3) {
-              parts = [words.slice(0, 3).join(' '), words.slice(3).join(' ')];
-            } else {
-              parts = ['', params.headline];
+      // 1. Google Ads Keyword / Location Kicker & Subtitle Replacement
+      var heroKicker = rootEl.querySelector('#hero-kicker-text');
+      var heroSubtitle = rootEl.querySelector('.hero-subtitle');
+
+      if (params.city) {
+        if (heroKicker) {
+          heroKicker.innerHTML = 'Blade-Free Custom Wavefront LASIK &bull; ' + params.city + ', NJ';
+        }
+        if (heroSubtitle && !params.headline) {
+          heroSubtitle.innerHTML = 'Your Vision <span class="editorial-italic-accent">Unleashed</span> in ' + params.city + ', NJ.';
+        }
+
+        // Auto-select city in consultation dropdown if matching
+        var locSelect = document.getElementById('mc-location');
+        if (locSelect) {
+          var cLower = params.city.toLowerCase();
+          for (var i = 0; i < locSelect.options.length; i++) {
+            if (locSelect.options[i].value.toLowerCase().indexOf(cLower) !== -1 ||
+                locSelect.options[i].text.toLowerCase().indexOf(cLower) !== -1) {
+              locSelect.selectedIndex = i;
+              break;
             }
           }
-
-          var part1 = parts[0] ? parts[0].trim() : '';
-          var part2 = parts[1] ? parts[1].trim() : '';
-
-          if (serifTitle && serifTitle.textContent !== part1) {
-            serifTitle.textContent = part1;
-            serifTitle.style.display = part1 ? '' : 'none';
-          }
-          if (displayTitle && displayTitle.textContent !== part2) {
-            displayTitle.textContent = part2;
-          }
         }
       }
 
-      // 2. Subheading Replacement
+      if (params.headline) {
+        if (heroKicker && !params.city) {
+          heroKicker.textContent = params.headline;
+        } else if (heroSubtitle) {
+          heroSubtitle.innerHTML = params.headline;
+        }
+      }
+
+      // 2. Subheading / Body Lead Replacement
       if (params.subheading) {
-        var heroH1 = rootEl.querySelector('h1.animate-fade-up') || rootEl.querySelector('.hero-serif-title')?.parentNode;
-        if (heroH1) {
-          var siblingP = heroH1.parentNode.querySelector('p.text-secondary');
-          if (siblingP && siblingP.textContent !== params.subheading) {
-            siblingP.textContent = params.subheading;
-          }
+        var bodyLead = rootEl.querySelector('.hero-body-lead') || rootEl.querySelector('p.text-secondary');
+        if (bodyLead && bodyLead.textContent !== params.subheading) {
+          bodyLead.textContent = params.subheading;
         }
       }
 
-      // 3. CTA Button text
+      // 3. CTA Button text customization
       if (params.cta) {
-        var ctaButtons = rootEl.querySelectorAll('.btn-primary');
+        var ctaButtons = rootEl.querySelectorAll('.btn-primary, .hero-cta-btn-shell');
         ctaButtons.forEach(function(btn) {
-          if (btn.textContent.trim() !== params.cta && btn.id !== 'quiz-prev-btn') {
+          if (btn.id !== 'quiz-prev-btn' && !btn.querySelector('svg')) {
             btn.textContent = params.cta;
           }
         });
       }
 
-      // 4. City / Location customization
+      // 4. Practice location headers
       if (params.city) {
-        var badgeSpan = rootEl.querySelector('.animate-fade-up span[style*="text-transform:uppercase"]') || 
-                         Array.from(rootEl.querySelectorAll('span')).find(function(el) {
-                           return el.textContent.trim() === 'Zero-Compromise Visual Performance';
-                         });
-        if (badgeSpan) {
-          var newBadgeText = 'Zero-Compromise Visual Performance for ' + params.city + ' Patients';
-          if (badgeSpan.textContent !== newBadgeText) {
-            badgeSpan.textContent = newBadgeText;
-          }
-        }
-
         var headers = rootEl.querySelectorAll('h1, h2, h3, h4');
         headers.forEach(function(h) {
           if (h.textContent.indexOf('Livingston & Newark') !== -1) {
@@ -3910,8 +3910,8 @@
               '<div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:10px;padding:8px 12px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);border-radius:10px;font-size:0.75rem;color:#10b981;font-weight:600;">' +
                 '<span>🛡️ 100% Free Consultation &bull; $0 Obligation &bull; Zero-Pressure Care</span>' +
               '</div>' +
-              '<span style="font-size:0.72rem;color:#94a3b8;text-align:center;display:block;margin-top:6px;font-style:italic;">' +
-                '🔒 Zero obligation. Form protected under HIPAA compliance standards.' +
+              '<span style="font-size:0.72rem;color:#94a3b8;text-align:center;display:block;margin-top:6px;line-height:1.5;">' +
+                '🔒 Protected under HIPAA standards. By submitting, you agree to our <a href="https://sa1s3.patientpop.com/assets/docs/425417.pdf" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:underline;">Privacy Policy</a> &bull; <a href="#lasik-citations" style="color:#e2b857;text-decoration:underline;">Medical Disclosures</a>.' +
               '</span>' +
             '</div>';
         } else if (state.step === 4) {
@@ -4054,6 +4054,15 @@
               }).catch(function(err) {
                 console.error('Submission error:', err);
               });
+
+              // Trigger Google Ads conversion tracking event for AW-17962563730
+              if (typeof gtag_report_conversion === 'function') {
+                try {
+                  gtag_report_conversion();
+                } catch (e) {
+                  console.error('Google Ads conversion tracking error:', e);
+                }
+              }
 
               state.step = 4;
               render();

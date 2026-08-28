@@ -11,40 +11,43 @@
       gtag('config', 'GT-WKTZM5GN');
     </script>
 
-    <!-- Google tag (gtag.js) event - delayed navigation helper -->
+    <!-- Google Ads Conversion & Delayed Navigation Helpers -->
     <script>
       // Helper function to delay opening a URL until a gtag event is sent.
-      // Call it in response to an action that should navigate to a URL.
       function gtagSendEvent(url) {
         var callback = function () {
           if (typeof url === 'string') {
             window.location = url;
           }
         };
-        gtag('event', 'ads_conversion_Form_1', {
-          'event_callback': callback,
-          'event_timeout': 2000,
-          // <event_parameters>
-        });
+        if (typeof gtag === 'function') {
+          gtag('event', 'ads_conversion_Form_1', {
+            'event_callback': callback,
+            'event_timeout': 2000
+          });
+        } else {
+          callback();
+        }
         return false;
       }
-    </script>
 
-    <!-- Event snippet for Book appointment conversion page
-In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
-    <script>
-    function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) != 'undefined') {
-          window.location = url;
+      // Event snippet for Book Appointment conversion tracking
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof url !== 'undefined') {
+            window.location = url;
+          }
+        };
+        if (typeof gtag === 'function') {
+          gtag('event', 'conversion', {
+            'send_to': 'AW-17962563730/IsEZCL66_dscEJLxm_VC',
+            'event_callback': callback
+          });
+        } else {
+          callback();
         }
-      };
-      gtag('event', 'conversion', {
-          'send_to': 'AW-17962563730/IsEZCL66_dscEJLxm_VC',
-          'event_callback': callback
-      });
-      return false;
-    }
+        return false;
+      }
     </script>
 
     <!-- Performance & Domain Optimization Hints for Tracking Infrastructure -->
@@ -949,7 +952,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
     <link rel="prefetch" as="image" href="./assets/lasik_flap_reposition_spatula.webp" type="image/webp">
     <link rel="prefetch" as="image" href="./assets/lasik_24hr_recovery.webp" type="image/webp">
     <link rel="stylesheet" href="./assets/index-DhXpI4H_.css?v=29">
-    <link rel="stylesheet" href="./assets/custom-styles.css?v=80">
+    <link rel="stylesheet" href="./assets/custom-styles.css?v=82">
     <script src="./assets/index-nb1vded4_v2.js?v=56" defer></script>
     <script src="./assets/vision-simulator.min.js?v=12" defer></script>
   </head>
@@ -984,7 +987,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
                 Your Vision Unleashed.
               </h2>
               <p class="text-secondary hero-body-lead">
-                What if you could see <em>better</em> than perfect? Wake up to razor-sharp, high-definition clarity — no glasses, no contacts. CustomVue® LASIK patients routinely achieve sharper than 20/20 vision<a href="#lasik-citations" class="citation-sup" aria-label="Reference 2, 11">[2,11]</a> in just <strong class="hero-highlight-cyan">10 painless seconds per eye</strong><a href="#lasik-citations" class="citation-sup" aria-label="Reference 4">[4]</a> — unlocking your best performance, confidence, perception, and comfort.
+                What if you could see <em>better</em> than in your glasses or contacts? Wake up to razor-sharp, high-definition clarity — no glasses, no contacts. CustomVue® LASIK patients routinely achieve sharper than 20/20 vision<a href="#lasik-citations" class="citation-sup" aria-label="Reference 2, 11">[2,11]</a> in just <strong class="hero-highlight-cyan">10 painless seconds per eye</strong><a href="#lasik-citations" class="citation-sup" aria-label="Reference 4">[4]</a> — unlocking your best performance, confidence, awareness and comfort.
               </p>
               <p class="text-secondary hero-body-sub">
                 Personalized 3D mapping. Blade-free laser precision.<a href="#lasik-citations" class="citation-sup" aria-label="Reference 12">[12]</a> Consultations in <strong>Livingston, Denville,</strong> and <strong>Newark</strong> — all surgery at our flagship <strong>Livingston</strong> center.
@@ -2690,7 +2693,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
             'Your Vision Unleashed.' +
           '</h2>' +
           '<p class="text-secondary hero-body-lead">' +
-            'What if you could see <em>better</em> than perfect? Wake up to razor-sharp, high-definition clarity — no glasses, no contacts. CustomVue® LASIK patients routinely achieve sharper than 20/20 vision<a href="#lasik-citations" class="citation-sup" aria-label="Reference 2, 11">[2,11]</a> in just <strong class="hero-highlight-cyan">10 painless seconds per eye</strong><a href="#lasik-citations" class="citation-sup" aria-label="Reference 4">[4]</a> — unlocking your best performance, confidence, perception, and comfort.' +
+            'What if you could see <em>better</em> than in your glasses or contacts? Wake up to razor-sharp, high-definition clarity — no glasses, no contacts. CustomVue® LASIK patients routinely achieve sharper than 20/20 vision<a href="#lasik-citations" class="citation-sup" aria-label="Reference 2, 11">[2,11]</a> in just <strong class="hero-highlight-cyan">10 painless seconds per eye</strong><a href="#lasik-citations" class="citation-sup" aria-label="Reference 4">[4]</a> — unlocking your best performance, confidence, awareness and comfort.' +
           '</p>' +
           '<p class="text-secondary hero-body-sub">' +
             'Personalized 3D mapping. Blade-free laser precision.<a href="#lasik-citations" class="citation-sup" aria-label="Reference 12">[12]</a> Consultations in <strong>Livingston, Denville,</strong> and <strong>Newark</strong> — all surgery at our flagship <strong>Livingston</strong> center.' +
@@ -3389,33 +3392,44 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
         var btn = panel.querySelector('button[type="button"]');
         var questionText = btn ? btn.textContent.trim() : '';
         if (btn) {
-          btn.style.setProperty('padding', '24px 32px 20px 32px', 'important');
+          btn.style.setProperty('padding', '22px 28px', 'important');
+          btn.style.setProperty('display', 'flex', 'important');
+          btn.style.setProperty('justify-content', 'space-between', 'important');
+          btn.style.setProperty('align-items', 'center', 'important');
+          btn.style.setProperty('box-sizing', 'border-box', 'important');
         }
-        var answerWrappers = panel.querySelectorAll('div');
-        answerWrappers.forEach(function(div) {
-          if (div.style.maxHeight !== undefined) {
-            div.style.setProperty('transition', 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)', 'important');
+
+        var answerOuter = panel.querySelector('div[style*="max-height"], div[style*="maxHeight"]') || (panel.children.length > 1 ? panel.children[1] : null);
+        if (answerOuter) {
+          answerOuter.style.setProperty('transition', 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)', 'important');
+        }
+
+        var answerInner = answerOuter ? answerOuter.querySelector('div') : null;
+        if (!answerInner && answerOuter && answerOuter.textContent.trim().length > 15) {
+          answerInner = answerOuter;
+        }
+
+        if (answerInner) {
+          // Correct and enrich clinical answers
+          if (questionText.indexOf('blade') !== -1 || questionText.indexOf('Blade') !== -1) {
+            answerInner.innerHTML = '<strong>No. Dr. Marano and Dr. Raouf use a 100% all-laser, blade-free technique.</strong> Traditional older LASIK methods used a mechanical microkeratome oscillating metal blade to create the corneal flap. At Marano Eye Care, our surgeons use the advanced <strong>iFS® 1053nm Femtosecond infrared laser</strong>, which emits pulses at a quadrillionth of a second to create a customized, ultra-thin protective flap in just 10 seconds per eye. This eliminates mechanical blade friction, preserves corneal architecture, and delivers significantly faster 24-hour visual recovery.';
+          } else if (questionText.indexOf('successful') !== -1 || questionText.indexOf('Successful') !== -1) {
+            answerInner.innerHTML = '<strong>The success rate of CustomVue® Wavefront LASIK is exceptionally high.</strong> Over <strong>98% of Marano Eye Care patients achieve 20/20 visual acuity or better</strong> within 24 hours of treatment—with many unlocking 20/15 high-definition clarity. Nationally, custom Wavefront LASIK maintains a <strong>99%+ patient satisfaction rate</strong> (the highest of any elective medical procedure), giving our patients immediate freedom from glasses and contacts for daily life, workouts, and work.';
+          } else if (questionText.indexOf('NOT a candidate') !== -1 || questionText.indexOf('not a candidate') !== -1 || questionText.indexOf('Candidate') !== -1) {
+            answerInner.innerHTML = '<strong>While candidacy is broad,</strong> you may not be an ideal candidate for LASIK if you have <strong>thin or irregular corneas</strong>, <strong>severe dry eye disease</strong>, are currently pregnant or breastfeeding (hormonal shifts temporarily alter corneal curvature), have active autoimmune conditions that impair corneal healing, or have conditions like keratoconus. For patients with thin corneas or ocular surface sensitivities, Dr. Marano and Dr. Raouf offer outstanding alternatives such as <strong>PRK (Photorefractive Keratectomy)</strong>, which corrects vision without creating a corneal flap.';
+          } else if (questionText.indexOf('over 40') !== -1 || questionText.indexOf('reading glasses') !== -1 || questionText.indexOf('Reading Glasses') !== -1) {
+            answerInner.innerHTML = '<strong>LASIK permanently corrects distance vision.</strong> However, around age 40–45, the eye\'s natural lens gradually loses flexibility—a universal condition known as presbyopia—meaning reading glasses will eventually be needed for close-up tasks. <strong>Monovision LASIK</strong> (correcting one eye for distance and the other for near vision) is <strong>only considered in cases where patients have already demonstrated an established ability to function with different focal distances</strong> (such as through prior successful monovision contact lens wear) or are naturally hyperopic in one eye and myopic in the other. Monovision is not well tolerated without this prior history, which is why Dr. Marano and Dr. Raouf recommend it exclusively in specific, carefully screened candidates.';
           }
-          // The inner answer text div
-          if (div.children.length === 0 && div.textContent.trim().length > 20) {
-            // Correct the blade FAQ answer if it was mismatched
-            if (questionText.indexOf('blade') !== -1 || questionText.indexOf('Blade') !== -1) {
-              div.innerHTML = '<strong>No. Dr. Marano and Dr. Raouf use a 100% all-laser, blade-free technique.</strong> Traditional older LASIK methods used a mechanical microkeratome oscillating metal blade to create the corneal flap. At Marano Eye Care, our surgeons use the advanced <strong>iFS® 1053nm Femtosecond infrared laser</strong>, which emits pulses at a quadrillionth of a second to create a customized, ultra-thin protective flap in just 10 seconds per eye. This eliminates mechanical blade friction, preserves corneal architecture, and delivers significantly faster 24-hour visual recovery.';
-            } else if (questionText.indexOf('successful') !== -1 || questionText.indexOf('Successful') !== -1) {
-              div.innerHTML = '<strong>The success rate of CustomVue® Wavefront LASIK is exceptionally high.</strong> Over <strong>98% of Marano Eye Care patients achieve 20/20 visual acuity or better</strong> within 24 hours of treatment—with many unlocking 20/15 high-definition clarity. Nationally, custom Wavefront LASIK maintains a <strong>99%+ patient satisfaction rate</strong> (the highest of any elective medical procedure), giving our patients immediate freedom from glasses and contacts for daily life, workouts, and work.';
-            } else if (questionText.indexOf('NOT a candidate') !== -1 || questionText.indexOf('not a candidate') !== -1 || questionText.indexOf('Candidate') !== -1) {
-              div.innerHTML = '<strong>While candidacy is broad,</strong> you may not be an ideal candidate for LASIK if you have <strong>thin or irregular corneas</strong>, <strong>severe dry eye disease</strong>, are currently pregnant or breastfeeding (hormonal shifts temporarily alter corneal curvature), have active autoimmune conditions that impair corneal healing, or have conditions like keratoconus. For patients with thin corneas or ocular surface sensitivities, Dr. Marano and Dr. Raouf offer outstanding alternatives such as <strong>PRK (Photorefractive Keratectomy)</strong>, which corrects vision without creating a corneal flap.';
-            } else if (questionText.indexOf('over 40') !== -1 || questionText.indexOf('reading glasses') !== -1 || questionText.indexOf('Reading Glasses') !== -1) {
-              div.innerHTML = '<strong>LASIK permanently corrects distance vision.</strong> However, around age 40–45, the eye\'s natural lens gradually loses flexibility—a universal condition known as presbyopia—meaning reading glasses will eventually be needed for close-up tasks. <strong>Monovision LASIK</strong> (correcting one eye for distance and the other for near vision) is <strong>only considered in cases where patients have already demonstrated an established ability to function with different focal distances</strong> (such as through prior successful monovision contact lens wear) or are naturally hyperopic in one eye and myopic in the other. Monovision is not well tolerated without this prior history, which is why Dr. Marano and Dr. Raouf recommend it exclusively in specific, carefully screened candidates.';
-            }
-            div.style.setProperty('padding', '20px 32px 32px 32px', 'important');
-            div.style.setProperty('margin-top', '8px', 'important');
-            div.style.setProperty('border-top', '1px solid rgba(255, 255, 255, 0.08)', 'important');
-            div.style.setProperty('line-height', '1.8', 'important');
-            div.style.setProperty('font-size', '0.98rem', 'important');
-            div.style.setProperty('color', '#cbd5e1', 'important');
-          }
-        });
+
+          // Uniform spacing and borders across EVERY question
+          answerInner.style.setProperty('padding', '18px 28px 26px 28px', 'important');
+          answerInner.style.setProperty('margin', '0', 'important');
+          answerInner.style.setProperty('border-top', '1px solid rgba(255, 255, 255, 0.08)', 'important');
+          answerInner.style.setProperty('line-height', '1.8', 'important');
+          answerInner.style.setProperty('font-size', '0.98rem', 'important');
+          answerInner.style.setProperty('color', '#cbd5e1', 'important');
+          answerInner.style.setProperty('box-sizing', 'border-box', 'important');
+        }
       });
     }
 

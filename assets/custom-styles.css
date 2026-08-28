@@ -2782,35 +2782,52 @@ section#about-marano {
 }
 
 /* FAQ Accordion Spacing & Breathing Room Enhancement */
+#faq .glass-panel,
+.faq-section .glass-panel {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  background: rgba(13, 20, 30, 0.75) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  transition: all 0.3s ease !important;
+}
+
 #faq .glass-panel button[type="button"],
 .faq-section .glass-panel button[type="button"] {
-  padding: 24px 32px 18px 32px !important;
+  width: 100% !important;
+  padding: 22px 28px !important;
   line-height: 1.5 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  border: none !important;
+  background: transparent !important;
 }
 
-#faq .glass-panel > div[style*="maxHeight"],
-.faq-section .glass-panel > div[style*="maxHeight"] {
-  max-height: 600px !important; /* ensure full text expands comfortably */
-}
-
-#faq .glass-panel > div[style*="maxHeight"] > div,
-.faq-section .glass-panel > div[style*="maxHeight"] > div {
-  padding: 16px 32px 32px 32px !important;
-  margin-top: 6px !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+#faq .glass-panel > div > div,
+.faq-section .glass-panel > div > div,
+.faq-answer {
+  padding: 18px 28px 26px 28px !important;
+  margin: 0 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
   line-height: 1.8 !important;
   font-size: 0.98rem !important;
   color: #cbd5e1 !important;
+  box-sizing: border-box !important;
 }
 
 @media (max-width: 768px) {
   #faq .glass-panel button[type="button"],
   .faq-section .glass-panel button[type="button"] {
-    padding: 20px 20px 14px 20px !important;
+    padding: 18px 20px !important;
   }
-  #faq .glass-panel > div[style*="maxHeight"] > div,
-  .faq-section .glass-panel > div[style*="maxHeight"] > div {
-    padding: 14px 20px 24px 20px !important;
+  #faq .glass-panel > div > div,
+  .faq-section .glass-panel > div > div,
+  .faq-answer {
+    padding: 16px 20px 22px 20px !important;
+    font-size: 0.92rem !important;
   }
 }
 
@@ -4554,9 +4571,16 @@ p,
 .sim-preset-btn:focus-visible,
 .laser-suite-tab:focus-visible,
 .btn-island-primary:focus-visible,
-.btn:focus-visible {
+.btn:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
   outline: 2px solid #e2b857 !important;
   outline-offset: 3px !important;
+  box-shadow: 0 0 12px rgba(226, 184, 87, 0.35) !important;
 }
 
 /* ─── WCAG AAA Minimum Touch Targets & Motion Safeguards ─── */
@@ -4631,7 +4655,7 @@ body {
   color: #e2b857;
   font-weight: 600;
   line-height: 1.35;
-  margin: 0 0 16px 0;
+  margin: 0 0 28px 0 !important;
   letter-spacing: -0.01em;
 }
 

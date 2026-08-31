@@ -4094,13 +4094,23 @@ h2.hero-pop-title,
     display: none !important;
   }
 
-  #raouf-profile-panel {
-    margin-top: 32px !important;
+  .surgeon-card-frame {
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    margin-bottom: 32px !important;
   }
 
+  #marano-profile-panel,
+  #raouf-profile-panel {
+    margin-top: 0 !important;
+    margin-bottom: 32px !important;
+  }
+
+  #marano-profile-panel .glass-panel,
   #raouf-profile-panel .glass-panel {
-    padding: 20px 16px !important;
-    border-radius: 18px !important;
+    padding: 24px 18px !important;
+    border-radius: 20px !important;
   }
 
   #eeat-credentials {
@@ -4640,11 +4650,67 @@ textarea:focus-visible,
   }
 }
 
+.surgeon-card-frame {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  padding: 8px !important;
+  border-radius: 2rem !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#marano-profile-panel {
+  margin-bottom: 48px !important;
+}
+
+#raouf-profile-panel {
+  margin-top: 0 !important;
+  margin-bottom: 48px !important;
+}
+
+#marano-profile-panel .glass-panel,
+#raouf-profile-panel .glass-panel {
+  padding: 40px !important;
+  background: var(--bg-secondary) !important;
+  border: 1px solid rgba(255, 255, 255, 0.04) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12) !important;
+  border-radius: calc(2rem - 8px) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+#marano-profile-panel .bio-heading,
 #raouf-profile-panel .bio-heading,
+#marano-profile-panel h2,
 #raouf-profile-panel h2 {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   background: none !important;
+  text-align: center !important;
+  font-family: var(--font-serif) !important;
+  font-weight: 700 !important;
+}
+
+#marano-profile-panel .marano-mini-portrait .mini-portrait-wrapper,
+#raouf-profile-panel .marano-mini-portrait .mini-portrait-wrapper {
+  width: 140px !important;
+  height: 140px !important;
+  border-radius: 50% !important;
+  padding: 4px !important;
+  background: linear-gradient(135deg, rgba(226,184,87,0.6), rgba(255,255,255,0.1)) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5) !important;
+  box-sizing: border-box !important;
+}
+
+#marano-profile-panel .mini-portrait-divider,
+#raouf-profile-panel .mini-portrait-divider {
+  width: 40px !important;
+  height: 2px !important;
+  background: rgba(226,184,87,0.3) !important;
+  margin-top: 16px !important;
 }
 
 /* ==========================================================================
@@ -4961,6 +5027,61 @@ input[type="range"]#roi-monthly-slider::-moz-range-track {
   margin: 0 auto !important;
   background: radial-gradient(ellipse at center, rgba(226, 184, 87, 0.25) 0%, rgba(255, 255, 255, 0.05) 50%, transparent 80%) !important;
   border: none !important;
+}
+
+/* ==========================================================================
+   VISUAL & INFORMATIONAL FLOW OPTIMIZATIONS
+   ========================================================================== */
+
+/* 1. Navigation Links Group & Items */
+#main-navigation .nav-links-group {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-left: auto !important;
+  margin-right: 20px !important;
+}
+
+#main-navigation .nav-links-group button,
+#main-navigation .nav-link-item,
+button.nav-link-item {
+  background: transparent !important;
+  border: none !important;
+  color: #cbd5e1 !important;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
+  padding: 8px 14px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+  font-family: var(--font-sans) !important;
+  white-space: nowrap !important;
+  letter-spacing: 0.2px !important;
+  min-height: auto !important;
+  min-width: auto !important;
+  box-shadow: none !important;
+}
+
+#main-navigation .nav-links-group button:hover,
+#main-navigation .nav-link-item:hover,
+button.nav-link-item:hover {
+  color: #e2b857 !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+@media (max-width: 1024px) {
+  #main-navigation .nav-links-group {
+    display: none !important;
+  }
+}
+
+/* 2. Section Transitions & Narrative Milestones */
+#doctor-profile-section {
+  padding-top: clamp(60px, 7vw, 100px) !important;
+  padding-bottom: clamp(60px, 7vw, 100px) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  background: radial-gradient(circle at 50% 5%, rgba(226, 184, 87, 0.03) 0%, transparent 65%), #030508 !important;
 }
 
 

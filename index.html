@@ -953,7 +953,7 @@
     <link rel="prefetch" as="image" href="./assets/lasik_flap_reposition_spatula.webp" type="image/webp">
     <link rel="prefetch" as="image" href="./assets/lasik_24hr_recovery.webp" type="image/webp">
     <link rel="stylesheet" href="./assets/index-DhXpI4H_.css?v=29">
-    <link rel="stylesheet" href="./assets/custom-styles.css?v=83">
+    <link rel="stylesheet" href="./assets/custom-styles.css?v=85">
     <script src="./assets/index-nb1vded4_v2.js?v=56" defer></script>
     <script src="./assets/vision-simulator.min.js?v=12" defer></script>
   </head>
@@ -967,8 +967,11 @@
           <img alt="Marano Eye Care" class="nav-logo" src="./assets/marano-logo-Dw0Rx_0B.png" width="180" height="40" />
         </a>
         <div class="nav-links-group">
-          <button id="nav-candidate-btn">Am I a LASIK Candidate?</button>
-          <button id="nav-procedure-btn" class="btn btn-primary">How It Works</button>
+          <button class="nav-link-item" onclick="scrollToElement('quiz')">Candidacy</button>
+          <button class="nav-link-item" onclick="scrollToElement('lasik-science')">Technology</button>
+          <button class="nav-link-item" onclick="scrollToElement('doctor-profile-section')">Surgeons</button>
+          <button class="nav-link-item" onclick="scrollToElement('roi-section')">Cost &amp; ROI</button>
+          <button class="nav-link-item" onclick="scrollToElement('social-proof-section')">Reviews</button>
         </div>
         <a id="header-phone-link" href="tel:973-419-5972" class="header-phone-link">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -1560,87 +1563,138 @@
 
     function injectEEAT() {
       var profileGrid = document.querySelector('.marano-profile-grid');
-      var statsCol = document.querySelector('.marano-stats-column');
+      if (!profileGrid) return;
 
-      if (profileGrid) {
-        var parentSec = profileGrid.closest('.section') || profileGrid.closest('section') || profileGrid.parentNode;
-        if (parentSec) {
-          parentSec.id = 'doctor-profile-section';
-          parentSec.style.margin = '0';
-        }
+      var maranoCard = profileGrid.closest('.glass-panel') || profileGrid;
+      var maranoOuter = maranoCard.parentElement || maranoCard;
+
+      var parentSec = profileGrid.closest('.section') || profileGrid.closest('section') || profileGrid.closest('#doctor-profile-section') || maranoOuter.closest('section') || profileGrid.parentNode;
+      if (parentSec) {
+        parentSec.id = 'doctor-profile-section';
+        parentSec.style.margin = '0';
       }
 
-      // Inject Dr. Marano's mini portrait at the top of the stats column (top right area of section)
-      if (statsCol && !document.getElementById('marano-portrait-mini')) {
-        var miniPortrait = document.createElement('div');
-        miniPortrait.id = 'marano-portrait-mini';
-        miniPortrait.className = 'marano-mini-portrait';
-        miniPortrait.innerHTML = 
-          '<div class="mini-portrait-wrapper">' +
-            '<img src="./assets/dr-marano.jpg" alt="Dr. Matthew J. Marano, Jr., MD" loading="lazy" class="mini-portrait-image" />' +
-          '</div>' +
-          '<div class="mini-portrait-divider"></div>';
-        statsCol.insertBefore(miniPortrait, statsCol.firstChild);
+      var container = maranoOuter.parentElement;
+
+      // 1. Inject Unified Section Header for Surgical Leadership
+      if (container && !document.getElementById('surgeons-section-intro')) {
+        var secIntro = document.createElement('div');
+        secIntro.id = 'surgeons-section-intro';
+        secIntro.className = 'surgeons-section-intro animate-fade-up';
+        secIntro.setAttribute('style', 'text-align: center; margin-bottom: 48px; width: 100%;');
+        secIntro.innerHTML = 
+          '<span class="rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.25em] font-semibold bg-white/5 border border-white/10 text-white/70" style="display: inline-block; margin-bottom: 12px; text-align: center;">Surgical Leadership</span>' +
+          '<h2 class="bio-heading" style="text-align: center; width: 100%; margin: 0 auto 12px auto; font-size: clamp(2rem, 4.2vw, 2.8rem); line-height: 1.2; color: #ffffff; font-family: var(--font-serif); font-weight: 700;">' +
+            'New Jersey\'s Premier <span class="bio-heading-accent" style="color: #e2b857; font-family: var(--font-serif); font-style: italic;">Refractive Surgeons</span>' +
+          '</h2>' +
+          '<p style="font-size: 1.05rem; color: #cbd5e1; max-width: 680px; margin: 0 auto; line-height: 1.6; font-weight: 300;">' +
+            'Over 40,000 procedures completed across 30+ years. Dual corneal fellowship expertise, 100% blade-free wavefront laser precision, and dedicated 1-on-1 surgeon continuity of care.' +
+          '</p>';
+        container.insertBefore(secIntro, maranoOuter);
       }
 
-      // 1. Inject surgeon board certifications into the profile section
-      if (profileGrid) {
-        var headings = profileGrid.querySelectorAll('h1, h2, h3, h4, .bio-heading');
-        headings.forEach(function(h) {
-          var t = h.textContent || '';
-          if (t.indexOf('Pioneering') !== -1 || t.indexOf('Premier') !== -1 || h.classList.contains('bio-heading')) {
-            h.style.setProperty('text-align', 'center', 'important');
-            h.style.setProperty('font-size', 'clamp(1.5rem, 3vw, 2.2rem)', 'important');
-            h.style.setProperty('line-height', '1.3', 'important');
-            h.style.setProperty('margin', '0 auto 16px auto', 'important');
-            h.style.setProperty('max-width', '700px', 'important');
-            if (h.parentNode) {
-              h.parentNode.style.setProperty('text-align', 'center', 'important');
-            }
-          }
-        });
+      // 2. Format Dr. Marano\'s Card frame & inner glass-panel identically to Dr. Raouf
+      maranoOuter.id = 'marano-profile-panel';
+      maranoOuter.className = 'marano-profile-panel surgeon-card-frame animate-fade-up';
+      maranoOuter.setAttribute('style', 'background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 8px; border-radius: 2rem; margin-bottom: 48px; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); box-sizing: border-box; width: 100%;');
 
-        var bioEyebrow = profileGrid.querySelector('.bio-eyebrow') || profileGrid.querySelector('span');
-        if (bioEyebrow) {
-          bioEyebrow.style.setProperty('text-align', 'center', 'important');
-          bioEyebrow.style.setProperty('display', 'block', 'important');
-          bioEyebrow.style.setProperty('margin', '0 auto 8px auto', 'important');
-        }
-      }
+      maranoCard.className = 'glass-panel';
+      maranoCard.setAttribute('style', 'padding: 40px; background: var(--bg-secondary); border: 1px solid rgba(255, 255, 255, 0.04); box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12); border-radius: calc(2rem - 8px); position: relative; overflow: hidden; box-sizing: border-box; width: 100%;');
 
-      if (profileGrid && !document.getElementById('eeat-credentials')) {
-        var bioHeading = profileGrid.querySelector('.bio-heading') || profileGrid.querySelector('h2') || profileGrid.querySelector('h3');
-
-        if (bioHeading) {
-          var bioTextCol = bioHeading.parentNode;
-          if (bioTextCol) {
-            var creds = document.createElement('div');
-            creds.id = 'eeat-credentials';
-            creds.setAttribute('style', 'margin-top: 28px; padding: 24px; background: rgba(226, 184, 87, 0.03); border: 1px solid rgba(226, 184, 87, 0.15); border-radius: 16px; font-family: var(--font-sans); text-align: left !important; box-sizing: border-box;');
-            creds.innerHTML = '<h4 style="font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; color: #e2b857; margin-bottom: 14px; font-family: inherit; font-weight: 700; text-align: left !important;">Clinical Accreditations & Board Standings</h4>' +
+      maranoCard.innerHTML = 
+        '<div class="marano-profile-grid" style="text-align: left;">' +
+          '<div style="display: flex; flex-direction: column; gap: 24px;">' +
+            '<span class="rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.25em] font-semibold bg-white/5 border border-white/10 text-white/70" style="display: inline-block; width: fit-content; margin: 0 auto; text-align: center;">Founder &amp; Medical Director</span>' +
+            '<h2 class="bio-heading" style="text-align: center; width: 100%; margin: 0 auto; font-size: clamp(1.6rem, 3.2vw, 2.3rem); line-height: 1.3; color: #ffffff;">' +
+              'Dr. Matthew J. Marano, Jr., M.D.' +
+            '</h2>' +
+            '<p class="text-secondary" style="font-size: 1.1rem; line-height: 1.8; margin: 0; font-weight: 300; color: #cbd5e1; text-align: left;">' +
+              'Dr. Matthew J. Marano, Jr., M.D. is a <strong>Board-Certified Ophthalmologist, Medical Director of Marano Eye Care, and a true pioneer of laser vision correction in New Jersey</strong> who has personally performed over 40,000 successful procedures across more than three decades of clinical practice. As an early vanguard of refractive surgery, Dr. Marano\'s surgical contributions have directly advanced modern LASIK technology—transitioning the field from early corneal surface procedures to today\'s high-definition, blade-free wavefront platforms. A trusted authority among ophthalmic surgeons, Dr. Marano has actively assisted in training and proctoring his peers on the specialized application of LASIK in complicated and challenging cases. Currently serving as Chief of Ophthalmology at Cooperman Barnabas Medical Center and Saint Michael\'s Medical Center, and voted a "Top Doctor" 15 times by his peers, Dr. Marano pairs pioneering surgical leadership with dedicated, 1-on-1 personalized patient care.' +
+            '</p>' +
+            '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; margin-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.06); padding-top: 24px; text-align: left;">' +
+              '<div>' +
+                '<span style="color: var(--accent-primary); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 8px; font-family: monospace;">Clinical Leadership &amp; Mentorship</span>' +
+                '<div style="display: flex; flex-direction: column; gap: 6px;">' +
+                  '<span style="color: #ffffff; font-size: 0.85rem; line-height: 1.4; font-weight: 600;">Chief of Ophthalmology</span>' +
+                  '<span style="color: var(--text-secondary); font-size: 0.78rem; line-height: 1.3; display: block; margin-bottom: 2px;">Cooperman Barnabas Medical Center</span>' +
+                  '<span style="color: var(--text-secondary); font-size: 0.78rem; line-height: 1.3; display: block; margin-bottom: 6px;">St. Michael\'s Medical Center</span>' +
+                  '<span style="color: #ffffff; font-size: 0.85rem; line-height: 1.4; font-weight: 600;">Peer Educator &amp; Proctor</span>' +
+                  '<span style="color: var(--text-secondary); font-size: 0.78rem; line-height: 1.3; display: block;">Trained Peers in Complicated LASIK</span>' +
+                '</div>' +
+              '</div>' +
+              '<div>' +
+                '<span style="color: var(--accent-primary); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 8px; font-family: monospace;">Accreditations &amp; Honors</span>' +
+                '<div style="display: flex; flex-direction: column; gap: 6px;">' +
+                  '<span style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.4; display: block;">• Board-Certified in Ophthalmology</span>' +
+                  '<span style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.4; display: block;">• 15-Year NJ Monthly Top Doctor Honoree</span>' +
+                  '<span style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.4; display: block;">• Castle Connolly Top Doctor</span>' +
+                  '<span style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.4; display: block;">• 6× AAHS 5-Star Diamond Award Recipient</span>' +
+                '</div>' +
+              '</div>' +
+              '<div>' +
+                '<span style="color: var(--accent-primary); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 8px; font-family: monospace;">Pioneering Experience</span>' +
+                '<div style="display: flex; flex-direction: column; gap: 6px;">' +
+                  '<span style="color: #ffffff; font-size: 0.85rem; line-height: 1.4; font-weight: 600;">40,000+ Completed Laser Procedures</span>' +
+                  '<span style="color: var(--text-secondary); font-size: 0.78rem; line-height: 1.3; display: block; margin-bottom: 6px;">Over 3 Decades of Surgical Mastery</span>' +
+                  '<span style="color: #ffffff; font-size: 0.85rem; line-height: 1.4; font-weight: 600;">Advanced Modern LASIK Tech</span>' +
+                  '<span style="color: var(--text-secondary); font-size: 0.78rem; line-height: 1.3; display: block;">Pioneered Blade-Free Protocols in NJ</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div id="eeat-credentials" style="margin-top: 20px; padding: 24px; background: rgba(226, 184, 87, 0.03); border: 1px solid rgba(226, 184, 87, 0.15); border-radius: 16px; font-family: var(--font-sans); text-align: left !important; box-sizing: border-box;">' +
+              '<h4 style="font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; color: #e2b857; margin-bottom: 14px; font-family: inherit; font-weight: 700; text-align: left !important;">Surgeon Accreditations &amp; Professional Standings</h4>' +
               '<ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.5; text-align: left !important;">' +
-              '<li style="display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: baseline; text-align: left !important;"><span style="color: #e2b857; font-size: 0.75rem;">✦</span> <span style="text-align: left !important;"><strong>Founder & Medical Director:</strong> <a href="https://www.maranoeyecare.com" target="_blank" rel="noopener noreferrer" style="color: #e2b857; text-decoration: none; font-weight: 600;">Marano Eye Care</a> (Affiliated with <a href="https://www.onjeyecare.com" target="_blank" rel="noopener noreferrer" style="color: #e2b857; text-decoration: none; font-weight: 600;">ONJ Eye Care</a>)</span></li>' +
-              '<li style="display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: baseline; text-align: left !important;"><span style="color: #e2b857; font-size: 0.75rem;">✦</span> <span style="text-align: left !important;"><strong>Board Certified:</strong> American Board of Ophthalmology</span></li>' +
-              '<li style="display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: baseline; text-align: left !important;"><span style="color: #e2b857; font-size: 0.75rem;">✦</span> <span style="text-align: left !important;"><strong>Chief of Ophthalmology:</strong> Cooperman Barnabas Medical Center (also serving St. Michael\'s)</span></li>' +
-              '<li style="display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: baseline; text-align: left !important;"><span style="color: #e2b857; font-size: 0.75rem;">✦</span> <span style="text-align: left !important;"><strong>Fellow:</strong> American Academy of Ophthalmology (FAAO)</span></li>' +
-              '<li style="display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: baseline; text-align: left !important;"><span style="color: #e2b857; font-size: 0.75rem;">✦</span> <span style="text-align: left !important;"><strong>Active Member:</strong> American Society of Cataract & Refractive Surgery (ASCRS)</span></li>' +
-              '</ul>';
-            bioTextCol.appendChild(creds);
-          }
-        }
-      }
+                '<li style="display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: baseline; text-align: left !important;"><span style="color: #e2b857; font-size: 0.75rem;">✦</span> <span><strong>NJ Laser Vision Pioneer:</strong> One of New Jersey\'s foundational refractive pioneers whose clinical work directly contributed to the advancement of modern LASIK technology.</span></li>' +
+                '<li style="display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: baseline; text-align: left !important;"><span style="color: #e2b857; font-size: 0.75rem;">✦</span> <span><strong>Peer Training &amp; Complicated Cases:</strong> Actively trained and proctored fellow ophthalmologists on using LASIK to successfully treat complicated, challenging refractive cases.</span></li>' +
+                '<li style="display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: baseline; text-align: left !important;"><span style="color: #e2b857; font-size: 0.75rem;">✦</span> <span><strong>Founder &amp; Medical Director:</strong> <a href="https://www.maranoeyecare.com" target="_blank" rel="noopener noreferrer" style="color: #e2b857; text-decoration: none; font-weight: 600;">Marano Eye Care</a> (Affiliated with <a href="https://www.onjeyecare.com" target="_blank" rel="noopener noreferrer" style="color: #e2b857; text-decoration: none; font-weight: 600;">ONJ Eye Care</a>)</span></li>' +
+                '<li style="display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: baseline; text-align: left !important;"><span style="color: #e2b857; font-size: 0.75rem;">✦</span> <span><strong>Board Certified:</strong> American Board of Ophthalmology</span></li>' +
+                '<li style="display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: baseline; text-align: left !important;"><span style="color: #e2b857; font-size: 0.75rem;">✦</span> <span><strong>Chief of Ophthalmology:</strong> Cooperman Barnabas Medical Center &amp; St. Michael\'s Medical Center</span></li>' +
+                '<li style="display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: baseline; text-align: left !important;"><span style="color: #e2b857; font-size: 0.75rem;">✦</span> <span><strong>Fellow &amp; Active Member:</strong> American Academy of Ophthalmology (FAAO) &amp; ASCRS</span></li>' +
+              '</ul>' +
+            '</div>' +
+            '<div style="margin-top: 16px; padding: 18px 20px; background: rgba(226, 184, 87, 0.04); border-left: 3px solid #e2b857; border-radius: 0 14px 14px 0; font-family: var(--font-sans); text-align: left !important;">' +
+              '<div style="color: #e2b857; font-size: 0.8rem; margin-bottom: 6px; font-weight: 700; display: flex; align-items: center; gap: 8px;">' +
+                '<span>★★★★★</span>' +
+                '<span style="color: #ffffff; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.2px; font-family: monospace;">Verified Patient Outcome</span>' +
+              '</div>' +
+              '<p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.6; font-style: italic; margin: 0 0 8px 0;">' +
+                '"My single biggest fear was moving my eye or flinching during surgery. Dr. Marano was incredibly reassuring, explaining how active 3D iris tracking eliminates that risk. The entire procedure was completely painless and took seconds. Waking up the next morning with 20/15 clarity was nothing short of miraculous."' +
+              '</p>' +
+              '<span style="font-size: 0.78rem; color: #e2b857; font-weight: 600;">— Michael R., Verified LASIK Patient of Dr. Marano</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="marano-stats-column" style="display: flex; flex-direction: column; gap: 24px;">' +
+            '<div class="marano-mini-portrait" style="display: flex; flex-direction: column; align-items: center; text-align: center;">' +
+              '<div class="mini-portrait-wrapper" style="width: 140px; height: 140px; border-radius: 50%; padding: 4px; background: linear-gradient(135deg, rgba(226,184,87,0.6), rgba(255,255,255,0.1)); box-shadow: 0 8px 24px rgba(0,0,0,0.5);">' +
+                '<img src="./assets/dr-marano.jpg" alt="Dr. Matthew J. Marano, Jr., MD" loading="lazy" class="mini-portrait-image" style="width: 100%; height: 100%; object-fit: cover; object-position: top center; border-radius: 50%; display: block;" />' +
+              '</div>' +
+              '<div class="mini-portrait-divider" style="width: 40px; height: 2px; background: rgba(226,184,87,0.3); margin-top: 16px;"></div>' +
+            '</div>' +
+            '<div style="display: flex; flex-direction: column; gap: 6px;">' +
+              '<span style="font-size: 1.6rem; font-family: var(--font-serif); font-weight: 300; color: var(--accent-primary); line-height: 1.1;">30+ Years</span>' +
+              '<span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; font-family: monospace;">Refractive Surgery Pioneer</span>' +
+            '</div>' +
+            '<div style="height: 1px; background: rgba(255, 255, 255, 0.05);"></div>' +
+            '<div style="display: flex; flex-direction: column; gap: 6px;">' +
+              '<span style="font-size: 1.6rem; font-family: var(--font-serif); font-weight: 300; color: var(--accent-primary); line-height: 1.1;">40,000+</span>' +
+              '<span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; font-family: monospace;">Procedures Completed</span>' +
+            '</div>' +
+            '<div style="height: 1px; background: rgba(255, 255, 255, 0.05);"></div>' +
+            '<div style="display: flex; flex-direction: column; gap: 6px;">' +
+              '<span style="font-size: 1.75rem; font-family: var(--font-serif); font-weight: 300; color: var(--accent-primary); line-height: 1;">15×</span>' +
+              '<span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; font-family: monospace;">NJ Top Doctor Honoree</span>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
 
-      // 2. Inject Dr. Sherief Raouf Biographical Card directly after Dr. Marano's profile card
-      if (profileGrid && !document.getElementById('raouf-profile-panel')) {
-        var maranoCard = profileGrid.closest('.glass-panel') || profileGrid;
-        var maranoOuter = maranoCard.parentElement || maranoCard;
-
+      // 3. Inject Dr. Sherief Raouf Biographical Card directly after Dr. Marano's profile card
+      if (!document.getElementById('raouf-profile-panel')) {
         var raoufPanel = document.createElement('div');
         raoufPanel.id = 'raouf-profile-panel';
-        raoufPanel.className = 'raouf-profile-panel animate-fade-up';
-        raoufPanel.setAttribute('style', 'margin-top: 48px; border-radius: 2rem; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);');
+        raoufPanel.className = 'raouf-profile-panel surgeon-card-frame animate-fade-up';
+        raoufPanel.setAttribute('style', 'background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 8px; border-radius: 2rem; margin-top: 0; margin-bottom: 48px; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); box-sizing: border-box; width: 100%;');
         raoufPanel.innerHTML = 
-          '<div class="glass-panel" style="padding: 40px; background: var(--bg-secondary); border: 1px solid rgba(255, 255, 255, 0.04); box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12); border-radius: calc(2rem - 8px); position: relative; overflow: hidden;">' +
+          '<div class="glass-panel" style="padding: 40px; background: var(--bg-secondary); border: 1px solid rgba(255, 255, 255, 0.04); box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12); border-radius: calc(2rem - 8px); position: relative; overflow: hidden; box-sizing: border-box; width: 100%;">' +
             '<div class="marano-profile-grid" style="text-align: left;">' +
               '<div style="display: flex; flex-direction: column; gap: 24px;">' +
                 '<span class="rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.25em] font-semibold bg-white/5 border border-white/10 text-white/70" style="display: inline-block; width: fit-content; margin: 0 auto; text-align: center;">Corneal &amp; Refractive Surgery Specialist</span>' +
@@ -2436,6 +2490,39 @@
       });
     }
 
+    // ─── Visual & Informational Flow Optimization ───────────────────────────
+
+    function optimizePageFlow() {
+      var docSec = document.getElementById('doctor-profile-section');
+      var roiSec = document.getElementById('roi-section');
+      if (docSec && roiSec && docSec.nextElementSibling !== roiSec) {
+        roiSec.parentNode.insertBefore(docSec, roiSec);
+      }
+    }
+
+    function updateNavLinks() {
+      var navGroup = document.querySelector('#main-navigation .nav-links-group');
+      if (!navGroup || navGroup.getAttribute('data-enhanced') === 'true') return;
+      navGroup.setAttribute('data-enhanced', 'true');
+      navGroup.innerHTML = 
+        '<button class="nav-link-item" data-target="quiz">Candidacy</button>' +
+        '<button class="nav-link-item" data-target="lasik-science">Technology</button>' +
+        '<button class="nav-link-item" data-target="doctor-profile-section">Surgeons</button>' +
+        '<button class="nav-link-item" data-target="roi-section">Cost &amp; ROI</button>' +
+        '<button class="nav-link-item" data-target="social-proof-section">Reviews</button>';
+
+      var items = navGroup.querySelectorAll('.nav-link-item');
+      items.forEach(function(item) {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          var t = item.getAttribute('data-target');
+          if (t && window.scrollToElement) {
+            window.scrollToElement(t);
+          }
+        });
+      });
+    }
+
     // ─── P2: Mobile Sticky CTA Bar ────────────────────────────────────────
 
     function injectMobileCTA() {
@@ -2755,9 +2842,9 @@
       });
 
       // Bio text polish
-      var bioLead = document.querySelector('.marano-profile-grid p.text-secondary');
-      if (bioLead && !bioLead.closest('#raouf-profile-panel')) {
-        bioLead.innerHTML = 'Marano Eye Care is Northern New Jersey\'s benchmark for custom laser vision correction. <strong>Dr. Matthew J. Marano, Jr., MD was among the first refractive surgeons in the state</strong>, introducing blade-free technology to New Jersey and personally performing over 40,000 procedures. With 30+ years of clinical excellence, 15 NJ Top Doctor awards, and 680+ verified 5-star patient reviews, your vision is in the most experienced hands.';
+      var bioLead = document.querySelector('#marano-profile-panel p.text-secondary');
+      if (bioLead) {
+        bioLead.innerHTML = 'Dr. Matthew J. Marano, Jr., M.D. is a <strong>Board-Certified Ophthalmologist, Medical Director of Marano Eye Care, and a true pioneer of laser vision correction in New Jersey</strong> who has personally performed over 40,000 successful procedures across more than three decades of clinical practice. As an early vanguard of refractive surgery, Dr. Marano\'s surgical contributions have directly advanced modern LASIK technology—transitioning the field from early corneal surface procedures to today\'s high-definition, blade-free wavefront platforms. A trusted authority among ophthalmic surgeons, Dr. Marano has actively assisted in training and proctoring his peers on the specialized application of LASIK in complicated and challenging cases. Currently serving as Chief of Ophthalmology at Cooperman Barnabas Medical Center and Saint Michael\'s Medical Center, and voted a "Top Doctor" 15 times by his peers, Dr. Marano pairs pioneering surgical leadership with dedicated, 1-on-1 personalized patient care.';
       }
 
       // 2. Science Section Heading & Tech Cards
@@ -3510,6 +3597,8 @@
           injectMicrocopyPreemption();
           injectMobileCTA();
           injectPhoneIntoDynamicHeader();
+          optimizePageFlow();
+          updateNavLinks();
           ensureAccessibilityLabels();
           clarifyLandingPageCopy();
           customizeForCustomVue();
@@ -3646,9 +3735,9 @@
 
       var trustPillars = [
         {
-          badge: '30+ YRS & 40,000+ PROCEDURES',
-          title: 'Decades of Refractive Mastery',
-          desc: 'Led by Dr. Matthew J. Marano, Jr., MD—one of New Jersey’s original LASIK pioneers with over 40,000 completed surgical procedures and unmatched clinical precision.',
+          badge: 'NJ LASIK PIONEER • 40,000+ PROCEDURES',
+          title: 'Pioneering Laser Vision Leadership',
+          desc: 'Led by Dr. Matthew J. Marano, Jr., MD—a pioneer of laser vision correction in New Jersey whose clinical work contributed directly to advancing modern LASIK technology, and who has trained his peers on using LASIK in complicated cases.',
           iconSvg: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e2b857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.45 1-1 1H7.5"></path><path d="M14 14.66V17c0 .55.45 1 1 1h1.5"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>'
         },
         {

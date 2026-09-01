@@ -426,9 +426,9 @@
             "name": "George Washington University School of Medicine"
           },
           "award": [
-            "15× Top Doctor New Jersey Monthly",
-            "6× AAHS 5-Star Diamond Award for Clinical Excellence",
-            "Over 40,000 Completed Surgical Procedures"
+            "New Jersey Monthly Top Doctor (15x)",
+            "Thousands of Completed LASIK Procedures",
+            "Over 40,000 Total Completed Surgical Procedures"
           ],
           "memberOf": [
             {
@@ -613,333 +613,7 @@
     </script>
 
     <!-- Comprehensive GTM, GA4, & Google Ads Event Tracking Architecture -->
-    <script>
-      // 1. Google Tag (gtag.js) & dataLayer Initialization Stub
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){window.dataLayer.push(arguments);}
-      window.gtag = gtag;
-      gtag('js', new Date());
-
-      (function() {
-        // Unified helper for dataLayer pushes & gtag events
-        function trackEvent(eventName, params) {
-          params = params || {};
-          var payload = Object.assign({
-            event: eventName,
-            timestamp: new Date().toISOString()
-          }, params);
-
-          window.dataLayer.push(payload);
-          if (typeof window.gtag === 'function') {
-            window.gtag('event', eventName, params);
-          }
-        }
-
-        function getParam(body, key) {
-          var match = new RegExp('(?:^|&)' + key + '=([^&]*)').exec(body);
-          return match ? decodeURIComponent(match[1].replace(/\+/g, ' ')) : null;
-        }
-
-        // 1. Intercept Fetch Consultation Form Submissions & Enhanced Conversions
-        var originalFetch = window.fetch;
-        if (originalFetch) {
-          window.fetch = function() {
-            var args = arguments;
-            var url = args[0];
-            var options = args[1];
-            if (url === '/' && options && options.method === 'POST' && typeof options.body === 'string' && options.body.indexOf('form-name=consultation') !== -1) {
-              var nameVal = getParam(options.body, 'name') || '';
-              var emailVal = getParam(options.body, 'email') || '';
-              var phoneVal = getParam(options.body, 'phone') || '';
-              var locationVal = getParam(options.body, 'location') || 'Livingston';
-              var preferredContact = getParam(options.body, 'preferred_contact') || 'email';
-              var timeframeVal = getParam(options.body, 'timeframe') || '';
-
-              var nameParts = nameVal.trim().split(/\s+/);
-              var firstName = nameParts[0] || '';
-              var lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
-              var cleanPhone = phoneVal.replace(/[^\d+]/g, '');
-              var cleanEmail = emailVal.toLowerCase().trim();
-
-              var userData = {
-                email: cleanEmail,
-                phone_number: cleanPhone,
-                address: {
-                  first_name: firstName,
-                  last_name: lastName
-                }
-              };
-
-              // GA4 Standard Lead Generation Event with Advanced Attribution Mapping
-              var utmSrc = getParam(options.body, 'utm_source') || '';
-              var utmMed = getParam(options.body, 'utm_medium') || '';
-              var utmCam = getParam(options.body, 'utm_campaign') || '';
-              var utmCon = getParam(options.body, 'utm_content') || '';
-              var utmTerm = getParam(options.body, 'utm_term') || '';
-              var gclidVal = getParam(options.body, 'gclid') || '';
-
-              trackEvent('generate_lead', {
-                lead_type: 'consultation_request',
-                form_name: 'consultation',
-                location: locationVal,
-                preferred_contact: preferredContact,
-                timeframe: timeframeVal,
-                value: 150.00,
-                currency: 'USD',
-                utm_source: utmSrc,
-                utm_medium: utmMed,
-                utm_campaign: utmCam,
-                utm_content: utmCon,
-                utm_term: utmTerm,
-                gclid: gclidVal
-              });
-
-              trackEvent('form_submission', {
-                form_name: 'consultation',
-                location: locationVal,
-                preferred_contact: preferredContact,
-                utm_source: utmSrc,
-                utm_medium: utmMed,
-                utm_campaign: utmCam,
-                utm_content: utmCon,
-                utm_term: utmTerm,
-                gclid: gclidVal
-              });
-
-              // Google Ads Conversion Event with Enhanced Conversion User Data
-              window.dataLayer.push({
-                event: 'ads_conversion_submit_lead',
-                send_to: 'AW-17962563730/udUdCIWWp9gcEJLxm_VC',
-                value: 150.00,
-                currency: 'USD',
-                user_data: userData
-              });
-
-              if (typeof window.gtag === 'function') {
-                window.gtag('event', 'conversion', {
-                  'send_to': 'AW-17962563730/udUdCIWWp9gcEJLxm_VC',
-                  'value': 150.00,
-                  'currency': 'USD',
-                  'user_data': userData
-                });
-              }
-            }
-            return originalFetch.apply(this, args);
-          };
-        }
-
-        // 2. Form Field Engagement & Start Tracking
-        var formStarted = false;
-        document.addEventListener('focusin', function(e) {
-          if (e.target && e.target.form && (e.target.form.name === 'consultation' || e.target.closest('#hero-mc-card'))) {
-            if (!formStarted) {
-              formStarted = true;
-              trackEvent('form_start', {
-                form_name: 'consultation',
-                first_field: e.target.name || e.target.id
-              });
-            }
-            trackEvent('form_field_focus', {
-              field_name: e.target.name || e.target.id
-            });
-          }
-        }, true);
-
-        // 3. Track Interactions (Click-to-Call, Outbound Links, CTAs, Tabs, Vision Simulator)
-        document.addEventListener('click', function(e) {
-          var target = e.target;
-          while (target && target !== document.body) {
-            // Click-to-Call Link Tracking
-            if (target.tagName === 'A' && target.href && target.href.indexOf('tel:') === 0) {
-              var phoneNum = target.href.replace('tel:', '');
-              trackEvent('phone_click', {
-                phone_number: phoneNum,
-                link_text: (target.innerText || target.textContent || '').trim(),
-                event_category: 'contact',
-                event_label: 'click_to_call'
-              });
-              window.dataLayer.push({
-                event: 'ads_conversion_phone_call',
-                phone_number: phoneNum
-              });
-              break;
-            }
-
-            // Google Maps Directions Click
-            if (target.tagName === 'A' && target.href && target.href.indexOf('google.com/maps') !== -1) {
-              trackEvent('maps_directions_click', {
-                destination: (target.innerText || target.textContent || '').trim(),
-                link_url: target.href
-              });
-              break;
-            }
-
-            // Outbound Practice Network Link Tracking
-            if (target.tagName === 'A' && target.href && target.hostname && target.hostname !== window.location.hostname) {
-              trackEvent('outbound_click', {
-                outbound_domain: target.hostname,
-                link_url: target.href,
-                link_text: (target.innerText || target.textContent || '').trim()
-              });
-            }
-
-            // Vision Simulator Preset & HD Buttons
-            if (target.classList && target.classList.contains('sim-preset-btn')) {
-              var isHD = target.classList.contains('sim-preset-hd');
-              trackEvent(isHD ? 'vision_simulator_hd_click' : 'vision_simulator_preset_click', {
-                preset_name: (target.innerText || target.textContent || '').trim(),
-                sphere: target.getAttribute('data-sphere') || '0',
-                cylinder: target.getAttribute('data-cyl') || '0'
-              });
-              break;
-            }
-
-            // CTA Button Tracking
-            if (target.tagName === 'BUTTON' || (target.className && typeof target.className === 'string' && target.className.indexOf('btn') !== -1)) {
-              var btnText = (target.innerText || target.textContent || '').trim().replace(/\s+/g, ' ');
-              if (btnText) {
-                trackEvent('cta_click', {
-                  cta_label: btnText,
-                  button_id: target.id || null,
-                  event_category: 'engagement'
-                });
-              }
-              break;
-            }
-
-            // Lifestyle Tab Switch Tracking
-            if (target.classList && target.classList.contains('lifestyle-tab-btn')) {
-              var tabId = target.getAttribute('data-tab');
-              trackEvent('lifestyle_tab_select', {
-                tab_id: tabId,
-                tab_label: (target.innerText || target.textContent || '').trim()
-              });
-              break;
-            }
-
-            // Technology Tab Switch Tracking
-            if (target.classList && target.classList.contains('laser-suite-tab')) {
-              trackEvent('technology_tab_select', {
-                technology_id: target.id,
-                technology_name: (target.innerText || target.textContent || '').trim()
-              });
-              break;
-            }
-
-            target = target.parentNode;
-          }
-        }, true);
-
-        // 4. ROI Cost Calculator Interaction Tracking
-        var calcDebounceTimer = null;
-        document.addEventListener('input', function(e) {
-          if (e.target && e.target.id && e.target.id.indexOf('roi-') === 0) {
-            clearTimeout(calcDebounceTimer);
-            calcDebounceTimer = setTimeout(function() {
-              var ageEl = document.getElementById('roi-age-slider');
-              var monthlyEl = document.getElementById('roi-monthly-slider');
-              var hsaEl = document.getElementById('roi-hsa-toggle');
-              trackEvent('calculator_interaction', {
-                calculator_name: 'lasik_roi_cost',
-                age: ageEl ? ageEl.value : null,
-                monthly_spend: monthlyEl ? monthlyEl.value : null,
-                hsa_applied: hsaEl ? hsaEl.checked : false
-              });
-            }, 800);
-          }
-        });
-
-        // 5. Eligibility Quiz Monitoring
-        var quizCompletedSent = false;
-        var quizStartedSent = false;
-        var quizObserver = new MutationObserver(function() {
-          var rootEl = document.getElementById('root');
-          if (!rootEl) return;
-
-          // Quiz start detection
-          if (!quizStartedSent) {
-            var quizCard = rootEl.querySelector('#hero-mc-card');
-            if (quizCard) {
-              quizStartedSent = true;
-              trackEvent('quiz_start', {
-                quiz_name: '60_sec_lasik_eligibility'
-              });
-            }
-          }
-
-          // Quiz completion detection
-          if (!quizCompletedSent) {
-            var resultsHeader = rootEl.querySelector('h3');
-            if (resultsHeader) {
-              var text = (resultsHeader.innerText || resultsHeader.textContent || '').trim();
-              if (text === 'Initial Biometrics Approved' || text === 'Assessment Report Prepared') {
-                quizCompletedSent = true;
-                var resultType = text === 'Initial Biometrics Approved' ? 'eligible' : 'review';
-                trackEvent('quiz_complete', {
-                  quiz_name: '60_sec_lasik_eligibility',
-                  quiz_result: resultType,
-                  assessment_status: text
-                });
-                trackEvent('generate_lead', {
-                  lead_type: 'quiz_completion',
-                  quiz_result: resultType,
-                  value: 100.00,
-                  currency: 'USD'
-                });
-              }
-            }
-          }
-        });
-
-        window.addEventListener('load', function() {
-          var rootEl = document.getElementById('root') || document.body;
-          quizObserver.observe(rootEl, {
-            childList: true,
-            subtree: true
-          });
-        });
-
-        // 6. Scroll Depth Tracking (25%, 50%, 75%, 90%) - Optimized with rAF
-        var scrollMilestones = { 25: false, 50: false, 75: false, 90: false };
-        var isScrollTicking = false;
-        window.addEventListener('scroll', function() {
-          if (!isScrollTicking) {
-            window.requestAnimationFrame(function() {
-              var winHeight = window.innerHeight || document.documentElement.clientHeight;
-              var docHeight = Math.max(
-                document.body.scrollHeight, document.documentElement.scrollHeight,
-                document.body.offsetHeight, document.documentElement.offsetHeight
-              ) - winHeight;
-              if (docHeight > 0) {
-                var scrollPercent = Math.round((window.scrollY / docHeight) * 100);
-                [25, 50, 75, 90].forEach(function(milestone) {
-                  if (scrollPercent >= milestone && !scrollMilestones[milestone]) {
-                    scrollMilestones[milestone] = true;
-                    trackEvent('scroll_depth', {
-                      percent_scrolled: milestone
-                    });
-                  }
-                });
-              }
-              isScrollTicking = false;
-            });
-            isScrollTicking = true;
-          }
-        }, { passive: true });
-
-        // 7. Time on Page Engagement Milestones (30s, 60s, 120s)
-        [30, 60, 120].forEach(function(seconds) {
-          setTimeout(function() {
-            if (!document.hidden) {
-              trackEvent('user_engagement_time', {
-                engaged_seconds: seconds
-              });
-            }
-          }, seconds * 1000);
-        });
-
-      })();
-    </script>
+    <script src="./assets/telemetry.js?v=1" defer></script>
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -953,8 +627,8 @@
     <link rel="prefetch" as="image" href="./assets/lasik_flap_reposition_spatula.webp" type="image/webp">
     <link rel="prefetch" as="image" href="./assets/lasik_24hr_recovery.webp" type="image/webp">
     <link rel="stylesheet" href="./assets/index-DhXpI4H_.css?v=29">
-    <link rel="stylesheet" href="./assets/custom-styles.css?v=85">
-    <script src="./assets/index-nb1vded4_v2.js?v=56" defer></script>
+    <link rel="stylesheet" href="./assets/custom-styles.css?v=105">
+    <script src="./assets/index-nb1vded4_v2.js?v=58" defer></script>
     <script src="./assets/vision-simulator.min.js?v=12" defer></script>
   </head>
   <body>
@@ -989,27 +663,28 @@
               <span class="live-status-beacon" aria-hidden="true"></span>
               <span id="hero-kicker-text">Blade-Free Custom Wavefront LASIK &bull; New Jersey</span>
             </div>
-            <h1 class="animate-fade-up delay-2 hero-pop-title hero-h1-shell">Goodbye Lenses. <span class="hero-pop-accent"><span class="hero-pop-line">Hello High-Definition</span><br><span class="hero-pop-line"><span class="editorial-italic-accent">Freedom.</span></span></span></h1>
+            <h1 class="animate-fade-up delay-2 hero-pop-title hero-h1-shell"><span class="hero-pop-primary">Goodbye Lenses.</span> <span class="hero-pop-accent"><span class="hero-pop-line">Hello High-Definition</span><br><span class="hero-pop-line"><span class="editorial-italic-accent">Freedom.</span></span></span></h1>
             <div class="hero-body-content animate-fade-up delay-3">
               <h2 class="hero-subtitle">
-                Your Vision <span class="editorial-italic-accent">Unleashed</span>.
+                What if you could see better than you ever have in glasses or contacts?
               </h2>
               <p class="text-secondary hero-body-lead">
-                What if you could see <em>better</em> than in your glasses or contacts? Wake up to razor-sharp, high-definition clarity — no glasses, no contacts. CustomVue® LASIK patients routinely achieve sharper than 20/20 vision<a href="#lasik-citations" class="citation-sup" aria-label="Reference 2, 11">[2,11]</a> in just <strong class="hero-highlight-cyan">10 painless seconds per eye</strong><a href="#lasik-citations" class="citation-sup" aria-label="Reference 4">[4]</a> — unlocking your best performance, confidence, awareness and comfort.
+                Wake up to razor‑sharp, high‑definition vision—no lenses, no hassle. CustomVue® LASIK routinely delivers sharper‑than‑20/20 results<a href="#lasik-citations" class="citation-sup" aria-label="Reference 2, 11">[2,11]</a> in just <strong class="hero-highlight-cyan">10 painless seconds per eye</strong><a href="#lasik-citations" class="citation-sup" aria-label="Reference 4">[4]</a>, boosting your performance, confidence, and everyday comfort.
               </p>
               <p class="text-secondary hero-body-sub">
-                Personalized 3D mapping. Blade-free laser precision.<a href="#lasik-citations" class="citation-sup" aria-label="Reference 12">[12]</a> Consultations in <strong>Livingston, Denville,</strong> and <strong>Newark</strong> — all surgery at our flagship <strong>Livingston</strong> center.
+                Personalized 3D mapping. Blade‑free laser precision<a href="#lasik-citations" class="citation-sup" aria-label="Reference 12">[12]</a>.<br />
+                Consultations in <strong>Livingston, Denville,</strong> and <strong>Newark</strong>; all surgery at our flagship <strong>Livingston</strong> center.
               </p>
               <p class="hero-proof-text">
-                <span>40,000+ Procedures<a href="#lasik-citations" class="citation-sup" aria-label="Reference 13">[13]</a></span>
+                <span>Thousands of LASIK Procedures<a href="#lasik-citations" class="citation-sup" aria-label="Reference 13">[13]</a></span>
                 <span class="hero-proof-dot">·</span>
-                <span>30+ Years of Expertise</span>
+                <span>30+ Years of LASIK Leadership</span>
                 <span class="hero-proof-dot">·</span>
                 <span>680+ 5-Star Google Reviews<a href="#lasik-citations" class="citation-sup" aria-label="Reference 14">[14]</a></span>
               </p>
             </div>
             <div class="responsive-flex-col animate-fade-up delay-4">
-              <button type="button" class="btn btn-primary hero-cta-btn-shell">Discover Your Candidacy →</button>
+              <button type="button" class="btn btn-primary hero-cta-btn-shell">Check Your Candidacy →</button>
               <button type="button" class="btn btn-secondary hero-cta-btn-shell">How the Technology Works</button>
             </div>
           </div>
@@ -1100,6 +775,10 @@
       { text: 'Over 98% of patients achieve 20/20 vision', refs: [3, 11] },
       { text: '99%+ patient satisfaction rate', refs: [3, 11] },
       { text: '98% 20/20 precision', refs: [3, 11] },
+      { text: 'Thousands of LASIK Procedures', refs: [13] },
+      { text: 'Thousands of LASIK procedures', refs: [13] },
+      { text: 'thousands of LASIK procedures', refs: [13] },
+      { text: 'thousands of successful LASIK procedures', refs: [13] },
       { text: '40,000+ completed procedures', refs: [13] },
       { text: '680+ verified 5-star reviews', refs: [14] },
       { text: '10 painless seconds per eye', refs: [4] },
@@ -1265,7 +944,7 @@
                'https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm',
                'FDA PMA P930016'],
         ['13', 'Marano Eye Care Surgical Registry & Clinical Audit.',
-               'Documented surgical records tracking 40,000+ completed ophthalmic and laser vision correction procedures across New Jersey.',
+               'Documented surgical records tracking thousands of successful LASIK procedures performed at the practice, with Dr. Matthew J. Marano, Jr., M.D. having completed over 40,000 total ophthalmic surgical procedures across New Jersey.',
                'https://www.maranoeyecare.com',
                'maranoeyecare.com'],
         ['14', 'Third-Party Verified Patient Review Repositories.',
@@ -1297,20 +976,23 @@
       });
 
       var note = document.createElement('div');
-      note.setAttribute('style', 'margin-top:28px;padding:24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:16px;font-size:0.75rem;color:#94a3b8;line-height:1.75;box-sizing:border-box;');
+      note.setAttribute('style', 'margin-bottom:36px;padding:24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:16px;font-size:0.75rem;color:#94a3b8;line-height:1.75;box-sizing:border-box;');
       note.innerHTML = 
         '<strong style="color:#ffffff;display:block;margin-bottom:8px;font-size:0.8rem;letter-spacing:0.5px;text-transform:uppercase;">Medical & Regulatory Disclosures</strong>' +
         'LASIK and PRK are FDA-approved elective laser vision correction surgical procedures. While over 98% of Marano Eye Care patients achieve 20/20 visual acuity or better based on peer-reviewed clinical cohorts and FDA trials, individual physiological healing, corneal biomechanics, and candidacy vary. A comprehensive diagnostic evaluation—including corneal topography, pachymetry, and WaveScan wavefront analysis—performed by a board-certified refractive surgeon is required to determine surgical eligibility. This educational website does not constitute medical advice or a doctor-patient relationship until an in-person clinical exam is completed.<br><br>' +
         '<strong>Privacy & Patient Data Protection (HIPAA):</strong> Information submitted via consultation forms on this website is encrypted and transmitted in strict accordance with the Health Insurance Portability and Accountability Act (HIPAA) to safeguard protected health information (PHI). We never sell, rent, or distribute personal data to third parties. For full details, review the <a href="https://sa1s3.patientpop.com/assets/docs/425417.pdf" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:underline;font-weight:600;">Marano Eye Care HIPAA Notice of Privacy Practices</a>.<br><br>' +
-        '<strong>Financing & Pricing Transparency:</strong> All-inclusive pricing covers WaveScan 3D diagnostics, dual-laser surgery, and 24-hour post-op care. 0% APR promotional financing available through CareCredit and Alphaeon Credit subject to credit approval. Health Savings Accounts (HSA) and Flexible Spending Accounts (FSA) eligibility determined by IRS regulations.<br><br>' +
-        '<div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;margin-top:12px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;color:#64748b;">' +
-          '<span>&copy; 2026 <a href="https://www.maranoeyecare.com" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:none;font-weight:600;">Marano Eye Care</a> | Dr. Matthew J. Marano, Jr., MD &amp; Dr. Sherief Raouf, MD</span>' +
-          '<span>Member of <a href="https://www.onjeyecare.com" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:none;font-weight:600;">ONJ Eye Care Network</a> &bull; <a href="/sitemap.html" style="color:#e2b857;text-decoration:underline;">HTML Sitemap</a> &bull; <a href="/sitemap.xml" target="_blank" style="color:#e2b857;text-decoration:underline;">XML Sitemap</a></span>' +
-        '</div>';
+        '<strong>Financing & Pricing Transparency:</strong> All-inclusive pricing covers WaveScan 3D diagnostics, dual-laser surgery, and 24-hour post-op care. 0% APR promotional financing available through CareCredit and Alphaeon Credit subject to credit approval. Health Savings Accounts (HSA) and Flexible Spending Accounts (FSA) eligibility determined by IRS regulations.';
 
+      var footerMeta = document.createElement('div');
+      footerMeta.setAttribute('style', 'border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;margin-top:36px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;color:#64748b;font-size:0.72rem;line-height:1.6;');
+      footerMeta.innerHTML = 
+        '<span>&copy; 2026 <a href="https://www.maranoeyecare.com" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:none;font-weight:600;">Marano Eye Care</a> | Dr. Matthew J. Marano, Jr., MD &amp; Dr. Sherief Raouf, MD</span>' +
+        '<span>Member of <a href="https://www.onjeyecare.com" target="_blank" rel="noopener noreferrer" style="color:#e2b857;text-decoration:none;font-weight:600;">ONJ Eye Care Network</a> &bull; <a href="/sitemap.html" style="color:#e2b857;text-decoration:underline;">HTML Sitemap</a> &bull; <a href="/sitemap.xml" target="_blank" style="color:#e2b857;text-decoration:underline;">XML Sitemap</a></span>';
+
+      inner.appendChild(note);
       inner.appendChild(heading);
       inner.appendChild(ol);
-      inner.appendChild(note);
+      inner.appendChild(footerMeta);
       wrap.appendChild(inner);
 
       var root = document.getElementById('root');
@@ -1342,7 +1024,7 @@
       locHeader.innerHTML = 
         '<span style="font-family: monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #e2b857; display: inline-block; margin-bottom: 8px; background: rgba(226, 184, 87, 0.08); padding: 4px 14px; border-radius: 100px; border: 1px solid rgba(226, 184, 87, 0.25);">Our Practice Locations</span>' +
         '<h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 4.5vw, 2.8rem); font-weight: 700; color: #ffffff; margin: 0 0 12px 0; line-height: 1.2;">Marano Eye Care <span class="bio-heading-accent">NJ Offices</span></h2>' +
-        '<p style="font-size: 0.95rem; color: #cbd5e1; max-width: 680px; margin: 0 auto; line-height: 1.6; font-weight: 300;">Complimentary diagnostic consultations available at all 3 Northern New Jersey locations. All blade-free CustomVue® laser treatments performed at our flagship Livingston surgical center.</p>';
+        '<p style="font-size: 0.95rem; color: #cbd5e1; max-width: 680px; margin: 0 auto; line-height: 1.6; font-weight: 300;">Complimentary diagnostic consultations available at all 3 Northern New Jersey locations. All blade-free CustomVue® laser treatments performed at our flagship <strong>Livingston</strong> surgical center.</p>';
       container.appendChild(locHeader);
 
       var locGrid = document.createElement('div');
@@ -1585,11 +1267,12 @@
         secIntro.innerHTML = 
           '<span class="rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.25em] font-semibold bg-white/5 border border-white/10 text-white/70" style="display: inline-block; margin-bottom: 12px; text-align: center;">Surgical Leadership</span>' +
           '<h2 class="bio-heading" style="text-align: center; width: 100%; margin: 0 auto 12px auto; font-size: clamp(2rem, 4.2vw, 2.8rem); line-height: 1.2; color: #ffffff; font-family: var(--font-serif); font-weight: 700;">' +
-            'New Jersey\'s Premier <span class="bio-heading-accent" style="color: #e2b857; font-family: var(--font-serif); font-style: italic;">Refractive Surgeons</span>' +
+            'New Jersey\'s <span class="bio-heading-accent" style="color: #e2b857; font-family: var(--font-serif); font-style: italic;">Premier Refractive Surgeons</span>' +
           '</h2>' +
           '<p style="font-size: 1.05rem; color: #cbd5e1; max-width: 680px; margin: 0 auto; line-height: 1.6; font-weight: 300;">' +
-            'Over 40,000 procedures completed across 30+ years. Dual corneal fellowship expertise, 100% blade-free wavefront laser precision, and dedicated 1-on-1 surgeon continuity of care.' +
-          '</p>';
+            'Led by board-certified ophthalmologists with corneal fellowship training, thousands of successful LASIK procedures, and over 40,000 total surgeries across three decades. Every patient receives direct 1-on-1 surgeon continuity from initial consultation through final recovery.' +
+          '</p>' +
+        '</div>';
         container.insertBefore(secIntro, maranoOuter);
       }
 
@@ -1609,7 +1292,7 @@
               'Dr. Matthew J. Marano, Jr., M.D.' +
             '</h2>' +
             '<p class="text-secondary" style="font-size: 1.1rem; line-height: 1.8; margin: 0; font-weight: 300; color: #cbd5e1; text-align: left;">' +
-              'Dr. Matthew J. Marano, Jr., M.D. is a <strong>Board-Certified Ophthalmologist, Medical Director of Marano Eye Care, and a true pioneer of laser vision correction in New Jersey</strong> who has personally performed over 40,000 successful procedures across more than three decades of clinical practice. As an early vanguard of refractive surgery, Dr. Marano\'s surgical contributions have directly advanced modern LASIK technology—transitioning the field from early corneal surface procedures to today\'s high-definition, blade-free wavefront platforms. A trusted authority among ophthalmic surgeons, Dr. Marano has actively assisted in training and proctoring his peers on the specialized application of LASIK in complicated and challenging cases. Currently serving as Chief of Ophthalmology at Cooperman Barnabas Medical Center and Saint Michael\'s Medical Center, and voted a "Top Doctor" 15 times by his peers, Dr. Marano pairs pioneering surgical leadership with dedicated, 1-on-1 personalized patient care.' +
+              'Dr. Matthew J. Marano, Jr., M.D. is a <strong>Board-Certified Ophthalmologist, Medical Director of Marano Eye Care, and a foundational pioneer of laser vision correction in New Jersey</strong> with over 40,000 total surgical procedures completed. Across more than three decades, Dr. Marano’s clinical practice has advanced the transition from early surface ablation to modern blade-free wavefront LASIK. A trusted authority in complex corneal cases, he has actively trained and proctored ophthalmic peers throughout the region. Currently serving as Chief of Ophthalmology at Cooperman Barnabas Medical Center and Saint Michael\'s Medical Center, and voted a New Jersey "Top Doctor" 15 times, Dr. Marano provides dedicated, 1-on-1 personalized care for every patient.' +
             '</p>' +
             '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; margin-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.06); padding-top: 24px; text-align: left;">' +
               '<div>' +
@@ -1634,8 +1317,8 @@
               '<div>' +
                 '<span style="color: var(--accent-primary); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 8px; font-family: monospace;">Pioneering Experience</span>' +
                 '<div style="display: flex; flex-direction: column; gap: 6px;">' +
-                  '<span style="color: #ffffff; font-size: 0.85rem; line-height: 1.4; font-weight: 600;">40,000+ Completed Laser Procedures</span>' +
-                  '<span style="color: var(--text-secondary); font-size: 0.78rem; line-height: 1.3; display: block; margin-bottom: 6px;">Over 3 Decades of Surgical Mastery</span>' +
+                  '<span style="color: #ffffff; font-size: 0.85rem; line-height: 1.4; font-weight: 600;">Thousands of LASIK Surgeries</span>' +
+                  '<span style="color: var(--text-secondary); font-size: 0.78rem; line-height: 1.3; display: block; margin-bottom: 6px;">40,000+ Total Surgeries by Dr. Marano</span>' +
                   '<span style="color: #ffffff; font-size: 0.85rem; line-height: 1.4; font-weight: 600;">Advanced Modern LASIK Tech</span>' +
                   '<span style="color: var(--text-secondary); font-size: 0.78rem; line-height: 1.3; display: block;">Pioneered Blade-Free Protocols in NJ</span>' +
                 '</div>' +
@@ -1677,7 +1360,7 @@
             '<div style="height: 1px; background: rgba(255, 255, 255, 0.05);"></div>' +
             '<div style="display: flex; flex-direction: column; gap: 6px;">' +
               '<span style="font-size: 1.6rem; font-family: var(--font-serif); font-weight: 300; color: var(--accent-primary); line-height: 1.1;">40,000+</span>' +
-              '<span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; font-family: monospace;">Procedures Completed</span>' +
+              '<span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; font-family: monospace;">Total Surgical Procedures</span>' +
             '</div>' +
             '<div style="height: 1px; background: rgba(255, 255, 255, 0.05);"></div>' +
             '<div style="display: flex; flex-direction: column; gap: 6px;">' +
@@ -1805,10 +1488,10 @@
   <div class="lifestyle-pane-grid" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; text-align: left;">
     <div>
       <h3 style="font-family: var(--font-sans); font-size: 1.6rem; font-weight: 700; color: #ffe293; margin-bottom: 18px; letter-spacing: -0.01em; line-height: 1.25; text-shadow: 0 2px 8px rgba(0,0,0,0.95), 0 6px 18px rgba(0,0,0,0.75), 0 0 25px rgba(226,184,87,0.18);">
-        Stay Focused on Your Workout, Not Your Lenses
+        Total Athletic Focus. Zero Lens Friction.
       </h3>
       <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 0;">
-        Every run or gym session spent pushing up slipping frames or blinking through dry, irritated contacts takes you out of the zone. Sweat, wind, and quick movements turn lenses into a constant distraction, while glasses cut off your peripheral vision. Dr. Marano and Dr. Raouf’s custom dual-laser treatment maps your corneal contours down to the sub-micron level, giving you crisp, natural vision so you can train and compete with total freedom.
+        Slipping frames, trapped sweat, and dry, shifting contacts take you out of the zone. Glasses narrow your peripheral field; contacts dry out in wind and heat. CustomVue® wavefront technology maps corneal elevation down to the sub-micron level—delivering sharp, uncompromised 180° visual awareness for running, lifting, swimming, and competitive sport.
       </p>
     </div>
     <div>
@@ -1817,9 +1500,9 @@
           Why Active Patients Choose LASIK
         </h4>
         <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem; color: #cbd5e1; line-height: 1.5;">
-          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #ef4444;">✦</span> <span><strong>No More Mid-Workout Hassles:</strong> Say goodbye to shifting contacts, fogged glasses, and dry eye burn.</span></li>
-          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Full Peripheral Awareness:</strong> Enjoy an open 180° field of view without frame-induced blind spots.</span></li>
-          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #10b981;">✦</span> <span><strong>Fast 24-Hour Recovery:</strong> Resume running, lifting, and outdoor activities the very next day.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Unrestricted 180° Peripheral Field:</strong> Full situational awareness without frame borders or blind spots.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #10b981;">✦</span> <span><strong>Sweat &amp; Weather Immune:</strong> No fogged lenses in cold weather or grit trapped under contacts.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #00d4ff;">✦</span> <span><strong>Rapid 24-Hour Recovery:</strong> Return to running, gym workouts, and outdoor routines the next morning.</span></li>
         </ul>
         <button onclick="scrollToElement('quiz')" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
           Check Your LASIK Candidacy
@@ -1832,24 +1515,24 @@
   <div class="lifestyle-pane-grid" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; text-align: left;">
     <div>
       <h3 style="font-family: var(--font-sans); font-size: 1.6rem; font-weight: 700; color: #ffe293; margin-bottom: 18px; letter-spacing: -0.01em; line-height: 1.25;">
-        Drive Confidently at Night Without Blinding Glare
+        Drive After Dark with Calm, High-Contrast Clarity.
       </h3>
       <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 0;">
-        Navigating dark highways through oncoming headlight glare, starbursts, and halos makes night driving stressful and exhausting. Standard glasses and disposable contacts only correct basic focus, leaving subtle surface imperfections untouched. Custom wavefront-guided treatment measures and smooths these microscopic irregularities, giving you crisp contrast and relaxed confidence behind the wheel.
+        Blinding LED headlights, streetlamp halos, and distorted starbursts make evening commutes stressful and fatiguing. While standard lenses only address basic sphere and cylinder, wavefront-guided laser correction smooths the higher-order optical aberrations that cause nighttime glare—restoring crisp contrast and effortless confidence on dark roads.
       </p>
     </div>
     <div>
       <div style="background: rgba(255, 255, 255, 0.015); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 32px; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
         <h4 style="font-family: var(--font-sans); font-size: 1rem; font-weight: 600; color: #ffffff; margin-bottom: 18px; letter-spacing: 0.05em; text-transform: uppercase;">
-          Clear Night Vision Benefits
+          Clear Night Vision Advantages
         </h4>
         <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem; color: #cbd5e1; line-height: 1.5;">
-          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #ef4444;">✦</span> <span><strong>Reduced Night Glare:</strong> Wavefront mapping directly addresses the optical irregularities that cause halos.</span></li>
-          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Crisp Low-Light Contrast:</strong> Spot street signs, lane markers, and road hazards with ease.</span></li>
-          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #10b981;">✦</span> <span><strong>Relaxed Evening Commutes:</strong> Drive after dusk with calm, clear vision and less eye strain.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Significantly Reduced Halos &amp; Glare:</strong> Targets higher-order surface aberrations that standard lenses miss.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #10b981;">✦</span> <span><strong>Heightened Low-Light Contrast:</strong> Spot lane markers, highway exits, and sudden hazards instantly.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #00d4ff;">✦</span> <span><strong>Stress-Free Evening Commutes:</strong> Eliminate squinting and tension during night and rainy drives.</span></li>
         </ul>
         <button onclick="scrollToElement('quiz')" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
-          Check Your Candidacy for Night Clarity
+          Check Your LASIK Candidacy
         </button>
       </div>
     </div>
@@ -1859,10 +1542,10 @@
   <div class="lifestyle-pane-grid" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; text-align: left;">
     <div>
       <h3 style="font-family: var(--font-sans); font-size: 1.6rem; font-weight: 700; color: #ffe293; margin-bottom: 18px; letter-spacing: -0.01em; line-height: 1.25;">
-        Work Long Screen Days Without Eye Strain and Dryness
+        End Afternoon Screen Fatigue and Contact Lens Dryness.
       </h3>
       <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 0;">
-        Spending 8 to 10 hours a day in front of monitors, spreadsheets, or code takes a toll when your lenses dry out. Micro-fluctuations in contact lens moisture force your eyes to constantly refocus, leading to tired eyes and afternoon fatigue. Custom laser correction shapes your cornea to your exact optical profile, keeping text crisp and sharp from your first morning email to your last meeting.
+        Blinking decreases by up to 60% during intensive monitor work, causing contact lenses to dry out, shift, and force continuous ocular refocusing. Custom LASIK permanently eliminates contact-induced tear evaporation, keeping typography, spreadsheets, and multi-display setups crisp from your first morning email to your last evening meeting.
       </p>
     </div>
     <div>
@@ -1871,12 +1554,12 @@
           Workplace Vision Advantages
         </h4>
         <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem; color: #cbd5e1; line-height: 1.5;">
-          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #ef4444;">✦</span> <span><strong>Less Afternoon Fatigue:</strong> Say goodbye to dry-lens discomfort and end-of-day eye strain.</span></li>
-          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Sharp Multi-Display Focus:</strong> Read text, code, and fine details effortlessly across multiple screens.</span></li>
-          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #10b981;">✦</span> <span><strong>Seamless Focus Transitions:</strong> Shift effortlessly between close-up laptop screens and in-person discussions.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Consistent Optical Sharpness:</strong> No micro-fluctuations in focus caused by drying contact lenses.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #10b981;">✦</span> <span><strong>Relief from Contact Lens Burn:</strong> Preserve natural tear film without afternoon redness or artificial tears.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #00d4ff;">✦</span> <span><strong>Seamless Multi-Monitor Workflow:</strong> Transition effortlessly between close laptop screens and in-person discussions.</span></li>
         </ul>
         <button onclick="scrollToElement('quiz')" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
-          Check Your Screen-Work Eligibility
+          Check Your LASIK Candidacy
         </button>
       </div>
     </div>
@@ -1972,7 +1655,7 @@
         microcopy.id = 'contact-form-microcopy';
         microcopy.className = 'microcopy-preemption';
         microcopy.setAttribute('style', 'text-align: center; font-size: 0.82rem; color: #cbd5e1; margin-top: 18px; line-height: 1.6; width: 100%; max-width: 520px; margin-left: auto; margin-right: auto; padding: 12px 16px; background: rgba(226,184,87,0.03); border: 1px solid rgba(226,184,87,0.12); border-radius: 12px;');
-        microcopy.innerHTML = '<strong>What to expect:</strong> The laser treatment takes only 10 to 15 seconds per eye under painless numbing drops. Active 3D motion tracking protects your eyes if you move. Consultations are 100% free with zero hidden fees.';
+        microcopy.innerHTML = '<strong>What to expect:</strong> 100% complimentary 3D corneal scan • 1-on-1 discussion with your surgeon • Clear, all-inclusive pricing • Zero obligation.';
         contactForm.parentNode.insertBefore(microcopy, contactForm.nextSibling);
       }
 
@@ -2138,8 +1821,8 @@
       var html = '<div class="roi-container-wrap">' +
         '<div style="text-align:center;margin-bottom:40px;">' +
           '<span style="font-family:var(--font-sans);font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:#e2b857;font-weight:700;display:inline-block;margin-bottom:8px;">A Smarter Long-Term Financial Decision</span>' +
-          '<h2 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,2.8rem);color:#fff;margin-top:4px;font-weight:700;letter-spacing:-0.02em;">A Lifetime of Lens Expenses vs. a <span class="bio-heading-accent">One-Time Investment</span></h2>' +
-          '<p style="font-family:var(--font-sans);font-size:0.95rem;color:#cbd5e1;max-width:680px;margin:10px auto 0 auto;line-height:1.6;">Between annual optometrist fees, replacement contact boxes, specialty solutions, and designer frames, vision maintenance is a perpetual lifestyle tax. Calculate how much you are projected to surrender over 20+ years compared to all-inclusive CustomVue® Wavefront LASIK.</p>' +
+          '<h2 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,2.8rem);color:#fff;margin-top:4px;font-weight:700;letter-spacing:-0.02em;">The Economics of LASIK: Lifetime Expense vs. <span class="bio-heading-accent">One-Time Investment</span></h2>' +
+          '<p style="font-family:var(--font-sans);font-size:0.95rem;color:#cbd5e1;max-width:680px;margin:10px auto 0 auto;line-height:1.6;">Prescription exams, replacement contact boxes, specialty solutions, and designer frames compound into a tens-of-thousands dollar lifetime tax. Compare what you will spend maintaining temporary correction against the permanent freedom of all-inclusive CustomVue® LASIK.</p>' +
         '</div>' +
 
         '<div class="doppelrand-shell" id="roi-calc-card">' +
@@ -2385,13 +2068,21 @@
         grid.appendChild(card2);
       }
 
-      // Ensure Second Dr. Raouf Testimonial Card is present to balance bottom row
-      if (!document.getElementById('testimonial-raouf-2')) {
+      // Clean up any extraneous duplicate cards if already present
+      var dupes = grid.querySelectorAll('#testimonial-concern-3, #testimonial-raouf-2');
+      if (dupes.length > 1) {
+        for (var d = 1; d < dupes.length; d++) {
+          dupes[d].remove();
+        }
+      }
+
+      // Ensure Second Dr. Raouf Testimonial Card is present to balance bottom row (exactly once)
+      if (!document.getElementById('testimonial-concern-3') && !document.getElementById('testimonial-raouf-2')) {
         var card3 = document.createElement('div');
-        card3.id = 'testimonial-raouf-2';
+        card3.id = 'testimonial-concern-3';
         card3.className = 'proof-card';
         card3.innerHTML = 
-          '<div class="persona-tag persona-tag-standard">Precision Wavefront Mapping &bull; Dr. Raouf</div>' +
+          '<div class="persona-tag persona-tag-standard">Precision Wavefront &bull; Severe Astigmatism Resolved</div>' +
           '<div class="proof-stars">★★★★★</div>' +
           '<p class="proof-quote">' +
             'I had severe astigmatism and was anxious that laser correction couldn\'t fully resolve it. Dr. Raouf spent extensive time analyzing my high-resolution topography maps, explaining exactly how custom wavefront guidance would sculpt my cornea. His steady reassurance gave me complete confidence. The procedure was smooth and painless, and by next morning I had crisp 20/15 acuity.' +
@@ -2400,7 +2091,7 @@
             '<div class="proof-avatar proof-avatar-3">DS</div>' +
             '<div class="proof-author-info">' +
               '<span class="proof-author-name">Danielle S.</span>' +
-              '<span class="proof-author-detail">Rockaway, NJ</span>' +
+              '<span class="proof-author-detail">Rockaway, NJ • Healthcare Administrator</span>' +
             '</div>' +
           '</div>';
         grid.appendChild(card3);
@@ -2427,7 +2118,7 @@
         'Marcus V.': 'Confident Night Driving',
         'Marcus T.': 'Gentle Care & Automated Safety',
         'Elena V.': 'Smooth 24-Hour Recovery',
-        'Danielle S.': 'Precision Wavefront Mapping • Dr. Raouf'
+        'Danielle S.': 'Precision Wavefront • Severe Astigmatism Resolved'
       };
 
       var townMap = {
@@ -2461,7 +2152,7 @@
         'Confident Night Driving',
         'Gentle Care & Automated Safety',
         'Smooth 24-Hour Recovery',
-        'Precision Wavefront Mapping • Dr. Raouf'
+        'CONCERNED ABOUT ASTIGMATISM'
       ];
 
       cards.forEach(function(card, i) {
@@ -2767,7 +2458,7 @@
       var staticH2 = document.querySelector('.static-hero-h2');
       if (staticH2) {
         staticH2.classList.add('hero-pop-title');
-        staticH2.innerHTML = 'Goodbye Lenses. <span class="hero-pop-accent"><span class="hero-pop-line">Hello High-Definition</span><br><span class="hero-pop-line">Freedom.</span></span>';
+        staticH2.innerHTML = '<span class="hero-pop-primary">Goodbye Lenses.</span> <span class="hero-pop-accent"><span class="hero-pop-line">Hello High-Definition</span><br><span class="hero-pop-line"><span class="editorial-italic-accent">Freedom.</span></span></span>';
       }
 
       var heroTitles = document.querySelectorAll('h1, h2, .hero-serif-title, .hero-display-title');
@@ -2776,48 +2467,66 @@
         var text = (el.innerText || el.textContent || '').trim();
         if (text.indexOf('Custom Wavefront-Guided LASIK') !== -1 || text.indexOf('Experience 20/15') !== -1 || text.indexOf('Your Eyes Are') !== -1 || text.indexOf('Unfair Advantage') !== -1 || text.indexOf('Clear, Natural Vision') !== -1 || text.indexOf('See Beyond') !== -1) {
           el.classList.add('hero-pop-title');
-          el.innerHTML = 'Goodbye Lenses. <span class="hero-pop-accent"><span class="hero-pop-line">Hello High-Definition</span><br><span class="hero-pop-line">Freedom.</span></span>';
+          el.innerHTML = '<span class="hero-pop-primary">Goodbye Lenses.</span> <span class="hero-pop-accent"><span class="hero-pop-line">Hello High-Definition</span><br><span class="hero-pop-line"><span class="editorial-italic-accent">Freedom.</span></span></span>';
         }
       });
 
       // Ensure full hero copy structure (Subtitle, Lead text, Secondary feature text, Proof text)
       var heroLeft = document.querySelector('.hero-left, .hero-content');
-      if (heroLeft && !heroLeft.querySelector('.hero-proof-text')) {
-        var existingParas = heroLeft.querySelectorAll('p.text-secondary, .hero-body-shell, .hero-body-lead, .hero-subtitle, .hero-proof-bar');
-        existingParas.forEach(function(p) { p.remove(); });
-        
-        var bodyContainer = document.createElement('div');
-        bodyContainer.className = 'hero-body-content animate-fade-up delay-3';
-        bodyContainer.innerHTML = 
-          '<h2 class="hero-subtitle">' +
-            'Your Vision Unleashed.' +
-          '</h2>' +
-          '<p class="text-secondary hero-body-lead">' +
-            'What if you could see <em>better</em> than in your glasses or contacts? Wake up to razor-sharp, high-definition clarity — no glasses, no contacts. CustomVue® LASIK patients routinely achieve sharper than 20/20 vision<a href="#lasik-citations" class="citation-sup" aria-label="Reference 2, 11">[2,11]</a> in just <strong class="hero-highlight-cyan">10 painless seconds per eye</strong><a href="#lasik-citations" class="citation-sup" aria-label="Reference 4">[4]</a> — unlocking your best performance, confidence, awareness and comfort.' +
-          '</p>' +
-          '<p class="text-secondary hero-body-sub">' +
-            'Personalized 3D mapping. Blade-free laser precision.<a href="#lasik-citations" class="citation-sup" aria-label="Reference 12">[12]</a> Consultations in <strong>Livingston, Denville,</strong> and <strong>Newark</strong> — all surgery at our flagship <strong>Livingston</strong> center.' +
-          '</p>' +
-          '<p class="hero-proof-text">' +
-            '<span>40,000+ Procedures<a href="#lasik-citations" class="citation-sup" aria-label="Reference 13">[13]</a></span>' +
-            '<span class="hero-proof-dot">·</span>' +
-            '<span>30+ Years of Expertise</span>' +
-            '<span class="hero-proof-dot">·</span>' +
-            '<span>680+ 5-Star Google Reviews<a href="#lasik-citations" class="citation-sup" aria-label="Reference 14">[14]</a></span>' +
-          '</p>';
+      if (heroLeft) {
+        var heroSubtitle = heroLeft.querySelector('.hero-subtitle');
+        if (heroSubtitle && heroSubtitle.textContent.indexOf('What if you could see better') === -1) {
+          heroSubtitle.innerHTML = 'What if you could see better than you ever have in glasses or contacts?';
+        }
 
-        var ctaContainer = heroLeft.querySelector('.responsive-flex-col, .hero-cta-group, button, a');
-        if (ctaContainer) {
-          heroLeft.insertBefore(bodyContainer, ctaContainer);
-        } else {
-          heroLeft.appendChild(bodyContainer);
+        var heroLead = heroLeft.querySelector('.hero-body-lead');
+        if (heroLead && heroLead.textContent.indexOf('razor‑sharp') === -1 && heroLead.textContent.indexOf('razor-sharp') === -1) {
+          heroLead.innerHTML = 'Wake up to razor‑sharp, high‑definition vision—no lenses, no hassle. CustomVue® LASIK routinely delivers sharper‑than‑20/20 results<a href="#lasik-citations" class="citation-sup" aria-label="Reference 2, 11">[2,11]</a> in just <strong class="hero-highlight-cyan">10 painless seconds per eye</strong><a href="#lasik-citations" class="citation-sup" aria-label="Reference 4">[4]</a>, boosting your performance, confidence, and everyday comfort.';
+        }
+
+        var heroSub = heroLeft.querySelector('.hero-body-sub');
+        if (heroSub && heroSub.textContent.indexOf('Personalized 3D mapping') === -1) {
+          heroSub.innerHTML = 'Personalized 3D mapping. Blade‑free laser precision<a href="#lasik-citations" class="citation-sup" aria-label="Reference 12">[12]</a>.<br>Consultations in <strong>Livingston, Denville,</strong> and <strong>Newark</strong>; all surgery at our flagship <strong>Livingston</strong> center.';
+        }
+
+        if (!heroLeft.querySelector('.hero-proof-text')) {
+          var existingParas = heroLeft.querySelectorAll('p.text-secondary, .hero-body-shell, .hero-body-lead, .hero-subtitle, .hero-proof-bar');
+          existingParas.forEach(function(p) { p.remove(); });
+          
+          var bodyContainer = document.createElement('div');
+          bodyContainer.className = 'hero-body-content animate-fade-up delay-3';
+          bodyContainer.innerHTML = 
+            '<h2 class="hero-subtitle">' +
+              'What if you could see better than you ever have in glasses or contacts?' +
+            '</h2>' +
+            '<p class="text-secondary hero-body-lead">' +
+              'Wake up to razor‑sharp, high‑definition vision—no lenses, no hassle. CustomVue® LASIK routinely delivers sharper‑than‑20/20 results<a href="#lasik-citations" class="citation-sup" aria-label="Reference 2, 11">[2,11]</a> in just <strong class="hero-highlight-cyan">10 painless seconds per eye</strong><a href="#lasik-citations" class="citation-sup" aria-label="Reference 4">[4]</a>, boosting your performance, confidence, and everyday comfort.' +
+            '</p>' +
+            '<p class="text-secondary hero-body-sub">' +
+              'Personalized 3D mapping. Blade‑free laser precision<a href="#lasik-citations" class="citation-sup" aria-label="Reference 12">[12]</a>.<br />' +
+              'Consultations in <strong>Livingston, Denville,</strong> and <strong>Newark</strong>; all surgery at our flagship <strong>Livingston</strong> center.' +
+            '</p>' +
+            '<p class="hero-proof-text">' +
+              '<span>Thousands of LASIK Procedures<a href="#lasik-citations" class="citation-sup" aria-label="Reference 13">[13]</a></span>' +
+              '<span class="hero-proof-dot">·</span>' +
+              '<span>30+ Years of LASIK Leadership</span>' +
+              '<span class="hero-proof-dot">·</span>' +
+              '<span>680+ 5-Star Google Reviews<a href="#lasik-citations" class="citation-sup" aria-label="Reference 14">[14]</a></span>' +
+            '</p>';
+
+          var ctaContainer = heroLeft.querySelector('.responsive-flex-col, .hero-cta-group, button, a');
+          if (ctaContainer) {
+            heroLeft.insertBefore(bodyContainer, ctaContainer);
+          } else {
+            heroLeft.appendChild(bodyContainer);
+          }
         }
       }
 
       // Update primary hero CTA button copy
       var primaryCtaBtn = document.querySelector('.hero-left .btn-primary, .hero-container .btn-primary, .hero-cta-btn-shell');
       if (primaryCtaBtn && primaryCtaBtn.textContent.indexOf('Candidacy') === -1) {
-        primaryCtaBtn.innerHTML = 'Discover Your Candidacy →';
+        primaryCtaBtn.innerHTML = 'Check Your Candidacy →';
       }
 
       // Enforce Hero Image Asset
@@ -2844,7 +2553,7 @@
       // Bio text polish
       var bioLead = document.querySelector('#marano-profile-panel p.text-secondary');
       if (bioLead) {
-        bioLead.innerHTML = 'Dr. Matthew J. Marano, Jr., M.D. is a <strong>Board-Certified Ophthalmologist, Medical Director of Marano Eye Care, and a true pioneer of laser vision correction in New Jersey</strong> who has personally performed over 40,000 successful procedures across more than three decades of clinical practice. As an early vanguard of refractive surgery, Dr. Marano\'s surgical contributions have directly advanced modern LASIK technology—transitioning the field from early corneal surface procedures to today\'s high-definition, blade-free wavefront platforms. A trusted authority among ophthalmic surgeons, Dr. Marano has actively assisted in training and proctoring his peers on the specialized application of LASIK in complicated and challenging cases. Currently serving as Chief of Ophthalmology at Cooperman Barnabas Medical Center and Saint Michael\'s Medical Center, and voted a "Top Doctor" 15 times by his peers, Dr. Marano pairs pioneering surgical leadership with dedicated, 1-on-1 personalized patient care.';
+        bioLead.innerHTML = 'Dr. Matthew J. Marano, Jr., M.D. is a <strong>Board-Certified Ophthalmologist, Medical Director of Marano Eye Care, and a foundational pioneer of laser vision correction in New Jersey</strong> with over 40,000 total surgical procedures completed. Across more than three decades, Dr. Marano’s clinical practice has advanced the transition from early surface ablation to modern blade-free wavefront LASIK. A trusted authority in complex corneal cases, he has actively trained and proctored ophthalmic peers throughout the region. Currently serving as Chief of Ophthalmology at Cooperman Barnabas Medical Center and Saint Michael\'s Medical Center, and voted a New Jersey "Top Doctor" 15 times, Dr. Marano provides dedicated, 1-on-1 personalized care for every patient.';
       }
 
       // 2. Science Section Heading & Tech Cards
@@ -2882,7 +2591,7 @@
 
       var formSub = document.querySelector('.contact-form p, #consultation p');
       if (formSub && !formSub.classList.contains('location-notice-text')) {
-        formSub.textContent = 'Schedule your complimentary, no-obligation consultation today. Most patients say their only regret is not doing it sooner.';
+        formSub.textContent = 'Schedule your complimentary diagnostic evaluation with our surgical team. Experience 1-on-1 personalized guidance with zero pressure and complete transparency.';
         formSub.style.color = '#f1f5f9';
       }
 
@@ -2956,7 +2665,7 @@
           heroKicker.innerHTML = 'Blade-Free Custom Wavefront LASIK &bull; ' + params.city + ', NJ';
         }
         if (heroSubtitle && !params.headline) {
-          heroSubtitle.innerHTML = 'Your Vision <span class="editorial-italic-accent">Unleashed</span> in ' + params.city + ', NJ.';
+          heroSubtitle.innerHTML = 'What if you could see better than you ever have in glasses or contacts <span class="editorial-italic-accent">in ' + params.city + ', NJ</span>?';
         }
 
         // Auto-select city in consultation dropdown if matching
@@ -3354,19 +3063,34 @@
           options: ['18 to 24 Years', '25 to 39 Years', '40 to 54 Years', '55+ Years']
         },
         {
-          title: 'What type of vision correction do you use?',
-          subtitle: 'Choose what you currently wear or need help with.',
-          options: ['Nearsightedness (Trouble seeing far)', 'Farsightedness (Trouble seeing close)', 'Astigmatism (Blurry or distorted vision)', 'Reading Glasses / Bifocals', 'Unsure (Need Comprehensive Evaluation)']
+          title: 'Current Vision Correction',
+          subtitle: 'Select your primary prescription focus challenge:',
+          options: [
+            'Nearsightedness (Distance is blurry)',
+            'Farsightedness (Close-up reading is blurry)',
+            'Astigmatism (Distorted or uneven focus)',
+            'Reading Glasses / Bifocals',
+            'Unsure (Need Comprehensive Eye Exam)'
+          ]
         },
         {
-          title: 'What is your main daily priority?',
-          subtitle: 'Where would clear, natural vision help you most?',
-          options: ['Sports, Fitness & Outdoors', 'Night & Highway Driving', 'Computer, Screen & Office Work', 'Everyday Visual Freedom']
+          title: 'Primary Visual Lifestyle Goal',
+          subtitle: 'Where will clear, natural vision make the greatest impact?',
+          options: [
+            'Sports, Fitness & Outdoors',
+            'Night & Highway Driving',
+            'Screen Work, Coding & Reading',
+            'Everyday Spontaneous Living'
+          ]
         },
         {
           title: 'Prescription Stability',
-          subtitle: 'Has your glasses or contacts prescription changed in the past 12 months?',
-          options: ['Stable (No Change in 1+ Yrs)', 'Minor Shift', 'Unsure / Need Eye Exam']
+          subtitle: 'Has your glasses or contact lens prescription changed in the past 12 months?',
+          options: [
+            'Stable (No changes in 1+ years)',
+            'Minor shift in focus',
+            'Unsure / Need comprehensive evaluation'
+          ]
         }
       ];
 
@@ -3388,7 +3112,7 @@
 
         var html = '<div style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:#e2b857;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;">' +
           '<span>Step ' + (currentStep + 1) + ' of ' + steps.length + '</span>' +
-          '<span>Candidacy Check</span>' +
+          '<span>Candidacy Assessment</span>' +
         '</div>' +
         '<div style="height:4px;background:rgba(255,255,255,0.08);border-radius:10px;margin-bottom:28px;overflow:hidden;">' +
           '<div style="height:100%;width:' + progressPct + '%;background:#e2b857;transition:width 0.4s ease;"></div>' +
@@ -3428,14 +3152,15 @@
       }
 
       function renderFinalReport() {
-        var lifestyle = userAnswers[2] || 'Daily Freedom';
+        var lifestyle = userAnswers[2] || 'Daily Visual Freedom';
         var html = '<div style="text-align:center;">' +
           '<span style="display:inline-block;padding:4px 14px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:#10b981;font-size:0.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border-radius:100px;margin-bottom:16px;">Candidacy Match Complete</span>' +
-          '<h3 style="font-family:var(--font-serif);font-size:2rem;color:#fff;margin-bottom:10px;font-weight:700;">High Candidate Compatibility</h3>' +
-          '<p style="font-size:0.92rem;color:#cbd5e1;max-width:540px;margin:0 auto 24px auto;line-height:1.6;">Based on your responses, you are an excellent candidate for Dr. Marano and Dr. Raouf’s custom blade-free wavefront LASIK procedure tailored for <strong>' + lifestyle + '</strong>.</p>' +
-          '<div style="display:flex;justify-content:center;">' +
-            '<button onclick="scrollToConsultationForm()" class="btn btn-primary" style="padding:14px 28px;font-size:0.95rem;">Schedule Free Consultation</button>' +
+          '<h3 style="font-family:var(--font-serif);font-size:2rem;color:#fff;margin-bottom:10px;font-weight:700;">Strong Candidate Profile</h3>' +
+          '<p style="font-size:0.92rem;color:#cbd5e1;max-width:540px;margin:0 auto 20px auto;line-height:1.6;">Based on your responses, you align with our primary candidacy criteria for CustomVue® blade-free wavefront LASIK tailored for <strong>' + lifestyle + '</strong>. Take the next step to confirm your corneal thickness and review your custom 3D treatment plan.</p>' +
+          '<div style="display:flex;justify-content:center;margin-bottom:14px;">' +
+            '<button onclick="scrollToConsultationForm()" class="btn btn-primary" style="padding:14px 28px;font-size:0.95rem;">Schedule Your Free Consultation →</button>' +
           '</div>' +
+          '<span style="font-size:0.76rem;color:#94a3b8;display:block;font-style:italic;">100% complimentary diagnostic scan • Zero obligation • HIPAA compliant</span>' +
         '</div>';
 
         quizCard.innerHTML = html;
@@ -3735,40 +3460,34 @@
 
       var trustPillars = [
         {
-          badge: 'NJ LASIK PIONEER • 40,000+ PROCEDURES',
-          title: 'Pioneering Laser Vision Leadership',
-          desc: 'Led by Dr. Matthew J. Marano, Jr., MD—a pioneer of laser vision correction in New Jersey whose clinical work contributed directly to advancing modern LASIK technology, and who has trained his peers on using LASIK in complicated cases.',
-          iconSvg: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e2b857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.45 1-1 1H7.5"></path><path d="M14 14.66V17c0 .55.45 1 1 1h1.5"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>'
+          badge: 'True NJ LASIK PIONEER',
+          title: 'Decades of LASIK Leadership',
+          desc: 'One of the foremost respected and sought-after LASIK surgeons among his peers, Dr. Matthew J. Marano, Jr. was one of the first to operate in New Jersey. With thousands of successful LASIK procedures and 40,000+ total surgeries, he has spent decades teaching other physicians his advanced techniques.'
         },
         {
           badge: 'AUTOMATED 3D EYE TRACKING',
           title: 'Zero-Flinch Safety Tracking',
-          desc: 'Active 3D Iris Registration tracks pupil movement at 60 Hz in real-time. If your eye moves even a fraction of a millimeter, the laser automatically pauses instantly.',
-          iconSvg: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e2b857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="M2 12h2"></path><path d="M20 12h2"></path></svg>'
+          desc: 'Active 3D Iris Registration tracks eye movements at 60 Hz in real time. If your eye moves even a fraction of a millimeter, the laser automatically pauses instantly.'
         },
         {
           badge: '100% BLADE-FREE & PAINLESS',
           title: 'Zero-Pain Numbing Drops',
-          desc: 'Soothing topical anesthetic eye drops completely numb the corneal surface before treatment. Patients experience zero pain—just a gentle pressure for 10-15 seconds per eye.',
-          iconSvg: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e2b857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m13 2-2 10h5l-4 10 2-8H9l4-12Z"></path></svg>'
+          desc: 'Soothing topical anesthetic eye drops completely desensitize the corneal surface before treatment. Patients experience zero pain—just a gentle, brief pressure for 10-15 seconds per eye.'
         },
         {
           badge: '15× TOP DOCTOR • 680+ REVIEWS',
           title: 'Peer-Voted & Patient-Approved',
-          desc: 'Recognized 15 times as a New Jersey Monthly Top Doctor, recipient of 6× AAHS 5-Star Diamond honors, and rated 4.9 stars across 680+ verified patient reviews.',
-          iconSvg: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e2b857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>'
+          desc: 'Recognized 15 times as a New Jersey Monthly Top Doctor, recipient of 6× AAHS 5-Star Diamond honors, and rated 4.9 stars across 680+ verified patient reviews.'
         },
         {
           badge: '24-HOUR RAPID RECOVERY',
           title: 'Next-Day Screen & Driving Return',
-          desc: 'Blade-free micro-flaps seal biologically within hours. Over 98% of patients achieve 20/20 vision and are cleared to drive, work, and exercise the next day.',
-          iconSvg: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e2b857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline><path d="m16 2 2 2"></path></svg>'
+          desc: 'Blade-free micro-flaps seal biologically within hours. Over 98% of patients achieve 20/20 vision and are cleared to drive, work, and exercise the following morning.'
         },
         {
           badge: 'ALL-INCLUSIVE $0 SURPRISES',
           title: 'Transparent Pricing & HSA/FSA',
-          desc: 'Comprehensive all-inclusive pricing covers high-resolution 3D mapping, dual-laser surgery, and post-op care. 0% APR financing and pre-tax HSA/FSA savings available.',
-          iconSvg: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e2b857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"></path><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"></path><circle cx="20" cy="10" r="2"></circle></svg>'
+          desc: 'Comprehensive all-inclusive pricing covers high-resolution 3D mapping, dual-laser surgery, and all post-op care. 0% APR financing and pre-tax HSA/FSA savings available.'
         }
       ];
 
@@ -3780,10 +3499,9 @@
         '<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:20px;text-align:center;">';
 
       trustPillars.forEach(function(item) {
-        html += '<div class="glass-panel" style="background:rgba(13, 20, 30, 0.75);border:1px solid rgba(226, 184, 87, 0.18);border-radius:20px;padding:24px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;box-shadow:0 15px 35px rgba(0,0,0,0.4);transition:all 0.3s ease;">' +
-          '<div style="position:relative;width:100%;display:flex;align-items:center;justify-content:center;min-height:36px;margin-bottom:14px;">' +
-            '<div style="position:absolute;left:0;top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:rgba(226,184,87,0.12);border:1px solid rgba(226,184,87,0.3);box-shadow:0 2px 8px rgba(226,184,87,0.12);">' + item.iconSvg + '</div>' +
-            '<div style="display:inline-block;text-align:center;"><span style="font-size:0.64rem;font-family:monospace;font-weight:700;letter-spacing:1.2px;color:#e2b857;background:rgba(226,184,87,0.1);padding:5px 12px;border-radius:6px;border:1px solid rgba(226,184,87,0.25);display:inline-block;">' + item.badge + '</span></div>' +
+        html += '<div class="glass-panel" style="background:rgba(13, 20, 30, 0.75);border:1px solid rgba(226, 184, 87, 0.18);border-radius:20px;padding:28px 22px;display:flex;flex-direction:column;align-items:center;text-align:center;box-shadow:0 15px 35px rgba(0,0,0,0.4);transition:all 0.3s ease;">' +
+          '<div style="margin-bottom:16px;">' +
+            '<span style="font-size:0.65rem;font-family:monospace;font-weight:700;letter-spacing:1.2px;color:#e2b857;background:rgba(226,184,87,0.1);padding:6px 14px;border-radius:6px;border:1px solid rgba(226,184,87,0.25);display:inline-block;text-align:center;">' + item.badge + '</span>' +
           '</div>' +
           '<h4 style="font-family:var(--font-sans);font-size:1.15rem;font-weight:700;color:#ffffff;margin:0 0 8px 0;line-height:1.3;text-align:center;">' + item.title + '</h4>' +
           '<p style="font-size:0.86rem;color:#cbd5e1;line-height:1.55;margin:0;font-weight:300;text-align:center;max-width:320px;">' + item.desc + '</p>' +

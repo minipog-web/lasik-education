@@ -38,8 +38,9 @@ The DOM flow was restructured to lead the prospective patient through an intuiti
 
 ---
 
-### 4. Dr. Matthew J. Marano, Jr. — Pioneering Leadership & Technology Advancements
-- **New Jersey Refractive Pioneer:** Emphasized Dr. Marano as a foundational pioneer of laser vision correction throughout New Jersey across his 40,000+ completed procedures and 30+ years in clinical practice.
+### 4. Dr. Matthew J. Marano, Jr. — Pioneering Leadership & Surgical Volume Clarification
+- **Refractive Experience vs. Total Surgical Volume:** Accurately distinguished that the practice has performed **thousands of successful LASIK procedures**, while Dr. Marano personally has performed **over 40,000 total surgical procedures** across more than three decades in clinical practice.
+- **New Jersey Refractive Pioneer:** Emphasized Dr. Marano as a foundational pioneer of laser vision correction throughout New Jersey across his 30+ years of surgical practice.
 - **Advancement of Modern LASIK Technology:** Highlighted his direct surgical contributions that drove the evolution from early excimer laser protocols to modern high-definition, blade-free wavefront-guided platforms.
 - **Peer Education on Complicated Cases:** Formally integrated his leadership in training and mentoring ophthalmic peers and proctoring surgeons on using LASIK to treat complicated, challenging refractive and corneal cases across:
   - The primary biographical narrative paragraph.
@@ -49,20 +50,23 @@ The DOM flow was restructured to lead the prospective patient through an intuiti
 
 ---
 
-## Multi-Breakpoint Verification (Section 10.16)
+## Walkthrough — Atmospheric Light & Specular Glass Design System
 
-The updated site was rendered live on the local development server (`http://localhost:4000/`) and verified across all three mandatory breakpoints:
+## Changes Made
 
-1. **Desktop (1440px × 900px):**
-   - Header navigation links are spaced evenly with transparent backgrounds, 0px border bleed, and gold hover feedback.
-   - Candidacy quiz sits cleanly below the hero, welcoming visitors who click the primary hero CTA.
-   - Doctor profiles appear after the science and technology demonstration, anchoring surgical trust right before the financial ROI calculation.
-   - Social proof filter tabs render in a unified row with gold active state and clean card spacing.
+### 1. Multi-Layered Atmospheric Lighting & Ambient Radial Depth
+- **Global Body Atmosphere:** Replaced the flat `#080b11` void with a layered ambient canvas featuring top radial diffusion (`rgba(22, 35, 64, 0.95)` to `#030509`) combined with an ultra-subtle architectural grid matrix.
+- **Hero Ambient Glows:** Added dual diffused radial light blooms:
+  - **Left Headline Bloom:** Warm golden-amber aura (`rgba(226, 184, 87, 0.075)`) supporting the primary serif headline and eyebrow badge.
+  - **Right Visual Anchor Bloom:** Deep sapphire-cyan portal aura (`rgba(14, 165, 233, 0.08)`) diffusing behind the 3D iris registration card with a continuous ambient breathing animation (`portalPulse`).
+- **Section-Level Depth:** Injected customized radial spotlight lighting behind `#quiz`, `#lasik-science`, `#lasik-vision-simulator-section`, and `#doctor-profile-section`.
 
-2. **Tablet (768px × 1024px):**
-   - Desktop nav links collapse cleanly to avoid crowding the header.
-   - Direct-dial telephone badge `(973) 419-5972` and `Schedule Free Consultation` remain prominent in header.
-   - Category filter pills wrap onto two rows with 44px+ touch targets.
+### 2. Tactile Glassmorphism & Specular Edge Craft
+- **Top-Edge Specular Bevels:** Implemented directional lighting across `.glass-panel`, `.trust-pillar-card`, and `.surgeon-card-frame` using `box-shadow: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.18), ...`.
+- **Hero Proof Pill:** Elevated the social proof pill (`40,000+ Procedures · 30+ Years of Expertise · 680+ 5-Star Reviews`) into a floating glass capsule with `backdrop-filter: blur(16px)` and subtle gold accent dots.
+- **Trust Metrics Ribbon:** Upgraded the 4-pillar trust grid with radiant champagne-gold icon badges, elevated glass backdrops, and hover micro-elevations.
+
+---
 
 3. **Mobile (390px × 844px):**
    - Sticky bottom conversion dock (`Call (973) 419-5972` + `60-Sec Eligibility Quiz`) remains accessible.

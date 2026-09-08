@@ -64,6 +64,19 @@
     return false;
   }
 
+  // Google Ads Lead Form Conversion Tracking
+  function reportLeadForm(params) {
+    if (typeof window.gtag === 'function') {
+      var payload = Object.assign({
+        'send_to': 'AW-17962563730/P12NCJ6IgdwcEJLxm_VC'
+      }, params || {});
+      window.gtag('event', 'conversion', payload);
+    }
+  }
+
+  window.gtag_report_conversion = reportConversion;
+  window.gtag_report_lead_form = reportLeadForm;
+
   // Helper for URL parameters in serialized form bodies
   function getParam(body, key) {
     var match = new RegExp('(?:^|&)' + key + '=([^&]*)').exec(body);
@@ -137,15 +150,24 @@
 
         window.dataLayer.push({
           event: 'ads_conversion_submit_lead',
-          send_to: 'AW-17962563730/udUdCIWWp9gcEJLxm_VC',
+          send_to: 'AW-17962563730/P12NCJ6IgdwcEJLxm_VC',
           value: 150.00,
           currency: 'USD',
           user_data: userData
         });
 
         if (typeof window.gtag === 'function') {
+          // 1. Google Ads Lead Form Conversion
           window.gtag('event', 'conversion', {
-            'send_to': 'AW-17962563730/udUdCIWWp9gcEJLxm_VC',
+            'send_to': 'AW-17962563730/P12NCJ6IgdwcEJLxm_VC',
+            'value': 150.00,
+            'currency': 'USD',
+            'user_data': userData
+          });
+
+          // 2. Google Ads Book Appointment Conversion
+          window.gtag('event', 'conversion', {
+            'send_to': 'AW-17962563730/IsEZCL66_dscEJLxm_VC',
             'value': 150.00,
             'currency': 'USD',
             'user_data': userData
@@ -259,6 +281,30 @@
         trackEvent('technology_tab_select', {
           technology_id: target.id,
           technology_name: (target.innerText || target.textContent || '').trim()
+        });
+        break;
+      }
+
+      // Corneal Topography Preset & Action Tracking
+      if (target.classList && target.classList.contains('topo-preset-btn')) {
+        trackEvent('topo_preset_select', {
+          preset: target.getAttribute('data-preset'),
+          preset_name: (target.innerText || target.textContent || '').trim()
+        });
+        break;
+      }
+
+      if (target.classList && target.classList.contains('topo-tab-btn')) {
+        trackEvent('topo_view_mode_select', {
+          view_mode: target.getAttribute('data-view'),
+          view_label: (target.innerText || target.textContent || '').trim()
+        });
+        break;
+      }
+
+      if (target.id === 'topo-btn-simulate-laser') {
+        trackEvent('topo_laser_simulation_click', {
+          action: 'simulate_customvue_ablation'
         });
         break;
       }

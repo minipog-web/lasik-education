@@ -9,6 +9,7 @@
       gtag('js', new Date());
 
       gtag('config', 'GT-WKTZM5GN');
+      gtag('config', 'AW-18197167741');
     </script>
 
     <!-- Google Ads Conversion & Delayed Navigation Helpers -->
@@ -47,6 +48,16 @@
           callback();
         }
         return false;
+      }
+
+      // Event snippet for Lead Form conversion tracking
+      function gtag_report_lead_form(params) {
+        if (typeof gtag === 'function') {
+          var payload = Object.assign({
+            'send_to': 'AW-17962563730/P12NCJ6IgdwcEJLxm_VC'
+          }, params || {});
+          gtag('event', 'conversion', payload);
+        }
       }
     </script>
 
@@ -627,9 +638,11 @@
     <link rel="prefetch" as="image" href="./assets/lasik_flap_reposition_spatula.webp" type="image/webp">
     <link rel="prefetch" as="image" href="./assets/lasik_24hr_recovery.webp" type="image/webp">
     <link rel="stylesheet" href="./assets/index-DhXpI4H_.css?v=29">
-    <link rel="stylesheet" href="./assets/custom-styles.css?v=105">
+    <link rel="stylesheet" href="./assets/custom-styles.css?v=113">
     <script src="./assets/index-nb1vded4_v2.js?v=58" defer></script>
     <script src="./assets/vision-simulator.min.js?v=12" defer></script>
+    <script src="./assets/corneal-topography.js?v=9" defer></script>
+    <script src="./assets/telemetry.js?v=2" defer></script>
   </head>
   <body>
     <div class="tactile-grain-overlay"></div>
@@ -760,6 +773,10 @@
           fallback.scrollIntoView({ behavior: 'smooth' });
         }
       }
+    };
+
+    window.scrollToConsultationForm = function() {
+      window.scrollToElement('consultation');
     };
 
     // ─── Citation System ─────────────────────────────────────────────────────
@@ -2570,7 +2587,7 @@
 
         var scienceSub = scienceSec.querySelector('p');
         if (scienceSub && scienceSub.textContent.indexOf('10,240') === -1) {
-          scienceSub.textContent = 'Our surgical team—Dr. Matthew Marano and Dr. Sherief Raouf—pairs 3D WaveScan® 250-lenslet diagnostics, the 10-second iFS® blade-free femtosecond laser, and the VISX STAR S4 IR® excimer laser with active 3D Iris Registration—targeting standard-setting 20/20 clarity while unlocking 20/15 high-definition visual acuity.';
+          scienceSub.textContent = 'Our surgical team—Dr. Matthew Marano and Dr. Sherief Raouf—pairs 3D WaveScan® 250-lenslet diagnostics, the 10-second iFS® blade-free femtosecond laser, and the VISX STAR S4 IR® excimer laser with active 3D Iris Registration—targeting standard-setting 20/20 clarity while unlocking the possibility of 20/15 high-definition visual acuity.';
         }
       }
 
@@ -3272,6 +3289,38 @@
       }
     }
 
+    function injectCornealTopographySection() {
+      var journeySec = getJourneySection();
+      if (!journeySec || document.getElementById('corneal-topography-container')) return;
+
+      var topoSec = document.createElement('div');
+      topoSec.id = 'lasik-corneal-topography-section';
+      topoSec.className = 'section corneal-topography-section in-journey-flow';
+
+      var container = document.createElement('div');
+      container.className = 'container';
+      container.style.cssText = 'max-width: 1200px; margin: 0 auto;';
+      container.innerHTML = '<div id="corneal-topography-container"></div>';
+
+      topoSec.appendChild(container);
+
+      var laserSuite = document.getElementById('glassmorphic-laser-suite');
+      if (laserSuite && laserSuite.parentNode) {
+        if (laserSuite.nextSibling) {
+          laserSuite.parentNode.insertBefore(topoSec, laserSuite.nextSibling);
+        } else {
+          laserSuite.parentNode.appendChild(topoSec);
+        }
+      } else {
+        var jContainer = journeySec.querySelector('.container') || journeySec;
+        jContainer.appendChild(topoSec);
+      }
+
+      if (typeof window.initCornealTopography === 'function') {
+        window.initCornealTopography();
+      }
+    }
+
     function injectPhoneIntoDynamicHeader() {
       var nav = document.getElementById('main-navigation');
       if (!nav) return;
@@ -3309,6 +3358,7 @@
           injectEEAT();
           injectGlassmorphicLaserSuite();
           injectVisionQualitySimulator();
+          injectCornealTopographySection();
           initLifestyleSection();
           initAdaptiveQuiz();
           injectTimelineStrip();
@@ -3862,12 +3912,23 @@
                 console.error('Submission error:', err);
               });
 
-              // Trigger Google Ads conversion tracking event for AW-17962563730
+              // Trigger Google Ads conversion tracking events
               if (typeof gtag_report_conversion === 'function') {
                 try {
                   gtag_report_conversion();
                 } catch (e) {
-                  console.error('Google Ads conversion tracking error:', e);
+                  console.error('Google Ads conversion tracking error (Book Appointment):', e);
+                }
+              }
+
+              if (typeof gtag_report_lead_form === 'function') {
+                try {
+                  gtag_report_lead_form({
+                    'value': 150.00,
+                    'currency': 'USD'
+                  });
+                } catch (e) {
+                  console.error('Google Ads conversion tracking error (Lead Form):', e);
                 }
               }
 

@@ -638,10 +638,10 @@
     <link rel="prefetch" as="image" href="./assets/lasik_flap_reposition_spatula.webp" type="image/webp">
     <link rel="prefetch" as="image" href="./assets/lasik_24hr_recovery.webp" type="image/webp">
     <link rel="stylesheet" href="./assets/index-DhXpI4H_.css?v=29">
-    <link rel="stylesheet" href="./assets/custom-styles.css?v=113">
-    <script src="./assets/index-nb1vded4_v2.js?v=58" defer></script>
+    <link rel="stylesheet" href="./assets/custom-styles.css?v=117">
+    <script src="./assets/index-nb1vded4_v2.js?v=60" defer></script>
     <script src="./assets/vision-simulator.min.js?v=12" defer></script>
-    <script src="./assets/corneal-topography.js?v=9" defer></script>
+    <script src="./assets/corneal-topography.js?v=10" defer></script>
     <script src="./assets/telemetry.js?v=2" defer></script>
   </head>
   <body>
@@ -1293,6 +1293,46 @@
         container.insertBefore(secIntro, maranoOuter);
       }
 
+      // Inject Surgeon Tab Selector Bar if not present
+      if (container && !document.getElementById('surgeon-tab-wrapper')) {
+        var tabWrap = document.createElement('div');
+        tabWrap.id = 'surgeon-tab-wrapper';
+        tabWrap.className = 'surgeon-tab-wrapper animate-fade-up';
+        tabWrap.innerHTML = 
+          '<div class="surgeon-tab-bar">' +
+            '<button class="surgeon-tab-btn active-surgeon-tab" id="surgeon-tab-btn-marano" type="button">' +
+              '<span>Dr. Matthew J. Marano, Jr., MD</span>' +
+              '<span class="surgeon-tab-badge">Founding Pioneer</span>' +
+            '</button>' +
+            '<button class="surgeon-tab-btn" id="surgeon-tab-btn-raouf" type="button">' +
+              '<span>Dr. Sherief Raouf, MD</span>' +
+              '<span class="surgeon-tab-badge">Cornea Specialist</span>' +
+            '</button>' +
+          '</div>';
+        container.insertBefore(tabWrap, maranoOuter);
+
+        var btnM = tabWrap.querySelector('#surgeon-tab-btn-marano');
+        var btnR = tabWrap.querySelector('#surgeon-tab-btn-raouf');
+
+        function toggleSurgeon(s) {
+          var pM = document.getElementById('marano-profile-panel');
+          var pR = document.getElementById('raouf-profile-panel');
+          if (s === 'marano') {
+            if (pM) pM.style.display = 'block';
+            if (pR) pR.style.display = 'none';
+            btnM.classList.add('active-surgeon-tab');
+            btnR.classList.remove('active-surgeon-tab');
+          } else {
+            if (pM) pM.style.display = 'none';
+            if (pR) pR.style.display = 'block';
+            btnR.classList.add('active-surgeon-tab');
+            btnM.classList.remove('active-surgeon-tab');
+          }
+        }
+        btnM.addEventListener('click', function() { toggleSurgeon('marano'); });
+        btnR.addEventListener('click', function() { toggleSurgeon('raouf'); });
+      }
+
       // 2. Format Dr. Marano\'s Card frame & inner glass-panel identically to Dr. Raouf
       maranoOuter.id = 'marano-profile-panel';
       maranoOuter.className = 'marano-profile-panel surgeon-card-frame animate-fade-up';
@@ -1392,7 +1432,7 @@
         var raoufPanel = document.createElement('div');
         raoufPanel.id = 'raouf-profile-panel';
         raoufPanel.className = 'raouf-profile-panel surgeon-card-frame animate-fade-up';
-        raoufPanel.setAttribute('style', 'background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 8px; border-radius: 2rem; margin-top: 0; margin-bottom: 48px; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); box-sizing: border-box; width: 100%;');
+        raoufPanel.setAttribute('style', 'background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 8px; border-radius: 2rem; margin-top: 0; margin-bottom: 48px; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); box-sizing: border-box; width: 100%; display: none;');
         raoufPanel.innerHTML = 
           '<div class="glass-panel" style="padding: 40px; background: var(--bg-secondary); border: 1px solid rgba(255, 255, 255, 0.04); box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12); border-radius: calc(2rem - 8px); position: relative; overflow: hidden; box-sizing: border-box; width: 100%;">' +
             '<div class="marano-profile-grid" style="text-align: left;">' +
@@ -2113,6 +2153,91 @@
           '</div>';
         grid.appendChild(card3);
       }
+
+      // Testimonial Category Filters & Curated Display
+      if (!document.getElementById('testimonial-filter-wrapper')) {
+        var filterWrap = document.createElement('div');
+        filterWrap.id = 'testimonial-filter-wrapper';
+        filterWrap.className = 'testimonial-filter-wrapper animate-fade-up';
+        filterWrap.innerHTML = 
+          '<div class="testimonial-filter-bar">' +
+            '<button class="testimonial-filter-btn active-filter-tab" data-filter="all" type="button">All Outcomes (14)</button>' +
+            '<button class="testimonial-filter-btn" data-filter="athletics" type="button">🏊 Athletics &amp; Active</button>' +
+            '<button class="testimonial-filter-btn" data-filter="astigmatism" type="button">🎯 Astigmatism &amp; Night Vision</button>' +
+            '<button class="testimonial-filter-btn" data-filter="dryeyes" type="button">💧 Dry Eyes &amp; Contacts</button>' +
+            '<button class="testimonial-filter-btn" data-filter="safety" type="button">🛡️ Safety &amp; Comfort</button>' +
+          '</div>';
+        grid.parentNode.insertBefore(filterWrap, grid);
+
+        var expandWrap = document.createElement('div');
+        expandWrap.id = 'testimonials-expand-container';
+        expandWrap.className = 'testimonials-expand-container';
+        expandWrap.innerHTML = '<button class="testimonials-expand-btn" id="btn-expand-reviews" type="button">Explore All 14 Patient Outcomes (8 More) ↓</button>';
+        grid.parentNode.insertBefore(expandWrap, grid.nextSibling);
+
+        var isExpanded = false;
+        var activeFilter = 'all';
+
+        function updateReviewVisibility() {
+          var allCards = grid.querySelectorAll('.proof-card');
+          var visibleInAllCount = 0;
+          
+          allCards.forEach(function(card) {
+            var txt = (card.textContent || '').toLowerCase();
+            var matches = true;
+            if (activeFilter === 'athletics') {
+              matches = txt.includes('triathlete') || txt.includes('running') || txt.includes('active') || txt.includes('sports') || txt.includes('open water') || txt.includes('first responder') || txt.includes('marathon');
+            } else if (activeFilter === 'astigmatism') {
+              matches = txt.includes('astigmatism') || txt.includes('night driving') || txt.includes('skyline') || txt.includes('pilot') || txt.includes('wavefront');
+            } else if (activeFilter === 'dryeyes') {
+              matches = txt.includes('dry') || txt.includes('contacts') || txt.includes('screen') || txt.includes('zoom') || txt.includes('corneal');
+            } else if (activeFilter === 'safety') {
+              matches = txt.includes('fear') || txt.includes('anxiety') || txt.includes('flinching') || txt.includes('calm') || txt.includes('comfortable') || txt.includes('painless') || txt.includes('terrified');
+            }
+
+            if (!matches) {
+              card.classList.add('filter-hidden');
+            } else {
+              visibleInAllCount++;
+              if (activeFilter === 'all' && !isExpanded && visibleInAllCount > 6) {
+                card.classList.add('filter-hidden');
+              } else {
+                card.classList.remove('filter-hidden');
+              }
+            }
+          });
+
+          var expandBtn = document.getElementById('btn-expand-reviews');
+          if (expandBtn) {
+            if (activeFilter !== 'all') {
+              expandWrap.style.display = 'none';
+            } else {
+              expandWrap.style.display = 'flex';
+              expandBtn.textContent = isExpanded ? 'Show Less ↑' : 'Explore All 14 Patient Outcomes (8 More) ↓';
+            }
+          }
+        }
+
+        var filterBtns = filterWrap.querySelectorAll('.testimonial-filter-btn');
+        filterBtns.forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            filterBtns.forEach(function(b) { b.classList.remove('active-filter-tab'); });
+            btn.classList.add('active-filter-tab');
+            activeFilter = btn.getAttribute('data-filter');
+            updateReviewVisibility();
+          });
+        });
+
+        var expBtn = document.getElementById('btn-expand-reviews');
+        if (expBtn) {
+          expBtn.addEventListener('click', function() {
+            isExpanded = !isExpanded;
+            updateReviewVisibility();
+          });
+        }
+
+        updateReviewVisibility();
+      }
     }
 
     // ─── P1: Social Proof Persona Tags & Local NJ Town Names ──────────────
@@ -2200,35 +2325,134 @@
 
     // ─── Visual & Informational Flow Optimization ───────────────────────────
 
+    // ─── Visual & Informational Flow Optimization ───────────────────────────
+
     function optimizePageFlow() {
       var docSec = document.getElementById('doctor-profile-section');
       var roiSec = document.getElementById('roi-section');
       if (docSec && roiSec && docSec.nextElementSibling !== roiSec) {
         roiSec.parentNode.insertBefore(docSec, roiSec);
       }
+
+      var edu = document.getElementById('education');
+      if (!edu) return;
+
+      var simSec = document.getElementById('lasik-vision-simulator-section');
+      var timelineSec = document.getElementById('speed-timeline-strip');
+      var journeySec = document.getElementById('lasik-journey') || document.getElementById('glassmorphic-laser-suite');
+      var topoSec = document.getElementById('lasik-corneal-topography-section');
+      var scienceSec = document.getElementById('lasik-science') || getScienceSection();
+
+      // 1. Remove any switcher if previously created
+      var existingSwitcher = document.getElementById('tech-suite-switcher-wrapper');
+      if (existingSwitcher) {
+        existingSwitcher.remove();
+      }
+
+      // 2. Ensure all sections are fully expanded, visible and unconstrained
+      if (scienceSec) scienceSec.style.display = 'block';
+      if (topoSec) {
+        topoSec.style.display = 'block';
+        window.dispatchEvent(new Event('resize'));
+      }
+      if (journeySec) journeySec.style.display = 'block';
+      if (timelineSec) timelineSec.style.display = 'block';
+      if (simSec) simSec.style.display = 'block';
+
+      // 3. User-mandated sequence:
+      //    1) Optical Physics & Diagnostics (scienceSec)
+      //    2) 3D Astigmatism Topography (topoSec)
+      //    3) 5-step LASIK Journey (journeySec)
+      //    Followed by 24h Recovery Timeline & Vision Quality Simulator
+      if (scienceSec && edu.firstElementChild !== scienceSec) {
+        edu.insertBefore(scienceSec, edu.firstElementChild);
+      }
+      if (scienceSec && topoSec && scienceSec.nextElementSibling !== topoSec) {
+        scienceSec.parentNode.insertBefore(topoSec, scienceSec.nextSibling);
+      }
+      if (topoSec && journeySec && topoSec.nextElementSibling !== journeySec) {
+        topoSec.parentNode.insertBefore(journeySec, topoSec.nextSibling);
+      }
+      if (journeySec && timelineSec && journeySec.nextElementSibling !== timelineSec) {
+        journeySec.parentNode.insertBefore(timelineSec, journeySec.nextSibling);
+      }
+      if (simSec) {
+        var anchor = timelineSec || journeySec;
+        if (anchor && anchor.nextElementSibling !== simSec) {
+          anchor.parentNode.insertBefore(simSec, anchor.nextSibling);
+        }
+      }
     }
 
     function updateNavLinks() {
-      var navGroup = document.querySelector('#main-navigation .nav-links-group');
-      if (!navGroup || navGroup.getAttribute('data-enhanced') === 'true') return;
-      navGroup.setAttribute('data-enhanced', 'true');
-      navGroup.innerHTML = 
-        '<button class="nav-link-item" data-target="quiz">Candidacy</button>' +
-        '<button class="nav-link-item" data-target="lasik-science">Technology</button>' +
-        '<button class="nav-link-item" data-target="doctor-profile-section">Surgeons</button>' +
-        '<button class="nav-link-item" data-target="roi-section">Cost &amp; ROI</button>' +
-        '<button class="nav-link-item" data-target="social-proof-section">Reviews</button>';
+      // 1. Ensure persistent top backdrop scrim exists
+      if (!document.getElementById('nav-scrim')) {
+        var scrim = document.createElement('div');
+        scrim.id = 'nav-scrim';
+        document.body.insertBefore(scrim, document.body.firstChild);
+      }
 
-      var items = navGroup.querySelectorAll('.nav-link-item');
-      items.forEach(function(item) {
-        item.addEventListener('click', function(e) {
-          e.preventDefault();
-          var t = item.getAttribute('data-target');
-          if (t && window.scrollToElement) {
-            window.scrollToElement(t);
-          }
+      var navGroup = document.querySelector('#main-navigation .nav-links-group');
+      if (!navGroup) return;
+
+      if (navGroup.getAttribute('data-enhanced') !== 'true') {
+        navGroup.setAttribute('data-enhanced', 'true');
+        navGroup.innerHTML = 
+          '<button class="nav-link-item active-nav-link" data-target="quiz">Candidacy</button>' +
+          '<button class="nav-link-item" data-target="education">Technology</button>' +
+          '<button class="nav-link-item" data-target="doctor-profile-section">Surgeons</button>' +
+          '<button class="nav-link-item" data-target="roi-section">Cost &amp; ROI</button>' +
+          '<button class="nav-link-item" data-target="social-proof-section">Reviews</button>';
+
+        var items = navGroup.querySelectorAll('.nav-link-item');
+        items.forEach(function(item) {
+          item.addEventListener('click', function(e) {
+            e.preventDefault();
+            var t = item.getAttribute('data-target');
+            if (t && window.scrollToElement) {
+              window.scrollToElement(t);
+            }
+          });
         });
-      });
+      }
+
+      // 2. Scroll-Spy with IntersectionObserver
+      if (!window.__navScrollSpyInit && 'IntersectionObserver' in window) {
+        window.__navScrollSpyInit = true;
+        var sectionTargets = [
+          { id: 'quiz', navTarget: 'quiz' },
+          { id: 'education', navTarget: 'education' },
+          { id: 'doctor-profile-section', navTarget: 'doctor-profile-section' },
+          { id: 'roi-section', navTarget: 'roi-section' },
+          { id: 'social-proof-section', navTarget: 'social-proof-section' }
+        ];
+
+        var navButtons = navGroup.querySelectorAll('.nav-link-item');
+
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              var activeId = entry.target.id;
+              navButtons.forEach(function(btn) {
+                if (btn.getAttribute('data-target') === activeId || 
+                   (activeId === 'education' && btn.getAttribute('data-target') === 'lasik-science')) {
+                  btn.classList.add('active-nav-link');
+                } else {
+                  btn.classList.remove('active-nav-link');
+                }
+              });
+            }
+          });
+        }, {
+          rootMargin: '-20% 0px -60% 0px',
+          threshold: 0.1
+        });
+
+        sectionTargets.forEach(function(st) {
+          var el = document.getElementById(st.id);
+          if (el) observer.observe(el);
+        });
+      }
     }
 
     // ─── P2: Mobile Sticky CTA Bar ────────────────────────────────────────
@@ -3171,17 +3395,102 @@
       function renderFinalReport() {
         var lifestyle = userAnswers[2] || 'Daily Visual Freedom';
         var html = '<div style="text-align:center;">' +
-          '<span style="display:inline-block;padding:4px 14px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:#10b981;font-size:0.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border-radius:100px;margin-bottom:16px;">Candidacy Match Complete</span>' +
-          '<h3 style="font-family:var(--font-serif);font-size:2rem;color:#fff;margin-bottom:10px;font-weight:700;">Strong Candidate Profile</h3>' +
-          '<p style="font-size:0.92rem;color:#cbd5e1;max-width:540px;margin:0 auto 20px auto;line-height:1.6;">Based on your responses, you align with our primary candidacy criteria for CustomVue® blade-free wavefront LASIK tailored for <strong>' + lifestyle + '</strong>. Take the next step to confirm your corneal thickness and review your custom 3D treatment plan.</p>' +
-          '<div style="display:flex;justify-content:center;margin-bottom:14px;">' +
-            '<button onclick="scrollToConsultationForm()" class="btn btn-primary" style="padding:14px 28px;font-size:0.95rem;">Schedule Your Free Consultation →</button>' +
+          '<span style="display:inline-block;padding:4px 14px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:#10b981;font-size:0.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border-radius:100px;margin-bottom:14px;">Candidacy Match Complete</span>' +
+          '<h3 style="font-family:var(--font-serif);font-size:2rem;color:#fff;margin-bottom:8px;font-weight:700;">Strong Candidate Profile</h3>' +
+          '<p style="font-size:0.92rem;color:#cbd5e1;max-width:540px;margin:0 auto 18px auto;line-height:1.6;">Based on your responses, you align with our clinical candidacy criteria for CustomVue® blade-free wavefront LASIK tailored for <strong>' + lifestyle + '</strong>. Reserve your complimentary 3D diagnostic scan below.</p>' +
+          '<div class="quiz-booking-bridge">' +
+            '<div class="quiz-booking-title">Reserve Your Free 3D Wavefront Consultation</div>' +
+            '<div class="quiz-booking-sub">Your candidacy match is active. Select your preferred New Jersey location to lock in your consultation:</div>' +
+            '<form id="quiz-inline-booking-form" onsubmit="return handleQuizInlineSubmit(event)">' +
+              '<div class="quiz-booking-grid">' +
+                '<div class="quiz-booking-field">' +
+                  '<label for="qib-name">Full Name *</label>' +
+                  '<input type="text" id="qib-name" name="name" required placeholder="First and Last Name" />' +
+                '</div>' +
+                '<div class="quiz-booking-field">' +
+                  '<label for="qib-phone">Phone Number *</label>' +
+                  '<input type="tel" id="qib-phone" name="phone" required placeholder="(973) 000-0000" />' +
+                '</div>' +
+                '<div class="quiz-booking-field">' +
+                  '<label for="qib-location">Preferred Location</label>' +
+                  '<select id="qib-location" name="location">' +
+                    '<option value="Livingston (Flagship LASIK Center)">Livingston (Flagship LASIK Center)</option>' +
+                    '<option value="Denville Consultation Suite">Denville Consultation Suite</option>' +
+                    '<option value="Newark Consultation Suite">Newark Consultation Suite</option>' +
+                  '</select>' +
+                '</div>' +
+                '<div class="quiz-booking-field">' +
+                  '<label for="qib-timeframe">Preferred Timeframe</label>' +
+                  '<select id="qib-timeframe" name="timeframe">' +
+                    '<option value="This Week">This Week</option>' +
+                    '<option value="Next Week">Next Week</option>' +
+                    '<option value="Within 30 Days">Within 30 Days</option>' +
+                    '<option value="Saturday Morning">Saturday Morning</option>' +
+                  '</select>' +
+                '</div>' +
+              '</div>' +
+              '<button type="submit" id="qib-submit-btn" class="quiz-booking-submit-btn">' +
+                '<span>Confirm Free 3D Diagnostic Consultation →</span>' +
+              '</button>' +
+            '</form>' +
+            '<div id="qib-success-msg" style="display:none;padding:16px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);border-radius:12px;color:#a7f3d0;font-size:0.9rem;text-align:center;margin-top:14px;">' +
+              '✓ Thank you! Your priority consultation reservation has been received. Our clinical coordinator will call you shortly to confirm your time.' +
+            '</div>' +
+            '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;font-size:0.78rem;color:#94a3b8;flex-wrap:wrap;gap:8px;">' +
+              '<span>✓ 100% Free Diagnostic Scan • Zero Obligation</span>' +
+              '<a href="javascript:void(0)" onclick="scrollToElement(\'education\')" style="color:#e2b857;text-decoration:none;font-weight:600;">Explore Technology &amp; Surgeons Below ↓</a>' +
+            '</div>' +
           '</div>' +
-          '<span style="font-size:0.76rem;color:#94a3b8;display:block;font-style:italic;">100% complimentary diagnostic scan • Zero obligation • HIPAA compliant</span>' +
         '</div>';
 
         quizCard.innerHTML = html;
       }
+
+      window.handleQuizInlineSubmit = function(e) {
+        if (e) e.preventDefault();
+        var form = document.getElementById('quiz-inline-booking-form');
+        if (!form) return false;
+        var name = (document.getElementById('qib-name') || {}).value || '';
+        var phone = (document.getElementById('qib-phone') || {}).value || '';
+        var loc = (document.getElementById('qib-location') || {}).value || '';
+        var time = (document.getElementById('qib-timeframe') || {}).value || '';
+
+        // Sync to Netlify hidden form
+        var nName = document.getElementById('netlify-name');
+        var nPhone = document.getElementById('netlify-phone');
+        var nLoc = document.getElementById('netlify-location');
+        var nTime = document.getElementById('netlify-timeframe');
+        if (nName) nName.value = name;
+        if (nPhone) nPhone.value = phone;
+        if (nLoc) nLoc.value = loc;
+        if (nTime) nTime.value = time;
+
+        // Sync to lower consultation form
+        var mcName = document.getElementById('mc-name');
+        var mcPhone = document.getElementById('mc-phone');
+        var mcLoc = document.getElementById('mc-location');
+        var mcTime = document.getElementById('mc-timeframe');
+        if (mcName) mcName.value = name;
+        if (mcPhone) mcPhone.value = phone;
+        if (mcLoc) mcLoc.value = loc;
+        if (mcTime) mcTime.value = time;
+
+        // Conversion Telemetry
+        if (typeof gtag_report_lead_form === 'function') {
+          gtag_report_lead_form({ location: loc, timeframe: time });
+        }
+        if (typeof gtagSendEvent === 'function') {
+          gtagSendEvent();
+        }
+
+        var submitBtn = document.getElementById('qib-submit-btn');
+        var successMsg = document.getElementById('qib-success-msg');
+        if (submitBtn) submitBtn.style.display = 'none';
+        form.style.display = 'none';
+        if (successMsg) successMsg.style.display = 'block';
+
+        return false;
+      };
 
       var quizHeader = document.createElement('div');
       quizHeader.id = 'adaptive-quiz-header';
@@ -3262,6 +3571,34 @@
       });
     }
 
+    function injectCornealTopographySection() {
+      var scienceSec = getScienceSection();
+      if (!scienceSec || document.getElementById('corneal-topography-container')) return;
+
+      var topoSec = document.createElement('div');
+      topoSec.id = 'lasik-corneal-topography-section';
+      topoSec.className = 'section corneal-topography-section';
+      topoSec.style.cssText = 'padding: clamp(32px, 4.5vw, 60px) 24px; position: relative; background: transparent;';
+
+      var container = document.createElement('div');
+      container.className = 'container';
+      container.style.cssText = 'max-width: 1100px; margin: 0 auto; padding: 0;';
+      container.innerHTML = '<div id="corneal-topography-container"></div>';
+
+      topoSec.appendChild(container);
+
+      // Located immediately after "The Science of LASIK" section
+      if (scienceSec.nextSibling) {
+        scienceSec.parentNode.insertBefore(topoSec, scienceSec.nextSibling);
+      } else {
+        scienceSec.parentNode.appendChild(topoSec);
+      }
+
+      if (typeof window.initCornealTopography === 'function') {
+        window.initCornealTopography();
+      }
+    }
+
     function injectVisionQualitySimulator() {
       var scienceSec = getScienceSection();
       if (!scienceSec || document.getElementById('vision-simulator-container')) return;
@@ -3278,46 +3615,17 @@
 
       simulatorSec.appendChild(container);
 
-      if (scienceSec.nextSibling) {
-        scienceSec.parentNode.insertBefore(simulatorSec, scienceSec.nextSibling);
+      // Anchor immediately after the Astigmatism Topography card, or Science section
+      var topoSec = document.getElementById('lasik-corneal-topography-section');
+      var anchor = topoSec || scienceSec;
+      if (anchor.nextSibling) {
+        anchor.parentNode.insertBefore(simulatorSec, anchor.nextSibling);
       } else {
-        scienceSec.parentNode.appendChild(simulatorSec);
+        anchor.parentNode.appendChild(simulatorSec);
       }
 
       if (typeof window.initVisionSimulator === 'function') {
         window.initVisionSimulator();
-      }
-    }
-
-    function injectCornealTopographySection() {
-      var journeySec = getJourneySection();
-      if (!journeySec || document.getElementById('corneal-topography-container')) return;
-
-      var topoSec = document.createElement('div');
-      topoSec.id = 'lasik-corneal-topography-section';
-      topoSec.className = 'section corneal-topography-section in-journey-flow';
-
-      var container = document.createElement('div');
-      container.className = 'container';
-      container.style.cssText = 'max-width: 1200px; margin: 0 auto;';
-      container.innerHTML = '<div id="corneal-topography-container"></div>';
-
-      topoSec.appendChild(container);
-
-      var laserSuite = document.getElementById('glassmorphic-laser-suite');
-      if (laserSuite && laserSuite.parentNode) {
-        if (laserSuite.nextSibling) {
-          laserSuite.parentNode.insertBefore(topoSec, laserSuite.nextSibling);
-        } else {
-          laserSuite.parentNode.appendChild(topoSec);
-        }
-      } else {
-        var jContainer = journeySec.querySelector('.container') || journeySec;
-        jContainer.appendChild(topoSec);
-      }
-
-      if (typeof window.initCornealTopography === 'function') {
-        window.initCornealTopography();
       }
     }
 
@@ -3357,8 +3665,8 @@
           injectInto(root);
           injectEEAT();
           injectGlassmorphicLaserSuite();
-          injectVisionQualitySimulator();
           injectCornealTopographySection();
+          injectVisionQualitySimulator();
           initLifestyleSection();
           initAdaptiveQuiz();
           injectTimelineStrip();

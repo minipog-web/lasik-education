@@ -32,15 +32,15 @@
       myopia: -3.50,      // Diopters
       ablationProgress: 0,// 0.0 (Pre-Op) to 1.0 (Post-Op)
       isAblating: false,  // Laser animation active
-      viewMode: 'profile', // '3d', 'axial', 'profile'
-      rotX: 1.35,         // Pitch (rad) for Cross-Section profile
-      rotY: 0.0,          // Yaw (rad)
-      targetRotX: 1.35,
-      targetRotY: 0.0,
+      viewMode: '3d',     // '3d', 'axial', 'profile'
+      rotX: 0.65,         // Pitch (rad) for 3D Oblique
+      rotY: 0.45,         // Yaw (rad)
+      targetRotX: 0.65,
+      targetRotY: 0.45,
       isDragging: false,
       lastMouseX: 0,
       lastMouseY: 0,
-      autoRotate: false,
+      autoRotate: true,
       laserScanPos: 0,
       ablationDepthMicrons: 0
     };
@@ -66,11 +66,11 @@
             <!-- Viewport Toolbar -->
             <div class="topo-viewport-toolbar">
               <div class="topo-view-tabs" role="tablist" aria-label="3D Topography View Mode">
-                <button type="button" class="topo-tab-btn" data-view="3d" role="tab" aria-selected="false">3D Oblique</button>
+                <button type="button" class="topo-tab-btn active" data-view="3d" role="tab" aria-selected="true">3D Oblique</button>
                 <button type="button" class="topo-tab-btn" data-view="axial" role="tab" aria-selected="false">Top-Down Axial</button>
-                <button type="button" class="topo-tab-btn active" data-view="profile" role="tab" aria-selected="true">Cross-Section</button>
+                <button type="button" class="topo-tab-btn" data-view="profile" role="tab" aria-selected="false">Cross-Section</button>
               </div>
-              <div class="topo-rotation-hint" id="topo-orbit-indicator" style="opacity: 0;">
+              <div class="topo-rotation-hint" id="topo-orbit-indicator" style="opacity: 1;">
                 <span class="topo-orbit-icon">⟳</span> Drag to rotate 3D mesh
               </div>
             </div>

@@ -110,13 +110,6 @@
               </div>
             </div>
 
-            <!-- 3D Navigation Quick-Controls (Dedicated Mobile & Desktop Orbit Bar) -->
-            <div class="topo-canvas-controls" aria-label="3D Model Navigation Controls">
-              <button type="button" class="topo-stage-btn" id="topo-btn-rot-left" aria-label="Rotate Cornea Left by 20 degrees" title="Rotate Left">⟲ Left</button>
-              <button type="button" class="topo-stage-btn active" id="topo-btn-rot-auto" aria-label="Toggle Auto-Rotation" title="Toggle Auto-Rotation">⏸ Pause</button>
-              <button type="button" class="topo-stage-btn" id="topo-btn-rot-right" aria-label="Rotate Cornea Right by 20 degrees" title="Rotate Right">Right ⟳</button>
-              <button type="button" class="topo-stage-btn" id="topo-btn-reset-view" aria-label="Reset 3D View Angle" title="Reset View">↺ Reset</button>
-            </div>
 
             <!-- Primary Wavefront Reshaping Trigger Button -->
             <div class="topo-action-bar">
@@ -153,20 +146,14 @@
                 </button>
               </div>
 
-              <!-- Astigmatism Sliders with Touch Stepper Controls -->
+              <!-- Astigmatism Sliders -->
               <div class="topo-sliders-compact-grid">
                 <div class="topo-slider-item">
                   <div class="topo-slider-header">
                     <label for="topo-astig-slider">Astigmatism Degree (Cylinder)</label>
                     <span id="topo-astig-val" class="topo-slider-badge">-1.75 D</span>
                   </div>
-                  <div class="topo-slider-row">
-                    <button type="button" class="topo-stepper-btn" id="topo-astig-dec" aria-label="Decrease astigmatism cylinder by 0.25 diopters">− 0.25</button>
-                    <div class="topo-slider-track-wrap">
-                      <input type="range" id="topo-astig-slider" min="-4.50" max="0.00" step="0.25" value="-1.75" aria-label="Astigmatism Diopters" />
-                    </div>
-                    <button type="button" class="topo-stepper-btn" id="topo-astig-inc" aria-label="Increase astigmatism cylinder by 0.25 diopters">+ 0.25</button>
-                  </div>
+                  <input type="range" id="topo-astig-slider" min="-4.50" max="0.00" step="0.25" value="-1.75" aria-label="Astigmatism Diopters" />
                 </div>
 
                 <div class="topo-slider-item">
@@ -174,13 +161,7 @@
                     <label for="topo-axis-slider">Steep Meridian Angle (Axis)</label>
                     <span id="topo-axis-val" class="topo-slider-badge">90°</span>
                   </div>
-                  <div class="topo-slider-row">
-                    <button type="button" class="topo-stepper-btn" id="topo-axis-dec" aria-label="Decrease steep meridian axis by 5 degrees">− 5°</button>
-                    <div class="topo-slider-track-wrap">
-                      <input type="range" id="topo-axis-slider" min="0" max="180" step="5" value="90" aria-label="Astigmatism Axis Degrees" />
-                    </div>
-                    <button type="button" class="topo-stepper-btn" id="topo-axis-inc" aria-label="Increase steep meridian axis by 5 degrees">+ 5°</button>
-                  </div>
+                  <input type="range" id="topo-axis-slider" min="0" max="180" step="5" value="90" aria-label="Astigmatism Axis Degrees" />
                 </div>
               </div>
             </div>
@@ -284,28 +265,7 @@
     var presetBtns = container.querySelectorAll('.topo-preset-btn');
     var viewTabBtns = container.querySelectorAll('.topo-tab-btn');
 
-    // 3D Orbit Quick-Control Buttons
-    var btnRotLeft = document.getElementById('topo-btn-rot-left');
-    var btnRotRight = document.getElementById('topo-btn-rot-right');
-    var btnRotAuto = document.getElementById('topo-btn-rot-auto');
-    var btnResetView = document.getElementById('topo-btn-reset-view');
-
-    // Slider Touch Stepper Buttons
-    var btnAstigDec = document.getElementById('topo-astig-dec');
-    var btnAstigInc = document.getElementById('topo-astig-inc');
-    var btnAxisDec = document.getElementById('topo-axis-dec');
-    var btnAxisInc = document.getElementById('topo-axis-inc');
-
-    function syncAutoRotBtn() {
-      if (btnRotAuto) {
-        btnRotAuto.innerHTML = state.autoRotate ? '⏸ Pause' : '⏵ Auto-Rotate';
-        if (state.autoRotate) {
-          btnRotAuto.classList.add('active');
-        } else {
-          btnRotAuto.classList.remove('active');
-        }
-      }
-    }
+    function syncAutoRotBtn() {}
 
     // ─── Resize Canvas with Device Pixel Ratio ───────────────────────────
     var dpr = window.devicePixelRatio || 1;
@@ -823,97 +783,6 @@
         }
       });
     });
-
-    // 3D Stage Quick-Control Buttons (Rotate Left, Auto-Rotate Toggle, Rotate Right, Reset View)
-    if (btnRotLeft) {
-      btnRotLeft.addEventListener('click', function () {
-        state.targetRotY -= 0.35;
-        state.autoRotate = false;
-        syncAutoRotBtn();
-      });
-    }
-
-    if (btnRotRight) {
-      btnRotRight.addEventListener('click', function () {
-        state.targetRotY += 0.35;
-        state.autoRotate = false;
-        syncAutoRotBtn();
-      });
-    }
-
-    if (btnRotAuto) {
-      btnRotAuto.addEventListener('click', function () {
-        state.autoRotate = !state.autoRotate;
-        syncAutoRotBtn();
-      });
-    }
-
-    if (btnResetView) {
-      btnResetView.addEventListener('click', function () {
-        state.targetRotX = 0.65;
-        state.targetRotY = 0.45;
-        state.autoRotate = true;
-        syncAutoRotBtn();
-      });
-    }
-
-    // Touch Stepper Buttons for Astigmatism Diopters (-0.25 / +0.25 D)
-    if (btnAstigDec) {
-      btnAstigDec.addEventListener('click', function () {
-        var v = Math.round((state.astigmatism - 0.25) * 100) / 100;
-        if (v < -4.50) v = -4.50;
-        state.astigmatism = v;
-        if (sliderAstig) sliderAstig.value = v;
-        if (valAstig) valAstig.textContent = v.toFixed(2) + ' D';
-        state.ablationProgress = 0;
-        if (btnLaser) btnLaser.classList.remove('completed');
-        if (btnLaserText) btnLaserText.textContent = 'Simulate 10-Second CustomVue® Reshaping';
-        updateTelemetryHUD();
-      });
-    }
-
-    if (btnAstigInc) {
-      btnAstigInc.addEventListener('click', function () {
-        var v = Math.round((state.astigmatism + 0.25) * 100) / 100;
-        if (v > 0.00) v = 0.00;
-        state.astigmatism = v;
-        if (sliderAstig) sliderAstig.value = v;
-        if (valAstig) valAstig.textContent = v.toFixed(2) + ' D';
-        state.ablationProgress = 0;
-        if (btnLaser) btnLaser.classList.remove('completed');
-        if (btnLaserText) btnLaserText.textContent = 'Simulate 10-Second CustomVue® Reshaping';
-        updateTelemetryHUD();
-      });
-    }
-
-    // Touch Stepper Buttons for Axis Meridian Angle (-5° / +5°)
-    if (btnAxisDec) {
-      btnAxisDec.addEventListener('click', function () {
-        var v = state.axis - 5;
-        if (v < 0) v = 175;
-        state.axis = v;
-        if (sliderAxis) sliderAxis.value = v;
-        if (valAxis) valAxis.textContent = v + '°';
-        state.ablationProgress = 0;
-        if (btnLaser) btnLaser.classList.remove('completed');
-        if (btnLaserText) btnLaserText.textContent = 'Simulate 10-Second CustomVue® Reshaping';
-        updateTelemetryHUD();
-      });
-    }
-
-    if (btnAxisInc) {
-      btnAxisInc.addEventListener('click', function () {
-        var v = state.axis + 5;
-        if (v > 180) v = 5;
-        state.axis = v;
-        if (sliderAxis) sliderAxis.value = v;
-        if (valAxis) valAxis.textContent = v + '°';
-        state.ablationProgress = 0;
-        if (btnLaser) btnLaser.classList.remove('completed');
-        if (btnLaserText) btnLaserText.textContent = 'Simulate 10-Second CustomVue® Reshaping';
-        updateTelemetryHUD();
-      });
-    }
 
     // ─── Touch & Mouse 3D Orbit Drag Handling ────────────────────────────
     function onPointerDown(clientX, clientY) {

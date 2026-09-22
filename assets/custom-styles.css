@@ -6132,65 +6132,113 @@ section.hero-section-shell,
 .dot-cyan { background: #06b6d4 !important; box-shadow: 0 0 8px #06b6d4 !important; }
 .dot-emerald { background: #10b981 !important; box-shadow: 0 0 8px #10b981 !important; }
 
-/* Sliders */
+/* Sliders - Clean, Elegant Luxury Diagnostic Aesthetic */
 .topo-sliders-compact-grid {
   display: flex !important;
   flex-direction: column !important;
-  gap: 12px !important;
+  gap: 16px !important;
+  margin-top: 6px !important;
+  padding: 14px 16px !important;
+  background: rgba(13, 20, 32, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px !important;
 }
 
 .topo-slider-item {
   display: flex !important;
   flex-direction: column !important;
-  gap: 6px !important;
+  gap: 8px !important;
+  width: 100% !important;
 }
 
 .topo-slider-header {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  font-size: 0.78rem !important;
-  font-weight: 600 !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
   color: #cbd5e1 !important;
+  letter-spacing: 0.2px !important;
 }
 
 .topo-slider-badge {
-  color: #00d4ff !important;
+  color: #00e5ff !important;
+  background: rgba(0, 229, 255, 0.08) !important;
+  border: 1px solid rgba(0, 229, 255, 0.25) !important;
+  border-radius: 6px !important;
+  padding: 2px 8px !important;
   font-weight: 700 !important;
   font-family: monospace !important;
-  font-size: 0.82rem !important;
+  font-size: 0.84rem !important;
+  letter-spacing: 0.5px !important;
 }
 
 .topo-slider-item input[type="range"] {
   -webkit-appearance: none !important;
   appearance: none !important;
   width: 100% !important;
-  height: 6px !important;
-  border-radius: 3px !important;
-  background: rgba(255, 255, 255, 0.12) !important;
+  background: transparent !important;
+  height: 32px !important;
   outline: none !important;
   cursor: pointer !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.topo-slider-item input[type="range"]::-webkit-slider-runnable-track {
+  width: 100% !important;
+  height: 6px !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-radius: 3px !important;
+  border: none !important;
+  transition: background 0.2s ease !important;
+}
+
+.topo-slider-item input[type="range"]:hover::-webkit-slider-runnable-track {
+  background: rgba(255, 255, 255, 0.22) !important;
 }
 
 .topo-slider-item input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none !important;
   appearance: none !important;
-  width: 16px !important;
-  height: 16px !important;
+  width: 18px !important;
+  height: 18px !important;
   border-radius: 50% !important;
-  background: #00d4ff !important;
-  box-shadow: 0 0 10px rgba(0, 212, 255, 0.6) !important;
+  background: linear-gradient(135deg, #a5f3fc 0%, #00d4ff 100%) !important;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.8), 0 0 0 2px rgba(10, 15, 26, 0.95) !important;
+  margin-top: -6px !important;
   cursor: pointer !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.topo-slider-item input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.22) !important;
+  box-shadow: 0 0 16px rgba(0, 212, 255, 1), 0 0 0 2px rgba(10, 15, 26, 0.95) !important;
+}
+
+.topo-slider-item input[type="range"]::-moz-range-track {
+  width: 100% !important;
+  height: 6px !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-radius: 3px !important;
+  border: none !important;
 }
 
 .topo-slider-item input[type="range"]::-moz-range-thumb {
-  width: 16px !important;
-  height: 16px !important;
+  width: 18px !important;
+  height: 18px !important;
   border-radius: 50% !important;
-  background: #00d4ff !important;
-  box-shadow: 0 0 10px rgba(0, 212, 255, 0.6) !important;
+  background: linear-gradient(135deg, #a5f3fc 0%, #00d4ff 100%) !important;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.8), 0 0 0 2px rgba(10, 15, 26, 0.95) !important;
   border: none !important;
   cursor: pointer !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.topo-slider-item input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.22) !important;
+  box-shadow: 0 0 16px rgba(0, 212, 255, 1), 0 0 0 2px rgba(10, 15, 26, 0.95) !important;
 }
 
 /* Telemetry HUD Card (Right Column) */

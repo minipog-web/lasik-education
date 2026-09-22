@@ -79,6 +79,14 @@ const server = http.createServer((req, res) => {
   });
 });
 
+server.on('error', (err) => {
+  console.error('Server error:', err);
+});
+
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err);
+});
+
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`\n✦ LASIK Education Portal dev server running at:`);
   console.log(`  > Local:   http://localhost:${PORT}/`);

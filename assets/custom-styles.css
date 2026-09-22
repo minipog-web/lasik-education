@@ -5112,6 +5112,88 @@ input[type="range"]#roi-monthly-slider::-moz-range-track {
   height: 7px !important;
   border-radius: 50% !important;
   background: #10b981 !important;
+  box-shadow: 0 0 8px #10b981 !important;
+  display: inline-block !important;
+  animation: liveStatusPulse 2.2s infinite ease-in-out !important;
+}
+
+@keyframes liveStatusPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 8px #10b981;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.55;
+    box-shadow: 0 0 16px #10b981;
+  }
+}
+
+/* 6. Hairline Edge-Faded Section Dividers */
+.editorial-section-divider {
+  width: 100% !important;
+  max-width: 1100px !important;
+  height: 1px !important;
+  margin: 0 auto !important;
+  background: radial-gradient(ellipse at center, rgba(226, 184, 87, 0.25) 0%, rgba(255, 255, 255, 0.05) 50%, transparent 80%) !important;
+  border: none !important;
+}
+
+/* ==========================================================================
+   VISUAL & INFORMATIONAL FLOW OPTIMIZATIONS
+   ========================================================================== */
+
+/* 1. Navigation Links Group & Items - Centered Between Logo and Phone */
+#main-navigation {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  z-index: 100 !important;
+}
+
+#main-navigation.scrolled {
+  max-width: 1300px !important;
+  background: rgba(8, 12, 22, 0.94) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+}
+
+#nav-scrim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 84px;
+  background: linear-gradient(180deg, #030509 0%, rgba(3, 5, 9, 0.82) 55%, rgba(3, 5, 9, 0) 100%);
+  pointer-events: none;
+  z-index: 99;
+}
+
+#main-navigation #logo-container {
+  flex-shrink: 0 !important;
+  margin-right: 0 !important;
+}
+
+#main-navigation .nav-links-group,
+#main-navigation.scrolled .nav-links-group {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  flex: 0 1 auto !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
+}
+
+#main-navigation #header-phone-link,
+.header-phone-link {
   flex-shrink: 0 !important;
   margin-left: 0 !important;
   margin-right: 16px !important;
@@ -5141,6 +5223,7 @@ button.nav-link-item {
   min-height: auto !important;
   min-width: auto !important;
   box-shadow: none !important;
+  position: relative !important;
 }
 
 #main-navigation .nav-links-group button:hover,
@@ -5150,10 +5233,145 @@ button.nav-link-item:hover {
   background: rgba(255, 255, 255, 0.06) !important;
 }
 
-@media (max-width: 1024px) {
-  #main-navigation .nav-links-group {
+/* Active Scroll-Spy Indicator */
+#main-navigation .nav-links-group button.active-nav-link,
+#main-navigation .nav-link-item.active-nav-link,
+button.nav-link-item.active-nav-link {
+  color: #e2b857 !important;
+  font-weight: 600 !important;
+  background: rgba(226, 184, 87, 0.08) !important;
+}
+
+#main-navigation .nav-links-group button.active-nav-link::after,
+#main-navigation .nav-link-item.active-nav-link::after,
+button.nav-link-item.active-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 2px;
+  background: #e2b857;
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(226, 184, 87, 0.8);
+}
+
+@media (max-width: 767px) {
+  #main-navigation .nav-links-group,
+  #main-navigation.scrolled .nav-links-group {
     display: none !important;
   }
+}
+
+/* ─── Tablet Navigation System (768px – 1024px) ─── */
+@media (min-width: 768px) and (max-width: 1024px) {
+  #main-navigation {
+    padding: 0 16px !important;
+    height: 68px !important;
+  }
+  #main-navigation.scrolled {
+    padding: 0 14px !important;
+    left: 12px !important;
+    right: 12px !important;
+    height: 60px !important;
+  }
+  #main-navigation .nav-logo {
+    height: 28px !important;
+    width: auto !important;
+  }
+  #main-navigation .nav-links-group,
+  #main-navigation.scrolled .nav-links-group {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 2px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+  #main-navigation .nav-links-group button,
+  #main-navigation .nav-links-group a,
+  #main-navigation .nav-link-item,
+  button.nav-link-item,
+  a.nav-link-item {
+    font-size: 0.78rem !important;
+    padding: 6px 8px !important;
+    min-height: 44px !important;
+    min-width: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    letter-spacing: 0.1px !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+  }
+  #header-phone-link {
+    display: none !important;
+  }
+  #header-cta-btn {
+    padding: 8px 14px !important;
+    font-size: 0.82rem !important;
+    min-height: 44px !important;
+    min-width: 44px !important;
+    flex-shrink: 0 !important;
+  }
+  #header-cta-btn .cta-desktop {
+    display: none !important;
+  }
+  #header-cta-btn .cta-mobile {
+    display: inline !important;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1024px) {
+  #main-navigation .nav-links-group button,
+  #main-navigation .nav-links-group a,
+  #main-navigation .nav-link-item,
+  button.nav-link-item,
+  a.nav-link-item {
+    font-size: 0.82rem !important;
+    padding: 6px 10px !important;
+    gap: 4px !important;
+  }
+  #header-phone-link {
+    display: inline-flex !important;
+    padding: 8px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 8px !important;
+  }
+  #header-phone-link .phone-text {
+    display: none !important;
+  }
+}
+
+/* Ensure desktop navigation (1025px - 1150px) is visible against base stylesheet */
+@media (min-width: 1025px) {
+  #main-navigation .nav-links-group,
+  #main-navigation.scrolled .nav-links-group {
+    display: flex !important;
+    visibility: visible !important;
+  }
+}
+
+/* ─── Anchor Target Scroll Clearance ─── */
+#quiz,
+#lasik-science,
+#education,
+#doctor-profile-section,
+#roi-section,
+#social-proof-section,
+#contact,
+#hero-mc-card,
+#lasik-journey,
+#lasik-locations-section,
+#faq {
+  scroll-margin-top: 88px !important;
 }
 
 /* 2. Section Transitions & Narrative Milestones */
@@ -5697,161 +5915,7 @@ section.hero-section-shell,
   backdrop-filter: blur(12px) !important;
 }
 
-.live-status-beacon {
-  width: 7px !important;
-  height: 7px !important;
-  border-radius: 50% !important;
-  background: #10b981 !important;
-  box-shadow: 0 0 8px #10b981 !important;
-  display: inline-block !important;
-  animation: liveStatusPulse 2.2s infinite ease-in-out !important;
-}
 
-@keyframes liveStatusPulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-    box-shadow: 0 0 8px #10b981;
-  }
-  50% {
-    transform: scale(1.35);
-    opacity: 0.55;
-    box-shadow: 0 0 16px #10b981;
-  }
-}
-
-/* 6. Hairline Edge-Faded Section Dividers */
-.editorial-section-divider {
-  width: 100% !important;
-  max-width: 1100px !important;
-  height: 1px !important;
-  margin: 0 auto !important;
-  background: radial-gradient(ellipse at center, rgba(226, 184, 87, 0.25) 0%, rgba(255, 255, 255, 0.05) 50%, transparent 80%) !important;
-  border: none !important;
-}
-
-/* ==========================================================================
-   VISUAL & INFORMATIONAL FLOW OPTIMIZATIONS
-   ========================================================================== */
-
-/* 1. Navigation Links Group & Items - Centered Between Logo and Phone */
-#main-navigation {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  z-index: 100 !important;
-}
-
-#main-navigation.scrolled {
-  max-width: 1300px !important;
-  background: rgba(8, 12, 22, 0.94) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-  backdrop-filter: blur(24px) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
-}
-
-#nav-scrim {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 84px;
-  background: linear-gradient(180deg, #030509 0%, rgba(3, 5, 9, 0.82) 55%, rgba(3, 5, 9, 0) 100%);
-  pointer-events: none;
-  z-index: 99;
-}
-
-#main-navigation #logo-container {
-  flex-shrink: 0 !important;
-  margin-right: 0 !important;
-}
-
-#main-navigation .nav-links-group,
-#main-navigation.scrolled .nav-links-group {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 6px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  flex: 0 1 auto !important;
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  pointer-events: auto !important;
-}
-
-#main-navigation #header-phone-link,
-.header-phone-link {
-  flex-shrink: 0 !important;
-  margin-left: 0 !important;
-  margin-right: 16px !important;
-}
-
-#main-navigation #header-cta-btn,
-.header-cta-btn {
-  flex-shrink: 0 !important;
-  margin-left: 0 !important;
-}
-
-#main-navigation .nav-links-group button,
-#main-navigation .nav-link-item,
-button.nav-link-item {
-  background: transparent !important;
-  border: none !important;
-  color: #cbd5e1 !important;
-  font-size: 0.88rem !important;
-  font-weight: 500 !important;
-  padding: 8px 14px !important;
-  border-radius: 8px !important;
-  cursor: pointer !important;
-  transition: all 0.25s ease !important;
-  font-family: var(--font-sans) !important;
-  white-space: nowrap !important;
-  letter-spacing: 0.2px !important;
-  min-height: auto !important;
-  min-width: auto !important;
-  box-shadow: none !important;
-  position: relative !important;
-}
-
-#main-navigation .nav-links-group button:hover,
-#main-navigation .nav-link-item:hover,
-button.nav-link-item:hover {
-  color: #e2b857 !important;
-  background: rgba(255, 255, 255, 0.06) !important;
-}
-
-/* Active Scroll-Spy Indicator */
-#main-navigation .nav-links-group button.active-nav-link,
-#main-navigation .nav-link-item.active-nav-link,
-button.nav-link-item.active-nav-link {
-  color: #e2b857 !important;
-  font-weight: 600 !important;
-  background: rgba(226, 184, 87, 0.08) !important;
-}
-
-#main-navigation .nav-links-group button.active-nav-link::after,
-#main-navigation .nav-link-item.active-nav-link::after,
-button.nav-link-item.active-nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 2px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 14px;
-  height: 2px;
-  background: #e2b857;
-  border-radius: 2px;
-  box-shadow: 0 0 8px rgba(226, 184, 87, 0.8);
-}
-
-@media (max-width: 1024px) {
-  #main-navigation .nav-links-group {
-    display: none !important;
-  }
-}
 
 .topo-status-tag.status-preop {
   background: rgba(239, 68, 68, 0.15) !important;
@@ -6784,5 +6848,18 @@ button.nav-link-item.active-nav-link::after {
   transform: translateY(-2px) !important;
   box-shadow: 0 12px 30px rgba(226, 184, 87, 0.45) !important;
 }
+
+/* ==========================================================================
+   PERFORMANCE & RENDERING OPTIMIZATION
+   content-visibility for deep below-the-fold sections
+   ========================================================================== */
+#faq,
+#contact,
+#lasik-locations-section,
+#lasik-citations {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+
 
 

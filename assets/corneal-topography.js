@@ -272,20 +272,35 @@
     var cw = 0;
     var ch = 0;
 
+    var _hasResized = false;
     function resizeCanvas() {
       if (!stageContainer || !canvas) return;
-      var rect = stageContainer.getBoundingClientRect();
-      cw = rect.width;
-      ch = rect.height;
-      if (cw === 0 || ch === 0) return;
+      var w = stageContainer.clientWidth;
+      var h = stageContainer.clientHeight;
+      if (!w || !h) {
+        var rect = stageContainer.getBoundingClientRect();
+        w = rect.width;
+        h = rect.height;
+      }
+      if (w === 0 || h === 0) return;
+      cw = w;
+      ch = h;
       canvas.width = Math.floor(cw * dpr);
       canvas.height = Math.floor(ch * dpr);
       canvas.style.width = cw + 'px';
       canvas.style.height = ch + 'px';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      _hasResized = true;
     }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(function() { if (!_hasResized) resizeCanvas(); });
+    } else {
+      setTimeout(function() { if (!_hasResized) resizeCanvas(); }, 250);
+    }
+    window.addEventListener('resize', function() {
+      if (isVisible) resizeCanvas();
+      else _hasResized = false;
+    }, { passive: true });
 
     // ─── 3D Polar Mesh Generation & Elevation Calculation ──────────────────
     var RINGS = 18;
@@ -875,20 +890,23 @@
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           isVisible = entry.isIntersecting;
-          if (isVisible && !animFrameId) {
-            animFrameId = requestAnimationFrame(render);
+          if (isVisible) {
+            if (!_hasResized || cw === 0) resizeCanvas();
+            if (!animFrameId) animFrameId = requestAnimationFrame(render);
           } else if (!isVisible && animFrameId) {
             cancelAnimationFrame(animFrameId);
             animFrameId = null;
           }
         });
-      }, { threshold: 0.1 });
+      }, { threshold: 0.05 });
       observer.observe(stageContainer);
     }
 
     // Start Rendering
     updateTelemetryHUD();
-    animFrameId = requestAnimationFrame(render);
+    if (isVisible) {
+      animFrameId = requestAnimationFrame(render);
+    }
   };
 
   // Auto-init on DOM ready

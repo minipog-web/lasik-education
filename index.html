@@ -675,10 +675,10 @@
     <link rel="prefetch" as="image" href="./assets/lasik_24hr_recovery.webp" type="image/webp">
     <link rel="prefetch" as="image" href="./assets/hd_night_highway_scene.webp?v=6" type="image/webp">
     <link rel="stylesheet" href="./assets/index-DhXpI4H_.css?v=29">
-    <link rel="stylesheet" href="./assets/custom-styles.css?v=123">
-    <script src="./assets/index-nb1vded4_v2.js?v=60" defer></script>
-    <script src="./assets/vision-simulator.min.js?v=13" defer></script>
-    <script src="./assets/corneal-topography.js?v=13" defer></script>
+    <link rel="stylesheet" href="./assets/custom-styles.css?v=134">
+    <script src="./assets/index-nb1vded4_v2.js?v=64" defer></script>
+    <script src="./assets/vision-simulator.min.js?v=14" defer></script>
+    <script src="./assets/corneal-topography.js?v=14" defer></script>
     <!-- Comprehensive GTM, GA4, & Google Ads Event Tracking Architecture -->
     <script src="./assets/telemetry.js?v=2" defer></script>
   </head>
@@ -711,10 +711,9 @@
         <div class="container hero-container">
           <div class="hero-left">
             <div class="editorial-eyebrow animate-fade-up delay-1" id="hero-kicker-eyebrow">
-              <span class="live-status-beacon" aria-hidden="true"></span>
-              <span id="hero-kicker-text">Blade-Free Custom Wavefront LASIK &bull; New Jersey</span>
+              <span id="hero-kicker-text">CUSTOMVUE® WAVEFRONT-GUIDED LASIK &bull; MARANO EYE CARE NJ</span>
             </div>
-            <h1 class="animate-fade-up delay-2 hero-pop-title hero-h1-shell" aria-label="Custom LASIK in New Jersey – Goodbye Lenses, Hello High-Definition Freedom"><span class="hero-pop-primary">Goodbye Lenses.</span> <span class="hero-pop-accent"><span class="hero-pop-line">Hello High-Definition</span> <br><span class="hero-pop-line"><span class="editorial-italic-accent">Freedom.</span></span></span></h1>
+            <h1 class="animate-fade-up delay-2 hero-pop-title hero-h1-shell" aria-label="Custom LASIK in New Jersey – Goodbye Lenses, Hello High-Definition Freedom"><span class="hero-pop-primary">Goodbye Lenses.</span> <span class="hero-pop-accent"><span class="hero-pop-line">Hello High-Definition <span class="editorial-italic-accent">Freedom.</span></span></span></h1>
             <div class="hero-body-content animate-fade-up delay-3">
               <h2 class="hero-subtitle">
                 Sharper than your best prescription. Zero lenses required.
@@ -727,7 +726,7 @@
                 Consultations in <strong>Livingston, Denville,</strong> and <strong>Newark</strong>; all surgery at our flagship <strong>Livingston</strong> center.
               </p>
               <p class="hero-proof-text">
-                <span>Thousands of LASIK Procedures<a href="#lasik-citations" class="citation-sup" aria-label="Reference 13">[13]</a></span>
+                <span>Thousands of Successful LASIK Procedures<a href="#lasik-citations" class="citation-sup" aria-label="Reference 13">[13]</a></span>
                 <span class="hero-proof-dot">·</span>
                 <span>30+ Years of LASIK Leadership</span>
                 <span class="hero-proof-dot">·</span>
@@ -846,6 +845,7 @@
       { text: 'Over 98% of patients achieve 20/20 vision', refs: [3, 11] },
       { text: '99%+ patient satisfaction rate', refs: [3, 11] },
       { text: '98% 20/20 precision', refs: [3, 11] },
+      { text: 'Thousands of Successful LASIK Procedures', refs: [13] },
       { text: 'Thousands of LASIK Procedures', refs: [13] },
       { text: 'Thousands of LASIK procedures', refs: [13] },
       { text: 'thousands of LASIK procedures', refs: [13] },
@@ -894,6 +894,7 @@
     }
 
     function injectInto(rootEl) {
+      if (!rootEl || rootEl.getAttribute('data-citations-done') === 'true') return;
       var walker = document.createTreeWalker(rootEl, NodeFilter.SHOW_TEXT, null, false);
       var nodes = [];
       var n;
@@ -947,6 +948,7 @@
           break; // Process one match per text node. Subsequent mutations will handle others if any.
         }
       });
+      rootEl.setAttribute('data-citations-done', 'true');
     }
 
     // ─── References Footer ───────────────────────────────────────────────────
@@ -1352,15 +1354,55 @@
         var tabWrap = document.createElement('div');
         tabWrap.id = 'surgeon-tab-wrapper';
         tabWrap.className = 'surgeon-tab-wrapper animate-fade-up';
+        tabWrap.setAttribute('role', 'region');
+        tabWrap.setAttribute('aria-label', 'Surgeon Selector');
         tabWrap.innerHTML = 
-          '<div class="surgeon-tab-bar">' +
-            '<button class="surgeon-tab-btn active-surgeon-tab" id="surgeon-tab-btn-marano" type="button">' +
-              '<span>Dr. Matthew J. Marano, Jr., MD</span>' +
-              '<span class="surgeon-tab-badge">Founding Pioneer</span>' +
+          '<div class="surgeon-selector-header">' +
+            '<div class="surgeon-selector-kicker">' +
+              '<span class="kicker-sparkle">✦</span> SELECT A SURGEON (2 AVAILABLE) <span class="kicker-sparkle">✦</span>' +
+            '</div>' +
+            '<p class="surgeon-selector-hint">' +
+              'Select either provider to review individual surgical credentials, training background, and clinical outcomes:' +
+            '</p>' +
+          '</div>' +
+          '<div class="surgeon-tab-bar" role="tablist" aria-label="Surgeon Profiles">' +
+            '<button class="surgeon-tab-btn surgeon-tab-card active-surgeon-tab" id="surgeon-tab-btn-marano" type="button" role="tab" aria-selected="true" aria-controls="marano-profile-panel" tabindex="0">' +
+              '<div class="surgeon-card-top-row">' +
+                '<span class="surgeon-card-role-tag">' +
+                  '<span class="provider-role-text">Founding Pioneer</span>' +
+                '</span>' +
+                '<div class="surgeon-tab-action">' +
+                  '<span class="surgeon-tab-action-pill active-pill"><span class="status-dot"></span> Currently Viewing</span>' +
+                '</div>' +
+              '</div>' +
+              '<div class="surgeon-card-main-row">' +
+                '<div class="surgeon-tab-avatar-wrap">' +
+                  '<img src="./assets/dr-marano.jpg" alt="Dr. Matthew Marano, MD" class="surgeon-tab-avatar" width="64" height="64" loading="eager" />' +
+                '</div>' +
+                '<div class="surgeon-tab-info">' +
+                  '<span class="surgeon-tab-name">Dr. Matthew Marano, MD</span>' +
+                  '<span class="surgeon-tab-sub">Founder &amp; Medical Director &bull; 40,000+ Surgeries</span>' +
+                '</div>' +
+              '</div>' +
             '</button>' +
-            '<button class="surgeon-tab-btn" id="surgeon-tab-btn-raouf" type="button">' +
-              '<span>Dr. Sherief Raouf, MD</span>' +
-              '<span class="surgeon-tab-badge">Cornea Specialist</span>' +
+            '<button class="surgeon-tab-btn surgeon-tab-card" id="surgeon-tab-btn-raouf" type="button" role="tab" aria-selected="false" aria-controls="raouf-profile-panel" tabindex="0">' +
+              '<div class="surgeon-card-top-row">' +
+                '<span class="surgeon-card-role-tag">' +
+                  '<span class="provider-role-text">Cornea Specialist</span>' +
+                '</span>' +
+                '<div class="surgeon-tab-action">' +
+                  '<span class="surgeon-tab-action-pill inactive-pill">Click to View Bio &rarr;</span>' +
+                '</div>' +
+              '</div>' +
+              '<div class="surgeon-card-main-row">' +
+                '<div class="surgeon-tab-avatar-wrap">' +
+                  '<img src="./assets/dr-raouf.jpg" alt="Dr. Sherief Raouf, MD" class="surgeon-tab-avatar" width="64" height="64" loading="eager" />' +
+                '</div>' +
+                '<div class="surgeon-tab-info">' +
+                  '<span class="surgeon-tab-name">Dr. Sherief Raouf, MD</span>' +
+                  '<span class="surgeon-tab-sub">Cornea Fellow &bull; Manhattan Eye, Ear &amp; Throat (MEETH)</span>' +
+                '</div>' +
+              '</div>' +
             '</button>' +
           '</div>';
         container.insertBefore(tabWrap, maranoOuter);
@@ -1371,20 +1413,38 @@
         function toggleSurgeon(s) {
           var pM = document.getElementById('marano-profile-panel');
           var pR = document.getElementById('raouf-profile-panel');
+          var actionM = btnM ? btnM.querySelector('.surgeon-tab-action') : null;
+          var actionR = btnR ? btnR.querySelector('.surgeon-tab-action') : null;
           if (s === 'marano') {
             if (pM) pM.style.display = 'block';
             if (pR) pR.style.display = 'none';
-            btnM.classList.add('active-surgeon-tab');
-            btnR.classList.remove('active-surgeon-tab');
+            if (btnM) {
+              btnM.classList.add('active-surgeon-tab');
+              btnM.setAttribute('aria-selected', 'true');
+            }
+            if (btnR) {
+              btnR.classList.remove('active-surgeon-tab');
+              btnR.setAttribute('aria-selected', 'false');
+            }
+            if (actionM) actionM.innerHTML = '<span class="surgeon-tab-action-pill active-pill"><span class="status-dot"></span> Currently Viewing</span>';
+            if (actionR) actionR.innerHTML = '<span class="surgeon-tab-action-pill inactive-pill">Click to View Bio &rarr;</span>';
           } else {
             if (pM) pM.style.display = 'none';
             if (pR) pR.style.display = 'block';
-            btnR.classList.add('active-surgeon-tab');
-            btnM.classList.remove('active-surgeon-tab');
+            if (btnR) {
+              btnR.classList.add('active-surgeon-tab');
+              btnR.setAttribute('aria-selected', 'true');
+            }
+            if (btnM) {
+              btnM.classList.remove('active-surgeon-tab');
+              btnM.setAttribute('aria-selected', 'false');
+            }
+            if (actionM) actionM.innerHTML = '<span class="surgeon-tab-action-pill inactive-pill">Click to View Bio &rarr;</span>';
+            if (actionR) actionR.innerHTML = '<span class="surgeon-tab-action-pill active-pill"><span class="status-dot"></span> Currently Viewing</span>';
           }
         }
-        btnM.addEventListener('click', function() { toggleSurgeon('marano'); });
-        btnR.addEventListener('click', function() { toggleSurgeon('raouf'); });
+        if (btnM) btnM.addEventListener('click', function() { toggleSurgeon('marano'); });
+        if (btnR) btnR.addEventListener('click', function() { toggleSurgeon('raouf'); });
       }
 
       // 2. Format Dr. Marano\'s Card frame & inner glass-panel identically to Dr. Raouf
@@ -1912,10 +1972,8 @@
       });
 
       selectStage(0);
-      updateTrackBounds();
+      requestAnimationFrame(updateTrackBounds);
       window.addEventListener('resize', updateTrackBounds, { passive: true });
-      setTimeout(updateTrackBounds, 100);
-      setTimeout(updateTrackBounds, 500);
     }
 
     // ─── P1: Financial & ROI Master Calculator ───────────────────────────────
@@ -2405,10 +2463,7 @@
 
       // 2. Ensure all sections are fully expanded, visible and unconstrained
       if (scienceSec) scienceSec.style.display = 'block';
-      if (topoSec) {
-        topoSec.style.display = 'block';
-        window.dispatchEvent(new Event('resize'));
-      }
+      if (topoSec) topoSec.style.display = 'block';
       if (journeySec) journeySec.style.display = 'block';
       if (timelineSec) timelineSec.style.display = 'block';
       if (simSec) simSec.style.display = 'block';
@@ -2569,7 +2624,7 @@
       // 4. Ensure logo container anchors have descriptive aria-labels
       var logoLinks = document.querySelectorAll('#logo-container, a[href*="maranoeyecare.com"]');
       logoLinks.forEach(function(lnk) {
-        if (!lnk.innerText.trim() && !lnk.hasAttribute('aria-label')) {
+        if (!lnk.textContent.trim() && !lnk.hasAttribute('aria-label')) {
           lnk.setAttribute('aria-label', 'Marano Eye Care Homepage');
         }
       });
@@ -2756,17 +2811,17 @@
       if (staticH2) {
         staticH2.classList.add('hero-pop-title');
         staticH2.setAttribute('aria-label', 'Custom LASIK in New Jersey – Goodbye Lenses, Hello High-Definition Freedom');
-        staticH2.innerHTML = '<span class="hero-pop-primary">Goodbye Lenses.</span> <span class="hero-pop-accent"><span class="hero-pop-line">Hello High-Definition</span> <br><span class="hero-pop-line"><span class="editorial-italic-accent">Freedom.</span></span></span>';
+        staticH2.innerHTML = '<span class="hero-pop-primary">Goodbye Lenses.</span> <span class="hero-pop-accent"><span class="hero-pop-line">Hello High-Definition <span class="editorial-italic-accent">Freedom.</span></span></span>';
       }
 
       var heroTitles = document.querySelectorAll('h1, h2, .hero-serif-title, .hero-display-title');
       heroTitles.forEach(function(el) {
         if (el.classList.contains('sr-only') || el.classList.contains('hero-subtitle')) return;
-        var text = (el.innerText || el.textContent || '').trim();
+        var text = (el.textContent || '').trim();
         if (text.indexOf('Custom Wavefront-Guided LASIK') !== -1 || text.indexOf('Experience 20/15') !== -1 || text.indexOf('Your Eyes Are') !== -1 || text.indexOf('Unfair Advantage') !== -1 || text.indexOf('Clear, Natural Vision') !== -1 || text.indexOf('See Beyond') !== -1) {
           el.classList.add('hero-pop-title');
           el.setAttribute('aria-label', 'Custom LASIK in New Jersey – Goodbye Lenses, Hello High-Definition Freedom');
-          el.innerHTML = '<span class="hero-pop-primary">Goodbye Lenses.</span> <span class="hero-pop-accent"><span class="hero-pop-line">Hello High-Definition</span> <br><span class="hero-pop-line"><span class="editorial-italic-accent">Freedom.</span></span></span>';
+          el.innerHTML = '<span class="hero-pop-primary">Goodbye Lenses.</span> <span class="hero-pop-accent"><span class="hero-pop-line">Hello High-Definition <span class="editorial-italic-accent">Freedom.</span></span></span>';
         }
       });
 
@@ -2806,7 +2861,7 @@
               'Consultations in <strong>Livingston, Denville,</strong> and <strong>Newark</strong>; all surgery at our flagship <strong>Livingston</strong> center.' +
             '</p>' +
             '<p class="hero-proof-text">' +
-              '<span>Thousands of LASIK Procedures<a href="#lasik-citations" class="citation-sup" aria-label="Reference 13">[13]</a></span>' +
+              '<span>Thousands of Successful LASIK Procedures<a href="#lasik-citations" class="citation-sup" aria-label="Reference 13">[13]</a></span>' +
               '<span class="hero-proof-dot">·</span>' +
               '<span>30+ Years of LASIK Leadership</span>' +
               '<span class="hero-proof-dot">·</span>' +
@@ -2961,7 +3016,7 @@
 
       if (params.city) {
         if (heroKicker) {
-          heroKicker.innerHTML = 'Blade-Free Custom Wavefront LASIK &bull; ' + params.city + ', NJ';
+          heroKicker.innerHTML = 'CUSTOMVUE® WAVEFRONT-GUIDED LASIK &bull; ' + params.city + ', NJ';
         }
         if (heroSubtitle && !params.headline) {
           heroSubtitle.innerHTML = 'Sharper than your best prescription. Zero lenses required <span class="editorial-italic-accent">in ' + params.city + ', NJ</span>.';
@@ -4331,6 +4386,15 @@
       }
     }
 
+    var _settleTimer = null;
+    function checkFullyAssembled() {
+      return document.getElementById('lasik-corneal-topography-section') &&
+             document.getElementById('lasik-vision-simulator-section') &&
+             document.getElementById('hero-mc-card') &&
+             document.getElementById('adaptive-quiz-container') &&
+             document.getElementById('lasik-citations');
+    }
+
     function startEnhancementObserver() {
       buildFooter();
       initHeroMicroCommitmentFlow();
@@ -4340,6 +4404,15 @@
         if (target) {
           observer = new MutationObserver(function() {
             scheduleSweep();
+            if (checkFullyAssembled()) {
+              if (_settleTimer) clearTimeout(_settleTimer);
+              _settleTimer = setTimeout(function() {
+                if (observer) {
+                  observer.disconnect();
+                  observer = null;
+                }
+              }, 600);
+            }
           });
           observer.observe(target, {
             childList: true,
@@ -4357,6 +4430,12 @@
 
     window.addEventListener('load', function() {
       startEnhancementObserver();
+      setTimeout(function() {
+        if (observer) {
+          observer.disconnect();
+          observer = null;
+        }
+      }, 1200);
     });
   </script>
   <!-- CallRail Dynamic Number Insertion (DNI) -->

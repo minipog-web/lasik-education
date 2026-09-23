@@ -675,10 +675,10 @@
     <link rel="prefetch" as="image" href="./assets/lasik_24hr_recovery.webp" type="image/webp">
     <link rel="prefetch" as="image" href="./assets/hd_night_highway_scene.webp?v=6" type="image/webp">
     <link rel="stylesheet" href="./assets/index-DhXpI4H_.css?v=29">
-    <link rel="stylesheet" href="./assets/custom-styles.css?v=134">
+    <link rel="stylesheet" href="./assets/custom-styles.css?v=135">
     <script src="./assets/index-nb1vded4_v2.js?v=64" defer></script>
     <script src="./assets/vision-simulator.min.js?v=14" defer></script>
-    <script src="./assets/corneal-topography.js?v=14" defer></script>
+    <script src="./assets/corneal-topography.js?v=15" defer></script>
     <!-- Comprehensive GTM, GA4, & Google Ads Event Tracking Architecture -->
     <script src="./assets/telemetry.js?v=2" defer></script>
   </head>
@@ -1357,14 +1357,6 @@
         tabWrap.setAttribute('role', 'region');
         tabWrap.setAttribute('aria-label', 'Surgeon Selector');
         tabWrap.innerHTML = 
-          '<div class="surgeon-selector-header">' +
-            '<div class="surgeon-selector-kicker">' +
-              '<span class="kicker-sparkle">✦</span> SELECT A SURGEON (2 AVAILABLE) <span class="kicker-sparkle">✦</span>' +
-            '</div>' +
-            '<p class="surgeon-selector-hint">' +
-              'Select either provider to review individual surgical credentials, training background, and clinical outcomes:' +
-            '</p>' +
-          '</div>' +
           '<div class="surgeon-tab-bar" role="tablist" aria-label="Surgeon Profiles">' +
             '<button class="surgeon-tab-btn surgeon-tab-card active-surgeon-tab" id="surgeon-tab-btn-marano" type="button" role="tab" aria-selected="true" aria-controls="marano-profile-panel" tabindex="0">' +
               '<div class="surgeon-card-top-row">' +
@@ -1496,7 +1488,7 @@
               '</div>' +
             '</div>' +
             '<div id="eeat-credentials" style="margin-top: 20px; padding: 24px; background: rgba(226, 184, 87, 0.03); border: 1px solid rgba(226, 184, 87, 0.15); border-radius: 16px; font-family: var(--font-sans); text-align: left !important; box-sizing: border-box;">' +
-              '<h3 style="font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; color: #e2b857; margin-bottom: 14px; font-family: inherit; font-weight: 700; text-align: left !important;">Surgeon Accreditations &amp; Professional Standings</h3>' +
+              '<h3 class="surgeon-credentials-heading" style="font-size: 0.82rem; letter-spacing: 1.5px; text-transform: uppercase; color: #e2b857; margin-bottom: 14px; font-family: inherit; font-weight: 700; text-align: left !important;">Surgeon Accreditations &amp; Professional Standings</h3>' +
               '<ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.5; text-align: left !important;">' +
                 '<li style="display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: baseline; text-align: left !important;"><span style="color: #e2b857; font-size: 0.75rem;">✦</span> <span><strong>NJ Laser Vision Pioneer:</strong> One of New Jersey\'s foundational refractive pioneers whose clinical work directly contributed to the advancement of modern LASIK technology.</span></li>' +
                 '<li style="display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: baseline; text-align: left !important;"><span style="color: #e2b857; font-size: 0.75rem;">✦</span> <span><strong>Peer Training &amp; Complicated Cases:</strong> Actively trained and proctored fellow ophthalmologists on using LASIK to successfully treat complicated, challenging refractive cases.</span></li>' +
@@ -1586,7 +1578,7 @@
                   '</div>' +
                 '</div>' +
                 '<div style="margin-top: 20px; padding: 24px; background: rgba(226, 184, 87, 0.03); border: 1px solid rgba(226, 184, 87, 0.15); border-radius: 16px; font-family: var(--font-sans); text-align: left !important; box-sizing: border-box;">' +
-                  '<h3 style="font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; color: #e2b857; margin-bottom: 14px; font-family: inherit; font-weight: 700; text-align: left !important;">Surgeon Accreditations &amp; Professional Standings</h3>' +
+                  '<h3 class="surgeon-credentials-heading" style="font-size: 0.82rem; letter-spacing: 1.5px; text-transform: uppercase; color: #e2b857; margin-bottom: 14px; font-family: inherit; font-weight: 700; text-align: left !important;">Surgeon Accreditations &amp; Professional Standings</h3>' +
                   '<ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.5; text-align: left !important;">' +
                     '<li style="display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: baseline; text-align: left !important;"><span style="color: #e2b857; font-size: 0.75rem;">✦</span> <span><strong>Board Certified:</strong> American Board of Ophthalmology</span></li>' +
                     '<li style="display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: baseline; text-align: left !important;"><span style="color: #e2b857; font-size: 0.75rem;">✦</span> <span><strong>Subspecialty Fellowship:</strong> Cornea, External Ocular Disease &amp; Refractive Surgery</span></li>' +
@@ -2507,7 +2499,7 @@
       if (navGroup.getAttribute('data-enhanced') !== 'true') {
         navGroup.setAttribute('data-enhanced', 'true');
         navGroup.innerHTML = 
-          '<button class="nav-link-item active-nav-link" data-target="quiz">Candidacy</button>' +
+          '<button class="nav-link-item" data-target="quiz">Candidacy</button>' +
           '<button class="nav-link-item" data-target="lasik-science">Technology</button>' +
           '<button class="nav-link-item" data-target="doctor-profile-section">Surgeons</button>' +
           '<button class="nav-link-item" data-target="roi-section">Cost &amp; ROI</button>' +
@@ -2525,8 +2517,8 @@
         });
       }
 
-      // 2. Scroll-Spy with IntersectionObserver
-      if (!window.__navScrollSpyInit && 'IntersectionObserver' in window) {
+      // 2. Scroll-Spy
+      if (!window.__navScrollSpyInit) {
         window.__navScrollSpyInit = true;
         var sectionTargets = [
           { id: 'quiz', navTarget: 'quiz' },
@@ -2537,32 +2529,53 @@
           { id: 'social-proof-section', navTarget: 'social-proof-section' }
         ];
 
-        var navButtons = navGroup.querySelectorAll('.nav-link-item');
+        var ticking = false;
+        function updateActiveNav() {
+          var navButtons = navGroup.querySelectorAll('.nav-link-item');
+          if (!navButtons.length) return;
 
-        var observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              var activeId = entry.target.id;
-              navButtons.forEach(function(btn) {
-                var btnTarget = btn.getAttribute('data-target');
-                if (btnTarget === activeId || 
-                   ((activeId === 'education' || activeId === 'lasik-science') && (btnTarget === 'lasik-science' || btnTarget === 'education'))) {
-                  btn.classList.add('active-nav-link');
-                } else {
-                  btn.classList.remove('active-nav-link');
-                }
-              });
+          if (window.scrollY < 200) {
+            navButtons.forEach(function(btn) {
+              btn.classList.remove('active-nav-link');
+            });
+            return;
+          }
+
+          var scrollPos = window.scrollY + 160;
+          var currentSection = null;
+
+          sectionTargets.forEach(function(st) {
+            var el = document.getElementById(st.id);
+            if (el) {
+              var top = el.getBoundingClientRect().top + window.scrollY;
+              var height = el.offsetHeight;
+              if (scrollPos >= top && scrollPos < top + height) {
+                currentSection = st.navTarget;
+              }
             }
           });
-        }, {
-          rootMargin: '-20% 0px -60% 0px',
-          threshold: 0.1
-        });
 
-        sectionTargets.forEach(function(st) {
-          var el = document.getElementById(st.id);
-          if (el) observer.observe(el);
-        });
+          navButtons.forEach(function(btn) {
+            var target = btn.getAttribute('data-target');
+            if (currentSection && target === currentSection) {
+              btn.classList.add('active-nav-link');
+            } else {
+              btn.classList.remove('active-nav-link');
+            }
+          });
+        }
+
+        window.addEventListener('scroll', function() {
+          if (!ticking) {
+            window.requestAnimationFrame(function() {
+              updateActiveNav();
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+
+        updateActiveNav();
       }
     }
 
@@ -2892,7 +2905,7 @@
       });
 
       // Enforce Centering & Sizing on Dr. Marano Bio Section Heading
-      var allBioHeadings = document.querySelectorAll('.bio-heading, .marano-profile-grid h2, .marano-profile-grid h3');
+      var allBioHeadings = document.querySelectorAll('.bio-heading, .marano-profile-grid h2');
       allBioHeadings.forEach(function(h) {
         h.style.setProperty('text-align', 'center', 'important');
         h.style.setProperty('font-size', 'clamp(1.6rem, 3.2vw, 2.3rem)', 'important');

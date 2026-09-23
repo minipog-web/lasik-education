@@ -228,7 +228,7 @@
             <!-- Diagnostic CTA (Livingston Facility Exclusivity) -->
             <div class="topo-hud-cta-box">
               <button type="button" class="btn btn-primary topo-cta-btn" onclick="scrollToConsultationForm()">
-                <span>Schedule Free 3D Wavefront Diagnostic Scan →</span>
+                <span>Schedule Free 3D Wavefront Scan →</span>
               </button>
               <span class="topo-cta-reassurance">100% Free Diagnostic Scan • Exclusively at our Livingston, NJ Suite • $0 Obligation</span>
             </div>

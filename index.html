@@ -675,9 +675,9 @@
     <link rel="prefetch" as="image" href="./assets/lasik_24hr_recovery.webp" type="image/webp">
     <link rel="prefetch" as="image" href="./assets/hd_night_highway_scene.webp?v=6" type="image/webp">
     <link rel="stylesheet" href="./assets/index-DhXpI4H_.css?v=29">
-    <link rel="stylesheet" href="./assets/custom-styles.css?v=135">
+    <link rel="stylesheet" href="./assets/custom-styles.css?v=136">
     <script src="./assets/index-nb1vded4_v2.js?v=64" defer></script>
-    <script src="./assets/vision-simulator.min.js?v=14" defer></script>
+    <script src="./assets/vision-simulator.min.js?v=15" defer></script>
     <script src="./assets/corneal-topography.js?v=15" defer></script>
     <!-- Comprehensive GTM, GA4, & Google Ads Event Tracking Architecture -->
     <script src="./assets/telemetry.js?v=2" defer></script>
@@ -1667,9 +1667,16 @@
           <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #10b981;">✦</span> <span><strong>Sweat &amp; Weather Immune:</strong> No fogged lenses in cold weather or grit trapped under contacts.</span></li>
           <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #00d4ff;">✦</span> <span><strong>Rapid 24-Hour Recovery:</strong> Return to running, gym workouts, and outdoor routines the next morning.</span></li>
         </ul>
-        <button onclick="scrollToElement('quiz')" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
-          Check Your LASIK Candidacy
-        </button>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <button onclick="scrollToElement('contact')" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
+            <span>Schedule Free Diagnostic Scan</span>
+            <span style="margin-left: 8px;">→</span>
+          </button>
+          <button onclick="scrollToElement('lasik-science')" class="btn btn-secondary" style="width: 100%; padding: 10px 20px; font-size: 0.85rem; justify-content: center; display: flex; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); color: #cbd5e1; cursor: pointer; border-radius: 8px;">
+            <span>Explore Dual-Laser Biophysics</span>
+            <span style="margin-left: 8px; color: #e2b857;">↓</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -1694,9 +1701,16 @@
           <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #10b981;">✦</span> <span><strong>Heightened Low-Light Contrast:</strong> Spot lane markers, highway exits, and sudden hazards instantly.</span></li>
           <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #00d4ff;">✦</span> <span><strong>Stress-Free Evening Commutes:</strong> Eliminate squinting and tension during night and rainy drives.</span></li>
         </ul>
-        <button onclick="scrollToElement('quiz')" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
-          Check Your LASIK Candidacy
-        </button>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <button onclick="scrollToElement('contact')" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
+            <span>Schedule Free Diagnostic Scan</span>
+            <span style="margin-left: 8px;">→</span>
+          </button>
+          <button onclick="scrollToElement('lasik-science')" class="btn btn-secondary" style="width: 100%; padding: 10px 20px; font-size: 0.85rem; justify-content: center; display: flex; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); color: #cbd5e1; cursor: pointer; border-radius: 8px;">
+            <span>Explore Dual-Laser Biophysics</span>
+            <span style="margin-left: 8px; color: #e2b857;">↓</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -1721,9 +1735,16 @@
           <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #10b981;">✦</span> <span><strong>Relief from Contact Lens Burn:</strong> Preserve natural tear film without afternoon redness or artificial tears.</span></li>
           <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #00d4ff;">✦</span> <span><strong>Seamless Multi-Monitor Workflow:</strong> Transition effortlessly between close laptop screens and in-person discussions.</span></li>
         </ul>
-        <button onclick="scrollToElement('quiz')" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
-          Check Your LASIK Candidacy
-        </button>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <button onclick="scrollToElement('contact')" class="btn btn-primary" style="width: 100%; padding: 12px 24px; font-size: 0.9rem; justify-content: center; display: flex; align-items: center;">
+            <span>Schedule Free Diagnostic Scan</span>
+            <span style="margin-left: 8px;">→</span>
+          </button>
+          <button onclick="scrollToElement('lasik-science')" class="btn btn-secondary" style="width: 100%; padding: 10px 20px; font-size: 0.85rem; justify-content: center; display: flex; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); color: #cbd5e1; cursor: pointer; border-radius: 8px;">
+            <span>Explore Dual-Laser Biophysics</span>
+            <span style="margin-left: 8px; color: #e2b857;">↓</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -1807,6 +1828,7 @@
 
         // Load default tab
         switchTab('active');
+        window.switchLifestyleTab = switchTab;
       }
     }
 
@@ -1887,6 +1909,12 @@
             '<span id="scrubber-metric-label" style="font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;color:#94a3b8;display:block;margin-bottom:6px;">' + stages[0].metricLabel + '</span>' +
             '<div id="scrubber-acuity" style="font-family:var(--font-sans);font-size:1.3rem;font-weight:800;color:#e2b857;">' + stages[0].clarity + '</div>' +
           '</div>' +
+        '</div>' +
+        '<div style="text-align:center;margin-top:28px;">' +
+          '<a href="javascript:void(0)" onclick="scrollToElement(\'lasik-vision-simulator-section\')" style="display:inline-flex;align-items:center;gap:8px;font-size:0.85rem;color:#00d4ff;text-decoration:none;font-weight:600;padding:10px 22px;background:rgba(0,212,255,0.05);border:1px solid rgba(0,212,255,0.22);border-radius:100px;transition:all 0.3s ease;">' +
+            '<span>Next: Compare Standard 20/20 vs. CustomVue® 20/15 HD in the Simulator</span>' +
+            '<span style="color:#00d4ff;">↓</span>' +
+          '</a>' +
         '</div>' +
       '</div>';
 
@@ -3520,6 +3548,18 @@
 
       function renderFinalReport() {
         var lifestyle = userAnswers[2] || 'Daily Visual Freedom';
+        var targetTab = 'active';
+        if (lifestyle.indexOf('Night') !== -1) {
+          targetTab = 'night';
+        } else if (lifestyle.indexOf('Screen') !== -1 || lifestyle.indexOf('Coding') !== -1) {
+          targetTab = 'creative';
+        } else {
+          targetTab = 'active';
+        }
+        if (typeof window.switchLifestyleTab === 'function') {
+          window.switchLifestyleTab(targetTab);
+        }
+
         var html = '<div style="text-align:center;">' +
           '<span style="display:inline-block;padding:4px 14px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:#10b981;font-size:0.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border-radius:100px;margin-bottom:14px;">Candidacy Match Complete</span>' +
           '<h3 style="font-family:var(--font-serif);font-size:2rem;color:#fff;margin-bottom:8px;font-weight:700;">Strong Candidate Profile</h3>' +
@@ -3564,7 +3604,7 @@
             '</div>' +
             '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;font-size:0.78rem;color:#94a3b8;flex-wrap:wrap;gap:8px;">' +
               '<span>✓ 100% Free Diagnostic Scan • Zero Obligation</span>' +
-              '<a href="javascript:void(0)" onclick="scrollToElement(\'education\')" style="color:#e2b857;text-decoration:none;font-weight:600;">Explore Technology &amp; Surgeons Below ↓</a>' +
+              '<a href="javascript:void(0)" onclick="scrollToElement(\'eeat-lifestyle-section\')" style="color:#e2b857;text-decoration:none;font-weight:600;">Explore Your Daily Life Impact &amp; Technology Below ↓</a>' +
             '</div>' +
           '</div>' +
         '</div>';
@@ -3695,6 +3735,20 @@
           answerInner.style.setProperty('box-sizing', 'border-box', 'important');
         }
       });
+
+      if (faqSection && !document.getElementById('faq-consultation-bridge')) {
+        var bridgeCard = document.createElement('div');
+        bridgeCard.id = 'faq-consultation-bridge';
+        bridgeCard.style.cssText = 'max-width: 800px; margin: 48px auto 0 auto; padding: 32px 28px; background: rgba(255, 255, 255, 0.015); border: 1px solid rgba(226, 184, 87, 0.22); border-radius: 20px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.5);';
+        bridgeCard.innerHTML = 
+          '<h4 style="font-family: var(--font-serif); font-size: 1.45rem; font-weight: 700; color: #ffffff; margin-bottom: 8px;">Have a Question About Your Specific Corneal Candidacy?</h4>' +
+          '<p style="font-size: 0.92rem; color: #cbd5e1; max-width: 580px; margin: 0 auto 20px auto; line-height: 1.6;">Dr. Marano and Dr. Raouf conduct high-resolution WaveScan® 3D diagnostic mapping during every complimentary consultation to evaluate your cornea and answer all questions directly.</p>' +
+          '<button onclick="scrollToElement(\'contact\')" class="btn btn-primary" style="padding: 13px 30px; font-size: 0.92rem; display: inline-flex; align-items: center; gap: 8px; margin: 0 auto; cursor: pointer;">' +
+            '<span>Schedule Your Free Diagnostic Scan</span>' +
+            '<span style="color: #000;">→</span>' +
+          '</button>';
+        faqSection.appendChild(bridgeCard);
+      }
     }
 
     function injectCornealTopographySection() {

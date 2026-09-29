@@ -12,15 +12,17 @@ The DOM flow was restructured to lead the prospective patient through an intuiti
 
 | Order | Section ID | Purpose & Role | User Mindset |
 |---|---|---|---|
-| **1** | `header` (Hero) | **Hook:** "Goodbye Lenses. Hello High-Definition Freedom." 20/15 clarity, 10 painless seconds per eye. | Curiosity & Aspiration |
-| **2** | `#quiz` | **Self-Test:** 60-second micro-commitment self-test immediately below the hero. | "Am I eligible?" |
-| **3** | `#eeat-lifestyle-section` | **Transformation:** Sensory freedom across athletics, morning wake-up, and screen work. | Emotion & Desire |
-| **4** | `#education` (`#lasik-science` + `#lasik-vision-simulator-section`) | **Mechanism & Proof:** Wavefront 3D iris tracking, blade-free flap, interactive before/after vision simulator, and 24-hr recovery timeline. | "How does it work?" |
-| **5** | `#doctor-profile-section` | **Surgical Authority:** Dr. Matthew J. Marano, Jr., M.D. (40,000+ procedures, NJ pioneer) & Dr. Sherief Raouf, M.D. (Corneal specialist). | "Who will touch my eyes?" |
-| **6** | `#roi-section` | **Economics:** Lifetime cost comparison ($25k+ contact lens costs vs. one-time LASIK investment + HSA/FSA savings). | "Can I afford this?" |
-| **7** | `#social-proof-section` | **Validation:** 14 verified patient outcomes with category filter tabs and compact pacing. | "Did people like me succeed?" |
-| **8** | `#faq` | **Objection Preemption:** Direct reassurance addressing blinking, pain, night driving, and flap stability. | "What about risks?" |
-| **9** | `#contact` & `#lasik-locations-section` | **Action & Accessibility:** Free Consultation Booking Suite and 3 physical NJ offices (Livingston, Denville, Newark). | "Ready to schedule." |
+| **1** | `header` (Hero) | **Hook & Promise:** "Goodbye Lenses. Hello High-Definition Freedom." 20/15 clarity, 10 painless seconds per eye, and zero-obligation consultation card. | Curiosity & Aspiration |
+| **2** | `#quiz` | **Interactive Self-Discovery:** 60-second micro-commitment candidacy test immediately below hero. | "Am I eligible?" |
+| **3** | `#lasik-vision-simulator-section` | **Clarity Visualization:** Interactive night-driving split slider comparing blurry vs. standard 20/20 vs. 20/15 HD clarity right after self-testing. | "What will I actually see?" |
+| **4** | `#eeat-lifestyle-section` | **Lifestyle Resonance:** Connects visual freedom to sports, rain/night commutes, and screen work without dry lenses. | "How will my daily life change?" |
+| **5** | `#doctor-profile-section` | **Surgeon Authority:** Dr. Matthew J. Marano (30+ yrs NJ pioneer, 40,000+ surgeries) & Dr. Sherief Raouf (UIC Cornea Fellowship). | "Who is operating on my eyes?" |
+| **6** | `#social-proof-section` | **Social Validation:** 680+ 5-star Google reviews, video proof, and verified patient stories validating the surgeons. | "Did patients like me succeed?" |
+| **7** | `#education` | **Clinical Science Suite:** Optical biophysics, 3D corneal topography, 5-stage CustomVue journey, 24-hr recovery scrubber, and the Commercial Mill comparison matrix. | "How does the dual-laser tech work?" |
+| **8** | `#lasik-buyer-questions-section` | **Buyer Empowerment:** 5 critical diagnostic questions to ask any provider to expose commercial retail shortcuts. | "How do I evaluate other clinics?" |
+| **9** | `#roi-section` | **Financial Economics:** $37,000+ lifetime lens expense vs. one-time all-inclusive LASIK investment + HSA/FSA savings. | "Can I afford this long-term?" |
+| **10** | `#faq` | **Risk & Objection Preemption:** Curated 5 core FAQs + clean "Show More Questions" expandable drawer + consultation bridge. | "What about recovery & safety?" |
+| **11** | `#contact` | **Action & Office Selection:** Consultation booking suite across Livingston Flagship, Denville, and Newark. | "Ready to schedule." |
 
 ---
 

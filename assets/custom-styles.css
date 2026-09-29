@@ -2312,7 +2312,7 @@ select:focus {
   will-change: transform, box-shadow !important;
 }
 
-/* 2. Primary Luxury Gold Hardware CTA - Wrapped in Precision Black Bezel */
+/* 2. Primary Luxury Gold Hardware CTA - Wrapped in Slim Precision Bezel */
 .btn-primary,
 .cta-btn-primary,
 .header-cta-btn,
@@ -2327,26 +2327,24 @@ select:focus {
     #b48422 100%
   ) !important;
   color: #0b0f19 !important;
-  border: 1.5px solid #060a12 !important;
+  border: 1px solid #060a12 !important;
   border-radius: 9999px !important;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) !important;
   box-shadow:
-    /* Layer 1: Machined Black Bezel Enclosure */
-    0 0 0 2px #060a12,
-    /* Layer 2: Razor-sharp inner top specular rim on gold core */
+    /* Layer 1: Razor-sharp inner top specular rim on gold core */
     inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.8),
-    /* Layer 3: Subtle side glares */
+    /* Layer 2: Subtle side glares */
     inset 1px 0 2px 0 rgba(255, 255, 255, 0.25),
     inset -1px 0 2px 0 rgba(255, 255, 255, 0.25),
-    /* Layer 4: Bottom interior bevel shelf */
+    /* Layer 3: Bottom interior bevel shelf */
     inset 0 -2.5px 4px 0 rgba(92, 59, 3, 0.45),
-    /* Layer 5: Tight ground contact shadow */
-    0 2px 4px 0 rgba(0, 0, 0, 0.6),
-    /* Layer 6: Medium depth chassis drop */
-    0 6px 14px -2px rgba(0, 0, 0, 0.5),
-    /* Layer 7: Rich golden ambient occlusion bloom outside black bezel */
+    /* Layer 4: Tight ground contact shadow */
+    0 2px 4px 0 rgba(0, 0, 0, 0.5),
+    /* Layer 5: Medium depth chassis drop */
+    0 6px 14px -2px rgba(0, 0, 0, 0.45),
+    /* Layer 6: Rich golden ambient occlusion bloom */
     0 14px 30px -4px rgba(226, 184, 87, 0.42),
-    /* Layer 8: Far ambient atmospheric floor shadow */
+    /* Layer 7: Far ambient atmospheric floor shadow */
     0 24px 44px -10px rgba(0, 0, 0, 0.6) !important;
 }
 
@@ -2367,12 +2365,11 @@ select:focus {
   ) !important;
   border-color: #03050a !important;
   box-shadow:
-    0 0 0 2.5px #03050a,
     inset 0 2px 1.5px 0 rgba(255, 255, 255, 0.95),
     inset 1px 0 3px 0 rgba(255, 255, 255, 0.35),
     inset -1px 0 3px 0 rgba(255, 255, 255, 0.35),
     inset 0 -2.5px 4px 0 rgba(92, 59, 3, 0.4),
-    0 3px 6px 0 rgba(0, 0, 0, 0.6),
+    0 3px 6px 0 rgba(0, 0, 0, 0.55),
     0 8px 20px -2px rgba(0, 0, 0, 0.5),
     0 20px 42px -4px rgba(226, 184, 87, 0.58),
     0 32px 56px -12px rgba(0, 0, 0, 0.7) !important;
@@ -2395,7 +2392,6 @@ select:focus {
   ) !important;
   border-color: #020306 !important;
   box-shadow:
-    0 0 0 1.5px #020306,
     inset 0 1px 1px 0 rgba(255, 255, 255, 0.5),
     inset 0 3px 6px 0 rgba(0, 0, 0, 0.35),
     0 1px 2px 0 rgba(0, 0, 0, 0.6),
@@ -2403,7 +2399,7 @@ select:focus {
   transition-duration: 0.08s !important;
 }
 
-/* 3. Frosted Obsidian-Crystal Secondary Button - Wrapped in Sleek Black Bezel */
+/* 3. Frosted Obsidian-Crystal Secondary Button - Wrapped in Slim Refined Edge */
 .btn-secondary {
   background: linear-gradient(
     180deg,
@@ -2412,13 +2408,11 @@ select:focus {
     rgba(14, 20, 34, 0.75) 100%
   ) !important;
   color: #f8fafc !important;
-  border: 1.5px solid #060a12 !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
   border-radius: 9999px !important;
   -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
   backdrop-filter: blur(16px) saturate(140%) !important;
   box-shadow:
-    /* Outer black bezel collar */
-    0 0 0 1.5px #080c16,
     /* Top edge glass specular */
     inset 0 1px 1px 0 rgba(255, 255, 255, 0.22),
     /* Inner cavity depth */
@@ -2436,10 +2430,9 @@ select:focus {
     rgba(255, 255, 255, 0.06) 40%,
     rgba(20, 28, 48, 0.85) 100%
   ) !important;
-  border-color: #03050a !important;
+  border-color: rgba(255, 255, 255, 0.26) !important;
   color: #ffffff !important;
   box-shadow:
-    0 0 0 2px #040711,
     inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35),
     inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.4),
     0 4px 8px 0 rgba(0, 0, 0, 0.5),
@@ -2450,9 +2443,8 @@ select:focus {
 .btn-secondary:active {
   transform: translateY(1px) scale(0.985) !important;
   background: rgba(14, 20, 34, 0.85) !important;
-  border-color: #010204 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
   box-shadow:
-    0 0 0 1.5px #010204,
     inset 0 2px 4px 0 rgba(0, 0, 0, 0.6),
     0 2px 6px 0 rgba(0, 0, 0, 0.5) !important;
   transition-duration: 0.08s !important;
@@ -3722,6 +3714,55 @@ div[style*="height:0px"] {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
+/* Base navigation bar for Science modules (Previous / Next Module buttons) */
+.science-mobile-nav-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+  margin-top: 24px !important;
+  padding-top: 20px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.science-mobile-nav-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  min-height: 46px !important;
+  padding: 12px 24px !important;
+  border-radius: 12px !important;
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+  cursor: pointer !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  touch-action: manipulation !important;
+  box-sizing: border-box !important;
+  text-decoration: none !important;
+}
+
+.science-mobile-nav-btn:disabled,
+.science-mobile-nav-btn[disabled] {
+  opacity: 0.35 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  filter: grayscale(0.5) !important;
+}
+
+.science-mobile-nav-btn.btn-secondary {
+  flex: 0 1 auto !important;
+  min-width: 180px !important;
+}
+
+.science-mobile-nav-btn.btn-primary {
+  flex: 0 1 auto !important;
+  min-width: 220px !important;
+}
+
 @media (max-width: 768px) {
   #lasik-science,
   .science-section {
@@ -3787,26 +3828,37 @@ div[style*="height:0px"] {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    gap: 10px !important;
+    gap: 12px !important;
     margin-top: 18px !important;
     padding-top: 14px !important;
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
     width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .science-mobile-nav-btn {
     flex: 1 1 0 !important;
+    min-width: 0 !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     gap: 6px !important;
     min-height: 44px !important;
-    padding: 10px 14px !important;
+    padding: 10px 12px !important;
     border-radius: 10px !important;
     font-size: 0.8rem !important;
     font-weight: 600 !important;
     cursor: pointer !important;
     touch-action: manipulation !important;
+    text-align: center !important;
+    line-height: 1.25 !important;
+  }
+
+  .science-mobile-nav-btn.btn-secondary,
+  .science-mobile-nav-btn.btn-primary {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    width: 100% !important;
   }
 
   /* Reflow internal Science grids (History, Physics, Healing, Steps) to mobile single-column card layouts */

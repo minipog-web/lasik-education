@@ -617,7 +617,7 @@
               "name": "Why should I choose Marano Eye Care for LASIK?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Led by Dr. Matthew Marano and Dr. Sherief Raouf, Marano Eye Care brings 30+ years of clinical excellence, corneal fellowship training, thousands of successful LASIK procedures, and over 40,000 total surgical procedures to North Jersey. Unlike volume-driven centers, your dedicated surgeon personally performs your pre-op measurements, carries out your laser procedure, and manages your post-op recovery."
+                "text": "Led by Dr. Matthew Marano and Dr. Sherief Raouf, Marano Eye Care brings 30+ years of clinical excellence, corneal fellowship training, thousands of successful LASIK procedures, and over 40,000 total surgical procedures to North Jersey. Unlike volume-driven centers, all pre-operative diagnostic measurements are performed by a highly qualified technician and closely reviewed by your dedicated surgeon, who personally designs your custom treatment plan, carries out your laser procedure, and manages your post-op recovery."
               }
             },
             {
@@ -686,7 +686,7 @@
     <link rel="prefetch" as="image" href="./assets/lasik_24hr_recovery.webp" type="image/webp">
     <link rel="prefetch" as="image" href="./assets/hd_night_highway_scene.webp?v=6" type="image/webp">
     <link rel="stylesheet" href="./assets/index-DhXpI4H_.css?v=29">
-    <link rel="stylesheet" href="./assets/custom-styles.css?v=141">
+    <link rel="stylesheet" href="./assets/custom-styles.css?v=142">
     <script src="./assets/index-nb1vded4_v2.js?v=66" defer></script>
     <script src="./assets/vision-simulator.min.js?v=18" defer></script>
     <script src="./assets/corneal-topography.js?v=16" defer></script>
@@ -704,10 +704,10 @@
         </a>
         <div class="nav-links-group">
           <button class="nav-link-item" onclick="scrollToElement('quiz')">Candidacy</button>
-          <button class="nav-link-item" onclick="scrollToElement('lasik-science')">Technology</button>
           <button class="nav-link-item" onclick="scrollToElement('doctor-profile-section')">Surgeons</button>
-          <button class="nav-link-item" onclick="scrollToElement('roi-section')">Cost &amp; ROI</button>
           <button class="nav-link-item" onclick="scrollToElement('social-proof-section')">Reviews</button>
+          <button class="nav-link-item" onclick="scrollToElement('lasik-science')">Technology</button>
+          <button class="nav-link-item" onclick="scrollToElement('roi-section')">Cost &amp; ROI</button>
         </div>
         <a id="header-phone-link" href="tel:973-419-5972" class="header-phone-link">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -1263,7 +1263,7 @@
             'New Jersey\'s <span class="bio-heading-accent" style="color: #e2b857; font-family: var(--font-serif); font-style: italic;">Premier Refractive Surgeons</span>' +
           '</h2>' +
           '<p style="font-size: 1.05rem; color: #cbd5e1; max-width: 680px; margin: 0 auto; line-height: 1.6; font-weight: 300;">' +
-            'At Marano Eye Care, your vision is never handed off to technicians or rotating contractors. Every consultation, diagnostic scan, laser procedure, and post-operative evaluation is conducted directly by our board-certified, fellowship-trained cornea specialists.' +
+            'At Marano Eye Care, your care is never handed off to rotating contractors. All pre-operative diagnostic measurements are performed by our highly qualified ophthalmic technicians and closely reviewed by our board-certified surgeons, Dr. Matthew Marano and Dr. Sherief Raouf, who personally design your custom procedure, operate the dual lasers, and conduct your post-operative evaluations.' +
           '</p>' +
         '</div>';
         container.insertBefore(secIntro, maranoOuter);
@@ -1618,7 +1618,7 @@
         </h4>
         <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem; color: #cbd5e1; line-height: 1.5;">
           <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #e2b857;">✦</span> <span><strong>Significantly Reduced Halos &amp; Glare:</strong> Targets higher-order surface aberrations that standard lenses miss.</span></li>
-          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #10b981;">✦</span> <span><strong>Heightened Low-Light Contrast:</strong> Spot lane markers, highway exits, and sudden hazards instantly.</span></li>
+          <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #10b981;">✦</span> <span><strong>Heightened Low-Light Contrast:</strong> Spot lane markers, highway exits, and sudden hazards instantly at a distance.</span></li>
           <li style="display: flex; gap: 10px; align-items: start;"><span style="color: #00d4ff;">✦</span> <span><strong>Stress-Free Evening Commutes:</strong> Eliminate squinting and tension during night and rainy drives.</span></li>
         </ul>
         <div style="display: flex; flex-direction: column; gap: 10px;">
@@ -2380,74 +2380,97 @@
     // ─── Visual & Informational Flow Optimization ───────────────────────────
 
     function optimizePageFlow() {
-      var docSec = document.getElementById('doctor-profile-section');
-      var roiSec = document.getElementById('roi-section');
-      var questionsSec = document.getElementById('lasik-buyer-questions-section');
+      var main = document.querySelector('main');
+      if (!main) return;
 
-      if (docSec && questionsSec && docSec.nextElementSibling !== questionsSec) {
-        docSec.parentNode.insertBefore(questionsSec, docSec.nextSibling);
-      }
-      if (questionsSec && roiSec && questionsSec.nextElementSibling !== roiSec) {
-        roiSec.parentNode.insertBefore(questionsSec, roiSec);
-      } else if (docSec && roiSec && !questionsSec && docSec.nextElementSibling !== roiSec) {
-        roiSec.parentNode.insertBefore(docSec, roiSec);
-      }
-
-      var edu = document.getElementById('education');
-      if (!edu) return;
-
+      var quizSec = document.getElementById('quiz');
       var simSec = document.getElementById('lasik-vision-simulator-section');
-      var timelineSec = document.getElementById('speed-timeline-strip');
-      var journeySec = document.getElementById('lasik-journey') || document.getElementById('glassmorphic-laser-suite');
-      var topoSec = document.getElementById('lasik-corneal-topography-section');
-      var scienceSec = document.getElementById('lasik-science') || getScienceSection();
-      var matrixSec = document.getElementById('lasik-comparison-matrix-section');
+      var lifestyleSec = document.getElementById('eeat-lifestyle-section');
+      var docSec = document.getElementById('doctor-profile-section');
+      var proofSec = document.getElementById('social-proof-section');
+      var edu = document.getElementById('education');
+      var questionsSec = document.getElementById('lasik-buyer-questions-section');
+      var roiSec = document.getElementById('roi-section');
+      var faqSec = document.getElementById('faq');
 
-      // 1. Remove any switcher if previously created
+      // 1. Remove any legacy switcher if previously created
       var existingSwitcher = document.getElementById('tech-suite-switcher-wrapper');
       if (existingSwitcher) {
         existingSwitcher.remove();
       }
 
-      // 2. Ensure all sections are fully expanded, visible and unconstrained
-      if (scienceSec) scienceSec.style.display = 'block';
-      if (topoSec) topoSec.style.display = 'block';
-      if (journeySec) journeySec.style.display = 'block';
-      if (timelineSec) timelineSec.style.display = 'block';
-      if (simSec) simSec.style.display = 'block';
-      if (matrixSec) matrixSec.style.display = 'block';
-      if (questionsSec) questionsSec.style.display = 'block';
+      // 2. Ensure all sections are unconstrained and visible
+      var allSections = [quizSec, simSec, lifestyleSec, docSec, proofSec, edu, questionsSec, roiSec, faqSec];
+      allSections.forEach(function(sec) {
+        if (sec) sec.style.display = 'block';
+      });
 
-      // 3. User-mandated sequence:
+      // 3. Arrange Internal Sequence of Clinical Technology Suite (#education):
       //    1) Optical Physics & Diagnostics (scienceSec)
       //    2) 3D Astigmatism Topography (topoSec)
-      //    3) 5-step LASIK Journey (journeySec)
-      //    4) 24h Recovery Timeline (timelineSec)
-      //    5) Vision Quality Simulator (simSec)
-      //    6) Comparison Matrix: Retail Mill vs Marano Standard (matrixSec)
-      if (scienceSec && edu.firstElementChild !== scienceSec) {
-        edu.insertBefore(scienceSec, edu.firstElementChild);
-      }
-      if (scienceSec && topoSec && scienceSec.nextElementSibling !== topoSec) {
-        scienceSec.parentNode.insertBefore(topoSec, scienceSec.nextSibling);
-      }
-      if (topoSec && journeySec && topoSec.nextElementSibling !== journeySec) {
-        topoSec.parentNode.insertBefore(journeySec, topoSec.nextSibling);
-      }
-      if (journeySec && timelineSec && journeySec.nextElementSibling !== timelineSec) {
-        journeySec.parentNode.insertBefore(timelineSec, journeySec.nextSibling);
-      }
-      if (simSec) {
-        var anchor = timelineSec || journeySec;
-        if (anchor && anchor.nextElementSibling !== simSec) {
-          anchor.parentNode.insertBefore(simSec, anchor.nextSibling);
+      //    3) 5-Step CustomVue Journey (journeySec)
+      //    4) 24-Hour Recovery Scrubber (timelineSec)
+      //    5) Comparison Matrix: Commercial Retail Mill vs Marano Standard (matrixSec)
+      if (edu) {
+        var scienceSec = document.getElementById('lasik-science') || getScienceSection();
+        var topoSec = document.getElementById('lasik-corneal-topography-section');
+        var journeySec = document.getElementById('lasik-journey') || document.getElementById('glassmorphic-laser-suite');
+        var timelineSec = document.getElementById('speed-timeline-strip');
+        var matrixSec = document.getElementById('lasik-comparison-matrix-section');
+
+        if (scienceSec && edu.firstElementChild !== scienceSec) {
+          edu.insertBefore(scienceSec, edu.firstElementChild);
+        }
+        if (scienceSec && topoSec && scienceSec.nextElementSibling !== topoSec) {
+          scienceSec.parentNode.insertBefore(topoSec, scienceSec.nextSibling);
+        }
+        if (topoSec && journeySec && topoSec.nextElementSibling !== journeySec) {
+          topoSec.parentNode.insertBefore(journeySec, topoSec.nextSibling);
+        }
+        if (journeySec && timelineSec && journeySec.nextElementSibling !== timelineSec) {
+          journeySec.parentNode.insertBefore(timelineSec, journeySec.nextSibling);
+        }
+        if (timelineSec && matrixSec && timelineSec.nextElementSibling !== matrixSec) {
+          timelineSec.parentNode.insertBefore(matrixSec, timelineSec.nextSibling);
         }
       }
-      if (matrixSec) {
-        var anchorMatrix = simSec || timelineSec || journeySec;
-        if (anchorMatrix && anchorMatrix.nextElementSibling !== matrixSec) {
-          anchorMatrix.parentNode.insertBefore(matrixSec, anchorMatrix.nextSibling);
-        }
+
+      // 4. Master Narrative Conversion Flow in <main>:
+      //    [Hero: Hook & Visual Promise + Lead Form]
+      //    -> 1. Candidacy Self-Test (quizSec)
+      //    -> 2. Interactive Vision Simulator (simSec: elevates before/after 20/20 vs 20/15 clarity directly below quiz)
+      //    -> 3. Vision Designed for Your Daily Life (lifestyleSec: connects vision to sports, night driving, screen work)
+      //    -> 4. Surgeon Leadership & Credentials (docSec: Dr. Marano 30+ yrs & Dr. Raouf UIC Fellowship - answers "Who is operating on my eyes?")
+      //    -> 5. Verified Patient Outcomes & Reviews (proofSec: 680+ Google 5-star reviews & video proof right after surgeons)
+      //    -> 6. Clinical Science & Technology Suite (edu: Science, 3D Topography, 5 Stages, 24h Recovery, Comparison Matrix)
+      //    -> 7. 5 Questions Every Provider Must Answer (questionsSec: pre-empts competitor claims)
+      //    -> 8. Financial ROI & Cost Comparison (roiSec: $30k lifetime lens spending vs LASIK investment)
+      //    -> 9. Clinical FAQ & Reassurance (faqSec)
+      //    [Contact & Consultation Booking]
+
+      if (simSec && quizSec && quizSec.nextElementSibling !== simSec) {
+        quizSec.parentNode.insertBefore(simSec, quizSec.nextSibling);
+      }
+      if (lifestyleSec && simSec && simSec.nextElementSibling !== lifestyleSec) {
+        simSec.parentNode.insertBefore(lifestyleSec, simSec.nextSibling);
+      }
+      if (docSec && lifestyleSec && lifestyleSec.nextElementSibling !== docSec) {
+        lifestyleSec.parentNode.insertBefore(docSec, lifestyleSec.nextSibling);
+      }
+      if (proofSec && docSec && docSec.nextElementSibling !== proofSec) {
+        docSec.parentNode.insertBefore(proofSec, docSec.nextSibling);
+      }
+      if (edu && proofSec && proofSec.nextElementSibling !== edu) {
+        proofSec.parentNode.insertBefore(edu, proofSec.nextSibling);
+      }
+      if (questionsSec && edu && edu.nextElementSibling !== questionsSec) {
+        edu.parentNode.insertBefore(questionsSec, edu.nextSibling);
+      }
+      if (roiSec && questionsSec && questionsSec.nextElementSibling !== roiSec) {
+        questionsSec.parentNode.insertBefore(roiSec, questionsSec.nextSibling);
+      }
+      if (faqSec && roiSec && roiSec.nextElementSibling !== faqSec) {
+        roiSec.parentNode.insertBefore(faqSec, roiSec.nextSibling);
       }
     }
 
@@ -2466,10 +2489,10 @@
         navGroup.setAttribute('data-enhanced', 'true');
         navGroup.innerHTML = 
           '<button class="nav-link-item" data-target="quiz">Candidacy</button>' +
-          '<button class="nav-link-item" data-target="lasik-science">Technology</button>' +
           '<button class="nav-link-item" data-target="doctor-profile-section">Surgeons</button>' +
-          '<button class="nav-link-item" data-target="roi-section">Cost &amp; ROI</button>' +
-          '<button class="nav-link-item" data-target="social-proof-section">Reviews</button>';
+          '<button class="nav-link-item" data-target="social-proof-section">Reviews</button>' +
+          '<button class="nav-link-item" data-target="lasik-science">Technology</button>' +
+          '<button class="nav-link-item" data-target="roi-section">Cost &amp; ROI</button>';
 
         var items = navGroup.querySelectorAll('.nav-link-item');
         items.forEach(function(item) {
@@ -2483,16 +2506,17 @@
         });
       }
 
-      // 2. Scroll-Spy
+      // 2. Scroll-Spy aligned with optimized conversion flow
       if (!window.__navScrollSpyInit) {
         window.__navScrollSpyInit = true;
         var sectionTargets = [
           { id: 'quiz', navTarget: 'quiz' },
+          { id: 'lasik-vision-simulator-section', navTarget: 'quiz' },
+          { id: 'doctor-profile-section', navTarget: 'doctor-profile-section' },
+          { id: 'social-proof-section', navTarget: 'social-proof-section' },
           { id: 'lasik-science', navTarget: 'lasik-science' },
           { id: 'education', navTarget: 'lasik-science' },
-          { id: 'doctor-profile-section', navTarget: 'doctor-profile-section' },
-          { id: 'roi-section', navTarget: 'roi-section' },
-          { id: 'social-proof-section', navTarget: 'social-proof-section' }
+          { id: 'roi-section', navTarget: 'roi-section' }
         ];
 
         var ticking = false;
@@ -2666,19 +2690,45 @@
           var navBar = document.createElement('div');
           navBar.id = 'science-mobile-nav';
           navBar.className = 'science-mobile-nav-bar';
+          navBar.style.display = 'flex';
+          navBar.style.alignItems = 'center';
+          navBar.style.justifyContent = 'space-between';
+          navBar.style.gap = '16px';
+          navBar.style.marginTop = '24px';
+          navBar.style.paddingTop = '18px';
+          navBar.style.borderTop = '1px solid rgba(255, 255, 255, 0.08)';
+          navBar.style.width = '100%';
+          navBar.style.boxSizing = 'border-box';
           
+          function syncNavState() {
+            var currentBtns = Array.from(document.querySelectorAll('#lasik-science .science-tab-btn'));
+            if (!currentBtns || currentBtns.length === 0) return;
+            var curIdx = currentBtns.findIndex(function(b) {
+              return b.style.fontWeight === '700' || b.classList.contains('active') || b.getAttribute('aria-selected') === 'true';
+            });
+            if (curIdx < 0) curIdx = 0;
+            var pBtn = document.querySelector('#science-mobile-nav .btn-secondary');
+            var nBtn = document.querySelector('#science-mobile-nav .btn-primary');
+            if (pBtn) pBtn.disabled = (curIdx === 0);
+            if (nBtn) {
+              nBtn.innerHTML = (curIdx === currentBtns.length - 1) ? 'Next: Free Candidacy Test →' : 'Next Module →';
+            }
+          }
+
           var prevBtn = document.createElement('button');
           prevBtn.type = 'button';
           prevBtn.className = 'btn btn-secondary science-mobile-nav-btn';
           prevBtn.innerHTML = '← Previous Module';
           prevBtn.disabled = (activeTabIdx === 0);
           prevBtn.onclick = function() {
-            var currentBtns = Array.from(scienceSec.querySelectorAll('.science-tab-btn'));
+            var currentBtns = Array.from(document.querySelectorAll('#lasik-science .science-tab-btn'));
             var curIdx = currentBtns.findIndex(function(b) {
               return b.style.fontWeight === '700' || b.classList.contains('active') || b.getAttribute('aria-selected') === 'true';
             });
             if (curIdx > 0 && currentBtns[curIdx - 1]) {
               currentBtns[curIdx - 1].click();
+              setTimeout(syncNavState, 50);
+              setTimeout(syncNavState, 150);
             }
           };
 
@@ -2687,30 +2737,42 @@
           nextBtn.className = 'btn btn-primary science-mobile-nav-btn';
           nextBtn.innerHTML = (activeTabIdx === tabBtns.length - 1) ? 'Next: Free Candidacy Test →' : 'Next Module →';
           nextBtn.onclick = function() {
-            var currentBtns = Array.from(scienceSec.querySelectorAll('.science-tab-btn'));
+            var currentBtns = Array.from(document.querySelectorAll('#lasik-science .science-tab-btn'));
             var curIdx = currentBtns.findIndex(function(b) {
               return b.style.fontWeight === '700' || b.classList.contains('active') || b.getAttribute('aria-selected') === 'true';
             });
             if (curIdx >= 0 && curIdx < currentBtns.length - 1 && currentBtns[curIdx + 1]) {
               currentBtns[curIdx + 1].click();
+              setTimeout(syncNavState, 50);
+              setTimeout(syncNavState, 150);
             } else {
               var quizTarget = document.getElementById('quiz') || document.getElementById('contact');
               if (quizTarget) quizTarget.scrollIntoView({ behavior: 'smooth' });
             }
           };
 
+          scienceSec.addEventListener('click', function(e) {
+            if (e.target.closest('.science-tab-btn')) {
+              setTimeout(syncNavState, 50);
+              setTimeout(syncNavState, 150);
+            }
+          });
+
           navBar.appendChild(prevBtn);
           navBar.appendChild(nextBtn);
           sciencePanel.appendChild(navBar);
         } else if (document.getElementById('science-mobile-nav')) {
-          var curActiveIdx = tabBtns.findIndex(function(b) {
+          var freshTabBtns = Array.from(scienceSec.querySelectorAll('.science-tab-btn'));
+          var curActiveIdx = freshTabBtns.findIndex(function(b) {
             return b.style.fontWeight === '700' || b.classList.contains('active') || b.getAttribute('aria-selected') === 'true';
           });
-          var pBtn = document.querySelector('#science-mobile-nav .btn-secondary');
-          var nBtn = document.querySelector('#science-mobile-nav .btn-primary');
-          if (pBtn) pBtn.disabled = (curActiveIdx <= 0);
-          if (nBtn) {
-            nBtn.innerHTML = (curActiveIdx === tabBtns.length - 1) ? 'Next: Free Candidacy Test →' : 'Next Module →';
+          if (curActiveIdx >= 0) {
+            var pBtn = document.querySelector('#science-mobile-nav .btn-secondary');
+            var nBtn = document.querySelector('#science-mobile-nav .btn-primary');
+            if (pBtn) pBtn.disabled = (curActiveIdx === 0);
+            if (nBtn) {
+              nBtn.innerHTML = (curActiveIdx === freshTabBtns.length - 1) ? 'Next: Free Candidacy Test →' : 'Next Module →';
+            }
           }
         }
       }
@@ -2903,7 +2965,7 @@
 
         var scienceSub = scienceSec.querySelector('p');
         if (scienceSub && scienceSub.textContent.indexOf('10,240') === -1) {
-          scienceSub.textContent = 'Human corneas are as unique as optical fingerprints. Traditional glasses and older laser platforms only treat simple near- or farsightedness. Our dual-laser suite maps microscopic corneal elevations across 250 distinct optical points, eliminating higher-order aberrations that cause night glare, halos, and distortion.';
+          scienceSub.textContent = 'Human corneas are as unique as optical fingerprints. Traditional glasses and older laser platforms only treat simple near- or farsightedness. Our dual-laser suite maps microscopic corneal elevations across 250 distinct optical points, eliminating higher-order aberrations that cause night glare, halos, and distortion to provide sharp, crisp vision under all conditions.';
         }
       }
 
@@ -3662,7 +3724,7 @@
           if (questionText.indexOf('blade') !== -1 || questionText.indexOf('Blade') !== -1) {
             answerInner.innerHTML = '<strong>No. Dr. Marano and Dr. Raouf use a 100% all-laser, blade-free technique.</strong> Traditional older LASIK methods used a mechanical microkeratome oscillating metal blade to create the corneal flap. At Marano Eye Care, our surgeons use the advanced <strong>iFS® 1053nm Femtosecond infrared laser</strong>, which emits pulses at a quadrillionth of a second to create a customized, ultra-thin protective flap in just 10 seconds per eye. This eliminates mechanical blade friction, preserves corneal architecture, and delivers significantly faster 24-hour visual recovery.';
           } else if (questionText.indexOf('Why should I choose') !== -1 || questionText.indexOf('choose Marano') !== -1) {
-            answerInner.innerHTML = '<strong>Direct 1-on-1 surgeon continuity from initial consultation through full recovery.</strong> At corporate high-volume chains, your diagnostic scans and post-operative checks are typically delegated to technicians or temporary staff, with an unfamiliar surgeon entering only for the laser treatment. At Marano Eye Care, Dr. Matthew Marano and Dr. Sherief Raouf personally perform your diagnostic scans, custom-design your wavefront treatment, carry out your procedure, and oversee your healing during every follow-up visit across our Livingston, Denville, and Newark offices.';
+            answerInner.innerHTML = '<strong>Direct surgeon continuity and dedicated clinical oversight.</strong> At corporate high-volume chains, patients often meet an unfamiliar rotating surgeon for only a moment on the laser bed. At Marano Eye Care, all diagnostic measurements are performed by our highly qualified ophthalmic technician and closely reviewed by Dr. Matthew Marano and Dr. Sherief Raouf. Your dedicated surgeon personally custom-designs your wavefront ablation profile, performs your laser procedure, and oversees your recovery during every follow-up visit across our Livingston, Denville, and Newark offices.';
           } else if (questionText.indexOf('recover from LASIK') !== -1 || questionText.indexOf('How long does it take to recover') !== -1) {
             answerInner.innerHTML = '<strong>Most patients achieve functional 20/20 vision within 24 hours.</strong> Because the blade-free iFS® femtosecond laser uses no mechanical blades and generates zero heat, corneal flap edges seal naturally through osmotic pressure within hours. Patients typically rest for 3 to 4 hours post-procedure, and by the next morning are cleared to drive, use digital displays, and return to work without glasses or contacts.';
           } else if (questionText.indexOf('awake during') !== -1 || questionText.indexOf('How long does the procedure take') !== -1) {
@@ -3686,13 +3748,133 @@
         }
       });
 
+      // ─── Salient 5 FAQ Prioritization & Show More Toggle ───
+      var faqListContainer = faqContainers.length > 0 ? faqContainers[0].parentElement : null;
+      if (faqListContainer) {
+        // Priority order for the 5 most salient questions
+        var salientMatchers = [
+          function(txt) { return txt.indexOf('recover') !== -1; },      // 1. Recovery timeline (24h)
+          function(txt) { return txt.indexOf('painful') !== -1; },      // 2. Pain & comfort
+          function(txt) { return txt.indexOf('blade') !== -1; },        // 3. Blade-free safety
+          function(txt) { return txt.indexOf('successful') !== -1; },   // 4. Success rate & 20/20 outcomes
+          function(txt) { return txt.indexOf('candidate') !== -1; }     // 5. Candidacy & alternatives
+        ];
+
+        var panelsArray = Array.from(faqListContainer.children).filter(function(el) {
+          return el.classList.contains('glass-panel');
+        });
+
+        // Reorder top 5 salient questions to the front
+        var matchedPanels = [];
+        salientMatchers.forEach(function(matcher) {
+          for (var pIdx = 0; pIdx < panelsArray.length; pIdx++) {
+            var p = panelsArray[pIdx];
+            var btn = p.querySelector('button[type="button"]');
+            var qText = (btn ? btn.textContent : '').toLowerCase();
+            if (matcher(qText) && matchedPanels.indexOf(p) === -1) {
+              matchedPanels.push(p);
+              break;
+            }
+          }
+        });
+
+        // Prepend matched top 5 in order
+        matchedPanels.reverse().forEach(function(p) {
+          if (faqListContainer.firstChild !== p) {
+            faqListContainer.insertBefore(p, faqListContainer.firstChild);
+          }
+        });
+
+        // Refresh panels list after reordering
+        var sortedPanels = Array.from(faqListContainer.children).filter(function(el) {
+          return el.classList.contains('glass-panel');
+        });
+
+        var isExpanded = faqListContainer.getAttribute('data-faq-expanded') === 'true';
+
+        // Apply visibility (first 5 always visible, rest conditional on isExpanded)
+        sortedPanels.forEach(function(panel, idx) {
+          if (idx < 5) {
+            panel.style.display = 'block';
+          } else {
+            panel.style.display = isExpanded ? 'block' : 'none';
+          }
+        });
+
+        // Inject or update the "Show More" / "Show Fewer" toggle button
+        var toggleWrap = document.getElementById('faq-show-more-wrapper');
+        var remainingCount = Math.max(0, sortedPanels.length - 5);
+
+        if (!toggleWrap && remainingCount > 0) {
+          toggleWrap = document.createElement('div');
+          toggleWrap.id = 'faq-show-more-wrapper';
+          toggleWrap.style.cssText = 'text-align: center; margin: 32px auto 0 auto; width: 100%;';
+          toggleWrap.innerHTML = 
+            '<button id="faq-toggle-btn" type="button" aria-expanded="' + (isExpanded ? 'true' : 'false') + '" class="btn btn-secondary faq-toggle-pill" style="min-height: 48px; padding: 13px 32px; font-size: 0.92rem; font-weight: 600; border-radius: 9999px; background: rgba(13, 20, 32, 0.85); border: 1px solid rgba(226, 184, 87, 0.35); color: #f8fafc; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);">' +
+              '<span id="faq-toggle-text">' + (isExpanded ? 'Show Fewer Questions' : 'Show More Questions (' + remainingCount + ' Remaining)') + '</span>' +
+              '<span id="faq-toggle-icon" style="display: inline-block; transition: transform 0.3s ease; color: #e2b857; font-size: 1.1rem; line-height: 1;">' + (isExpanded ? '↑' : '↓') + '</span>' +
+            '</button>';
+
+          // Insert toggleWrap directly below the panels container
+          if (faqListContainer.nextSibling) {
+            faqListContainer.parentNode.insertBefore(toggleWrap, faqListContainer.nextSibling);
+          } else {
+            faqListContainer.parentNode.appendChild(toggleWrap);
+          }
+
+          var toggleBtn = toggleWrap.querySelector('#faq-toggle-btn');
+          toggleBtn.addEventListener('click', function() {
+            var currentlyExpanded = faqListContainer.getAttribute('data-faq-expanded') === 'true';
+            var nextState = !currentlyExpanded;
+            faqListContainer.setAttribute('data-faq-expanded', nextState ? 'true' : 'false');
+
+            var currentPanels = Array.from(faqListContainer.children).filter(function(el) {
+              return el.classList.contains('glass-panel');
+            });
+
+            currentPanels.forEach(function(p, idx) {
+              if (idx >= 5) {
+                if (nextState) {
+                  p.style.display = 'block';
+                  p.classList.add('animate-fade-up');
+                } else {
+                  p.style.display = 'none';
+                }
+              }
+            });
+
+            var textEl = toggleWrap.querySelector('#faq-toggle-text');
+            var iconEl = toggleWrap.querySelector('#faq-toggle-icon');
+            toggleBtn.setAttribute('aria-expanded', nextState ? 'true' : 'false');
+
+            if (nextState) {
+              textEl.textContent = 'Show Fewer Questions';
+              iconEl.textContent = '↑';
+              toggleBtn.style.borderColor = 'rgba(226, 184, 87, 0.6)';
+            } else {
+              var rem = Math.max(0, currentPanels.length - 5);
+              textEl.textContent = 'Show More Questions (' + rem + ' Remaining)';
+              iconEl.textContent = '↓';
+              toggleBtn.style.borderColor = 'rgba(226, 184, 87, 0.35)';
+
+              // Smoothly scroll back to the 5th question
+              if (currentPanels[4]) {
+                var offset = 100;
+                var targetY = currentPanels[4].getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+              }
+            }
+          });
+        }
+      }
+
       if (faqSection && !document.getElementById('faq-consultation-bridge')) {
         var bridgeCard = document.createElement('div');
         bridgeCard.id = 'faq-consultation-bridge';
         bridgeCard.style.cssText = 'max-width: 800px; margin: 48px auto 0 auto; padding: 32px 28px; background: rgba(255, 255, 255, 0.015); border: 1px solid rgba(226, 184, 87, 0.22); border-radius: 20px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.5);';
         bridgeCard.innerHTML = 
           '<h4 style="font-family: var(--font-serif); font-size: 1.45rem; font-weight: 700; color: #ffffff; margin-bottom: 8px;">Have a Question About Your Specific Corneal Candidacy?</h4>' +
-          '<p style="font-size: 0.92rem; color: #cbd5e1; max-width: 580px; margin: 0 auto 20px auto; line-height: 1.6;">Dr. Marano and Dr. Raouf conduct high-resolution WaveScan® 3D diagnostic mapping during every complimentary consultation to evaluate your cornea and answer all questions directly.</p>' +
+          '<p style="font-size: 0.92rem; color: #cbd5e1; max-width: 580px; margin: 0 auto 20px auto; line-height: 1.6;">High-resolution WaveScan® 3D diagnostic measurements are captured by our highly qualified technician and closely reviewed by Dr. Marano and Dr. Raouf during your complimentary consultation to evaluate your cornea and answer all questions directly.</p>' +
           '<button onclick="scrollToElement(\'contact\')" class="btn btn-primary" style="padding: 13px 30px; font-size: 0.92rem; display: inline-flex; align-items: center; gap: 8px; margin: 0 auto; cursor: pointer;">' +
             '<span>Schedule Your Free Diagnostic Scan</span>' +
             '<span style="color: #000;">→</span>' +
@@ -3815,8 +3997,8 @@
               '<p class="comp-card-desc">Directed by pioneering cornea specialists with over 30 years of academic hospital leadership in New Jersey.</p>' +
               '<div class="comp-card-rows">' +
                 '<div class="comp-row">' +
-                  '<div class="comp-row-header comp-row-header-marano">✓ Direct 1-on-1 Surgeon Continuity</div>' +
-                  '<p class="comp-row-value"><strong>Dr. Marano or Dr. Raouf personally</strong> conducts your diagnostic mapping, designs your custom ablation profile, operates the dual lasers, and oversees every follow-up visit.</p>' +
+                  '<div class="comp-row-header comp-row-header-marano">✓ Dedicated Surgeon Review &amp; Continuity</div>' +
+                  '<p class="comp-row-value">Diagnostic measurements are conducted by a highly qualified technician and <strong>closely reviewed by Dr. Marano or Dr. Raouf</strong>, who personally designs your custom ablation profile, operates the dual lasers, and oversees your care.</p>' +
                 '</div>' +
                 '<div class="comp-row">' +
                   '<div class="comp-row-header comp-row-header-marano">✓ 100% Blade-Free Dual-Laser Suite</div>' +
@@ -3911,7 +4093,7 @@
                   '</div>' +
                 '</div>' +
                 '<div class="dossier-stakes">' +
-                  '<strong>Why This Matters:</strong> A surgeon cannot make subtle intraoperative micro-adjustments based on secondhand notes from a technician who has never operated a laser.' +
+                  '<strong>Why This Matters:</strong> While measurements are accurately captured by a highly qualified technician, your operating surgeon must closely review the scans themselves in advance, understand your individual corneal topography, and directly program your customized laser ablation profile.' +
                 '</div>' +
               '</div>' +
             '</div>' +

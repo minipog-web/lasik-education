@@ -27,13 +27,13 @@
     <link rel="alternate icon" type="image/png" href="./assets/marano-logo-dw0rx_0b.png" />
     <link rel="apple-touch-icon" href="./assets/favicon.svg?v=2" />
     
-    <title>Sitemap | Marano Eye Care – Custom Wavefront LASIK Portal</title>
+    <title>Sitemap & Clinical Directory | Marano Eye Care – Custom Wavefront LASIK Portal</title>
     <link rel="canonical" href="https://lasik.maranoeye.com/sitemap.html" />
-    <meta name="description" content="Complete directory and sitemap for the Marano Eye Care LASIK Portal. Explore clinical procedure steps, 20/15 vision simulation, candidate quiz, pricing, and office locations in Livingston, Denville, and Newark, NJ." />
+    <meta name="description" content="Complete directory and clinical index for Marano Eye Care Custom Wavefront LASIK. Explore diagnostic tools, 20/15 vision simulator, candidacy assessment, surgical credentials, and office locations in Livingston, Denville, and Newark, NJ." />
     
     <!-- Open Graph & Social Cards -->
-    <meta property="og:title" content="Sitemap | Marano Eye Care – Custom Wavefront LASIK Portal" />
-    <meta property="og:description" content="Complete directory and sitemap for the Marano Eye Care LASIK Portal. Explore clinical procedure steps, candidate quiz, and NJ office locations." />
+    <meta property="og:title" content="Sitemap & Clinical Directory | Marano Eye Care – Custom Wavefront LASIK" />
+    <meta property="og:description" content="Comprehensive clinical index for Marano Eye Care LASIK. Explore surgical credentials, interactive tools, 24-hr recovery timelines, and NJ consultation centers." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://lasik.maranoeye.com/sitemap.html" />
     <meta property="og:image" content="https://lasik.maranoeye.com/assets/og-lasik.jpg" />
@@ -44,16 +44,60 @@
     
     <link rel="stylesheet" href="./assets/custom-styles.css?v=46">
 
+    <!-- Schema.org Breadcrumb & WebPage Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://lasik.maranoeye.com/sitemap.html#webpage",
+          "url": "https://lasik.maranoeye.com/sitemap.html",
+          "name": "Sitemap & Clinical Directory | Marano Eye Care",
+          "isPartOf": {
+            "@type": "WebSite",
+            "@id": "https://lasik.maranoeye.com/#website",
+            "url": "https://lasik.maranoeye.com",
+            "name": "Marano Eye Care Custom LASIK"
+          },
+          "description": "Complete directory and clinical sitemap of custom blade-free wavefront LASIK procedures, technology, surgical credentials, and NJ office suites."
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://lasik.maranoeye.com/sitemap.html#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://lasik.maranoeye.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Sitemap & Clinical Directory",
+              "item": "https://lasik.maranoeye.com/sitemap.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
     <style>
       :root {
         --bg-dark: #060911;
-        --bg-panel: rgba(13, 20, 32, 0.75);
+        --bg-panel: rgba(13, 20, 32, 0.85);
+        --bg-panel-hover: rgba(18, 27, 43, 0.95);
+        --border-gold-subtle: rgba(226, 184, 87, 0.22);
+        --border-gold-focus: rgba(226, 184, 87, 0.65);
         --accent-gold: #e2b857;
+        --accent-gold-light: #f3d489;
         --accent-cyan: #00f0ff;
         --accent-emerald: #10b981;
-        --text-main: #ffffff;
-        --text-secondary: #cbd5e1;
-        --text-muted: #94a3b8;
+        --text-primary: #ffffff;
+        --text-secondary: #e2e8f0;
+        --text-muted: #cbd5e1;
         --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         --font-serif: 'Cormorant Garamond', Georgia, serif;
         --font-display: 'Outfit', sans-serif;
@@ -63,15 +107,41 @@
         box-sizing: border-box;
       }
 
+      /* Skip Link for WCAG AAA Accessibility */
+      .skip-link {
+        position: absolute;
+        top: -60px;
+        left: 20px;
+        background: var(--accent-gold);
+        color: #060911;
+        padding: 12px 20px;
+        font-weight: 700;
+        border-radius: 8px;
+        z-index: 9999;
+        transition: top 0.2s ease;
+        text-decoration: none;
+      }
+      .skip-link:focus {
+        top: 20px;
+        outline: 3px solid #ffffff;
+      }
+
+      /* Visible Focus Rings */
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--accent-gold);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
       body {
         margin: 0;
         padding: 0;
         background-color: var(--bg-dark);
         background-image: 
-          radial-gradient(ellipse 80% 50% at 50% -20%, rgba(226, 184, 87, 0.08) 0%, transparent 60%),
+          radial-gradient(ellipse 80% 50% at 50% -20%, rgba(226, 184, 87, 0.09) 0%, transparent 60%),
           radial-gradient(circle at 90% 40%, rgba(0, 240, 255, 0.04) 0%, transparent 50%),
           linear-gradient(180deg, #060911 0%, #080d1a 50%, #04070e 100%);
-        color: var(--text-main);
+        color: var(--text-primary);
         font-family: var(--font-sans);
         line-height: 1.6;
         min-height: 100vh;
@@ -84,16 +154,16 @@
         position: sticky;
         top: 0;
         z-index: 100;
-        background: rgba(6, 9, 17, 0.92);
-        -webkit-backdrop-filter: blur(14px);
-        backdrop-filter: blur(14px);
-        border-bottom: 1px solid rgba(226, 184, 87, 0.18);
+        background: rgba(6, 9, 17, 0.94);
+        -webkit-backdrop-filter: blur(16px);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border-gold-subtle);
         padding: 16px 24px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
       }
 
       .header-container {
-        max-width: 1140px;
+        max-width: 1180px;
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
@@ -121,104 +191,225 @@
         background: linear-gradient(135deg, #e2b857 0%, #c99a36 100%);
         color: #060911;
         font-weight: 700;
-        font-size: 0.85rem;
-        padding: 10px 20px;
+        font-size: 0.9rem;
+        padding: 12px 24px;
+        min-height: 48px;
         border-radius: 9999px;
         text-decoration: none;
-        box-shadow: 0 6px 20px rgba(226, 184, 87, 0.3);
-        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(226, 184, 87, 0.28);
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, filter 0.25s ease;
         display: inline-flex;
         align-items: center;
-        gap: 6px;
+        justify-content: center;
+        gap: 8px;
+        border: none;
+        cursor: pointer;
       }
 
       .btn-gold-pill:hover {
         transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(226, 184, 87, 0.45);
-        filter: brightness(1.06);
+        box-shadow: 0 10px 28px rgba(226, 184, 87, 0.45);
+        filter: brightness(1.08);
       }
 
       .phone-link {
-        color: #e2b857;
+        color: var(--accent-gold);
         font-weight: 700;
-        font-size: 0.9rem;
+        font-size: 0.92rem;
         text-decoration: none;
         display: inline-flex;
         align-items: center;
-        gap: 6px;
-        padding: 8px 16px;
-        border: 1px solid rgba(226, 184, 87, 0.3);
+        gap: 8px;
+        padding: 10px 18px;
+        min-height: 48px;
+        border: 1px solid rgba(226, 184, 87, 0.35);
         border-radius: 9999px;
-        background: rgba(226, 184, 87, 0.05);
-        transition: all 0.2s ease;
+        background: rgba(226, 184, 87, 0.06);
+        transition: all 0.25s ease;
       }
 
       .phone-link:hover {
-        background: rgba(226, 184, 87, 0.15);
-        border-color: #e2b857;
+        background: rgba(226, 184, 87, 0.16);
+        border-color: var(--accent-gold);
+        color: #ffffff;
       }
 
-      /* Main Content */
+      /* Breadcrumbs */
+      .breadcrumb-bar {
+        max-width: 1180px;
+        margin: 24px auto 0 auto;
+        padding: 0 24px;
+        width: 100%;
+      }
+
+      .breadcrumb-list {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 0.88rem;
+      }
+
+      .breadcrumb-item a {
+        color: var(--accent-gold);
+        text-decoration: none;
+        transition: color 0.2s;
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 4px;
+      }
+
+      .breadcrumb-item a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+
+      .breadcrumb-separator {
+        color: rgba(255, 255, 255, 0.35);
+        -webkit-user-select: none;
+        user-select: none;
+      }
+
+      .breadcrumb-current {
+        color: var(--text-muted);
+        font-weight: 500;
+      }
+
+      /* Main Layout */
       .sitemap-main {
-        max-width: 1140px;
+        max-width: 1180px;
         margin: 0 auto;
-        padding: 60px 24px 80px 24px;
+        padding: 24px 24px 80px 24px;
         flex: 1;
         width: 100%;
       }
 
       .hero-title-group {
         text-align: center;
-        margin-bottom: 50px;
+        margin-bottom: 40px;
       }
 
       .eyebrow-tag {
-        font-family: monospace;
-        font-size: 0.72rem;
-        letter-spacing: 2px;
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        letter-spacing: 0.18em;
         text-transform: uppercase;
         color: var(--accent-gold);
         font-weight: 700;
-        display: inline-block;
-        margin-bottom: 10px;
-        background: rgba(226, 184, 87, 0.1);
-        padding: 4px 12px;
-        border-radius: 6px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 14px;
+        background: rgba(226, 184, 87, 0.08);
+        padding: 6px 16px;
+        border-radius: 9999px;
         border: 1px solid rgba(226, 184, 87, 0.25);
       }
 
       .page-heading {
         font-family: var(--font-serif);
-        font-size: clamp(2.2rem, 4vw, 3.2rem);
+        font-size: clamp(2.3rem, 4.2vw, 3.4rem);
         color: #ffffff;
         margin: 0 0 16px 0;
         font-weight: 700;
         line-height: 1.15;
+        letter-spacing: -0.01em;
       }
 
       .page-subheading {
         color: var(--text-secondary);
-        font-size: 1.05rem;
-        max-width: 720px;
+        font-size: 1.1rem;
+        max-width: 740px;
         margin: 0 auto;
-        line-height: 1.6;
-        font-weight: 300;
+        line-height: 1.65;
+        font-weight: 400;
       }
 
-      /* Sitemap Grid */
+      /* Featured Priority Consultation Banner (Elevated Architecture) */
+      .priority-consultation-banner {
+        background: linear-gradient(135deg, rgba(226, 184, 87, 0.12) 0%, rgba(13, 20, 32, 0.95) 60%), #0d1420;
+        border: 1px solid var(--border-gold-focus);
+        border-radius: 20px;
+        padding: 32px 36px;
+        margin-bottom: 48px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .banner-content {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .banner-badge {
+        font-size: 0.76rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-gold);
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .banner-title {
+        font-family: var(--font-serif);
+        font-size: 1.85rem;
+        color: #ffffff;
+        margin: 0;
+        line-height: 1.25;
+      }
+
+      .banner-desc {
+        color: var(--text-secondary);
+        font-size: 0.98rem;
+        margin: 0;
+        line-height: 1.6;
+        max-width: 680px;
+      }
+
+      .banner-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-width: 240px;
+      }
+
+      .banner-actions .btn-gold-pill,
+      .banner-actions .phone-link {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Directory Grid - Balanced 2-Column Clinical Architecture */
       .sitemap-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 28px;
+        margin-bottom: 28px;
+      }
+
+      @media (max-width: 860px) {
+        .sitemap-grid {
+          grid-template-columns: 1fr;
+        }
       }
 
       .sitemap-category-card {
-        background: rgba(13, 20, 32, 0.75);
-        border: 1px solid rgba(226, 184, 87, 0.2);
+        background: var(--bg-panel);
+        border: 1px solid var(--border-gold-subtle);
         border-radius: 20px;
-        padding: 30px 26px;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        padding: 32px 28px;
+        box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -226,37 +417,90 @@
 
       .sitemap-category-card:hover {
         transform: translateY(-3px);
-        border-color: rgba(226, 184, 87, 0.4);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(226, 184, 87, 0.1);
+        border-color: rgba(226, 184, 87, 0.45);
+        box-shadow: 0 24px 55px rgba(0, 0, 0, 0.7), 0 0 25px rgba(226, 184, 87, 0.08);
+      }
+
+      /* Section 05: Full-Width Institutional & Regulatory Panel */
+      .sitemap-institutional-panel {
+        background: var(--bg-panel);
+        border: 1px solid var(--border-gold-subtle);
+        border-radius: 20px;
+        padding: 32px 28px;
+        box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 32px;
+      }
+
+      .sitemap-institutional-panel:hover {
+        transform: translateY(-3px);
+        border-color: rgba(226, 184, 87, 0.45);
+        box-shadow: 0 24px 55px rgba(0, 0, 0, 0.7), 0 0 25px rgba(226, 184, 87, 0.08);
+      }
+
+      .institutional-columns-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+
+      @media (max-width: 768px) {
+        .institutional-columns-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+      }
+
+      .institutional-col-title {
+        font-family: var(--font-display);
+        font-size: 1.05rem;
+        color: #ffffff;
+        margin: 0 0 14px 0;
       }
 
       .category-header {
         display: flex;
         align-items: center;
-        gap: 12px;
-        margin-bottom: 20px;
-        padding-bottom: 14px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        gap: 14px;
+        margin-bottom: 22px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.09);
       }
 
-      .category-icon {
-        font-size: 1.4rem;
+      .category-icon-wrapper {
+        color: var(--accent-gold);
         background: rgba(226, 184, 87, 0.1);
-        width: 42px;
-        height: 42px;
-        border-radius: 10px;
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 1px solid rgba(226, 184, 87, 0.25);
+        border: 1px solid rgba(226, 184, 87, 0.28);
+        flex-shrink: 0;
+      }
+
+      .category-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .category-index-label {
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--accent-gold);
+        font-weight: 700;
       }
 
       .category-title {
         font-family: var(--font-display);
-        font-size: 1.25rem;
+        font-size: 1.3rem;
         font-weight: 700;
         color: #ffffff;
         margin: 0;
+        line-height: 1.25;
       }
 
       .sitemap-links-list {
@@ -265,126 +509,159 @@
         margin: 0;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 16px;
       }
 
       .sitemap-item {
         display: flex;
         flex-direction: column;
-        gap: 2px;
+        gap: 4px;
       }
 
       .sitemap-anchor {
-        color: #f1f5f9;
+        color: #ffffff;
         text-decoration: none;
-        font-size: 0.95rem;
+        font-size: 1rem;
         font-weight: 600;
         display: inline-flex;
         align-items: center;
-        gap: 6px;
-        transition: color 0.2s ease;
+        gap: 8px;
+        transition: color 0.2s ease, transform 0.2s ease;
+        line-height: 1.35;
       }
 
       .sitemap-anchor:hover {
         color: var(--accent-gold);
+        transform: translateX(2px);
       }
 
-      .sitemap-anchor::before {
-        content: '›';
+      .anchor-marker {
         color: var(--accent-gold);
         font-weight: 700;
         font-size: 1.1rem;
         line-height: 1;
+        transition: transform 0.2s ease;
       }
 
+      .sitemap-anchor:hover .anchor-marker {
+        transform: translateX(2px);
+      }
+
+      /* Contrast-compliant description: #cbd5e1 on #0d1420 = 9.5:1 ratio (WCAG AAA) */
       .sitemap-desc {
-        font-size: 0.8rem;
+        font-size: 0.92rem;
         color: var(--text-muted);
-        padding-left: 14px;
-        line-height: 1.4;
+        padding-left: 18px;
+        line-height: 1.55;
       }
 
       /* Call to Action Box */
       .sitemap-cta-box {
-        margin-top: 50px;
-        background: radial-gradient(ellipse at 50% 50%, rgba(226, 184, 87, 0.1) 0%, rgba(13, 20, 32, 0.95) 70%);
-        border: 1px solid rgba(226, 184, 87, 0.35);
+        margin-top: 56px;
+        background: radial-gradient(ellipse at 50% 50%, rgba(226, 184, 87, 0.12) 0%, rgba(13, 20, 32, 0.95) 75%);
+        border: 1px solid var(--border-gold-focus);
         border-radius: 24px;
-        padding: 40px 30px;
+        padding: 44px 32px;
         text-align: center;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        box-shadow: 0 20px 55px rgba(0, 0, 0, 0.65);
       }
 
       .sitemap-cta-h3 {
         font-family: var(--font-serif);
-        font-size: 2rem;
+        font-size: clamp(1.8rem, 3vw, 2.3rem);
         color: #ffffff;
-        margin: 0 0 10px 0;
+        margin: 0 0 12px 0;
+        line-height: 1.25;
       }
 
       .sitemap-cta-p {
         color: var(--text-secondary);
-        font-size: 0.95rem;
-        max-width: 620px;
-        margin: 0 auto 24px auto;
+        font-size: 1.02rem;
+        max-width: 680px;
+        margin: 0 auto 28px auto;
+        line-height: 1.6;
       }
 
-      /* Footer */
+      .cta-buttons-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+      }
+
+      .cta-buttons-wrapper .btn-gold-pill {
+        min-width: 260px;
+      }
+
+      .cta-buttons-wrapper .phone-link {
+        min-width: 240px;
+        justify-content: center;
+      }
+
+      /* Footer with Full 48px AAA Tap Targets */
       .sitemap-footer {
         background: #04070d;
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-        padding: 30px 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 36px 24px;
         text-align: center;
-        font-size: 0.78rem;
+        font-size: 0.88rem;
         color: var(--text-muted);
       }
 
-      .sitemap-footer a {
+      .footer-copyright {
+        margin: 0 0 16px 0;
+        line-height: 1.6;
+      }
+
+      .footer-copyright a {
         color: var(--accent-gold);
         text-decoration: underline;
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 4px;
       }
 
-      .sitemap-category-card.featured-booking {
-        background: linear-gradient(165deg, rgba(226, 184, 87, 0.1) 0%, rgba(13, 20, 32, 0.9) 100%);
-        border-color: rgba(226, 184, 87, 0.4);
-      }
-
-      .booking-card-desc {
-        font-size: 0.88rem;
-        color: var(--text-secondary);
-        line-height: 1.5;
-        margin-bottom: 20px;
-      }
-
-      .booking-btn-group {
+      .footer-links-row {
         display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .btn-full-width {
+        flex-wrap: wrap;
         justify-content: center;
-        width: 100%;
-      }
-
-      .phone-link-full {
-        justify-content: center;
-        width: 100%;
-      }
-
-      .btn-cta-large {
-        font-size: 1rem;
-        padding: 14px 32px;
-      }
-
-      .footer-copyright {
-        margin: 0 0 10px 0;
-      }
-
-      .footer-links {
+        align-items: center;
+        gap: 8px 16px;
         margin: 0;
-        font-size: 0.72rem;
-        color: #64748b;
+      }
+
+      .footer-link-item {
+        color: var(--text-secondary);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        min-height: 48px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        transition: color 0.2s, background 0.2s;
+      }
+
+      .footer-link-item:hover {
+        color: var(--accent-gold);
+        background: rgba(226, 184, 87, 0.08);
+      }
+
+      .footer-divider {
+        color: rgba(255, 255, 255, 0.25);
+        -webkit-user-select: none;
+        user-select: none;
+      }
+
+      @media (max-width: 860px) {
+        .priority-consultation-banner {
+          grid-template-columns: 1fr;
+          gap: 24px;
+          padding: 28px 24px;
+        }
+        .banner-actions {
+          width: 100%;
+        }
       }
 
       @media (max-width: 768px) {
@@ -398,14 +675,18 @@
     </style>
   </head>
   <body>
+    <!-- Skip link for keyboard/screen reader navigation -->
+    <a href="#main-content" class="skip-link">Skip to clinical directory</a>
+
     <header class="sitemap-header">
       <div class="header-container">
         <a href="/" class="logo-link" aria-label="Marano Eye Care Home">
           <img src="./assets/marano-logo-dw0rx_0b.png" alt="Marano Eye Care" class="logo-img" width="180" height="38" />
         </a>
         <div class="header-nav-right">
-          <a href="tel:973-419-5972" class="phone-link">
-            <span>📞 (973) 419-5972</span>
+          <a href="tel:973-419-5972" class="phone-link" aria-label="Call LASIK Coordinator at 973-419-5972">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>(973) 419-5972</span>
           </a>
           <a href="/#booking" class="btn-gold-pill">
             <span>Book Consultation</span>
@@ -414,196 +695,341 @@
       </div>
     </header>
 
-    <main class="sitemap-main">
+    <!-- Semantic Breadcrumb Navigation -->
+    <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+      <ol class="breadcrumb-list">
+        <li class="breadcrumb-item">
+          <a href="/">Home</a>
+        </li>
+        <li class="breadcrumb-separator" aria-hidden="true">›</li>
+        <li class="breadcrumb-item breadcrumb-current" aria-current="page">
+          Sitemap & Clinical Directory
+        </li>
+      </ol>
+    </nav>
+
+    <main id="main-content" class="sitemap-main">
       <div class="hero-title-group">
-        <span class="eyebrow-tag">PORTAL SITEMAP & DIRECTORY</span>
+        <div class="eyebrow-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+          <span>CLINICAL ARCHITECTURE & SITEMAP</span>
+        </div>
         <h1 class="page-heading">Marano Eye Care LASIK Portal</h1>
         <p class="page-subheading">
           Explore our complete clinical index of custom dual-laser vision correction resources, interactive patient tools, surgical credentials, and office locations across New Jersey.
         </p>
       </div>
 
+      <!-- Priority Consultation Banner (Elevated Architecture) -->
+      <section class="priority-consultation-banner" aria-labelledby="banner-heading">
+        <div class="banner-content">
+          <div class="banner-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>PRIORITY CLINICAL ACCESS</span>
+          </div>
+          <h2 id="banner-heading" class="banner-title">Reserve Your Free 20/15 LASIK Consultation</h2>
+          <p class="banner-desc">
+            Complete corneal pachymetry, 3D WaveScan® mapping, and pupil iris registration with Dr. Matthew Marano or Dr. Sherief Raouf. 100% complimentary with zero financial obligation.
+          </p>
+        </div>
+        <div class="banner-actions">
+          <a href="/#booking" class="btn-gold-pill">
+            <span>Schedule Consultation</span>
+          </a>
+          <a href="tel:973-419-5972" class="phone-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>Call (973) 419-5972</span>
+          </a>
+        </div>
+      </section>
+
       <div class="sitemap-grid">
-        <!-- Card 1: Core Navigation & Interactive Tools -->
-        <div class="sitemap-category-card">
+        <!-- Card 1: Interactive Diagnostic Suite (Self-Relevance, Desire & Engagement) -->
+        <article class="sitemap-category-card">
           <div>
             <div class="category-header">
-              <span class="category-icon">⚡</span>
-              <h2 class="category-title">Interactive Experience</h2>
+              <div class="category-icon-wrapper" aria-hidden="true">
+                <!-- Optical Reticle SVG -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg>
+              </div>
+              <div class="category-meta">
+                <span class="category-index-label">SECTION 01</span>
+                <h2 class="category-title">Interactive Diagnostic Suite</h2>
+              </div>
             </div>
             <ul class="sitemap-links-list">
               <li class="sitemap-item">
-                <a href="/" class="sitemap-anchor">LASIK Portal Home</a>
-                <span class="sitemap-desc">Main portal featuring custom 20/15 CustomVue® vision correction.</span>
-              </li>
-              <li class="sitemap-item">
-                <a href="/#vision-simulator-section" class="sitemap-anchor">20/15 vs 20/20 Vision Simulator</a>
+                <a href="/#vision-simulator-section" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>20/15 vs 20/20 Vision Simulator</span>
+                </a>
                 <span class="sitemap-desc">Interactive optical simulator showing myopia, astigmatism, and high-definition sight.</span>
               </li>
               <li class="sitemap-item">
-                <a href="/#quiz" class="sitemap-anchor">60-Second Candidacy Assessment</a>
+                <a href="/#quiz" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>60-Second Candidacy Assessment</span>
+                </a>
                 <span class="sitemap-desc">Screen your corneal eligibility, prescription range, and lifestyle compatibility.</span>
               </li>
               <li class="sitemap-item">
-                <a href="/#speed-timeline-strip" class="sitemap-anchor">24-Hour Recovery Scrubber</a>
+                <a href="/#speed-timeline-strip" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>24-Hour Recovery Scrubber</span>
+                </a>
                 <span class="sitemap-desc">Hour-by-hour visual timeline from 10-second laser treatment to next-day driving.</span>
               </li>
               <li class="sitemap-item">
-                <a href="/#roi-section" class="sitemap-anchor">Financial ROI & Cost Comparison</a>
+                <a href="/#roi-section" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>Financial ROI & Cost Comparison</span>
+                </a>
                 <span class="sitemap-desc">Compare lifetime contact lens spending ($30k+) against all-inclusive LASIK care.</span>
               </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Card 2: Laser Technology & Science -->
-        <div class="sitemap-category-card">
-          <div>
-            <div class="category-header">
-              <span class="category-icon">🔬</span>
-              <h2 class="category-title">Technology & Science</h2>
-            </div>
-            <ul class="sitemap-links-list">
               <li class="sitemap-item">
-                <a href="/#lasik-science" class="sitemap-anchor">The Science of CustomVue® LASIK</a>
-                <span class="sitemap-desc">Comprehensive clinical breakdown of 3D WaveScan® and cold ultraviolet photoablation.</span>
-              </li>
-              <li class="sitemap-item">
-                <a href="/#lasik-journey" class="sitemap-anchor">5-Stage CustomVue® Journey</a>
-                <span class="sitemap-desc">Step-by-step walkthrough: 3D Map, Femto Flap, Sculpting, Flap Reseal, & 24-Hr Return.</span>
-              </li>
-              <li class="sitemap-item">
-                <a href="/#faq" class="sitemap-anchor">Clinical FAQ & Safety Guidelines</a>
-                <span class="sitemap-desc">Answers to common patient questions on discomfort, eye movement safety, and recovery.</span>
+                <a href="/" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>Main LASIK Portal Overview</span>
+                </a>
+                <span class="sitemap-desc">Complete wavefront-guided dual-laser vision correction overview and features.</span>
               </li>
             </ul>
           </div>
-        </div>
+        </article>
 
-        <!-- Card 3: Surgeon Credentials & Practice Network -->
-        <div class="sitemap-category-card">
+        <!-- Card 2: Surgeon Authority & Verified Proof (Immediate Trust Transfer & Social Proof) -->
+        <article class="sitemap-category-card">
           <div>
             <div class="category-header">
-              <span class="category-icon">👨‍⚕️</span>
-              <h2 class="category-title">Surgeon & Credentials</h2>
+              <div class="category-icon-wrapper" aria-hidden="true">
+                <!-- Medical Shield / Fellowship SVG -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+              </div>
+              <div class="category-meta">
+                <span class="category-index-label">SECTION 02</span>
+                <h2 class="category-title">Surgeon Authority & Reviews</h2>
+              </div>
             </div>
             <ul class="sitemap-links-list">
               <li class="sitemap-item">
-                <a href="/#doctor-profile-section" class="sitemap-anchor">Dr. Matthew J. Marano, Jr., M.D.</a>
+                <a href="/#doctor-profile-section" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>Dr. Matthew J. Marano, Jr., M.D.</span>
+                </a>
                 <span class="sitemap-desc">Chief of Ophthalmology, 15× NJ Top Doctor with 30+ years of laser surgical experience.</span>
               </li>
               <li class="sitemap-item">
-                <a href="/#dr-raouf" class="sitemap-anchor">Dr. Sherief Raouf, M.D.</a>
+                <a href="/#dr-raouf" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>Dr. Sherief Raouf, M.D.</span>
+                </a>
                 <span class="sitemap-desc">Board-Certified Cornea & Refractive Specialist, UIC Eye & Ear Fellowship-Trained Surgeon.</span>
               </li>
               <li class="sitemap-item">
-                <a href="/#social-proof-section" class="sitemap-anchor">Patient Stories & Video Reviews</a>
-                <span class="sitemap-desc">Verified outcomes, Google 4.9-star reviews, and patient transformation testimonials.</span>
+                <a href="/#social-proof-section" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>Patient Stories & Video Reviews</span>
+                </a>
+                <span class="sitemap-desc">Verified outcomes, Google 4.9-star ratings (680+ reviews), and patient transformations.</span>
               </li>
               <li class="sitemap-item">
-                <a href="https://www.maranoeyecare.com" target="_blank" rel="noopener noreferrer" class="sitemap-anchor">Official Marano Eye Care Practice ↗</a>
-                <span class="sitemap-desc">Comprehensive medical ophthalmology, cataract, and glaucoma care.</span>
-              </li>
-              <li class="sitemap-item">
-                <a href="https://www.onjeyecare.com" target="_blank" rel="noopener noreferrer" class="sitemap-anchor">ONJ Eye Care Network ↗</a>
-                <span class="sitemap-desc">Regional network of ophthalmic surgery centers across Northern New Jersey.</span>
+                <a href="/#eeat-credentials" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>Hospital Appointments & Accreditations</span>
+                </a>
+                <span class="sitemap-desc">Chief of Ophthalmology at Cooperman Barnabas & St. Michael's, FAAO & ASCRS Fellowships.</span>
               </li>
             </ul>
           </div>
-        </div>
+        </article>
 
-        <!-- Card 4: Office Locations & Consultations -->
-        <div class="sitemap-category-card">
+        <!-- Card 3: Technology & Clinical Science (Objection Preemption & Safety Verification) -->
+        <article class="sitemap-category-card">
           <div>
             <div class="category-header">
-              <span class="category-icon">📍</span>
-              <h2 class="category-title">New Jersey Locations</h2>
+              <div class="category-icon-wrapper" aria-hidden="true">
+                <!-- Dual Laser Aperture SVG -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+              <div class="category-meta">
+                <span class="category-index-label">SECTION 03</span>
+                <h2 class="category-title">Technology & Clinical Science</h2>
+              </div>
             </div>
             <ul class="sitemap-links-list">
               <li class="sitemap-item">
-                <a href="https://maps.google.com/?q=200+South+Orange+Ave+Suite+209+Livingston+NJ+07039" target="_blank" rel="noopener noreferrer" class="sitemap-anchor">Livingston Flagship Surgical Center ↗</a>
+                <a href="/#lasik-science" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>The Science of CustomVue® LASIK</span>
+                </a>
+                <span class="sitemap-desc">Clinical breakdown of 3D WaveScan® iris registration and cold excimer photoablation.</span>
+              </li>
+              <li class="sitemap-item">
+                <a href="/#lasik-journey" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>5-Stage CustomVue® Journey</span>
+                </a>
+                <span class="sitemap-desc">Step-by-step walkthrough: 3D Map, Femto Flap, Sculpting, Flap Reseal, & 24-Hr Return.</span>
+              </li>
+              <li class="sitemap-item">
+                <a href="/#lasik-corneal-topography-section" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>Corneal Topography & Diagnostics</span>
+                </a>
+                <span class="sitemap-desc">Sub-micron Pentacam® elevation mapping ensuring eligibility for thin corneas.</span>
+              </li>
+              <li class="sitemap-item">
+                <a href="/#faq" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>Clinical FAQ & Safety Guidelines</span>
+                </a>
+                <span class="sitemap-desc">Answers to patient questions on numbing drops, automated eye-tracking, and recovery.</span>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Card 4: New Jersey Office Suites (Geographic Accessibility & Friction Removal) -->
+        <article class="sitemap-category-card">
+          <div>
+            <div class="category-header">
+              <div class="category-icon-wrapper" aria-hidden="true">
+                <!-- Location Pin Target SVG -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="category-meta">
+                <span class="category-index-label">SECTION 04</span>
+                <h2 class="category-title">New Jersey Office Suites</h2>
+              </div>
+            </div>
+            <ul class="sitemap-links-list">
+              <li class="sitemap-item">
+                <a href="https://maps.google.com/?q=200+South+Orange+Ave+Suite+209+Livingston+NJ+07039" target="_blank" rel="noopener noreferrer" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>Livingston Flagship Surgical Center ↗</span>
+                </a>
                 <span class="sitemap-desc">Cooperman Barnabas Ambulatory Care Center (ACC), Suite 209 (Phone: 973-322-0100).</span>
               </li>
               <li class="sitemap-item">
-                <a href="https://maps.google.com/?q=16+Pocono+Road+Suite+301+Denville+NJ+07834" target="_blank" rel="noopener noreferrer" class="sitemap-anchor">Denville Consultation Suite ↗</a>
+                <a href="https://maps.google.com/?q=16+Pocono+Road+Suite+301+Denville+NJ+07834" target="_blank" rel="noopener noreferrer" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>Denville Consultation Suite ↗</span>
+                </a>
                 <span class="sitemap-desc">16 Pocono Road, Suite 301, Denville, NJ 07834 (Phone: 973-625-7970).</span>
               </li>
               <li class="sitemap-item">
-                <a href="https://maps.google.com/?q=306+Martin+L+King+Blvd+Newark+NJ+07102" target="_blank" rel="noopener noreferrer" class="sitemap-anchor">Newark Consultation Suite ↗</a>
+                <a href="https://maps.google.com/?q=306+Martin+L+King+Blvd+Newark+NJ+07102" target="_blank" rel="noopener noreferrer" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>Newark Consultation Suite ↗</span>
+                </a>
                 <span class="sitemap-desc">306 Martin L. King Blvd, Newark, NJ 07102 (Phone: 973-877-5534).</span>
               </li>
             </ul>
           </div>
-        </div>
+        </article>
+      </div>
 
-        <!-- Card 5: Compliance, Legal & Direct Feeds -->
-        <div class="sitemap-category-card">
+      <!-- Section 05: Institutional Practice & Regulatory Index (Full-Width Bedrock Panel) -->
+      <section class="sitemap-institutional-panel" aria-labelledby="institutional-heading">
+        <div class="category-header">
+          <div class="category-icon-wrapper" aria-hidden="true">
+            <!-- Privacy Lock & Network Feed SVG -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="category-meta">
+            <span class="category-index-label">SECTION 05</span>
+            <h2 id="institutional-heading" class="category-title">Institutional Practice & Regulatory Index</h2>
+          </div>
+        </div>
+        <div class="institutional-columns-grid">
           <div>
-            <div class="category-header">
-              <span class="category-icon">🔒</span>
-              <h2 class="category-title">Legal & Machine Feeds</h2>
-            </div>
+            <h3 class="institutional-col-title">Hospital & Regional Network</h3>
             <ul class="sitemap-links-list">
               <li class="sitemap-item">
-                <a href="https://sa1s3.patientpop.com/assets/docs/425417.pdf" target="_blank" rel="noopener noreferrer" class="sitemap-anchor">HIPAA Privacy Policy (PDF) ↗</a>
+                <a href="https://www.maranoeyecare.com" target="_blank" rel="noopener noreferrer" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>Official Marano Eye Care Practice ↗</span>
+                </a>
+                <span class="sitemap-desc">Comprehensive medical ophthalmology, cataract surgery, and glaucoma care.</span>
+              </li>
+              <li class="sitemap-item">
+                <a href="https://www.onjeyecare.com" target="_blank" rel="noopener noreferrer" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>ONJ Eye Care Practice Network ↗</span>
+                </a>
+                <span class="sitemap-desc">Regional network of ophthalmic surgery centers across Northern New Jersey.</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="institutional-col-title">Patient Privacy & Machine Protocols</h3>
+            <ul class="sitemap-links-list">
+              <li class="sitemap-item">
+                <a href="https://sa1s3.patientpop.com/assets/docs/425417.pdf" target="_blank" rel="noopener noreferrer" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>HIPAA Privacy Policy (PDF) ↗</span>
+                </a>
                 <span class="sitemap-desc">Official health privacy guidelines, data safeguarding, and patient rights.</span>
               </li>
               <li class="sitemap-item">
-                <a href="/sitemap.xml" target="_blank" class="sitemap-anchor">XML Sitemap (Search Engines)</a>
+                <a href="/sitemap.xml" target="_blank" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>XML Sitemap (Search Engines)</span>
+                </a>
                 <span class="sitemap-desc">Machine-readable XML index for Google and Bing search crawlers.</span>
               </li>
               <li class="sitemap-item">
-                <a href="/llm.txt" target="_blank" class="sitemap-anchor">LLM Knowledge Feed (/llm.txt)</a>
+                <a href="/llm.txt" target="_blank" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>LLM Knowledge Feed (/llm.txt)</span>
+                </a>
                 <span class="sitemap-desc">Structured plaintext summary for AI systems and search models.</span>
               </li>
               <li class="sitemap-item">
-                <a href="/robots.txt" target="_blank" class="sitemap-anchor">Robots.txt Directives</a>
+                <a href="/robots.txt" target="_blank" class="sitemap-anchor">
+                  <span class="anchor-marker" aria-hidden="true">›</span>
+                  <span>Robots.txt Directives</span>
+                </a>
                 <span class="sitemap-desc">Search engine crawler permissions and index location rules.</span>
               </li>
             </ul>
           </div>
         </div>
+      </section>
 
-        <!-- Card 6: Consultation Booking -->
-        <div class="sitemap-category-card featured-booking">
-          <div>
-            <div class="category-header">
-              <span class="category-icon">📅</span>
-              <h2 class="category-title">Free Consultation</h2>
-            </div>
-            <p class="booking-card-desc">
-              Ready to discover if 20/15 CustomVue® wavefront LASIK is right for your eyes? Consultations are 100% complimentary with zero financial obligation.
-            </p>
-            <div class="booking-btn-group">
-              <a href="/#booking" class="btn-gold-pill btn-full-width">
-                <span>Reserve Free Consultation</span>
-              </a>
-              <a href="tel:973-419-5972" class="phone-link phone-link-full">
-                <span>Call Coordinator: (973) 419-5972</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="sitemap-cta-box">
-        <h3 class="sitemap-cta-h3">Transform Your Vision with New Jersey's Pioneer LASIK Surgeon</h3>
+      <!-- Authoritative Bottom Reassurance CTA -->
+      <section class="sitemap-cta-box" aria-labelledby="cta-heading">
+        <h2 id="cta-heading" class="sitemap-cta-h3">Over 30 Years of Surgical Refractive Excellence</h2>
         <p class="sitemap-cta-p">
-          Over 30 years of surgical precision, 10-second blade-free laser accuracy, and next-day recovery. Consultations available in Livingston, Denville, and Newark.
+          Blade-free femtosecond flap creation, 10-second cool excimer sculpting, and rapid 24-hour return to daily life. Schedule your evaluation at our Livingston Flagship (Cooperman Barnabas ACC), Denville, or Newark suites.
         </p>
-        <a href="/#booking" class="btn-gold-pill btn-cta-large">
-          <span>Schedule Your Complimentary Exam</span>
-        </a>
-      </div>
+        <div class="cta-buttons-wrapper">
+          <a href="/#booking" class="btn-gold-pill">
+            <span>Schedule Your Free Consultation</span>
+          </a>
+          <a href="tel:973-419-5972" class="phone-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>Call (973) 419-5972</span>
+          </a>
+        </div>
+      </section>
     </main>
 
     <footer class="sitemap-footer">
       <p class="footer-copyright">
         © 2026 <a href="https://www.maranoeyecare.com" target="_blank" rel="noopener noreferrer">Marano Eye Care</a> | Member of <a href="https://www.onjeyecare.com" target="_blank" rel="noopener noreferrer">ONJ Eye Care Practice Network</a>. All Rights Reserved.
       </p>
-      <p class="footer-links">
-        <a href="/sitemap.html">HTML Sitemap</a> &bull; <a href="/sitemap.xml" target="_blank">XML Sitemap</a> &bull; <a href="https://sa1s3.patientpop.com/assets/docs/425417.pdf" target="_blank" rel="noopener noreferrer">HIPAA Privacy Policy</a> &bull; Phone: (973) 419-5972
-      </p>
+      <nav class="footer-links-row" aria-label="Footer Quick Links">
+        <a href="/" class="footer-link-item">LASIK Portal Home</a>
+        <span class="footer-divider" aria-hidden="true">•</span>
+        <a href="/sitemap.html" class="footer-link-item" aria-current="page">HTML Sitemap</a>
+        <span class="footer-divider" aria-hidden="true">•</span>
+        <a href="/sitemap.xml" target="_blank" class="footer-link-item">XML Sitemap</a>
+        <span class="footer-divider" aria-hidden="true">•</span>
+        <a href="https://sa1s3.patientpop.com/assets/docs/425417.pdf" target="_blank" rel="noopener noreferrer" class="footer-link-item">HIPAA Privacy Policy</a>
+        <span class="footer-divider" aria-hidden="true">•</span>
+        <a href="tel:973-419-5972" class="footer-link-item">Phone: (973) 419-5972</a>
+      </nav>
     </footer>
   </body>
 </html>

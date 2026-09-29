@@ -617,7 +617,7 @@
               "name": "Why should I choose Marano Eye Care for LASIK?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Led by Dr. Matthew Marano and Dr. Sherief Raouf, Marano Eye Care brings 30+ years of clinical excellence, corneal fellowship training, thousands of successful LASIK procedures, and over 40,000 total surgical procedures to North Jersey. Unlike volume-driven centers, all pre-operative diagnostic measurements are performed by a highly qualified technician and closely reviewed by your dedicated surgeon, who personally designs your custom treatment plan, carries out your laser procedure, and manages your post-op recovery."
+                "text": "Led by Dr. Matthew Marano and Dr. Sherief Raouf, Marano Eye Care brings 30+ years of clinical excellence, corneal fellowship training, thousands of successful LASIK procedures, and over 40,000 total surgical procedures to North Jersey. Unlike volume-driven centers, diagnostic measurements are conducted by a specially trained technician and closely reviewed by your dedicated surgeon, who personally designs your custom ablation profile, operates the dual lasers, and oversees your care."
               }
             },
             {
@@ -687,7 +687,7 @@
     <link rel="prefetch" as="image" href="./assets/hd_night_highway_scene.webp?v=6" type="image/webp">
     <link rel="stylesheet" href="./assets/index-DhXpI4H_.css?v=29">
     <link rel="stylesheet" href="./assets/custom-styles.css?v=142">
-    <script src="./assets/index-nb1vded4_v2.js?v=66" defer></script>
+    <script src="./assets/index-nb1vded4_v2.js?v=67" defer></script>
     <script src="./assets/vision-simulator.min.js?v=18" defer></script>
     <script src="./assets/corneal-topography.js?v=16" defer></script>
     <!-- Comprehensive GTM, GA4, & Google Ads Event Tracking Architecture -->
@@ -1093,16 +1093,22 @@
     }
 
     function injectContactSectionOffices() {
+      // 0. Update contact section subtitle copy
+      var h2 = Array.from(document.querySelectorAll('h2')).find(function(el) {
+        return (el.textContent || '').indexOf('How Much Longer Will You Wait') !== -1;
+      });
+      if (h2) {
+        var subP = h2.parentElement ? h2.parentElement.querySelector('p.text-secondary') : null;
+        if (subP) {
+          subP.textContent = 'Schedule your complimentary, no-pressure consultation today. Most patients say their only regret is not doing it sooner.';
+        }
+      }
+
       var phoneBox = document.querySelector('.contact-phone-box');
-      if (!phoneBox) {
-        var h2 = Array.from(document.querySelectorAll('h2')).find(function(el) {
-          return (el.textContent || '').indexOf('How Much Longer Will You Wait') !== -1;
-        });
-        if (h2) {
-          var ctaCol = h2.closest('.contact-cta-col') || h2.parentElement;
-          if (ctaCol) {
-            phoneBox = ctaCol.querySelector('.contact-phone-box') || ctaCol.querySelector('a[href^="tel:"]')?.parentElement;
-          }
+      if (!phoneBox && h2) {
+        var ctaCol = h2.closest('.contact-cta-col') || h2.parentElement;
+        if (ctaCol) {
+          phoneBox = ctaCol.querySelector('.contact-phone-box') || ctaCol.querySelector('a[href^="tel:"]')?.parentElement;
         }
       }
       if (!phoneBox) return;
@@ -1263,7 +1269,7 @@
             'New Jersey\'s <span class="bio-heading-accent" style="color: #e2b857; font-family: var(--font-serif); font-style: italic;">Premier Refractive Surgeons</span>' +
           '</h2>' +
           '<p style="font-size: 1.05rem; color: #cbd5e1; max-width: 680px; margin: 0 auto; line-height: 1.6; font-weight: 300;">' +
-            'At Marano Eye Care, your care is never handed off to rotating contractors. All pre-operative diagnostic measurements are performed by our highly qualified ophthalmic technicians and closely reviewed by our board-certified surgeons, Dr. Matthew Marano and Dr. Sherief Raouf, who personally design your custom procedure, operate the dual lasers, and conduct your post-operative evaluations.' +
+            'At Marano Eye Care, your care is never handed off to rotating contractors. Diagnostic measurements are conducted by a specially trained technician and closely reviewed by our board-certified surgeons, Dr. Matthew Marano and Dr. Sherief Raouf, who personally design your custom procedure, operate the dual lasers, and conduct your post-operative evaluations.' +
           '</p>' +
         '</div>';
         container.insertBefore(secIntro, maranoOuter);
@@ -3724,7 +3730,7 @@
           if (questionText.indexOf('blade') !== -1 || questionText.indexOf('Blade') !== -1) {
             answerInner.innerHTML = '<strong>No. Dr. Marano and Dr. Raouf use a 100% all-laser, blade-free technique.</strong> Traditional older LASIK methods used a mechanical microkeratome oscillating metal blade to create the corneal flap. At Marano Eye Care, our surgeons use the advanced <strong>iFS® 1053nm Femtosecond infrared laser</strong>, which emits pulses at a quadrillionth of a second to create a customized, ultra-thin protective flap in just 10 seconds per eye. This eliminates mechanical blade friction, preserves corneal architecture, and delivers significantly faster 24-hour visual recovery.';
           } else if (questionText.indexOf('Why should I choose') !== -1 || questionText.indexOf('choose Marano') !== -1) {
-            answerInner.innerHTML = '<strong>Direct surgeon continuity and dedicated clinical oversight.</strong> At corporate high-volume chains, patients often meet an unfamiliar rotating surgeon for only a moment on the laser bed. At Marano Eye Care, all diagnostic measurements are performed by our highly qualified ophthalmic technician and closely reviewed by Dr. Matthew Marano and Dr. Sherief Raouf. Your dedicated surgeon personally custom-designs your wavefront ablation profile, performs your laser procedure, and oversees your recovery during every follow-up visit across our Livingston, Denville, and Newark offices.';
+            answerInner.innerHTML = '<strong>Dedicated surgeon review and clinical continuity.</strong> At corporate high-volume chains, patients often meet an unfamiliar rotating surgeon for only a moment on the laser bed. At Marano Eye Care, diagnostic measurements are conducted by a specially trained technician and closely reviewed by Dr. Matthew Marano and Dr. Sherief Raouf. Your dedicated surgeon personally designs your custom ablation profile, operates the dual lasers, and oversees the totality of your recovery across our Livingston, Denville, and Newark offices.';
           } else if (questionText.indexOf('recover from LASIK') !== -1 || questionText.indexOf('How long does it take to recover') !== -1) {
             answerInner.innerHTML = '<strong>Most patients achieve functional 20/20 vision within 24 hours.</strong> Because the blade-free iFS® femtosecond laser uses no mechanical blades and generates zero heat, corneal flap edges seal naturally through osmotic pressure within hours. Patients typically rest for 3 to 4 hours post-procedure, and by the next morning are cleared to drive, use digital displays, and return to work without glasses or contacts.';
           } else if (questionText.indexOf('awake during') !== -1 || questionText.indexOf('How long does the procedure take') !== -1) {
@@ -3874,7 +3880,7 @@
         bridgeCard.style.cssText = 'max-width: 800px; margin: 48px auto 0 auto; padding: 32px 28px; background: rgba(255, 255, 255, 0.015); border: 1px solid rgba(226, 184, 87, 0.22); border-radius: 20px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.5);';
         bridgeCard.innerHTML = 
           '<h4 style="font-family: var(--font-serif); font-size: 1.45rem; font-weight: 700; color: #ffffff; margin-bottom: 8px;">Have a Question About Your Specific Corneal Candidacy?</h4>' +
-          '<p style="font-size: 0.92rem; color: #cbd5e1; max-width: 580px; margin: 0 auto 20px auto; line-height: 1.6;">High-resolution WaveScan® 3D diagnostic measurements are captured by our highly qualified technician and closely reviewed by Dr. Marano and Dr. Raouf during your complimentary consultation to evaluate your cornea and answer all questions directly.</p>' +
+          '<p style="font-size: 0.92rem; color: #cbd5e1; max-width: 580px; margin: 0 auto 20px auto; line-height: 1.6;">High-resolution 3D diagnostic measurements are captured by our highly qualified technician and closely reviewed by Dr. Marano and Dr. Raouf during your complimentary consultation to evaluate your candidacy and answer all questions directly.</p>' +
           '<button onclick="scrollToElement(\'contact\')" class="btn btn-primary" style="padding: 13px 30px; font-size: 0.92rem; display: inline-flex; align-items: center; gap: 8px; margin: 0 auto; cursor: pointer;">' +
             '<span>Schedule Your Free Diagnostic Scan</span>' +
             '<span style="color: #000;">→</span>' +
@@ -3958,7 +3964,7 @@
               'The Standard Commercial Mill vs. <br /><span class="editorial-italic-accent">The Marano Standard.</span>' +
             '</h2>' +
             '<p class="superiority-lead">' +
-              'Most discount LASIK chains prioritize assembly-line surgical quotas over individual corneal architecture. Here is how standard commercial care compares to our bespoke surgical protocol.' +
+              'Most discount LASIK chains prioritize assembly-line surgical quotas over individual corneal architecture and personalized care. Here is how standard commercial care compares to our bespoke surgical protocol.' +
             '</p>' +
           '</div>' +
           '<div class="comparison-grid">' +
@@ -3994,11 +4000,11 @@
             '<div class="comp-card comp-card-marano">' +
               '<span class="comp-card-badge comp-card-badge-marano">Board-Certified Eye Care Concierge</span>' +
               '<h3 class="comp-card-title comp-card-title-marano text-gradient">Marano Eye Care Concierge</h3>' +
-              '<p class="comp-card-desc">Directed by pioneering cornea specialists with over 30 years of academic hospital leadership in New Jersey.</p>' +
+              '<p class="comp-card-desc">Directed by pioneering LASIK and cornea specialists with over 30 years of academic and clinical leadership in New Jersey.</p>' +
               '<div class="comp-card-rows">' +
                 '<div class="comp-row">' +
                   '<div class="comp-row-header comp-row-header-marano">✓ Dedicated Surgeon Review &amp; Continuity</div>' +
-                  '<p class="comp-row-value">Diagnostic measurements are conducted by a highly qualified technician and <strong>closely reviewed by Dr. Marano or Dr. Raouf</strong>, who personally designs your custom ablation profile, operates the dual lasers, and oversees your care.</p>' +
+                  '<p class="comp-row-value">Diagnostic measurements are conducted by a specially trained technician and <strong>closely reviewed by Dr. Marano or Dr. Raouf</strong>, who will personally design your custom ablation profile, operate the dual lasers and oversee the totality of your care.</p>' +
                 '</div>' +
                 '<div class="comp-row">' +
                   '<div class="comp-row-header comp-row-header-marano">✓ 100% Blade-Free Dual-Laser Suite</div>' +
@@ -4089,7 +4095,7 @@
                   '</div>' +
                   '<div class="dossier-pane dossier-pane-marano">' +
                     '<span class="dossier-pane-tag dossier-pane-tag-marano">✓ The Marano Standard</span>' +
-                    '<p class="dossier-pane-text"><strong>100% Direct Surgeon Continuity.</strong> Dr. Marano or Dr. Raouf personally conducts your consultation, plans your corneal ablation profile, performs your surgery, and conducts your follow-ups.</p>' +
+                    '<p class="dossier-pane-text"><strong>Dedicated Surgeon Review &amp; Continuity.</strong> Diagnostic measurements are conducted by a specially trained technician and closely reviewed by Dr. Marano or Dr. Raouf, who personally designs your custom ablation profile, operates the dual lasers, and oversees your care.</p>' +
                   '</div>' +
                 '</div>' +
                 '<div class="dossier-stakes">' +

@@ -220,7 +220,7 @@
                 <strong class="topo-insight-surgeon">Dr. Matthew Marano, MD</strong>
                 <span class="topo-insight-role">Board-Certified LASIK Surgeon • Marano Eye Care</span>
                 <p class="topo-insight-quote">
-                  “Astigmatism is simply an uneven curve. With 3D WaveScan® diagnostics and CustomVue® wavefront guidance, we map each patient’s optical fingerprint 25 times more accurately than glasses or contacts. We don't just treat astigmatism—we eliminate the microscopic irregularities that cause night glare, targeting standard-setting 20/20 and unlocking the possibility of 20/15 high-definition vision.”
+                  “Astigmatism is simply an uneven curve. With 3D WaveScan® diagnostics and CustomVue® wavefront guidance, we map each patient’s optical fingerprint 25 times more accurately than glasses or contacts. We don't just treat astigmatism, we eliminate the microscopic irregularities that cause night glare, targeting standard-setting 20/20 and unlocking the possibility of 20/15 high-definition vision.”
                 </p>
               </div>
             </div>

@@ -8701,3 +8701,409 @@ div[style*="eeat-credentials"] {
 
 
 
+
+
+/* ==========================================================================
+   COMPETITOR SUPERIORITY & PATIENT ADVOCACY MODULES
+   1. The Side-by-Side Comparison Matrix (#lasik-comparison-matrix-section)
+   2. The 5 Critical Questions Vetting Dossier (#lasik-buyer-questions-section)
+   ========================================================================== */
+
+/* Section Outer Shells */
+.superiority-section {
+  padding: clamp(80px, 8vw, 120px) 24px;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.superiority-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.superiority-header {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 48px auto;
+}
+
+.superiority-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-primary, #e2b857);
+  background: rgba(226, 184, 87, 0.08);
+  border: 1px solid rgba(226, 184, 87, 0.25);
+  margin-bottom: 16px;
+}
+
+.superiority-eyebrow-red {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.superiority-title {
+  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.01em;
+}
+
+.superiority-lead {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  line-height: 1.7;
+  color: #cbd5e1;
+  font-weight: 300;
+  margin: 0 auto;
+  max-width: 720px;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   1. COMPARISON MATRIX GRID
+   ────────────────────────────────────────────────────────────────────────── */
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  position: relative;
+  margin-top: 16px;
+}
+
+@media (max-width: 900px) {
+  .comparison-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.comp-card {
+  border-radius: 20px;
+  padding: 36px 32px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Corporate Mill Column */
+.comp-card-mill {
+  background: linear-gradient(165deg, rgba(17, 24, 39, 0.75) 0%, rgba(10, 15, 26, 0.85) 100%);
+  border: 1px solid rgba(239, 68, 68, 0.18);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+}
+
+/* Marano Gold Standard Column */
+.comp-card-marano {
+  background: linear-gradient(165deg, rgba(13, 22, 42, 0.9) 0%, rgba(8, 14, 28, 0.95) 100%);
+  border: 1px solid rgba(226, 184, 87, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(226, 184, 87, 0.08);
+}
+
+.comp-card-badge {
+  display: inline-block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  width: fit-content;
+}
+
+.comp-card-badge-mill {
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.comp-card-badge-marano {
+  color: #fbbf24;
+  background: rgba(226, 184, 87, 0.15);
+  border: 1px solid rgba(226, 184, 87, 0.4);
+}
+
+.comp-card-title {
+  font-size: 1.65rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  line-height: 1.25;
+}
+
+.comp-card-title-mill {
+  color: #f1f5f9;
+}
+
+.comp-card-title-marano {
+  color: #fbbf24 !important;
+  background: linear-gradient(135deg, #ffffff 0%, #fef08a 22%, #f59e0b 48%, #d97706 72%, #fef3c7 88%, #fbbf24 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow: none !important;
+  filter: drop-shadow(0 2px 14px rgba(226, 184, 87, 0.45)) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.015em !important;
+}
+
+.comp-card-desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #94a3b8;
+  margin: 0 0 28px 0;
+}
+
+.comp-card-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.comp-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.comp-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.comp-row-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.comp-row-header-mill {
+  color: #f87171;
+}
+
+.comp-row-header-marano {
+  color: #38bdf8;
+}
+
+.comp-row-value {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+.comp-row-value strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   2. "5 QUESTIONS" ACCORDION / DOSSIER MODULE
+   ────────────────────────────────────────────────────────────────────────── */
+
+.questions-dossier {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.dossier-card {
+  border-radius: 16px;
+  background: rgba(13, 18, 29, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.dossier-card:hover {
+  border-color: rgba(226, 184, 87, 0.25);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.dossier-card.active {
+  border-color: rgba(226, 184, 87, 0.45);
+  background: rgba(15, 23, 42, 0.95);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(226, 184, 87, 0.08);
+}
+
+.dossier-header-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  min-height: 60px;
+  box-sizing: border-box;
+  color: inherit;
+  outline: none;
+  gap: 16px;
+}
+
+.dossier-header-btn:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: -2px;
+}
+
+.dossier-title-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.dossier-num {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-primary, #e2b857);
+  background: rgba(226, 184, 87, 0.1);
+  border: 1px solid rgba(226, 184, 87, 0.25);
+  padding: 4px 10px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.dossier-question {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #ffffff;
+  margin: 0;
+}
+
+.dossier-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, color 0.3s ease;
+}
+
+.dossier-card.active .dossier-icon {
+  transform: rotate(180deg);
+  background: rgba(226, 184, 87, 0.15);
+  color: var(--accent-primary, #e2b857);
+  border-color: rgba(226, 184, 87, 0.35);
+}
+
+.dossier-body {
+  display: none;
+  padding: 0 28px 28px 28px;
+  animation: dossierFadeIn 0.35s ease;
+}
+
+.dossier-card.active .dossier-body {
+  display: block;
+}
+
+@keyframes dossierFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dossier-contrast-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .dossier-contrast-box {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dossier-pane {
+  padding: 20px;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.dossier-pane-mill {
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.dossier-pane-marano {
+  background: rgba(56, 189, 248, 0.05);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.dossier-pane-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.dossier-pane-tag-mill {
+  color: #f87171;
+}
+
+.dossier-pane-tag-marano {
+  color: #38bdf8;
+}
+
+.dossier-pane-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+.dossier-pane-text strong {
+  color: #ffffff;
+}
+
+.dossier-stakes {
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 3px solid var(--accent-primary, #e2b857);
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: #94a3b8;
+}
+
+.dossier-stakes strong {
+  color: #f1f5f9;
+}

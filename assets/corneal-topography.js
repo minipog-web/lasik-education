@@ -52,7 +52,7 @@
           <div class="topo-badge-wrapper">
             <span class="topo-badge">Livingston Surgical &amp; Diagnostic Suite • Livingston, NJ</span>
           </div>
-          <h3 class="topo-title">How CustomVue® LASIK Corrects Astigmatism in 3D</h3>
+          <h3 class="topo-title" style="white-space: nowrap;">How CustomVue® LASIK Corrects Astigmatism in 3D</h3>
           <p class="topo-subtitle">
             Astigmatism means your cornea curves unevenly like a <strong>football</strong> instead of a symmetrical <strong>basketball</strong>, warping light rays into multiple blurry focal points. 
             See how <strong>CustomVue® wavefront mapping</strong> guides the excimer laser to smooth and equalize every microscopic meridian in just 10 seconds.

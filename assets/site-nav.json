@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "items": [
+      { "id": "candidacy", "label": "Candidacy", "href": "/#quiz" },
+      { "id": "technology", "label": "LASIK Deep Dive", "href": "/technology.html" },
+      { "id": "procedure", "label": "Procedure & Recovery", "href": "/procedure-journey.html" },
+      { "id": "surgeons", "label": "Surgeons", "href": "/surgeons.html" },
+      { "id": "pricing", "label": "Cost & ROI", "href": "/pricing-financing.html" }
+    ],
+    "phone": {
+      "display": "(973) 419-5972",
+      "tel": "973-419-5972",
+      "title": "Direct Surgical Coordinator Line • No Hold Times"
+    },
+    "cta": {
+      "desktopLabel": "Schedule Free Consultation",
+      "mobileLabel": "Free Consultation",
+      "href": "/#hero-mc-card"
+    }
+  },
+  "footer": {
+    "links": [
+      { "id": "home", "label": "Home", "href": "/" },
+      { "id": "candidacy", "label": "Candidacy Self-Test", "href": "/#quiz" },
+      { "id": "technology", "label": "LASIK Deep Dive", "href": "/technology.html" },
+      { "id": "procedure", "label": "Procedure & 24h Recovery", "href": "/procedure-journey.html" },
+      { "id": "surgeons", "label": "Surgeons & Clinical Standards", "href": "/surgeons.html" },
+      { "id": "pricing", "label": "Cost & 0% Financing", "href": "/pricing-financing.html" },
+      { "id": "sitemap", "label": "Directory & Sitemap", "href": "/sitemap.html" }
+    ],
+    "offices": [
+      {
+        "name": "Livingston Flagship Surgical Center",
+        "detail": "200 South Orange Ave, Suite 209 (Cooperman Barnabas ACC)",
+        "phone": "(973) 419-5972",
+        "tel": "973-419-5972"
+      },
+      {
+        "name": "Denville Office",
+        "detail": "16 Pocono Road, Suite 301",
+        "phone": "(973) 370-8292",
+        "tel": "973-370-8292"
+      },
+      {
+        "name": "Newark Office",
+        "detail": "North Ward Medical Arts",
+        "phone": "(973) 419-5972",
+        "tel": "973-419-5972"
+      }
+    ],
+    "copyright": "© 2026 Marano Eye Care. All rights reserved. Dr. Matthew J. Marano, Jr., M.D. & Dr. Sherief Raouf, M.D.",
+    "disclaimer": "Disclaimer: Content on this site is for educational purposes and does not replace an in-person medical evaluation by a licensed ophthalmologist. LASIK is a surgical procedure with risks and benefits evaluated during a personalized consultation."
+  }
+}

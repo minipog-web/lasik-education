@@ -1,11 +1,20 @@
 /**
  * Marano Eye Care — Telemetry & Conversion Tracking Architecture
- * Isolated Telemetry Module: GA4, Google Ads, GTM & Micro-Conversions
+ * Deep Telemetry Module: GA4, Multi-Account Google Ads, GTM & Micro-Conversions
+ * 
+ * Seams & Adapters:
+ * - GA4 Measurement: G-71SK3LQF49
+ * - Google Tag / GTM: GT-WKTZM5GN
+ * - Google Ads Accounts: AW-18197167741 & AW-17962563730
+ *   - Book Appointment Conversion: AW-17962563730/IsEZCL66_dscEJLxm_VC
+ *   - Lead Form Conversion: AW-17962563730/P12NCJ6IgdwcEJLxm_VC
+ * - CallRail Dynamic Swapping & Conversion Seam
+ * - Mock Test Adapter (setMockMode) for automated CI verification
  */
 (function(window, document) {
   'use strict';
 
-  // 1. Ensure dataLayer and gtag exist
+  // ─── 1. Core State & DataLayer Initialization ──────────────────────────────
   window.dataLayer = window.dataLayer || [];
   function gtagStub() {
     window.dataLayer.push(arguments);
@@ -14,7 +23,42 @@
     window.gtag = gtagStub;
   }
 
-  // 2. Core Telemetry Dispatcher
+  // Ensure all authoritative tracking IDs are configured
+  var TRACKING_CONFIGS = {
+    ga4: 'G-71SK3LQF49',
+    gtm: 'GT-WKTZM5GN',
+    gadsPrimary: 'AW-18197167741',
+    gadsConversion: 'AW-17962563730'
+  };
+
+  var CONVERSION_LABELS = {
+    bookAppointment: 'AW-17962563730/IsEZCL66_dscEJLxm_VC',
+    leadForm: 'AW-17962563730/P12NCJ6IgdwcEJLxm_VC'
+  };
+
+  // Self-register configs if not already done
+  window.gtag('config', TRACKING_CONFIGS.ga4);
+  window.gtag('config', TRACKING_CONFIGS.gtm);
+  window.gtag('config', TRACKING_CONFIGS.gadsPrimary);
+  window.gtag('config', TRACKING_CONFIGS.gadsConversion);
+
+  // ─── 2. Test Adapter / Mock State ──────────────────────────────────────────
+  var isMockMode = false;
+  var mockDispatches = [];
+
+  // ─── 3. De-duplication Guard ───────────────────────────────────────────────
+  var recentEvents = {};
+  function isDuplicate(key, windowMs) {
+    var now = Date.now();
+    var last = recentEvents[key] || 0;
+    if (now - last < (windowMs || 3000)) {
+      return true;
+    }
+    recentEvents[key] = now;
+    return false;
+  }
+
+  // ─── 4. Dispatcher Core (GA4 & DataLayer Adapter) ──────────────────────────
   function trackEvent(eventName, params) {
     params = params || {};
     var payload = Object.assign({
@@ -22,19 +66,31 @@
       timestamp: new Date().toISOString()
     }, params);
 
+    if (isMockMode) {
+      mockDispatches.push({ type: 'event', eventName: eventName, payload: payload });
+      return;
+    }
+
     window.dataLayer.push(payload);
     if (typeof window.gtag === 'function') {
       window.gtag('event', eventName, params);
     }
   }
 
-  // Helper function to delay opening a URL until a gtag event is sent
+  // ─── 5. Google Ads Conversion Adapters ─────────────────────────────────────
+
+  // Helper for delayed navigation on URL click
   function gtagSendEvent(url) {
     var callback = function () {
       if (typeof url === 'string') {
         window.location = url;
       }
     };
+    if (isMockMode) {
+      mockDispatches.push({ type: 'conversion', name: 'ads_conversion_Form_1', url: url });
+      callback();
+      return false;
+    }
     if (typeof window.gtag === 'function') {
       window.gtag('event', 'ads_conversion_Form_1', {
         'event_callback': callback,
@@ -46,36 +102,69 @@
     return false;
   }
 
-  // Google Ads Book Appointment Conversion Tracking
-  function reportConversion(url) {
+  // Google Ads Book Appointment Conversion
+  function reportConversion(url, extraParams) {
+    if (isDuplicate('book_appointment_conversion', 4000)) {
+      return false;
+    }
+
     var callback = function () {
-      if (typeof url !== 'undefined') {
+      if (typeof url === 'string' && url) {
         window.location = url;
       }
     };
+
+    var payload = Object.assign({
+      'send_to': CONVERSION_LABELS.bookAppointment,
+      'value': 150.00,
+      'currency': 'USD',
+      'event_callback': callback
+    }, extraParams || {});
+
+    if (isMockMode) {
+      mockDispatches.push({ type: 'conversion', name: 'book_appointment', payload: payload });
+      callback();
+      return false;
+    }
+
+    window.dataLayer.push(Object.assign({
+      event: 'ads_conversion_book_appointment'
+    }, payload));
+
     if (typeof window.gtag === 'function') {
-      window.gtag('event', 'conversion', {
-        'send_to': 'AW-17962563730/IsEZCL66_dscEJLxm_VC',
-        'event_callback': callback
-      });
+      window.gtag('event', 'conversion', payload);
     } else {
       callback();
     }
     return false;
   }
 
-  // Google Ads Lead Form Conversion Tracking
+  // Google Ads Lead Form Conversion (with Enhanced Conversions)
   function reportLeadForm(params) {
+    if (isDuplicate('lead_form_conversion', 4000)) {
+      return;
+    }
+
+    params = params || {};
+    var payload = Object.assign({
+      'send_to': CONVERSION_LABELS.leadForm,
+      'value': 150.00,
+      'currency': 'USD'
+    }, params);
+
+    if (isMockMode) {
+      mockDispatches.push({ type: 'conversion', name: 'lead_form', payload: payload });
+      return;
+    }
+
+    window.dataLayer.push(Object.assign({
+      event: 'ads_conversion_submit_lead'
+    }, payload));
+
     if (typeof window.gtag === 'function') {
-      var payload = Object.assign({
-        'send_to': 'AW-17962563730/P12NCJ6IgdwcEJLxm_VC'
-      }, params || {});
       window.gtag('event', 'conversion', payload);
     }
   }
-
-  window.gtag_report_conversion = reportConversion;
-  window.gtag_report_lead_form = reportLeadForm;
 
   // Helper for URL parameters in serialized form bodies
   function getParam(body, key) {
@@ -83,7 +172,7 @@
     return match ? decodeURIComponent(match[1].replace(/\+/g, ' ')) : null;
   }
 
-  // 3. Intercept Fetch Consultation Form Submissions & Enhanced Conversions
+  // ─── 6. Fetch Form Submission Interceptor (Enhanced Conversions) ───────────
   var originalFetch = window.fetch;
   if (originalFetch) {
     window.fetch = function() {
@@ -148,37 +237,15 @@
           gclid: gclidVal
         });
 
-        window.dataLayer.push({
-          event: 'ads_conversion_submit_lead',
-          send_to: 'AW-17962563730/P12NCJ6IgdwcEJLxm_VC',
-          value: 150.00,
-          currency: 'USD',
-          user_data: userData
-        });
-
-        if (typeof window.gtag === 'function') {
-          // 1. Google Ads Lead Form Conversion
-          window.gtag('event', 'conversion', {
-            'send_to': 'AW-17962563730/P12NCJ6IgdwcEJLxm_VC',
-            'value': 150.00,
-            'currency': 'USD',
-            'user_data': userData
-          });
-
-          // 2. Google Ads Book Appointment Conversion
-          window.gtag('event', 'conversion', {
-            'send_to': 'AW-17962563730/IsEZCL66_dscEJLxm_VC',
-            'value': 150.00,
-            'currency': 'USD',
-            'user_data': userData
-          });
-        }
+        // Dispatch Enhanced Conversions through the centralized adapter
+        reportLeadForm({ user_data: userData });
+        reportConversion(null, { user_data: userData });
       }
       return originalFetch.apply(this, args);
     };
   }
 
-  // 4. Form Field Engagement & Start Tracking
+  // ─── 7. Form Field Engagement Tracking ────────────────────────────────────
   var formStarted = false;
   document.addEventListener('focusin', function(e) {
     if (e.target && e.target.form && (e.target.form.name === 'consultation' || e.target.closest('#hero-mc-card'))) {
@@ -195,7 +262,7 @@
     }
   }, true);
 
-  // 5. User Interaction Tracking (Declarative & Delegated)
+  // ─── 8. Delegated Interaction Tracking (Declarative & Elements) ────────────
   document.addEventListener('click', function(e) {
     var target = e.target;
     while (target && target !== document.body) {
@@ -204,11 +271,13 @@
       if (trackAttr) {
         trackEvent(trackAttr, {
           element_id: target.id || null,
-          element_text: (target.innerText || target.textContent || '').trim().slice(0, 100)
+          element_text: (target.innerText || target.textContent || '').trim().slice(0, 100),
+          category: target.getAttribute('data-track-category') || 'interaction',
+          label: target.getAttribute('data-track-label') || null
         });
       }
 
-      // Click-to-Call Link Tracking
+      // Click-to-Call Link Tracking & CallRail Seam
       if (target.tagName === 'A' && target.href && target.href.indexOf('tel:') === 0) {
         var phoneNum = target.href.replace('tel:', '');
         trackEvent('phone_click', {
@@ -242,7 +311,7 @@
         });
       }
 
-      // Vision Simulator Preset & HD Buttons
+      // Vision Simulator Presets
       if (target.classList && target.classList.contains('sim-preset-btn')) {
         var isHD = target.classList.contains('sim-preset-hd');
         trackEvent(isHD ? 'vision_simulator_hd_click' : 'vision_simulator_preset_click', {
@@ -313,7 +382,7 @@
     }
   }, true);
 
-  // 6. ROI Cost Calculator Interaction Tracking
+  // ─── 9. ROI Cost Calculator Interaction Tracking ───────────────────────────
   var calcDebounceTimer = null;
   document.addEventListener('input', function(e) {
     if (e.target && e.target.id && e.target.id.indexOf('roi-') === 0) {
@@ -332,7 +401,7 @@
     }
   });
 
-  // 7. Scroll Depth Milestones (25%, 50%, 75%, 90%)
+  // ─── 10. Scroll Depth Milestones (25%, 50%, 75%, 90%) ──────────────────────
   var trackedMilestones = {};
   function trackScrollDepth() {
     var scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -362,7 +431,7 @@
     }
   }, { passive: true });
 
-  // 8. Time on Page Engagement Milestones (30s, 60s, 120s)
+  // ─── 11. Time on Page Engagement Milestones (30s, 60s, 120s) ───────────────
   [30, 60, 120].forEach(function(seconds) {
     setTimeout(function() {
       if (!document.hidden) {
@@ -373,7 +442,7 @@
     }, seconds * 1000);
   });
 
-  // 9. Eligibility Quiz Monitoring
+  // ─── 12. Eligibility Quiz Observer ─────────────────────────────────────────
   var quizCompletedSent = false;
   var quizStartedSent = false;
   var quizObserver = new MutationObserver(function() {
@@ -421,13 +490,35 @@
     });
   });
 
-  // Expose global telemetry API
+  // ─── 13. Public Telemetry Seam & API ───────────────────────────────────────
   window.gtagSendEvent = gtagSendEvent;
   window.gtag_report_conversion = reportConversion;
+  window.gtag_report_lead_form = reportLeadForm;
+
   window.MaranoTelemetry = {
+    // Primary API
+    track: trackEvent,
     trackEvent: trackEvent,
     reportConversion: reportConversion,
-    gtagSendEvent: gtagSendEvent
+    reportLead: reportLeadForm,
+    reportLeadForm: reportLeadForm,
+    gtagSendEvent: gtagSendEvent,
+    
+    // Test Adapter API
+    setMockMode: function(enabled) {
+      isMockMode = !!enabled;
+      if (!isMockMode) mockDispatches = [];
+    },
+    getMockDispatches: function() {
+      return mockDispatches.slice();
+    },
+    clearMockDispatches: function() {
+      mockDispatches = [];
+    },
+    
+    // Configurations
+    configs: TRACKING_CONFIGS,
+    labels: CONVERSION_LABELS
   };
 
 })(window, document);

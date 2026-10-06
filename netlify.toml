@@ -37,7 +37,7 @@
 
 # HTML Shell Revalidation (Always serve fresh HTML shell while loading cached assets)
 [[headers]]
-  for = "/index.html"
+  for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 

@@ -131,7 +131,7 @@
           "telephone": "+1-973-419-5972",
           "priceRange": "$$$",
           "currenciesAccepted": "USD",
-          "paymentAccepted": "Cash, Credit Card, CareCredit, Alphaeon Credit, Health Savings Account (HSA), Flexible Spending Account (FSA)",
+          "paymentAccepted": "Cash, Credit Card, CareCredit, Health Savings Account (HSA), Flexible Spending Account (FSA)",
           "medicalSpecialty": "https://schema.org/Ophthalmology",
           "isAcceptingNewPatients": true,
           "publishingPrinciples": "https://www.maranoeyecare.com/editorial-standards/",
@@ -631,7 +631,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="preload" as="image" href="/assets/hero_wavefront_iris.webp?v=2" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/assets/hero_wavefront_iris.webp?v=2" type="image/webp">
     <!-- CustomVue Experience Suite Image Prefetches for Instant Tab Transitions -->
     <link rel="prefetch" as="image" href="/assets/wavescan_diagnostic_device.webp" type="image/webp">
     <link rel="prefetch" as="image" href="/assets/lasik_flap_clean.webp" type="image/webp">
@@ -654,6 +654,7 @@
         <img alt="Marano Eye Care" class="nav-logo" src="./assets/marano-logo-Dw0Rx_0B.png" width="180" height="40" />
       </a>
       <div class="nav-links-group">
+        <a class="nav-link-item active-nav-link" href="/" data-nav="home" aria-current="page">Home</a>
         <a class="nav-link-item" href="/#quiz" data-nav="candidacy">Candidacy</a>
         <a class="nav-link-item" href="/technology.html" data-nav="technology">LASIK Deep Dive</a>
         <a class="nav-link-item" href="/procedure-journey.html" data-nav="procedure">Procedure & Recovery</a>
@@ -662,9 +663,7 @@
       </div>
       <a id="header-phone-link" href="tel:973-419-5972" class="header-phone-link" title="Direct Surgical Coordinator Line • No Hold Times" aria-label="Call Direct Surgical Coordinator Line at (973) 419-5972">
         <span class="btn-icon-bubble-phone" aria-hidden="true">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-        </svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         </span>
         <span class="phone-text">(973) 419-5972</span>
       </a>
@@ -702,9 +701,9 @@
                         </p>
                       </div>
                       <div class="responsive-flex-col animate-fade-up delay-4">
-                        <button type="button" class="btn btn-primary hero-cta-btn-shell">Check Your Candidacy →</button>
-                          <button type="button" class="btn btn-secondary hero-cta-btn-shell" data-wired="true">How the Technology Works</button>
-                          </div>
+                        <a href="#quiz" onclick="scrollToElement('quiz')" class="btn btn-primary hero-cta-btn-shell">Check Your Candidacy →</a>
+                        <a href="#lasik-education-hook" onclick="scrollToElement('lasik-education-hook')" class="btn btn-secondary hero-cta-btn-shell" data-wired="true">How the Technology Works</a>
+                      </div>
                         </div>
                         <div class="hero-image-wrapper animate-fade-up delay-5" >
                           <div class="hero-card-bracket-tl">
@@ -716,7 +715,7 @@
                           <div class="hero-card-bracket-br">
                           </div>
                           <div class="hero-image-card hero-float hero-trust-card-frame">
-                            <img alt="CustomVue 3D Wavefront Iris Registration &amp; Sub-Micron Corneal Mapping" loading="eager" fetchpriority="high" decoding="async" width="480" height="360" src="/assets/hero_wavefront_iris.webp?v=2">
+                            <img alt="CustomVue 3D Wavefront Iris Registration &amp; Sub-Micron Corneal Mapping" loading="eager" decoding="async" width="480" height="360" src="/assets/hero_wavefront_iris.webp?v=2">
                           </div>
                         </div>
                       </div>
@@ -928,7 +927,7 @@
         <div id="sim-sliders-drawer" class="sim-sliders-drawer collapsed">
           <button type="button" id="sim-sliders-toggle" class="sim-sliders-toggle" aria-expanded="false" aria-controls="sim-sliders-body">
             <span class="sim-toggle-icon" aria-hidden="true">⚙️</span>
-              <span class="sim-toggle-label">Fine-Tune Custom Prescription Sliders <span class="sim-toggle-opt">(Optional)</span>
+              <span class="sim-toggle-label">Adjust Prescription Sliders <span class="sim-toggle-opt">(Optional)</span>
               </span>
               <svg class="sim-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="6 9 12 15 18 9">
@@ -937,13 +936,13 @@
             </button>
             <div id="sim-sliders-body" class="sim-sliders-body">
               <div class="sim-mobile-tabs" role="tablist" aria-label="Optical Parameter Controls">
-          <button type="button" class="sim-tab-btn active" data-tab="sphere" role="tab" aria-selected="true" aria-controls="sim-group-sphere">Sphere (Myopia)</button>
-          <button type="button" class="sim-tab-btn" data-tab="cyl" role="tab" aria-selected="false" aria-controls="sim-group-cyl">Cylinder (Astigmatism)</button>
-          <button type="button" class="sim-tab-btn" data-tab="axis" role="tab" aria-selected="false" aria-controls="sim-group-axis">Axis Angle</button>
+          <button type="button" class="sim-tab-btn active" data-tab="sphere" role="tab" aria-selected="true" aria-controls="sim-group-sphere">Distance Focus (Sphere)</button>
+          <button type="button" class="sim-tab-btn" data-tab="cyl" role="tab" aria-selected="false" aria-controls="sim-group-cyl">Blur & Astigmatism (Cylinder)</button>
+          <button type="button" class="sim-tab-btn" data-tab="axis" role="tab" aria-selected="false" aria-controls="sim-group-axis">Angle (Axis)</button>
         </div><div class="sim-controls-panel">
           <div class="sim-control-group mobile-active" id="sim-group-sphere">
             <div class="sim-control-header">
-              <label for="sim-sphere-slider">Sphere (Myopia / Hyperopia)</label>
+              <label for="sim-sphere-slider">Distance Focus (Sphere — Nearsighted / Farsighted)</label>
               <span id="sim-sphere-val" class="sim-val-badge">-2.00 D</span>
             </div>
             <div class="sim-slider-row">
@@ -955,7 +954,7 @@
 
           <div class="sim-control-group" id="sim-group-cyl">
             <div class="sim-control-header">
-              <label for="sim-cyl-slider">Cylinder (Astigmatism Power)</label>
+              <label for="sim-cyl-slider">Astigmatism Blur (Cylinder Power)</label>
               <span id="sim-cyl-val" class="sim-val-badge">0.00 D</span>
             </div>
             <div class="sim-slider-row">
@@ -967,7 +966,7 @@
 
           <div class="sim-control-group" id="sim-group-axis">
             <div class="sim-control-header">
-              <label for="sim-axis-slider">Astigmatism Axis Angle</label>
+              <label for="sim-axis-slider">Astigmatism Direction (Axis Angle)</label>
               <span id="sim-axis-val" class="sim-val-badge">0°</span>
             </div>
             <div class="sim-slider-row">
@@ -1027,7 +1026,7 @@
                             </div>
                             <!-- Question Content -->
                             <h3 class="quiz-question-title">Select Your Age Bracket</h3>
-                              <p class="quiz-question-sub">Custom LASIK is FDA-approved for adults 18+ with healthy, stable corneal thickness.</p>
+                              <p class="quiz-question-sub">Custom LASIK is FDA-approved for adults 18 and older with healthy, stable eyes.</p>
                                 <!-- Interactive Tactile Options -->
                                 <div class="adaptive-quiz-options">
                                   <button type="button" class="adaptive-quiz-opt" data-opt="18 to 24 Years">
@@ -1685,6 +1684,8 @@
                                                                                           </section>
 
     <!-- LASIK EDUCATION HOOK -->
+        <span id="lasik-deep-dive" class="anchor-target-offset"></span>
+        <span id="deep-dive" class="anchor-target-offset"></span>
         <section id="lasik-education-hook" class="section lasik-education-hook-section" aria-label="The Science of Visual Clarity: LASIK Deep Dive" >
           <div class="edu-hook-inner">
             <!-- Section Header -->
@@ -2793,15 +2794,15 @@
                                                                                                                                                                                                                                           <div class="nav-links-group hero-mc-trust-badges">
                                                                                                                                                                                                                                             <div class="hero-mc-badge-item">
                                                                                                                                                                                                                                               <span class="hero-mc-badge-dot">1</span>
-                                                                                                                                                                                                                                                <span class="hero-mc-badge-text">Preferences</span>
+                                                                                                                                                                                                                                                <span class="hero-mc-badge-text">Your Vision</span>
                                                                                                                                                                                                                                                 </div>
                                                                                                                                                                                                                                                 <div class="ui-extracted-78">
                                                                                                                                                                                                                                                   <span class="ui-extracted-79">2</span>
-                                                                                                                                                                                                                                                    <span class="ui-extracted-80">Details</span>
+                                                                                                                                                                                                                                                    <span class="ui-extracted-80">Timeline</span>
                                                                                                                                                                                                                                                     </div>
                                                                                                                                                                                                                                                     <div class="ui-extracted-78">
                                                                                                                                                                                                                                                       <span class="ui-extracted-79">3</span>
-                                                                                                                                                                                                                                                        <span class="ui-extracted-80">Confirm</span>
+                                                                                                                                                                                                                                                        <span class="ui-extracted-80">Location</span>
                                                                                                                                                                                                                                                         </div>
                                                                                                                                                                                                                                                       </div>
                                                                                                                                                                                                                                                       <div id="hero-mc-card" class="micro-commitment-card" aria-live="polite" aria-atomic="true">
@@ -2815,7 +2816,7 @@
                                                                                                                                                                                                                                                                 </div>
                                                                                                                                                                                                                                                               </div>
                                                                                                                                                                                                                                                               <h3 class="hero-mc-question-title">What is your main reason for considering LASIK?</h3>
-                                                                                                                                                                                                                                                                <p class="hero-mc-question-desc">Select the situation that frustrates you most to evaluate your visual compatibility.</p>
+                                                                                                                                                                                                                                                                <p class="hero-mc-question-desc">Select what frustrates you most about glasses or contacts:</p>
                                                                                                                                                                                                                                                                   <div role="radiogroup" aria-label="Primary reason for considering LASIK">
                                                                                                                                                                                                                                                                     <div class="mc-option-card " data-val="contacts" role="radio" aria-checked="false" tabindex="0">
                                                                                                                                                                                                                                                                       <div class="mc-radio-dot">
@@ -2889,7 +2890,16 @@
                                                                                                                                                                                                                                                                             <p class="ui-extracted-84">Phone: <a href="tel:973-419-5972">(973) 419-5972</a> | Email: <a href="mailto:LASIK@mec1.net">LASIK@mec1.net</a>
                                                                                                                                                                                                                                                                             </p>
                                                                                                                                                                                                                                                                           </div>
-                                                                                                                                                                                                                                                                          <p class="site-footer-tagline">© 2026 Marano Eye Care. All rights reserved.</p>
+                                                                                                                                                                                                                                                                                  <div class="footer-links-row" role="navigation" aria-label="Footer Navigation Links">
+          <a href="/" class="footer-link-item footer-link-item-active" aria-current="page">Home</a>
+          <a href="/#quiz" class="footer-link-item">Candidacy Self-Test</a>
+          <a href="/technology.html" class="footer-link-item">LASIK Deep Dive</a>
+          <a href="/procedure-journey.html" class="footer-link-item">Procedure & 24h Recovery</a>
+          <a href="/surgeons.html" class="footer-link-item">Surgeons & Clinical Standards</a>
+          <a href="/pricing-financing.html" class="footer-link-item">Cost & 0% Financing</a>
+          <a href="/sitemap.html" class="footer-link-item">Directory & Sitemap</a>
+        </div>
+        <p class="site-footer-tagline">© 2026 Marano Eye Care. All rights reserved.</p>
                                                                                                                                                                                                                                                                             <p class="site-footer-legal-copy">Disclaimer: This self-test is for educational purposes only and does not replace a comprehensive medical examination and consultation with a qualified ophthalmologist. LASIK is a surgical procedure<a href="#lasik-citations" class="citations-ref-link-superscript" aria-label="Reference 9" data-cite-link="1">[9]</a> that carries risks. Possible post-operative side effects include dry eyes, temporary or permanent visual disturbances (such as glare, halos, starbursts, and double vision, particularly at night), and the possible need for a repeat enhancement procedure to correct residual refractive errors.</p>
                                                                                                                                                                                                                                                                             </footer>
                                                                                                                                                                                                                                                                           </div>
@@ -2897,19 +2907,11 @@
     <div id="lasik-citations" class="citations-wrapper">
       <div class="citations-inner">
       <div class="citations-disclaimer-box">
-        <div class="footer-nav-single-line" >
-          <a href="/" class="citations-nav-home">Home</a>
-            <a href="/technology.html" class="citations-nav-link">LASIK Deep Dive: How It Works</a>
-              <a href="/procedure-journey.html" class="citations-nav-link">Procedure &amp; 24-Hr Recovery</a>
-                <a href="/surgeons.html" class="citations-nav-link">Surgeons &amp; Clinical Standards</a>
-                  <a href="/pricing-financing.html" class="citations-nav-link">Cost &amp; Financing</a>
-                    <a href="/sitemap.html" class="citations-nav-sitemap">Clinical Directory &amp; Sitemap</a>
-                    </div>
         <strong class="citations-legal-title">Medical &amp; Regulatory Disclosures</strong>LASIK and PRK are FDA-approved elective laser vision correction surgical procedures. While over 98% of Marano Eye Care patients achieve 20/20 visual acuity or better based on peer-reviewed clinical cohorts and FDA trials, individual physiological healing, corneal biomechanics, and candidacy vary. A comprehensive diagnostic evaluation (including corneal topography, pachymetry, and WaveScan wavefront analysis) performed by a board-certified refractive surgeon is required to determine surgical eligibility. This educational website does not constitute medical advice or a doctor-patient relationship until an in-person clinical exam is completed.<br>
           <br>
         <strong>Privacy &amp; Patient Data Protection (HIPAA):</strong> Information submitted via consultation forms on this website is encrypted and transmitted in strict accordance with the Health Insurance Portability and Accountability Act (HIPAA) to safeguard protected health information (PHI). We never sell, rent, or distribute personal data to third parties. For full details, review the <a href="https://sa1s3.patientpop.com/assets/docs/425417.pdf" target="_blank" rel="noopener noreferrer" class="citations-link">Marano Eye Care HIPAA Notice of Privacy Practices</a>.<br>
           <br>
-        <strong>Financing &amp; Pricing Transparency:</strong> All-inclusive pricing covers WaveScan 3D diagnostics, dual-laser surgery, and 24-hour post-op care. 0% APR promotional financing available through CareCredit and Alphaeon Credit subject to credit approval. Health Savings Accounts (HSA) and Flexible Spending Accounts (FSA) eligibility determined by IRS regulations.</div>
+        <strong>Financing &amp; Pricing Transparency:</strong> All-inclusive pricing covers WaveScan 3D diagnostics, dual-laser surgery, and 24-hour post-op care. 0% APR promotional financing available through CareCredit subject to credit approval. Health Savings Accounts (HSA) and Flexible Spending Accounts (FSA) eligibility determined by IRS regulations.</div>
       <details id="citations-details" class="citations-details-panel">
         <summary class="citations-summary-toggle"><span>Clinical References &amp; Evidence Citations (14 Peer-Reviewed Studies &amp; Audited Registries)</span><span class="citations-action-badge">Click to View ↓</span></summary>
       <div class="citations-list-box">
@@ -3016,7 +3018,7 @@
       id = 'hero-mc-card';
     } else if (id === 'vision-simulator-section') {
       id = 'lasik-vision-simulator-section';
-    } else if (id === 'technology' || id === 'science' || id === 'education') {
+    } else if (id === 'technology' || id === 'science' || id === 'education' || id === 'deep-dive' || id === 'lasik-deep-dive') {
       id = 'lasik-education-hook';
     } else if (id === 'candidacy') {
       id = 'quiz';
@@ -3059,6 +3061,7 @@
     if (!rawHash) return;
     var targetId = rawHash;
     if (targetId === 'candidacy') targetId = 'quiz';
+    if (targetId === 'technology' || targetId === 'science' || targetId === 'education' || targetId === 'deep-dive' || targetId === 'lasik-deep-dive') targetId = 'lasik-education-hook';
     if (targetId === 'booking' || targetId === 'schedule' || targetId === 'consultation' || targetId === 'reservation' || targetId === 'priority-reservation') targetId = 'hero-mc-card';
 
     var el = document.getElementById(targetId) || document.querySelector('.' + targetId);
@@ -3724,7 +3727,7 @@
     var steps = [
       {
         title: 'Select Your Age Bracket',
-        subtitle: 'Custom LASIK is FDA-approved for adults 18+ with healthy, stable corneal thickness.',
+        subtitle: 'Custom LASIK is FDA-approved for adults 18 and older with healthy, stable eyes.',
         options: ['18 to 24 Years', '25 to 39 Years', '40 to 54 Years', '55+ Years']
       },
       {
@@ -3752,9 +3755,9 @@
         title: 'Prescription Stability',
         subtitle: 'Has your glasses or contact lens prescription changed in the past 12 months?',
         options: [
-          'Stable (No changes in 1+ years)',
-          'Minor shift in focus',
-          'Unsure / Need comprehensive evaluation'
+          'Stable — No prescription changes in 1+ years',
+          'Slight change within the past year',
+          'Unsure — I need an updated eye exam'
         ]
       }
     ];
@@ -3819,12 +3822,12 @@
       quizCard.innerHTML = 
         '<div class="quiz-loading-screen">' +
           '<div class="quiz-loading-spinner-ring"></div>' +
-          '<h3 class="quiz-loading-title">Synthesizing Corneal Candidate Profile</h3>' +
-          '<p class="quiz-loading-sub">Cross-referencing WaveFront biometric safety thresholds against Marano clinical standards...</p>' +
+          '<h3 class="quiz-loading-title">Analyzing Your Vision Candidacy</h3>' +
+          '<p class="quiz-loading-sub">Checking your vision profile against CustomVue® wavefront safety criteria...</p>' +
           '<div class="quiz-telemetry-scroller">' +
-            '<span class="telem-line">✓ WaveScan wavefront parameter alignment verified</span>' +
-            '<span class="telem-line">✓ Presbyopia & corneal curvature thresholds loaded</span>' +
-            '<span class="telem-line">✓ All-laser blade-free iFS candidacy confirmed</span>' +
+            '<span class="telem-line">✓ Age and prescription stability verified</span>' +
+            '<span class="telem-line">✓ CustomVue® iris registration compatibility confirmed</span>' +
+            '<span class="telem-line">✓ All-laser blade-free candidacy profile prepared</span>' +
           '</div>' +
         '</div>';
 
@@ -3856,7 +3859,7 @@
           '</div>' +
           '<div class="dossier-cta-shell" style="text-align: center; margin-top: 24px;">' +
             '<button onclick="scrollToElement(\'hero-mc-card\')" type="button" class="btn btn-primary" style="padding: 16px 36px; font-size: 1.05rem;">' +
-              '<span>Claim Free Consultation & 3D Topography Scan</span>' +
+              '<span>Schedule Free Consultation & 3D Scan</span>' +
               '<span class="btn-icon-bubble">→</span>' +
             '</button>' +
           '</div>' +
@@ -3913,7 +3916,7 @@
             '</div>' +
             '<div class="mc-progress-bar" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" aria-label="Candidacy evaluation progress"><div class="mc-progress-fill hero-mc-progress-fill-step1"></div></div>' +
             '<h3 class="hero-mc-question-title">What is your main reason for considering LASIK?</h3>' +
-            '<p class="hero-mc-question-desc">Select the situation that frustrates you most to evaluate your visual compatibility.</p>' +
+            '<p class="hero-mc-question-desc">Select what frustrates you most about glasses or contacts:</p>' +
             '<div role="radiogroup" aria-label="Primary reason for considering LASIK">' +
               '<div class="mc-option-card ' + (state.struggle === 'contacts' ? 'selected' : '') + '" data-val="contacts" role="radio" aria-checked="' + (state.struggle === 'contacts') + '" tabindex="0">' +
                 '<div class="mc-radio-dot"><div class="mc-radio-dot-inner"></div></div>' +
@@ -3962,7 +3965,7 @@
               '<span style="font-size:0.75rem;color:#cbd5e1;line-height:1.35;"><strong>94% Candidacy Match:</strong> Candidates with active lifestyle and lens irritation are prime candidates for CustomVue® LASIK.</span>' +
             '</div>' +
             '<h3 style="font-family:var(--font-sans);font-size:1.25rem;font-weight:700;color:#ffffff;margin:10px 0 4px 0;line-height:1.25;">When would you like to improve your vision?</h3>' +
-            '<p class="hero-mc-question-desc">Our surgeons limit their daily schedule to give every patient dedicated attention.</p>' +
+            '<p class="hero-mc-question-desc">Our surgeons dedicate personal 1-on-1 time to every candidate. When works best for you?</p>' +
             '<div role="radiogroup" aria-label="Desired treatment timeframe">' +
               '<div class="mc-option-card ' + (state.timeframe === 'asap' ? 'selected' : '') + '" data-val="asap" role="radio" aria-checked="' + (state.timeframe === 'asap') + '" tabindex="0">' +
                 '<div class="mc-radio-dot"><div class="mc-radio-dot-inner"></div></div>' +
@@ -4002,8 +4005,8 @@
               '<span style="font-size:0.72rem;color:#10b981;font-weight:700;font-family:monospace;">100% Free Consultation</span>' +
             '</div>' +
             '<div class="mc-progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Candidacy evaluation progress"><div class="mc-progress-fill" style="width:100%;background:#10b981;"></div></div>' +
-            '<h3 style="font-family:var(--font-sans);font-size:1.2rem;font-weight:700;color:#ffffff;margin:10px 0 2px 0;line-height:1.25;">Where should we prepare your diagnostic profile?</h3>' +
-            '<p style="font-size:0.8rem;color:#cbd5e1;margin-bottom:12px;line-height:1.4;">Zero cost, zero obligation. Includes high-resolution 3D corneal topography.</p>' +
+            '<h3 style="font-family:var(--font-sans);font-size:1.2rem;font-weight:700;color:#ffffff;margin:10px 0 2px 0;line-height:1.25;">Where would you like to have your consultation?</h3>' +
+            '<p style="font-size:0.8rem;color:#cbd5e1;margin-bottom:12px;line-height:1.4;">100% free with zero obligation. Includes high-resolution 3D corneal topography mapping.</p>' +
             '<form id="mc-final-form" name="consultation" method="POST" data-netlify="true" netlify-honeypot="bot-field">' +
               '<input type="hidden" name="form-name" value="consultation" />' +
               '<p style="display:none;"><label>Don\'t fill this out if you\'re human: <input name="bot-field" /></label></p>' +
@@ -4028,11 +4031,11 @@
               '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">' +
                 '<div>' +
                   '<label for="mc-phone" style="display:block;font-size:0.78rem;font-weight:600;color:#cbd5e1;margin-bottom:4px;">Mobile Phone *</label>' +
-                  '<input type="tel" id="mc-phone" name="phone" class="mc-input-field" placeholder="(973) 000-0000" required value="' + state.phone + '" />' +
+                  '<input type="tel" id="mc-phone" name="phone" class="mc-input-field" placeholder="(973) 555-0123" required value="' + state.phone + '" />' +
                 '</div>' +
                 '<div>' +
                   '<label for="mc-email" style="display:block;font-size:0.78rem;font-weight:600;color:#cbd5e1;margin-bottom:4px;">Email Address *</label>' +
-                  '<input type="email" id="mc-email" name="email" class="mc-input-field" placeholder="name@email.com" required value="' + state.email + '" />' +
+                  '<input type="email" id="mc-email" name="email" class="mc-input-field" placeholder="name@example.com" required value="' + state.email + '" />' +
                 '</div>' +
               '</div>' +
               '<div style="margin-bottom:10px;">' +
@@ -4046,8 +4049,8 @@
               '<div style="display:flex;gap:10px;margin-top:14px;">' +
                 '<button type="button" id="mc-back-2" class="btn-island-secondary" style="flex:0 0 auto;padding:12px 18px;">← Back</button>' +
                 '<button type="submit" id="mc-submit-btn" class="btn-island-primary" style="flex:1 1 auto;">' +
-                  '<span>Confirm Consultation Request</span>' +
-                  '<span class="btn-icon-island">✓</span>' +
+                  '<span>Request Free Consultation</span>' +
+                  '<span class="btn-icon-island">→</span>' +
                 '</button>' +
               '</div>' +
               '<p style="font-size:0.72rem;color:#94a3b8;margin-top:8px;text-align:center;line-height:1.35;">🔒 HIPAA Compliant &bull; Your details are strictly confidential and never shared.</p>' +
@@ -4059,7 +4062,7 @@
             '<div style="width:56px;height:56px;border-radius:50%;background:rgba(16,185,129,0.15);border:2px solid #10b981;color:#10b981;font-size:1.8rem;display:flex;align-items:center;justify-content:center;margin:0 auto 16px auto;">✓</div>' +
             '<h3 style="font-family:var(--font-sans);font-size:1.35rem;font-weight:700;color:#ffffff;margin-bottom:8px;">Consultation Request Received!</h3>' +
             '<p style="font-size:0.9rem;color:#cbd5e1;line-height:1.55;max-width:440px;margin:0 auto 16px auto;">' +
-              'Thank you, <strong>' + (state.name || 'valued patient') + '</strong>. Our surgical coordinator will reach out via ' + state.contactMethod + ' to confirm your preferred date and time at our <strong>' + state.location + '</strong> center.' +
+              'Thank you, <strong>' + (state.name || 'valued patient') + '</strong>. Our surgical coordinator will reach out via ' + state.contactMethod + ' to confirm your appointment at our <strong>' + state.location + '</strong> center.' +
             '</p>' +
             '<div style="padding:12px 16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;display:inline-block;font-size:0.82rem;color:#e2b857;">' +
               'Need immediate assistance? Call us directly: <a href="tel:973-419-5972" style="color:#ffffff;font-weight:700;text-decoration:underline;">(973) 419-5972</a>' +

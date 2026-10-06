@@ -1,6 +1,7 @@
 {
   "nav": {
     "items": [
+      { "id": "home", "label": "Home", "href": "/" },
       { "id": "candidacy", "label": "Candidacy", "href": "/#quiz" },
       { "id": "technology", "label": "LASIK Deep Dive", "href": "/technology.html" },
       { "id": "procedure", "label": "Procedure & Recovery", "href": "/procedure-journey.html" },

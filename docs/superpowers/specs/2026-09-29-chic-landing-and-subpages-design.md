@@ -20,7 +20,7 @@ Restructure the portal into a **high-converting, chic, sleek flagship landing pa
 1. **`/technology.html`**: Dual-Laser Technology, WaveScan® 3D Iris Aberrometry, Cold Ultraviolet Excimer Ablation & Corneal Topography.
 2. **`/procedure-journey.html`**: The 5-Stage CustomVue® Procedure, 24-Hour Recovery Scrubber, and Day-by-Day Post-Op Protocols.
 3. **`/surgeons.html`**: Comprehensive Biographies (Dr. Matthew Marano & Dr. Sherief Raouf), Hospital Appointments, and the 5 Buyer Questions Dossier ("The Marano Standard vs. Commercial Mills").
-4. **`/pricing-financing.html`**: Transparent All-Inclusive Investment, CareCredit / Alphaeon 0% APR Financing, Pre-Tax HSA/FSA Calculations, and Lifetime Lens Expense Comparisons.
+4. **`/pricing-financing.html`**: Transparent All-Inclusive Investment, CareCredit 0% APR Financing, Pre-Tax HSA/FSA Calculations, and Lifetime Lens Expense Comparisons.
 
 ### 1.3 Key User Directives Honored
 - **Retain Core Interactive Tools on Home Page:** Per user selection, the **20/15 Vision Simulator**, **60-Second Candidacy Quiz**, and **Financial ROI Calculator** remain directly on `index.html` to drive high engagement, micro-commitments, and immediate lead qualification.
@@ -188,7 +188,7 @@ Every page will share an identical, cohesive luxury navigation header and footer
 - **The $37,000 Lifetime Contact Lens Tax:**
   - Audited mathematical breakdown of 25 years of daily disposable lenses, cleaning solutions, replacement glasses, prescription sunglasses, and annual eye doctor exams.
 - **Financing & Payment Methods:**
-  - **CareCredit & Alphaeon Credit:** 0% APR promotional financing options (up to 24 months interest-free).
+  - **CareCredit:** 0% APR promotional financing options (up to 24 months interest-free).
   - **Pre-Tax HSA & FSA Dollars:** How to use tax-advantaged healthcare accounts to save 20%–35% on LASIK.
   - **Vision Insurance Discounts:** How out-of-network benefits with VSP, EyeMed, and major carriers provide 15%–20% contractual discounts.
 - **Exposing the "$250/Eye" Retail Trap:** Clear explanation of how retail discounters bait patients with unrealistic pricing that only applies to rare micro-prescriptions while upcharging thousands for safety essentials.

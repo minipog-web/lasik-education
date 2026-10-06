@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://cdn.callrail.com" crossorigin />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://cdn.callrail.com" />
-    <link rel="preload" as="image" href="./assets/dr-marano.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="./assets/dr-marano.jpg" />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -927,11 +927,18 @@
 
       .footer-links-row {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: center;
+        justify-content: safe center;
         align-items: center;
-        gap: 12px 24px;
-        margin-bottom: 24px;
+        white-space: nowrap;
+        gap: clamp(4px, 0.8vw, 12px);
+        margin: 20px auto;
+        max-width: 100%;
+        width: max-content;
+        box-sizing: border-box;
+        overflow-x: auto;
+        padding: 6px 12px;
       }
 
       .footer-link-item {
@@ -939,8 +946,9 @@
         text-decoration: none;
         display: inline-flex;
         align-items: center;
-        min-height: 44px;
-        padding: 6px 12px;
+        white-space: nowrap;
+        font-size: clamp(0.70rem, 0.78vw, 0.84rem);
+        padding: 5px 8px;
         border-radius: 6px;
         transition: color 0.2s;
       }
@@ -1031,6 +1039,7 @@
         <img alt="Marano Eye Care" class="nav-logo" src="./assets/marano-logo-Dw0Rx_0B.png" width="180" height="40" />
       </a>
       <div class="nav-links-group">
+        <a class="nav-link-item" href="/" data-nav="home">Home</a>
         <a class="nav-link-item" href="/#quiz" data-nav="candidacy">Candidacy</a>
         <a class="nav-link-item" href="/technology.html" data-nav="technology">LASIK Deep Dive</a>
         <a class="nav-link-item" href="/procedure-journey.html" data-nav="procedure">Procedure & Recovery</a>
@@ -1100,7 +1109,7 @@
       <article class="surgical-card-master" id="marano" aria-label="Surgeon Dossier: Dr. Matthew J. Marano">
         <div class="dossier-split-card">
           <div class="portrait-frame">
-            <img src="./assets/dr-marano.jpg" alt="Dr. Matthew J. Marano, Jr., M.D., Chief of Ophthalmology" class="portrait-img-marano" width="560" height="420" loading="eager" fetchpriority="high" decoding="async">
+            <img src="./assets/dr-marano.jpg" alt="Dr. Matthew J. Marano, Jr., M.D., Chief of Ophthalmology" class="portrait-img-marano" width="560" height="420" loading="eager" decoding="async">
             <div class="portrait-pill-overlay">
               <span>🏆 Castle Connolly Top Doctor &bull; 15× NJ Top Doc</span>
             </div>

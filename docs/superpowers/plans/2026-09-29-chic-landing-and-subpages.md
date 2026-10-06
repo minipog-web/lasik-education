@@ -89,7 +89,7 @@
 - [x] **Step 1: Write `pricing-financing.html` detailing all-inclusive pricing, 0% APR terms, and tax savings**
   - Complete definition of "All-Inclusive Care": pre-op scans, dual-laser surgery, surgeon fees, facility fees, 12 months of follow-ups, and complimentary enhancement warranty.
   - The $37,000+ Lifetime Contact Lens & Glasses Expense Audit (breakdown of 25 years of lenses, solutions, prescription sunglasses, doctor visits).
-  - 0% APR Financing: CareCredit & Alphaeon Credit promotional 12-month and 24-month options.
+  - 0% APR Financing: CareCredit promotional 12-month and 24-month options.
   - Pre-Tax HSA & FSA Strategies: How to utilize pre-tax healthcare dollars to save 20%–35% on LASIK.
   - Out-of-Network Vision Insurance Allowances (VSP, EyeMed, Blue Cross Blue Shield).
   - Deconstructing the "$250/Eye" Retail Mill Bait-and-Switch scam.

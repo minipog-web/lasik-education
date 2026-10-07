@@ -49,7 +49,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="./assets/index-DhXpI4H_.css?v=29">
-    <link rel="stylesheet" href="./assets/custom-styles.css?v=150">
 
     <!-- Schema.org MedicalWebPage Structured Data -->
     <script type="application/ld+json">
@@ -346,23 +345,25 @@
         margin-bottom: 32px;
       }
 
-      /* 5-Stage Step By Step Cards */
+      /* 5-Stage Step By Step Cards - Normalized Design System Standard */
       .stage-row-card {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 36px;
+        gap: clamp(24px, 3.5vw, 36px);
         align-items: center;
-        background: rgba(5, 9, 18, 0.65);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: radial-gradient(120% 120% at 50% 0%, rgba(18, 27, 43, 0.85) 0%, rgba(8, 13, 24, 0.96) 100%);
+        border: 1px solid rgba(226, 184, 87, 0.2);
         border-radius: 20px;
-        padding: 32px;
+        padding: clamp(24px, 3vw, 34px);
         margin-bottom: 28px;
-        transition: transform 0.3s ease, border-color 0.3s ease;
+        box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
       }
 
       .stage-row-card:hover {
         transform: translateY(-3px);
         border-color: rgba(226, 184, 87, 0.45);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.12);
       }
 
       @media (max-width: 860px) {
@@ -372,18 +373,21 @@
       }
 
       .stage-image-frame {
-        border-radius: 14px;
+        border-radius: 16px;
         overflow: hidden;
         border: 1px solid rgba(226, 184, 87, 0.25);
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
         position: relative;
+        aspect-ratio: 1 / 1;
+        background: #020408;
       }
 
       .stage-image-frame img {
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: cover;
         display: block;
-        transition: transform 0.5s ease;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .stage-row-card:hover .stage-image-frame img {
@@ -406,7 +410,7 @@
 
       .stage-title {
         font-family: var(--font-serif);
-        font-size: clamp(1.25rem, 1.8vw, 1.55rem) !important;
+        font-size: clamp(1.35rem, 2vw, 1.65rem) !important;
         color: #ffffff !important;
         -webkit-text-fill-color: #ffffff !important;
         background: none !important;
@@ -414,13 +418,55 @@
         line-height: 1.3;
       }
 
-      /* 24-Hour Recovery Scrubber Component */
+      .stage-desc {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.65;
+        margin: 0 0 18px 0;
+        font-weight: 300;
+      }
+
+      .stage-bullets {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.55;
+      }
+
+      .stage-bullets li {
+        position: relative;
+        padding-left: 20px;
+        color: var(--text-secondary);
+      }
+
+      .stage-bullets li::before {
+        content: '✦';
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--accent-gold);
+        font-size: 0.8rem;
+        line-height: 1.55;
+      }
+
+      .stage-bullets strong {
+        color: #ffffff;
+        font-weight: 600;
+      }
+
+      /* 24-Hour Recovery Scrubber Component - Normalized Design System */
       .recovery-scrubber-container {
-        background: rgba(4, 7, 14, 0.7);
-        border: 1px solid rgba(0, 240, 255, 0.2);
+        background: radial-gradient(120% 120% at 50% 0%, rgba(14, 22, 36, 0.75) 0%, rgba(6, 10, 18, 0.95) 100%);
+        border: 1px solid rgba(226, 184, 87, 0.2);
         border-radius: 20px;
-        padding: 32px;
+        padding: clamp(24px, 3.5vw, 36px);
         margin-top: 24px;
+        box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
       }
 
       .scrubber-pills-row {
@@ -431,11 +477,23 @@
         justify-content: center;
       }
 
+      @media (max-width: 640px) {
+        .scrubber-pills-row {
+          display: grid;
+          grid-template-columns: 1fr;
+          width: 100%;
+        }
+      }
+
       .scrubber-pill-btn {
         background: rgba(255, 255, 255, 0.04);
         border: 1px solid rgba(255, 255, 255, 0.12);
         color: var(--text-secondary);
         padding: 10px 18px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         border-radius: 12px;
         font-size: 0.86rem;
         font-weight: 600;
@@ -446,6 +504,11 @@
       .scrubber-pill-btn:hover {
         border-color: var(--accent-gold);
         color: #ffffff;
+      }
+
+      .scrubber-pill-btn:focus-visible {
+        outline: 2px solid var(--accent-gold);
+        outline-offset: 2px;
       }
 
       .scrubber-pill-btn.active {
@@ -460,10 +523,11 @@
         grid-template-columns: 1.2fr 1fr;
         gap: 28px;
         align-items: center;
-        background: rgba(10, 16, 28, 0.85);
+        background: radial-gradient(120% 120% at 50% 0%, rgba(18, 27, 43, 0.85) 0%, rgba(8, 13, 24, 0.96) 100%);
         border: 1px solid rgba(226, 184, 87, 0.2);
         border-radius: 16px;
-        padding: 28px;
+        padding: clamp(24px, 3vw, 32px);
+        box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
       }
 
       @media (max-width: 860px) {
@@ -477,7 +541,7 @@
         background: radial-gradient(ellipse at 50% 50%, rgba(226, 184, 87, 0.16) 0%, rgba(13, 20, 34, 0.96) 80%);
         border: 1px solid rgba(226, 184, 87, 0.5);
         border-radius: 24px;
-        padding: 56px 36px;
+        padding: clamp(40px, 5vw, 56px) clamp(24px, 4vw, 36px);
         text-align: center;
         box-shadow: 0 24px 65px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.15);
         margin-top: 60px;
@@ -522,39 +586,10 @@
         text-transform: uppercase;
       }
 
-      .stage-title {
-        font-family: var(--font-serif);
-        font-size: 1.85rem;
-        color: #ffffff;
-        margin: 0 0 14px 0;
-      }
-
-      .stage-desc {
-        color: var(--text-secondary);
-        font-size: 0.96rem;
-        line-height: 1.65;
-        margin-bottom: 16px;
-      }
-
-      .stage-bullets {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        font-size: 0.88rem;
-        color: var(--text-muted);
-      }
-
-      .stage-bullets strong {
-        color: #ffffff;
-      }
-
       .stage-badge-purple {
-        color: #a855f7;
-        border-color: rgba(168, 85, 247, 0.3);
-        background: rgba(168, 85, 247, 0.08);
+        color: #c084fc;
+        border-color: rgba(192, 132, 252, 0.3);
+        background: rgba(192, 132, 252, 0.08);
       }
 
       .stage-badge-cyan {
@@ -689,35 +724,34 @@
       }
 
       .guideline-card {
-        background: rgba(4, 7, 14, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        padding: 24px;
+        background: radial-gradient(120% 120% at 50% 0%, rgba(18, 27, 43, 0.85) 0%, rgba(8, 13, 24, 0.96) 100%);
+        border: 1px solid rgba(226, 184, 87, 0.2);
+        border-radius: 20px;
+        padding: clamp(24px, 3vw, 32px);
+        box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .guideline-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(226, 184, 87, 0.45);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.12);
       }
 
       .guideline-title {
-        font-size: 1.15rem;
-        margin: 0 0 10px 0;
-        font-family: var(--font-display);
-      }
-
-      .guideline-title-gold {
-        color: var(--accent-gold);
-      }
-
-      .guideline-title-cyan {
-        color: var(--accent-cyan);
-      }
-
-      .guideline-title-emerald {
-        color: var(--accent-emerald);
+        font-family: var(--font-serif);
+        font-size: clamp(1.3rem, 1.8vw, 1.55rem);
+        color: #ffffff;
+        margin: 0 0 12px 0;
+        line-height: 1.3;
       }
 
       .guideline-desc {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         color: var(--text-secondary);
-        line-height: 1.6;
+        line-height: 1.65;
         margin: 0;
+        font-weight: 300;
       }
 
       .cta-eyebrow {
@@ -829,15 +863,16 @@
       .footer-copyright {
         margin: 0;
         font-size: 0.82rem;
-        color: #64748b;
+        color: #94a3b8;
       }
     </style>
+    <link rel="stylesheet" href="./assets/custom-styles.css?v=152">
   </head>
   <body>
     <!-- Persistent Floating Navbar -->
     <nav id="main-navigation" class="scrolled subpage-nav-fixed" role="navigation" aria-label="Main Navigation">
       <a id="logo-container" href="/" aria-label="Marano Eye Care Homepage">
-        <img alt="Marano Eye Care" class="nav-logo" src="./assets/marano-logo-Dw0Rx_0B.png" width="180" height="40" />
+        <img alt="Marano Eye Care" class="nav-logo" src="./assets/marano-logo-Dw0Rx_0B.png" width="180" height="40" decoding="async">
       </a>
       <div class="nav-links-group">
         <a class="nav-link-item" href="/" data-nav="home">Home</a>
@@ -879,26 +914,26 @@
           <span class="editorial-italic-accent">From 10-Second Laser to 24-Hour Clarity</span>
         </h1>
         <p class="editorial-page-lead">
-          A comprehensive anatomical walkthrough of New Jersey's premier dual-laser protocol: from diagnostic WaveScan mapping to microscopic osmotic flap adhesion and same-day recovery.
+          A clear, step-by-step look at how our gentle dual-laser procedure works—from painless 3D eye mapping to crisp 20/20 vision by tomorrow morning.
         </p>
 
         <!-- Clinical Telemetry Bar -->
         <div class="clinical-telemetry-bar">
           <div class="telemetry-pill">
             <span class="telemetry-val telemetry-val-gold">10 Sec</span>
-            <span class="telemetry-lbl">Blade-Free Flap / Eye</span>
+            <span class="telemetry-lbl">Blade-Free Laser / Eye</span>
           </div>
           <div class="telemetry-pill">
             <span class="telemetry-val telemetry-val-cyan">0.25 µm</span>
-            <span class="telemetry-lbl">Ablation Depth / Pulse</span>
+            <span class="telemetry-lbl">Microscopic Precision</span>
           </div>
           <div class="telemetry-pill">
             <span class="telemetry-val telemetry-val-emerald">100%</span>
-            <span class="telemetry-lbl">Stitch-Free Osmotic Seal</span>
+            <span class="telemetry-lbl">Stitch-Free Natural Healing</span>
           </div>
           <div class="telemetry-pill">
             <span class="telemetry-val">24 Hours</span>
-            <span class="telemetry-lbl">Return to Work &amp; Driving</span>
+            <span class="telemetry-lbl">Back to Work &amp; Driving</span>
           </div>
         </div>
       </header>
@@ -908,96 +943,96 @@
         <span class="section-eyebrow-gold">SURGICAL PROTOCOL STEP-BY-STEP</span>
         <h2 id="five-stages-title" class="section-heading-editorial">Inside the Laser Suite: 5 Steps to Clear Vision</h2>
         <p class="section-sub-editorial">
-          Every procedure at Marano Eye Care is directed in person by Dr. Matthew Marano or Dr. Sherief Raouf at our state-of-the-art Livingston cleanroom suite. Review what occurs at each physiological step:
+          Every procedure at Marano Eye Care is performed in person by Dr. Matthew Marano or Dr. Sherief Raouf at our Livingston surgical suite. Here is exactly what happens at each step:
         </p>
 
         <!-- Stage 1 -->
         <article class="stage-row-card">
           <div>
-            <span class="stage-badge-tag">PHASE 01 // PRE-OPERATIVE MAPPING</span>
+            <span class="stage-badge-tag stage-badge-gold">STAGE 01 • 3D EYE MAPPING</span>
             <h3 class="stage-title">Step 1: 3D WaveScan® Eye Mapping</h3>
             <p class="stage-desc">
-              Prior to touching your eyes with any surgical laser, we capture your unique optical fingerprint. 240+ microscopic lenslet sensors measure higher-order aberrations, while Scheimpflug 3D tomography constructs a 25,000-point elevation model of your cornea's front and back surfaces to guarantee structural candidacy.
+              Before any laser is used, we scan your eyes to create a high-definition 3D blueprint. Over 240 digital sensors measure tiny microscopic imperfections that standard glasses can never detect, ensuring a custom treatment designed exclusively for your eyes.
             </p>
             <ul class="stage-bullets">
-              <li><strong>✦ Diagnostic Duration:</strong> Comprehensive 90-minute painless evaluation.</li>
-              <li><strong>✦ Clinical Advantage:</strong> 25× finer resolution than standard glasses prescriptions.</li>
+              <li><strong>Painless &amp; Relaxed:</strong> A comfortable, non-invasive diagnostic scan with zero contact.</li>
+              <li><strong>25× More Precise:</strong> Captures fine visual details that standard prescriptions miss.</li>
             </ul>
           </div>
           <div class="stage-image-frame">
-            <img src="./assets/wavescan_diagnostic_device.webp" alt="WaveScan Diagnostic Device" width="600" height="400" loading="eager" decoding="async">
+            <img src="./assets/wavescan_diagnostic_device.webp" alt="WaveScan Diagnostic Device" width="600" height="600" loading="lazy" decoding="async">
           </div>
         </article>
 
         <!-- Stage 2 -->
         <article class="stage-row-card">
           <div>
-            <span class="stage-badge-tag stage-badge-purple">PHASE 02 // 1053nm INFRARED FEMTOSECOND</span>
+            <span class="stage-badge-tag stage-badge-purple">STAGE 02 • BLADE-FREE PREPARATION</span>
             <h3 class="stage-title">Step 2: Blade-Free Femtosecond Flap</h3>
             <p class="stage-desc">
-              Topical numbing eye drops ensure complete comfort with zero needles or injections. The iFS® femtosecond laser focuses ultra-fast infrared pulses into the corneal stroma, creating a micro-thin 100-micron flap with inverted bevel lock edges in just 10 painless seconds per eye.
+              Gentle numbing eye drops keep you completely comfortable—no needles or injections. In just 10 seconds per eye, a computer-guided laser creates a micro-thin protective flap that shields your eye and naturally locks back into place.
             </p>
             <ul class="stage-bullets">
-              <li><strong>✦ Patient Sensation:</strong> Mild gentle pressure for 10 seconds; zero blade cutting.</li>
-              <li><strong>✦ Architectural Integrity:</strong> Inverted bevel edges lock back into place securely.</li>
+              <li><strong>What You Feel:</strong> Just mild, gentle pressure for 10 seconds—no blades or cutting.</li>
+              <li><strong>Quick &amp; Secure:</strong> Beveled edges allow the flap to reseal quickly and naturally.</li>
             </ul>
           </div>
           <div class="stage-image-frame">
-            <img src="./assets/lasik_flap_clean.webp" alt="Blade-Free Femtosecond Flap" width="600" height="400" loading="lazy" decoding="async">
+            <img src="./assets/lasik_flap_clean.webp" alt="Blade-Free Femtosecond Flap" width="600" height="600" loading="lazy" decoding="async">
           </div>
         </article>
 
         <!-- Stage 3 -->
         <article class="stage-row-card">
           <div>
-            <span class="stage-badge-tag stage-badge-cyan">PHASE 03 // 193nm COLD UV PHOTOABLATION</span>
+            <span class="stage-badge-tag stage-badge-cyan">STAGE 03 • COOL-LIGHT RESHAPING</span>
             <h3 class="stage-title">Step 3: CustomVue® Laser Reshaping</h3>
             <p class="stage-desc">
-              With the flap gently folded back, the excimer laser delivers cold 193 nm ultraviolet photons that break microscopic molecular bonds, reshaping corneal curvature at 0.25 microns per pulse without thermal heat. Active 3D Eye Tracking monitors pupil motion 60 times/sec with automated sub-5ms pause safety.
+              With the protective flap gently resting to the side, a cool ultraviolet laser reshapes your cornea to correct your vision in about 10 seconds. Active 3D Eye Tracking monitors your eye 60 times per second, automatically pausing if you blink or look away.
             </p>
             <ul class="stage-bullets">
-              <li><strong>✦ Sculpting Speed:</strong> Approximately 10 seconds of clicking laser pulses.</li>
-              <li><strong>✦ 3D Iris Registration:</strong> Automatically compensates for seated-to-supine cyclotorsion.</li>
+              <li><strong>No Heat or Burning:</strong> Uses gentle, cool ultraviolet light with zero heat or tissue damage.</li>
+              <li><strong>Smart Eye Tracking:</strong> Follows your eye in real time and pauses instantly if you move.</li>
             </ul>
           </div>
           <div class="stage-image-frame">
-            <img src="./assets/lasik_excimer_3d_tracking.webp" alt="Excimer 3D Eye Tracking" width="600" height="400" loading="lazy" decoding="async">
+            <img src="./assets/lasik_excimer_3d_tracking.webp?v=3" alt="Excimer 3D Eye Tracking" width="600" height="600" loading="lazy" decoding="async">
           </div>
         </article>
 
         <!-- Stage 4 -->
         <article class="stage-row-card">
           <div>
-            <span class="stage-badge-tag stage-badge-emerald">PHASE 04 // ANATOMICAL REALIGNMENT</span>
-            <h3 class="stage-title">Step 4: Natural Stitch-Free Flap Seal</h3>
+            <span class="stage-badge-tag stage-badge-emerald">STAGE 04 • NATURAL PROTECTIVE SEAL</span>
+            <h3 class="stage-title">Step 4: Stitch-Free Natural Flap Seal</h3>
             <p class="stage-desc">
-              Your surgeon uses a micro-spatula to gently smooth the corneal flap back into its exact anatomical position. Natural endothelial fluid pumps immediately generate negative osmotic pressure, creating instantaneous suction that seals the flap borders within 3 to 5 minutes without stitches.
+              Your surgeon gently smooths the protective flap back into its original position. Your eye's natural moisture creates immediate biological suction, sealing the flap securely within 3 to 5 minutes without any stitches.
             </p>
             <ul class="stage-bullets">
-              <li><strong>✦ Suture-Free:</strong> Zero stitches required; biological suction seals the bed.</li>
-              <li><strong>✦ Immediate Comfort:</strong> Protective shield applied; eyes remain naturally shielded.</li>
+              <li><strong>Zero Stitches:</strong> Your eye's natural suction seals the flap securely in minutes.</li>
+              <li><strong>Immediate Comfort:</strong> A clear protective shield is placed over your eye as you head home to rest.</li>
             </ul>
           </div>
           <div class="stage-image-frame">
-            <img src="./assets/lasik_flap_reposition_spatula.webp" alt="Corneal Flap Repositioning" width="600" height="400" loading="lazy" decoding="async">
+            <img src="./assets/lasik_flap_reposition_spatula.webp" alt="Corneal Flap Repositioning" width="600" height="600" loading="lazy" decoding="async">
           </div>
         </article>
 
         <!-- Stage 5 -->
         <article class="stage-row-card">
           <div>
-            <span class="stage-badge-tag stage-badge-gold">PHASE 05 // BIOLOGICAL STABILITY</span>
+            <span class="stage-badge-tag stage-badge-gold">STAGE 05 • 24-HOUR CLARITY</span>
             <h3 class="stage-title">Step 5: Rapid 24-Hour Recovery</h3>
             <p class="stage-desc">
-              Within 2 to 4 hours, superficial corneal epithelial cells migrate across the microscopic flap incision margin to create a watertight biological barrier. By the next morning (Hour 24), over 98% of patients achieve 20/20 clarity or better and are clinically cleared to drive and resume full work schedules.
+              Your eye begins healing immediately. After a short 2 to 3-hour afternoon nap, you wake up to clear, functional vision. By your morning checkup, over 98% of patients see 20/20 or better and are cleared to drive and return to work.
             </p>
             <ul class="stage-bullets">
-              <li><strong>✦ Day 1 Visual Acuity:</strong> 20/20+ distance vision confirmed at follow-up.</li>
-              <li><strong>✦ Permanent Stability:</strong> Reshaped corneal stroma does not regress.</li>
+              <li><strong>Next-Day Results:</strong> Over 98% of patients see 20/20 or better by tomorrow morning.</li>
+              <li><strong>Lasting Freedom:</strong> The reshaped surface is permanent, freeing you from glasses and contacts.</li>
             </ul>
           </div>
           <div class="stage-image-frame">
-            <img src="./assets/lasik_24hr_recovery.webp" alt="24-Hour LASIK Recovery" width="600" height="400" loading="lazy" decoding="async">
+            <img src="./assets/lasik_24hr_recovery.webp" alt="24-Hour LASIK Recovery" width="600" height="600" loading="lazy" decoding="async">
           </div>
         </article>
       </section>
@@ -1005,9 +1040,9 @@
       <!-- Interactive 24-Hour Recovery Scrubber -->
       <section class="surgical-card-master" aria-labelledby="recovery-scrubber-title">
         <span class="section-eyebrow-cyan">BIOLOGICAL HEALING SCRUBBER</span>
-        <h2 id="recovery-scrubber-title" class="section-heading-editorial">Your First 24 Hours: Hour-by-Hour Recovery</h2>
+        <h2 id="recovery-scrubber-title" class="section-heading-editorial">Hour-by-Hour Recovery</h2>
         <p class="section-sub-editorial">
-          Click across the recovery milestones below to review the anatomical progression from surgical dismissal through next-day 20/20 clarity:
+          Click through each recovery milestone below to see how quickly your vision returns—from your afternoon nap to next-day 20/20 clarity:
         </p>
 
         <div class="recovery-scrubber-container">
@@ -1016,28 +1051,28 @@
             <button type="button" role="tab" aria-selected="false" class="scrubber-pill-btn" id="btn-h4" onclick="setRecoveryPhase('h4')">Hour 4–6: Flap Sealing</button>
             <button type="button" role="tab" aria-selected="false" class="scrubber-pill-btn" id="btn-h12" onclick="setRecoveryPhase('h12')">Hour 12: Vision Emerges</button>
             <button type="button" role="tab" aria-selected="false" class="scrubber-pill-btn" id="btn-h24" onclick="setRecoveryPhase('h24')">Day 1: 20/20 Checkup</button>
-            <button type="button" role="tab" aria-selected="false" class="scrubber-pill-btn" id="btn-w1" onclick="setRecoveryPhase('w1')">Week 1: Stabilization</button>
+            <button type="button" role="tab" aria-selected="false" class="scrubber-pill-btn" id="btn-w1" onclick="setRecoveryPhase('w1')">Week 1: Lasting Clarity</button>
           </div>
 
           <div class="scrubber-display-card">
             <div>
-              <span id="scrubber-badge" class="scrubber-badge">HOUR 0 TO 2 // IMMEDIATE POST-OP</span>
+              <span id="scrubber-badge" class="scrubber-badge">HOUR 0 TO 2 • REST &amp; NAP</span>
               <h3 id="scrubber-title" class="scrubber-title">Immediate Post-Op: Rest and Eye Protection</h3>
               <p id="scrubber-desc" class="scrubber-desc">
-                Immediately following your procedure, clear protective eye shields are taped into place. Your eyes will feel watery with a mild scratchy sensation similar to a dry contact lens. We instruct all patients to return home and take a restful 2 to 3 hour nap with eyes closed to initiate rapid epithelial migration.
+                Right after your procedure, clear protective eye shields are placed over your eyes. They may feel slightly watery or scratchy, similar to a dry contact lens. Heading home for a relaxing 2 to 3-hour nap gives your eyes the rest they need to start healing quickly.
               </p>
               <div class="scrubber-tip-box">
                 <strong id="scrubber-tip-title" class="scrubber-tip-title">Patient Care Rule:</strong>
-                <span id="scrubber-tip-text">Keep eyes gently closed during the drive home. Do not rub eyes under any circumstance.</span>
+                <span id="scrubber-tip-text">Keep your eyes closed during the ride home and rest comfortably. Avoid rubbing your eyes.</span>
               </div>
             </div>
             <div class="scrubber-status-panel">
-              <div class="scrubber-status-header">PHYSIOLOGICAL RECOVERY STATUS</div>
+              <div class="scrubber-status-header">WHAT YOUR EYES ARE DOING</div>
               <div class="scrubber-metrics-list">
                 <div>
                   <div class="scrubber-metric-row">
-                    <span class="scrubber-metric-label">Epithelial Cell Seal:</span>
-                    <strong id="stat-seal" class="stat-seal-val">35% Adhesion</strong>
+                    <span class="scrubber-metric-label">Natural Flap Bond:</span>
+                    <strong id="stat-seal" class="stat-seal-val">35% Healed (Rest &amp; Nap)</strong>
                   </div>
                   <div class="scrubber-progress-track">
                     <div id="bar-seal" class="scrubber-progress-bar"></div>
@@ -1045,14 +1080,14 @@
                 </div>
                 <div>
                   <div class="scrubber-metric-row">
-                    <span class="scrubber-metric-label">Distance Acuity:</span>
-                    <strong id="stat-acuity" class="stat-acuity-val">20/60 (Soft Focus)</strong>
+                    <span class="scrubber-metric-label">Vision Quality:</span>
+                    <strong id="stat-acuity" class="stat-acuity-val">Soft Focus (Clearing rapidly)</strong>
                   </div>
                 </div>
                 <div>
                   <div class="scrubber-metric-row">
-                    <span class="scrubber-metric-label">Eye Drop Schedule:</span>
-                    <strong id="stat-drops" class="stat-drops-val">Antibiotic + Steroid 4x/day</strong>
+                    <span class="scrubber-metric-label">Eye Care:</span>
+                    <strong id="stat-drops" class="stat-drops-val">Antibiotic &amp; Soothing Drops</strong>
                   </div>
                 </div>
               </div>
@@ -1066,20 +1101,22 @@
         <span class="section-eyebrow-emerald">CLINICAL PREPARATION PROTOCOL</span>
         <h2 id="guidelines-title" class="section-heading-editorial">Surgery Day Preparation &amp; Guidelines</h2>
         <p class="section-sub-editorial">
-          Our team provides detailed instructions to ensure your surgical day is calm, seamless, and completely comfortable:
+          Our team provides clear, straightforward instructions to make your surgery day smooth, calm, and completely stress-free:
         </p>
 
         <div class="guidelines-grid">
           <div class="guideline-card">
-            <h3 class="guideline-title guideline-title-cyan">1. Arriving for Your Procedure</h3>
+            <span class="stage-badge-tag stage-badge-cyan">PRE-OP PROTOCOL • STEP 01</span>
+            <h3 class="guideline-title">1. Day of Surgery Preparation</h3>
             <p class="guideline-desc">
-              Wear comfortable button-up clothing so shirts do not pull over the head post-surgery. Avoid facial lotions, perfumes, colognes, or eye makeup. Arrange for an adult family member or driver to escort you home.
+              Wear comfortable button-up clothing so shirts do not pull over your head afterward. Avoid facial lotions, perfumes, colognes, and eye makeup. Arrange for a friend or family member to drive you home.
             </p>
           </div>
           <div class="guideline-card">
-            <h3 class="guideline-title guideline-title-emerald">2. Post-Op Eye Drop Schedule</h3>
+            <span class="stage-badge-tag stage-badge-emerald">POST-OP PROTOCOL • STEP 02</span>
+            <h3 class="guideline-title">2. Post-Procedure Eye Drops</h3>
             <p class="guideline-desc">
-              You will be provided with prescription antibiotic (e.g., fluoroquinolone) and anti-inflammatory steroid drops to prevent infection and corneal edema. Frequent preservative-free artificial tears soothe the ocular surface.
+              We provide prescription eye drops to keep your eyes comfortable and protected against infection. Preservative-free artificial tears soothe your eyes and keep them moisturized as you heal.
             </p>
           </div>
         </div>
@@ -1108,7 +1145,7 @@
       <div class="footer-subpage-container">
         <div class="footer-subpage-brand">
           <a href="/" aria-label="Marano Eye Care Homepage">
-            <img alt="Marano Eye Care Logo" class="footer-logo-img" src="./assets/marano-logo-Dw0Rx_0B.png" width="180" height="40" loading="lazy" />
+            <img alt="Marano Eye Care Logo" class="footer-logo-img" src="./assets/marano-logo-Dw0Rx_0B.png" width="180" height="40" loading="lazy" decoding="async">
           </a>
           <p class="footer-brand-sub">
             Board-Certified Custom Wavefront-Guided Refractive Surgery Center in New Jersey led by Dr. Matthew J. Marano, Jr., M.D. and Dr. Sherief Raouf, M.D.
@@ -1144,63 +1181,63 @@
     <script>
       var recoveryPhases = {
         h1: {
-          badge: 'HOUR 0 TO 2 // IMMEDIATE POST-OP',
+          badge: 'HOUR 0 TO 2 • REST & NAP',
           title: 'Immediate Post-Op: Rest and Eye Protection',
-          desc: 'Immediately following your procedure, clear protective eye shields are taped into place. Your eyes will feel watery with a mild scratchy sensation similar to a dry contact lens. We instruct all patients to return home and take a restful 2 to 3 hour nap with eyes closed to initiate rapid epithelial migration.',
+          desc: 'Right after your procedure, clear protective eye shields are placed over your eyes. They may feel slightly watery or scratchy, similar to a dry contact lens. Heading home for a relaxing 2 to 3-hour nap gives your eyes the rest they need to start healing quickly.',
           tipTitle: 'Patient Care Rule:',
-          tipText: 'Keep eyes gently closed during the drive home. Do not rub eyes under any circumstance.',
-          sealText: '35% Adhesion',
+          tipText: 'Keep your eyes closed during the ride home and rest comfortably. Avoid rubbing your eyes.',
+          sealText: '35% Healed (Rest & Nap)',
           sealWidth: '35%',
           sealColor: '#60a5fa',
-          acuity: '20/60 (Soft Focus)',
-          drops: 'Antibiotic + Steroid 4x/day'
+          acuity: 'Soft Focus (Clearing rapidly)',
+          drops: 'Antibiotic & Soothing Drops'
         },
         h4: {
-          badge: 'HOUR 4 TO 6 // RAPID OSMOTIC SEALING',
-          title: 'Hour 4–6: Natural Flap Sealing',
-          desc: 'Upon waking from your afternoon nap, the initial scratchy sensation has significantly diminished. The microscopic inverted bevel edges of the flap have interlocked, and the corneal endothelial pump system has generated natural negative pressure to seal the flap bed.',
-          tipTitle: 'Visual Progression:',
-          tipText: 'Vision is noticeably brighter. You can comfortably walk around your house and read large room signs.',
-          sealText: '75% Natural Seal',
+          badge: 'HOUR 4 TO 6 • NATURAL BONDING',
+          title: 'Hour 4–6: Flap Begins Sealing',
+          desc: 'When you wake up from your afternoon nap, any scratchiness has mostly faded. The edges of the flap have sealed naturally, and your vision is noticeably sharper and brighter.',
+          tipTitle: 'Visual Progress:',
+          tipText: 'You can comfortably walk around your home, prepare dinner, and read room signs.',
+          sealText: '75% Natural Bond',
           sealWidth: '75%',
           sealColor: '#38bdf8',
-          acuity: '20/30 (Clear Emergence)',
+          acuity: '20/30 (Clear & Sharp)',
           drops: 'Begin Lubricating Drops every 60 min'
         },
         h12: {
-          badge: 'HOUR 12 // HIGH-DEFINITION CLARITY EMERGES',
-          title: 'Hour 12: Clear Distance Vision Emerges',
-          desc: 'By dinner time, most patients feel zero physical discomfort. Distance vision has sharpened dramatically. You can enjoy dinner with family and watch TV across the room with crisp clarity that exceeds your best memories with contact lenses.',
-          tipTitle: 'Night Protocol:',
-          tipText: 'Re-tape your clear protective eye shields before sleeping to prevent accidental pillow friction.',
-          sealText: '90% Epithelial Bond',
+          badge: 'HOUR 12 • HIGH CLARITY EMERGES',
+          title: 'Hour 12: Sharp Distance Vision',
+          desc: 'By dinner time, any irritation is typically gone. Distance vision is remarkably crisp. You can enjoy dinner with family and watch TV across the room with effortless focus.',
+          tipTitle: 'Bedtime Care:',
+          tipText: 'Re-tape your protective eye shields before sleeping to prevent accidental rubbing.',
+          sealText: '90% Sealed',
           sealWidth: '90%',
           sealColor: '#34d399',
-          acuity: '20/25 to 20/20 (HD Acuity)',
-          drops: 'Nighttime Lubricating Gel'
+          acuity: '20/25 to 20/20 (High Definition)',
+          drops: 'Nighttime Lubricating Drops'
         },
         h24: {
-          badge: 'HOUR 24 // DAY 1 CLINICAL CLEARANCE',
-          title: 'Hour 24: 20/20 Acuity Verification',
-          desc: 'You wake up and instantly see the numbers on your alarm clock. At your morning follow-up at our Livingston suite, Dr. Marano or Dr. Raouf examines the flap under high-magnification biomicroscopy, verifies 20/20 or better visual acuity, and clears you to drive.',
-          tipTitle: 'Lifestyle Clearance:',
-          tipText: 'Return to office work, driving, light cardio, and non-contact gym workouts immediately.',
-          sealText: '98% Watertight Seal',
+          badge: 'HOUR 24 • YOUR NEXT-DAY CHECKUP',
+          title: 'Hour 24: 20/20 Vision & Driving Clearance',
+          desc: 'You wake up and clearly see your clock without reaching for glasses. At your morning checkup at Marano Eye Care, Dr. Marano or Dr. Raouf confirms your 20/20 vision and clears you to drive and return to work.',
+          tipTitle: 'Back to Routine:',
+          tipText: 'Return to office work, driving, light exercise, and normal daily life immediately.',
+          sealText: '98% Fully Healed',
           sealWidth: '98%',
           sealColor: '#10b981',
-          acuity: '20/20 or Better (Full Independence)',
-          drops: 'Taper Steroid per doctor instructions'
+          acuity: '20/20 or Better (Full Visual Freedom)',
+          drops: 'Continue prescription drops as directed'
         },
         w1: {
-          badge: 'WEEK 1 TO MONTH 1 // PERMANENT STABILIZATION',
-          title: 'Week 1: Permanent Optical Stability',
-          desc: 'Over the subsequent weeks, sub-epithelial corneal collagen bundles fully remodel, permanently stabilizing your custom refractive contour. Tear film innervation normalizes completely, eliminating the need for daily lubricating drops.',
-          tipTitle: 'Lifelong Freedom:',
-          tipText: 'Full clearance for ocean swimming, contact athletics, and outdoor adventure without lenses.',
-          sealText: '100% Complete Healing',
+          badge: 'WEEK 1 • STABLE, PERMANENT FREEDOM',
+          title: 'Week 1 & Beyond: Permanent Everyday Clarity',
+          desc: 'Over the next week, your eyes settle into crisp, stable vision for life. The surface has completely smoothed over, and natural tear production returns to normal.',
+          tipTitle: 'Active Living:',
+          tipText: 'Full clearance for swimming, gym workouts, athletics, and outdoor life with zero glasses.',
+          sealText: '100% Fully Healed',
           sealWidth: '100%',
           sealColor: 'var(--accent-gold)',
-          acuity: '20/20+ Stability (Permanent Clarity)',
+          acuity: '20/20+ Permanent Clarity',
           drops: 'Drops Discontinued / Complete Freedom'
         }
       };

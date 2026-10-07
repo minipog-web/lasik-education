@@ -29,13 +29,16 @@ This glossary documents the authoritative domain language, seams, and module con
 - **De-duplication Guard**: Prevents double-firing conversion beacons when form events and fetch requests fire concurrently.
 - **Mock Test Adapter**: In-memory test harness enabled via `MaranoTelemetry.setMockMode(true)` allowing automated headless verification without external network pings.
 
-### 2. Candidacy Diagnostic Screener
-- **Module**: 60-Second Candidacy Screener (`#quiz`, `#adaptive-quiz-container`).
-- **Domain Purpose**: Evaluates age, prescription stability, corneal history, and timeline, producing an instantaneous preliminary candidacy qualification for prospective LASIK candidates.
+### 2. Candidacy Diagnostic & Consultation Engine (`assets/diagnostic-consultation.js`)
+- **Module**: Candidacy Diagnostic Screener & Consultation Flow (`#quiz`, `#adaptive-quiz-container`, `#hero-mc-card`).
+- **Interface**: `window.MaranoDiagnostic` (`initQuiz()`, `initConsultation()`, `evaluateCandidacy()`, `setMockMode()`).
+- **Encapsulated Implementation**: 60-Second adaptive candidacy qualification scoring, phone normalization, multi-step booking state machine, and in-memory test harness.
+- **Domain Purpose**: Evaluates age, prescription stability, corneal history, and timeline, producing preliminary qualification and funneling qualified candidates into direct surgical consultation booking.
 
 ### 3. Biometric Optical Simulation Suite
 - **Module**: Night-driving wavefront simulator (`assets/vision-simulator.min.js`) and 3D Pentacam corneal topography visualizer (`assets/corneal-topography.js`).
-- **Domain Purpose**: Demonstrates higher-order aberration (HOA) correction (20/15 vs. 20/20) and cold excimer photoablation mechanics.
+- **Interface**: `window.MaranoOptical` (ablation depth calculations, Zernike aberration evaluations, and refractive ray-tracing models) and `window.initCornealTopography()`.
+- **Domain Purpose**: Demonstrates higher-order aberration (HOA) correction (20/15 vs. 20/20) and cold excimer photoablation mechanics across both 3D Pentacam corneal topography and 2D refractive ray-tracing visualizers.
 
 ### 4. Multi-Page Educational Portal
 - **`index.html`**: Flagship conversion-optimized landing page with retained high-engagement tools (Quiz, Vision Simulator, ROI Calculator).

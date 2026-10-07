@@ -104,7 +104,7 @@
                 <div class="topo-legend-bar"></div>
                 <div class="topo-legend-labels">
                   <span>Flatter (Blue)</span>
-                  <span>43D (Green)</span>
+                  <span>Normal (Green)</span>
                   <span>Steeper (Red)</span>
                 </div>
               </div>
@@ -241,6 +241,7 @@
     var canvas = document.getElementById('corneal-topo-canvas');
     if (!canvas) return;
     var ctx = canvas.getContext('2d');
+    if (!ctx) return;
     var stageContainer = document.getElementById('topo-stage-container');
 
     // Visual Acuity & Status DOM Elements

@@ -48,7 +48,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="./assets/index-DhXpI4H_.css?v=29">
-    <link rel="stylesheet" href="./assets/custom-styles.css?v=150">
 
     <!-- Schema.org MedicalWebPage Structured Data -->
     <script type="application/ld+json">
@@ -335,9 +334,16 @@
         border-radius: 24px;
         padding: clamp(32px, 4vw, 44px);
         margin-bottom: 56px;
-        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.45), 0 24px 60px -12px rgba(0, 0, 0, 0.75), 0 0 36px -10px rgba(226, 184, 87, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.14), inset 0 -1px 0 rgba(0, 0, 0, 0.35);
         -webkit-backdrop-filter: blur(24px);
         backdrop-filter: blur(24px);
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        min-width: 0;
+      }
+
+      .surgical-card-master:hover {
+        border-color: rgba(226, 184, 87, 0.35);
+        box-shadow: 0 4px 12px -1px rgba(0, 0, 0, 0.6), 0 28px 65px -14px rgba(0, 0, 0, 0.85), 0 0 42px -6px rgba(226, 184, 87, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -1px 0 rgba(0, 0, 0, 0.45);
       }
 
       .section-heading-editorial {
@@ -515,13 +521,15 @@
         padding: 30px 26px;
         position: relative;
         overflow: hidden;
-        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 3px 8px -1px rgba(0, 0, 0, 0.5), 0 18px 42px -10px rgba(0, 0, 0, 0.68), 0 0 28px -8px rgba(226, 184, 87, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        min-width: 0;
       }
 
       .history-card:hover {
         transform: translateY(-4px);
-        border-color: rgba(226, 184, 87, 0.5);
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(226, 184, 87, 0.12);
+        border-color: rgba(226, 184, 87, 0.45);
+        box-shadow: 0 4px 12px -1px rgba(0, 0, 0, 0.6), 0 26px 56px -12px rgba(0, 0, 0, 0.85), 0 0 36px -6px rgba(226, 184, 87, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -1px 0 rgba(0, 0, 0, 0.45);
       }
 
       .history-era-tag {
@@ -543,6 +551,7 @@
         color: #ffffff;
         margin: 0 0 14px 0;
         line-height: 1.25;
+        overflow-wrap: break-word;
       }
 
       .history-card-desc {
@@ -550,6 +559,7 @@
         font-size: 0.92rem;
         line-height: 1.6;
         margin-bottom: 16px;
+        overflow-wrap: break-word;
       }
 
       .history-metric-badge {
@@ -581,13 +591,15 @@
         border: 1px solid rgba(226, 184, 87, 0.2);
         border-radius: 20px;
         padding: 34px 30px;
-        box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-        transition: transform 0.3s ease, border-color 0.3s ease;
+        box-shadow: 0 3px 8px -1px rgba(0, 0, 0, 0.5), 0 20px 48px -10px rgba(0, 0, 0, 0.68), 0 0 32px -8px rgba(226, 184, 87, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.14), inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        min-width: 0;
       }
 
       .tech-pillar-card:hover {
-        transform: translateY(-3px);
-        border-color: rgba(226, 184, 87, 0.5);
+        transform: translateY(-4px);
+        border-color: rgba(226, 184, 87, 0.45);
+        box-shadow: 0 4px 12px -1px rgba(0, 0, 0, 0.6), 0 28px 65px -12px rgba(0, 0, 0, 0.85), 0 0 40px -6px rgba(226, 184, 87, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -1px 0 rgba(0, 0, 0, 0.45);
       }
 
       /* Clinical Comparison Table */
@@ -698,8 +710,14 @@
         border: 1px solid rgba(0, 240, 255, 0.28);
         border-radius: 14px;
         padding: 12px 16px;
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        box-shadow: 0 3px 8px -1px rgba(0, 0, 0, 0.5), 0 16px 36px -8px rgba(0, 0, 0, 0.6), 0 0 30px -6px rgba(0, 240, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         overflow: hidden;
+      }
+
+      .sim-reshaping-card:hover {
+        border-color: rgba(0, 240, 255, 0.45);
+        box-shadow: 0 4px 12px -1px rgba(0, 0, 0, 0.6), 0 22px 50px -10px rgba(0, 0, 0, 0.78), 0 0 36px -4px rgba(0, 240, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(0, 0, 0, 0.45);
       }
 
       .reshaping-header {
@@ -1262,15 +1280,16 @@
       .footer-copyright {
         margin: 0;
         font-size: 0.82rem;
-        color: #64748b;
+        color: #94a3b8;
       }
     </style>
+    <link rel="stylesheet" href="./assets/custom-styles.css?v=152">
   </head>
   <body>
     <!-- Persistent Floating Navbar (Matches index.html) -->
     <nav id="main-navigation" class="scrolled subpage-nav-fixed" role="navigation" aria-label="Main Navigation">
       <a id="logo-container" href="/" aria-label="Marano Eye Care Homepage">
-        <img alt="Marano Eye Care" class="nav-logo" src="./assets/marano-logo-Dw0Rx_0B.png" width="180" height="40" />
+        <img alt="Marano Eye Care" class="nav-logo" src="./assets/marano-logo-Dw0Rx_0B.png" width="180" height="40" decoding="async">
       </a>
       <div class="nav-links-group">
         <a class="nav-link-item" href="/" data-nav="home">Home</a>
@@ -1626,7 +1645,7 @@
         <div class="history-timeline-grid">
           <!-- Era 1: 1970s -->
           <article class="history-card">
-            <span class="history-era-tag era-1">1970s // PRE-LASER ERA</span>
+            <span class="history-era-tag era-1">1970s • PRE-LASER ERA</span>
             <h3 class="history-card-title">1970s: Manual Steel Blades (Radial Keratotomy)</h3>
             <p class="history-card-desc">
               Before lasers existed, surgeons used tiny hand-held diamond blades to make manual spokelike cuts into the cornea. Because blade depth depended entirely on manual hand pressure, healing was unpredictable, and patients frequently suffered nighttime glare, halos, and fluctuating vision.
@@ -1636,7 +1655,7 @@
 
           <!-- Era 2: 1980s-1990s -->
           <article class="history-card">
-            <span class="history-era-tag era-2">1980s–1990s // COOL LASER REVOLUTION</span>
+            <span class="history-era-tag era-2">1980s–1990s • COOL LASER REVOLUTION</span>
             <h3 class="history-card-title">1980s–1990s: The First Heat-Free Surface Lasers (PRK)</h3>
             <p class="history-card-desc">
               Scientists discovered that a special type of cool ultraviolet laser light could reshape the surface of the cornea without using heat. Unlike hot surgical lasers that burn or cauterize tissue, this cool light gently separates microscopic tissue bonds pulse by pulse, allowing the surface to heal cleanly.
@@ -1646,12 +1665,12 @@
 
           <!-- Era 3: 2000s-Present -->
           <article class="history-card history-card-highlight">
-            <span class="history-era-tag era-3">2000s–PRESENT // BLADE-FREE CUSTOM LASIK</span>
+            <span class="history-era-tag era-3">2000s–PRESENT • BLADE-FREE CUSTOM LASIK</span>
             <h3 class="history-card-title">Modern Era: 100% Blade-Free Custom Dual-Laser Suites</h3>
             <p class="history-card-desc">
               Modern LASIK combines two synchronized lasers: an ultra-fast cool laser creates a thin, protective flap on the cornea in about 10 seconds—no blades ever touch your eye. Then, a custom mapping laser gently reshapes the surface beneath it, guided by your eye's unique 3D blueprint.
             </p>
-            <div class="history-metric-badge history-metric-gold">METHOD: 100% Blade-Free // Rapid 24-Hour Recovery</div>
+            <div class="history-metric-badge history-metric-gold">METHOD: 100% Blade-Free • Rapid 24-Hour Recovery</div>
           </article>
         </div>
       </section>
@@ -1700,24 +1719,8 @@
           <!-- Pillar 3 -->
           <article class="tech-pillar-card">
             <div class="tech-pillar-header">
-              <span class="pillar-tag-emerald">STEP 3: GENTLE RESHAPING</span>
-              <span class="pillar-badge-emerald">Gentle Cool Light</span>
-            </div>
-            <h3 class="pillar-title">STAR S4 IR® Cool Light Reshaping</h3>
-            <p class="pillar-desc">
-              Our reshaping laser uses a specialized beam of cool ultraviolet light. Because it produces no heat, it does not burn or harm surrounding tissue. Each tiny pulse gently removes a microscopic fraction of a tissue layer (about 1/200th the thickness of a human hair) in just seconds.
-            </p>
-            <ul class="pillar-bullets">
-              <li><strong>✦ Smooth Transition Zones:</strong> Blends the treated area smoothly into the rest of your cornea to maintain natural contrast and night vision.</li>
-              <li><strong>✦ Fast 10-Second Treatment:</strong> Reshapes the cornea in seconds, keeping your eye comfortable and speeding up recovery.</li>
-            </ul>
-          </article>
-
-          <!-- Pillar 4 -->
-          <article class="tech-pillar-card">
-            <div class="tech-pillar-header">
-              <span class="pillar-tag-purple">STEP 4: PROTECTIVE FLAP</span>
-              <span class="pillar-badge-purple">100% Blade-Free</span>
+              <span class="pillar-tag-emerald">STEP 3: PROTECTIVE FLAP</span>
+              <span class="pillar-badge-emerald">100% Blade-Free</span>
             </div>
             <h3 class="pillar-title">iFS® Blade-Free Laser Flap Creation</h3>
             <p class="pillar-desc">
@@ -1726,6 +1729,22 @@
             <ul class="pillar-bullets">
               <li><strong>✦ Natural Beveled Edges:</strong> The edges fit together like a puzzle piece, helping the flap lock securely back in place.</li>
               <li><strong>✦ Rapid Natural Healing:</strong> The flap reseals naturally within minutes without needles, stitches, or bandages.</li>
+            </ul>
+          </article>
+
+          <!-- Pillar 4 -->
+          <article class="tech-pillar-card">
+            <div class="tech-pillar-header">
+              <span class="pillar-tag-purple">STEP 4: GENTLE RESHAPING</span>
+              <span class="pillar-badge-purple">Gentle Cool Light</span>
+            </div>
+            <h3 class="pillar-title">STAR S4 IR® Cool Light Reshaping</h3>
+            <p class="pillar-desc">
+              Our reshaping laser uses a specialized beam of cool ultraviolet light. Because it produces no heat, it does not burn or harm surrounding tissue. Each tiny pulse gently removes a microscopic fraction of a tissue layer (about 1/200th the thickness of a human hair) in just seconds.
+            </p>
+            <ul class="pillar-bullets">
+              <li><strong>✦ Smooth Transition Zones:</strong> Blends the treated area smoothly into the rest of your cornea to maintain natural contrast and night vision.</li>
+              <li><strong>✦ Fast 10-Second Treatment:</strong> Reshapes the cornea in seconds, keeping your eye comfortable and speeding up recovery.</li>
             </ul>
           </article>
         </div>
@@ -1815,7 +1834,7 @@
       <div class="footer-subpage-container">
         <div class="footer-subpage-brand">
           <a href="/" aria-label="Marano Eye Care Homepage">
-            <img alt="Marano Eye Care Logo" class="footer-logo-img" src="./assets/marano-logo-Dw0Rx_0B.png" width="180" height="40" loading="lazy" />
+            <img alt="Marano Eye Care Logo" class="footer-logo-img" src="./assets/marano-logo-Dw0Rx_0B.png" width="180" height="40" loading="lazy" decoding="async">
           </a>
           <p class="footer-brand-sub">
             Board-Certified Custom Wavefront-Guided Refractive Surgery Center in New Jersey led by Dr. Matthew J. Marano, Jr., M.D. and Dr. Sherief Raouf, M.D.
@@ -1851,7 +1870,7 @@
     <script src="./assets/telemetry.js?v=3" defer></script>
     <script type="text/javascript" src="https://cdn.callrail.com/companies/764798499/aff735ebb2e830b3a6df/12/swap.js" defer></script>
 
-    <script src="./assets/corneal-topography.js?v=16" defer></script>
+    <script src="./assets/corneal-topography.js?v=17" defer></script>
     <script>
       // Interactive Ray-Tracing State Engine
       var refractionData = {
@@ -2045,6 +2064,9 @@
       };
 
       function setRefraction(type) {
+        if (!type || !refractionData[type]) {
+          type = 'myopia';
+        }
         var d = refractionData[type];
         if (!d) return;
 

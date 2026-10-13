@@ -1,5 +1,5 @@
 /**
- * Marano Eye Care — Telemetry & Conversion Tracking Architecture
+ * Marano Eye Care: Telemetry & Conversion Tracking Architecture
  * Deep Telemetry Module: GA4, Multi-Account Google Ads, GTM & Micro-Conversions
  * 
  * Seams & Adapters:

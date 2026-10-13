@@ -40,7 +40,7 @@ The DOM flow was restructured to lead the prospective patient through an intuiti
 
 ---
 
-### 4. Dr. Matthew J. Marano, Jr. — Pioneering Leadership & Surgical Volume Clarification
+### 4. Dr. Matthew J. Marano, Jr.: Pioneering Leadership & Surgical Volume Clarification
 - **Refractive Experience vs. Total Surgical Volume:** Accurately distinguished that the practice has performed **thousands of successful LASIK procedures**, while Dr. Marano personally has performed **over 40,000 total surgical procedures** across more than three decades in clinical practice.
 - **New Jersey Refractive Pioneer:** Emphasized Dr. Marano as a foundational pioneer of laser vision correction throughout New Jersey across his 30+ years of surgical practice.
 - **Advancement of Modern LASIK Technology:** Highlighted his direct surgical contributions that drove the evolution from early excimer laser protocols to modern high-definition, blade-free wavefront-guided platforms.
@@ -52,7 +52,7 @@ The DOM flow was restructured to lead the prospective patient through an intuiti
 
 ---
 
-## Walkthrough — Atmospheric Light & Specular Glass Design System
+## Walkthrough: Atmospheric Light & Specular Glass Design System
 
 ## Changes Made
 

@@ -31,10 +31,10 @@ The goal of this visual overhaul is to transform the landing page into a state-o
 * **Structure:**
   * Horizontal interactive range control / step buttons.
   * 4 Recovery Stages:
-    1. **Hour 0:** Surgical Completion — Natural osmotic flap adhesion initialized.
-    2. **Hour 4:** Cellular Sealing — Epithelial alignment; baseline focus stabilizing.
-    3. **Hour 12:** HD Contrast Restoration — Night glare reduction active; 95%+ clarity.
-    4. **Hour 24:** Full Active Freedom — Screen, driving, and active sports clearance.
+    1. **Hour 0:** Surgical Completion: Natural osmotic flap adhesion initialized.
+    2. **Hour 4:** Cellular Sealing: Epithelial alignment; baseline focus stabilizing.
+    3. **Hour 12:** HD Contrast Restoration: Night glare reduction active; 95%+ clarity.
+    4. **Hour 24:** Full Active Freedom: Screen, driving, and active sports clearance.
 * **Interactions:**
   * Dragging slider or clicking stage pills smoothly transitions stage detail cards with cubic-bezier easing.
   * Visual indicator highlight displays estimated clarity percentage and clinical milestone text.

@@ -151,7 +151,7 @@ Update `customizeForCustomVue` location badge in `index.html`:
 ```javascript
 locNotice.innerHTML = '<strong style="color:#e2b857;display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px;font-size:0.72rem;">Convenient NJ Locations</strong>' +
   '• <strong>Consultations & Check-ups Available At:</strong> Livingston, Denville, or Newark.<br>' +
-  '• <strong>Diagnostic Testing & LASIK Surgery:</strong> Performed exclusively at our premier Livingston facility — <em>Cooperman Barnabas Ambulatory Care Center (ACC)</em>.';
+  '• <strong>Diagnostic Testing & LASIK Surgery:</strong> Performed exclusively at our premier Livingston facility (<em>Cooperman Barnabas Ambulatory Care Center (ACC)</em>).';
 ```
 
 Update `injectMicrocopyPreemption`:

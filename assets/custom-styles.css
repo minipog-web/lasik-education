@@ -1,5 +1,5 @@
 /* ==========================================================================
-   MARANO EYE CARE — HIGH-PERFORMANCE CUSTOM STYLES
+   MARANO EYE CARE: HIGH-PERFORMANCE CUSTOM STYLES
    CustomVue WaveFront & Diagnostic LASIK Education Engine
    ========================================================================== */
 
@@ -4420,15 +4420,29 @@ div[style*="height: 1px"], div[style*="height:1px"], div[style*="height: 0px"], 
 
 .laser-pane-advantages {
   min-width: 0px !important;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(12, 19, 32, 0.65) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 14px !important;
+  padding: 16px 20px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  backdrop-filter: blur(16px) !important;
+  box-shadow: rgba(255, 255, 255, 0.12) 0px 1px 1px 0px inset !important;
 }
 
 .laser-advantages-title {
   font-family: monospace !important;
-  font-size: 0.74rem !important;
+  font-size: 0.72rem !important;
   color: rgb(226, 184, 87) !important;
-  letter-spacing: 1.5px !important;
+  letter-spacing: 1.4px !important;
   text-transform: uppercase !important;
-  margin: 0px 0px 12px !important;
+  font-weight: 700 !important;
+  margin: 0px 0px 10px !important;
+  padding: 0px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
 }
 
 .laser-advantages-list {
@@ -4437,21 +4451,30 @@ div[style*="height: 1px"], div[style*="height:1px"], div[style*="height: 0px"], 
   margin: 0px !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 10px !important;
-  font-size: 0.86rem !important;
+  gap: 8px !important;
+  font-size: 0.81rem !important;
   color: rgb(203, 213, 225) !important;
-  line-height: 1.5 !important;
+  line-height: 1.42 !important;
 }
 
 .laser-advantages-list li {
   display: flex !important;
-  gap: 10px !important;
-  align-items: flex-start !important;
+  gap: 8px !important;
+  align-items: baseline !important;
+  margin: 0px !important;
+  padding: 0px !important;
 }
 
 .laser-adv-bullet {
   color: rgb(226, 184, 87) !important;
   flex-shrink: 0 !important;
+  font-size: 0.68rem !important;
+  line-height: 1 !important;
+}
+
+.laser-advantages-list strong {
+  color: rgb(248, 250, 252) !important;
+  font-weight: 600 !important;
 }
 
 .laser-suite-bottom-nav {
@@ -4665,9 +4688,14 @@ div[style*="height: 1px"], div[style*="height:1px"], div[style*="height: 0px"], 
     font-size: 0.85rem !important;
   }
 
+  .laser-pane-advantages {
+    padding: 14px 16px !important;
+  }
+
   .laser-advantages-list {
-    font-size: 0.82rem !important;
-    gap: 8px !important;
+    font-size: 0.80rem !important;
+    gap: 7px !important;
+    line-height: 1.4 !important;
   }
 }
 
@@ -8056,6 +8084,7 @@ header, section.hero-section-shell, .hero-section-shell {
 .laser-pane-advantages {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(12, 19, 32, 0.65) 100%) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 14px !important;
   -webkit-backdrop-filter: blur(16px) !important;
   backdrop-filter: blur(16px) !important;
   box-shadow: rgba(255, 255, 255, 0.12) 0px 1px 1px 0px inset !important;
@@ -10132,6 +10161,256 @@ header, section.hero-section-shell, .hero-section-shell {
   gap: 6px;
   color: rgb(148, 163, 184);
   font-size: 0.75rem;
+}
+
+/* ─── Adaptive Candidacy Quiz: Dossier & Result Screens ─── */
+.quiz-loading-screen {
+  padding: 36px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.quiz-loading-spinner-ring {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid rgba(226, 184, 87, 0.2);
+  border-top-color: rgb(226, 184, 87);
+  animation: quizSpinner 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes quizSpinner {
+  to { transform: rotate(360deg); }
+}
+
+.quiz-loading-title {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+  color: #fff;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.quiz-loading-sub {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  max-width: 480px;
+  margin: 0 auto 22px;
+  line-height: 1.5;
+}
+
+.quiz-telemetry-scroller {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 14px 18px;
+  width: 100%;
+  max-width: 520px;
+}
+
+.telem-line {
+  font-family: monospace, ui-monospace, sans-serif;
+  font-size: 0.76rem;
+  color: #34d399;
+  letter-spacing: 0.2px;
+  line-height: 1.45;
+}
+
+.telem-line.telem-line-alert {
+  color: #fbbf24;
+}
+
+.telem-line.telem-line-disqualified {
+  color: #f87171;
+}
+
+.quiz-final-dossier {
+  text-align: left;
+}
+
+.quiz-final-dossier.animate-fade-up {
+  animation: dossierFadeUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes dossierFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dossier-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.dossier-match-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: rgb(52, 211, 153);
+}
+
+.dossier-match-badge.dossier-disqualified-badge {
+  background: rgba(239, 68, 68, 0.14);
+  border-color: rgba(239, 68, 68, 0.45);
+  color: #fca5a5;
+}
+
+.dossier-match-badge.dossier-caution-badge {
+  background: rgba(245, 158, 11, 0.14);
+  border-color: rgba(245, 158, 11, 0.42);
+  color: #fcd34d;
+}
+
+.dossier-id-tag {
+  font-family: monospace, ui-monospace, sans-serif;
+  font-size: 0.72rem;
+  color: #64748b;
+  letter-spacing: 1px;
+}
+
+.dossier-headline {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: clamp(1.45rem, 2.5vw, 1.95rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
+
+.dossier-headline.dossier-disqualified-headline {
+  color: #fee2e2;
+}
+
+.dossier-headline.dossier-caution-headline {
+  color: #fef08a;
+}
+
+.dossier-summary-lead {
+  font-size: 0.94rem;
+  color: #cbd5e1;
+  line-height: 1.62;
+  margin: 0 0 22px;
+}
+
+.dossier-findings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 640px) {
+  .dossier-findings-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dossier-finding-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 16px 18px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.dossier-finding-card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+.dossier-finding-card .finding-icon {
+  display: inline-block;
+  margin-right: 6px;
+  color: rgb(226, 184, 87);
+  font-weight: bold;
+}
+
+.dossier-finding-card strong {
+  display: block;
+  font-size: 0.88rem;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.dossier-finding-card p {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.dossier-finding-card.dossier-finding-caution {
+  background: rgba(239, 68, 68, 0.04);
+  border-color: rgba(239, 68, 68, 0.26);
+}
+
+.dossier-finding-card.dossier-finding-caution .finding-icon {
+  color: #f87171;
+}
+
+.dossier-finding-card.dossier-finding-caution:hover {
+  border-color: rgba(239, 68, 68, 0.42);
+}
+
+.dossier-finding-card.dossier-finding-warning {
+  background: rgba(245, 158, 11, 0.04);
+  border-color: rgba(245, 158, 11, 0.26);
+}
+
+.dossier-finding-card.dossier-finding-warning .finding-icon {
+  color: #fbbf24;
+}
+
+.dossier-finding-card.dossier-finding-warning:hover {
+  border-color: rgba(245, 158, 11, 0.42);
+}
+
+.quiz-retake-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #94a3b8;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.quiz-retake-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.32);
+  transform: translateY(-1px);
 }
 
 .criteria-subheading-wrap {
@@ -13705,19 +13984,6 @@ select:focus-visible,
 .hero-hud-crosshairs .ch-bottom { bottom: 0; left: 50%; width: 1px; height: 18px; transform: translateX(-50%); }
 .hero-hud-crosshairs .ch-left { top: 50%; left: 0; width: 18px; height: 1px; transform: translateY(-50%); }
 .hero-hud-crosshairs .ch-right { top: 50%; right: 0; width: 18px; height: 1px; transform: translateY(-50%); }
-
-.hero-hud-center-dot {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #00f0ff;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 10px 1px #00f0ff;
-  z-index: 5;
-}
 
 .hero-hud-coordinate-tag {
   position: absolute;

@@ -639,11 +639,11 @@
     <link rel="prefetch" as="image" href="/assets/wavescan_diagnostic_device.webp" type="image/webp">
     <link rel="prefetch" as="image" href="/assets/lasik_flap_clean.webp" type="image/webp">
     <link rel="prefetch" as="image" href="/assets/lasik_excimer_3d_tracking.webp?v=3" type="image/webp">
-    <link rel="prefetch" as="image" href="/assets/lasik_flap_reposition_spatula.webp" type="image/webp">
+    <link rel="prefetch" as="image" href="/assets/lasik_flap_reposition_spatula.webp?v=4" type="image/webp">
     <link rel="prefetch" as="image" href="/assets/lasik_24hr_recovery.webp" type="image/webp">
     <link rel="prefetch" as="image" href="/assets/hd_night_highway_scene.webp?v=6" type="image/webp">
     <link rel="stylesheet" href="/assets/index-DhXpI4H_.css?v=29">
-    <link rel="stylesheet" href="/assets/custom-styles.css?v=171">
+    <link rel="stylesheet" href="/assets/custom-styles.css?v=174">
     <script src="/assets/vision-simulator.min.js?v=22" defer></script>
     <script src="/assets/corneal-topography.js?v=17" defer></script>
     <!-- Comprehensive GTM, GA4, & Google Ads Event Tracking Architecture -->
@@ -2168,15 +2168,17 @@
                 </div>
               </div>
               <div class="edu-hook-launch-actions">
-                <a href="/technology.html" class="edu-hook-master-btn" id="edu-hook-master-launch-btn" aria-label="Launch Full LASIK Deep Dive: Comprehensive Patient Education Guide &amp; 4 Interactive Modules">
-                  <span class="edu-hook-master-shine" aria-hidden="true"></span>
-                  <svg class="edu-hook-master-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-                  </svg>
-                  <span class="edu-hook-master-label">Launch Full LASIK Deep Dive</span>
-                  <span class="edu-hook-master-arrow" aria-hidden="true">→</span>
-                </a><button type="button" onclick="scrollToElement('quiz')" class="edu-hook-launch-secondary-btn"><span>Check Candidacy (60s) →</span></button></div></div></div></section>
+                <a href="/technology.html" class="btn btn-primary edu-hook-master-btn" id="edu-hook-master-launch-btn" aria-label="Launch Full LASIK Deep Dive: Comprehensive Patient Education Guide &amp; 4 Interactive Modules">
+                  <span>Launch Full LASIK Deep Dive</span>
+                  <span class="btn-icon-bubble" aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </span>
+                </a>
+                <button type="button" onclick="scrollToElement('quiz')" class="btn btn-secondary edu-hook-launch-secondary-btn">
+                  <span>Check Candidacy (60s)</span>
+                  <span class="btn-icon-bubble btn-icon-bubble-secondary" aria-hidden="true">→</span>
+                </button>
+              </div></div></div></section>
 
         <!-- SOCIAL PROOF & TESTIMONIALS -->
         <section id="social-proof-section" class="proof-section-main">
@@ -3375,7 +3377,7 @@
         desc: 'Immediately after corneal sculpting, your surgeon gently smooths the micro-thin corneal flap back into its natural anatomical position. The flap edges interlock seamlessly without stitches, utilizing natural corneal osmotic pressure to seal.',
         m1: 'Stitch-Free',
         m2: 'Immediate Adhesion',
-        img: '/assets/lasik_flap_reposition_spatula.webp',
+        img: '/assets/lasik_flap_reposition_spatula.webp?v=4',
         caption: 'STEP 4 FLAP REPOSITIONING • MICROSCOPIC ANATOMICAL ALIGNMENT',
         list: [
           '<strong>Natural Osmotic Suction:</strong> Endothelial pump action creates immediate, stitch-free adhesion.',
@@ -3624,12 +3626,17 @@
       var svg = btn ? btn.querySelector('svg') : null;
 
       if (btn && answerOuter) {
+        if (!btn.hasAttribute('aria-expanded')) {
+          btn.setAttribute('aria-expanded', 'false');
+        }
         btn.addEventListener('click', function() {
-          var isExpanded = answerOuter.style.maxHeight && answerOuter.style.maxHeight !== '0px';
+          var isExpanded = btn.getAttribute('aria-expanded') === 'true';
           if (isExpanded) {
+            btn.setAttribute('aria-expanded', 'false');
             answerOuter.style.maxHeight = '0px';
             if (svg) svg.style.transform = 'rotate(0deg)';
           } else {
+            btn.setAttribute('aria-expanded', 'true');
             answerOuter.style.maxHeight = (answerOuter.scrollHeight + 30) + 'px';
             if (svg) svg.style.transform = 'rotate(180deg)';
           }
@@ -4213,8 +4220,11 @@
                 '</div>' +
               '</div>' +
             '</div>' +
-            '<div style="display:flex;gap:10px;margin-top:10px;">' +
-              '<button type="button" id="mc-back-1" class="btn-island-secondary" style="flex:0 0 auto;padding:12px 18px;">← Back</button>' +
+            '<div style="display:flex;align-items:center;gap:12px;margin-top:16px;">' +
+              '<button type="button" id="mc-back-1" class="mc-back-btn" aria-label="Go back to previous step">' +
+                '<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>' +
+                '<span>Back</span>' +
+              '</button>' +
               '<button type="button" id="mc-next-2" class="btn-island-primary" style="flex:1 1 auto;" ' + (!state.timeframe ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : '') + '>' +
                 '<span>Final Step: Choose Office</span>' +
                 '<span class="btn-icon-island">→</span>' +
@@ -4240,38 +4250,41 @@
               '<input type="hidden" name="utm_medium" value="' + escapeMcText(getQueryParam('utm_medium')) + '" />' +
               '<input type="hidden" name="utm_campaign" value="' + escapeMcText(getQueryParam('utm_campaign')) + '" />' +
               '<input type="hidden" name="gclid" value="' + escapeMcText(getQueryParam('gclid')) + '" />' +
-              '<div style="margin-bottom:10px;">' +
-                '<label for="mc-location" style="display:block;font-size:0.78rem;font-weight:600;color:#cbd5e1;margin-bottom:4px;">Preferred Consultation Location</label>' +
+              '<div class="mc-field-group">' +
+                '<label for="mc-location" class="mc-field-label">Preferred Consultation Location</label>' +
                 '<select id="mc-location" name="location" class="mc-input-field">' +
                   '<option value="Livingston" ' + (state.location === 'Livingston' ? 'selected' : '') + '>Livingston Flagship (200 S Orange Ave)</option>' +
                   '<option value="Denville" ' + (state.location === 'Denville' ? 'selected' : '') + '>Denville Office (16 Pocono Rd, Suite 301)</option>' +
                   '<option value="Newark" ' + (state.location === 'Newark' ? 'selected' : '') + '>Newark Office (306 MLK Blvd)</option>' +
                 '</select>' +
               '</div>' +
-              '<div style="margin-bottom:10px;">' +
-                '<label for="mc-name" style="display:block;font-size:0.78rem;font-weight:600;color:#cbd5e1;margin-bottom:4px;">Full Name *</label>' +
-                '<input type="text" id="mc-name" name="name" class="mc-input-field" placeholder="First and Last Name" required maxlength="100" autocomplete="name" value="' + escapeMcText(state.name) + '" />' +
+              '<div class="mc-field-group">' +
+                '<label for="mc-name" class="mc-field-label">Full Name *</label>' +
+                '<input type="text" id="mc-name" name="name" class="mc-input-field" placeholder="e.g. Sarah Jenkins" required maxlength="100" autocomplete="name" value="' + escapeMcText(state.name) + '" />' +
               '</div>' +
-              '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">' +
-                '<div>' +
-                  '<label for="mc-phone" style="display:block;font-size:0.78rem;font-weight:600;color:#cbd5e1;margin-bottom:4px;">Mobile Phone *</label>' +
+              '<div class="mc-field-row">' +
+                '<div class="mc-field-group">' +
+                  '<label for="mc-phone" class="mc-field-label">Mobile Phone *</label>' +
                   '<input type="tel" id="mc-phone" name="phone" class="mc-input-field" placeholder="(973) 555-0123" required maxlength="25" autocomplete="tel" value="' + escapeMcText(state.phone) + '" />' +
                 '</div>' +
-                '<div>' +
-                  '<label for="mc-email" style="display:block;font-size:0.78rem;font-weight:600;color:#cbd5e1;margin-bottom:4px;">Email Address *</label>' +
+                '<div class="mc-field-group">' +
+                  '<label for="mc-email" class="mc-field-label">Email Address *</label>' +
                   '<input type="email" id="mc-email" name="email" class="mc-input-field" placeholder="name@example.com" required maxlength="100" autocomplete="email" value="' + escapeMcText(state.email) + '" />' +
                 '</div>' +
               '</div>' +
-              '<div style="margin-bottom:10px;">' +
-                '<label style="display:block;font-size:0.78rem;font-weight:600;color:#cbd5e1;margin-bottom:4px;">Preferred Contact Method</label>' +
-                '<div style="display:flex;gap:14px;font-size:0.82rem;color:#cbd5e1;">' +
-                  '<label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer;"><input type="radio" name="preferred_contact" value="text" ' + (state.contactMethod === 'text' ? 'checked' : '') + ' /> Text Message</label>' +
-                  '<label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer;"><input type="radio" name="preferred_contact" value="phone" ' + (state.contactMethod === 'phone' ? 'checked' : '') + ' /> Phone Call</label>' +
-                  '<label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer;"><input type="radio" name="preferred_contact" value="email" ' + (state.contactMethod === 'email' ? 'checked' : '') + ' /> Email</label>' +
+              '<div class="mc-field-group">' +
+                '<label class="mc-field-label">Preferred Contact Method</label>' +
+                '<div class="mc-radio-group">' +
+                  '<label class="mc-radio-label"><input type="radio" name="preferred_contact" value="text" ' + (state.contactMethod === 'text' ? 'checked' : '') + ' /> <span>Text Message</span></label>' +
+                  '<label class="mc-radio-label"><input type="radio" name="preferred_contact" value="phone" ' + (state.contactMethod === 'phone' ? 'checked' : '') + ' /> <span>Phone Call</span></label>' +
+                  '<label class="mc-radio-label"><input type="radio" name="preferred_contact" value="email" ' + (state.contactMethod === 'email' ? 'checked' : '') + ' /> <span>Email</span></label>' +
                 '</div>' +
               '</div>' +
-              '<div style="display:flex;gap:10px;margin-top:14px;">' +
-                '<button type="button" id="mc-back-2" class="btn-island-secondary" style="flex:0 0 auto;padding:12px 18px;">← Back</button>' +
+              '<div style="display:flex;align-items:center;gap:12px;margin-top:16px;">' +
+                '<button type="button" id="mc-back-2" class="mc-back-btn" aria-label="Go back to previous step">' +
+                  '<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>' +
+                  '<span>Back</span>' +
+                '</button>' +
                 '<button type="submit" id="mc-submit-btn" class="btn-island-primary" style="flex:1 1 auto;">' +
                   '<span>Request Free Consultation</span>' +
                   '<span class="btn-icon-island">→</span>' +

@@ -79,6 +79,37 @@ publish = "."
   [build.processing]
     skip_processing = false
 
+# Canonical Extensionless URL 301 Redirects (Preserves Link Equity & Prevents Soft-404 Ambiguity)
+[[redirects]]
+  from = "/technology"
+  to = "/technology.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/procedure-journey"
+  to = "/procedure-journey.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/surgeons"
+  to = "/surgeons.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pricing-financing"
+  to = "/pricing-financing.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sitemap"
+  to = "/sitemap.html"
+  status = 301
+  force = true
+
 # Prerender Redirects for Search Engine Crawlers & Social Bots (SPA Catch-All)
 [[redirects]]
   from = "/*"

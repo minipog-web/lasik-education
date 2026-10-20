@@ -162,7 +162,7 @@
           <!-- Right: Patient Education on Astigmatism & CustomVue + Projected Acuity + Dr. Marano Quote -->
           <div class="topo-telemetry-card">
             <div class="topo-hud-header">
-              <h4 class="topo-hud-title">How CustomVue® Treats Astigmatism</h4>
+              <h3 class="topo-hud-title">How CustomVue® Treats Astigmatism</h3>
             </div>
 
             <!-- Astigmatism Visual Education Cards -->
@@ -218,7 +218,7 @@
             <!-- Surgeon Clinical Insight Quote (Dr. Matthew Marano, MD) -->
             <div class="topo-surgeon-insight">
               <div class="topo-insight-avatar">
-                <img src="./assets/dr-marano.jpg" alt="Dr. Matthew Marano, MD" loading="lazy" />
+                <img src="./assets/dr-marano.jpg" alt="Dr. Matthew Marano, MD" width="48" height="48" loading="lazy" decoding="async" />
               </div>
               <div class="topo-insight-content">
                 <strong class="topo-insight-surgeon">Dr. Matthew Marano, MD</strong>

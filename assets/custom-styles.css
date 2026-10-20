@@ -7223,6 +7223,7 @@ header, section.hero-section-shell, .hero-section-shell {
 .topo-insight-avatar img {
   width: 100% !important;
   height: 100% !important;
+  aspect-ratio: 1 / 1 !important;
   object-fit: cover !important;
 }
 
@@ -11291,6 +11292,7 @@ footer.footer-subpage-master,
 .footer-logo-img {
   height: 38px;
   width: auto;
+  aspect-ratio: 180 / 40;
   object-fit: contain;
   margin-bottom: 12px;
   filter: drop-shadow(rgba(0, 0, 0, 0.5) 0px 0px 10px);
@@ -14494,40 +14496,25 @@ h1, h2, h3, h4, h5, h6,
 
 /* 3. Eyebrow Badges & Clinical Telemetry Tags */
 .superiority-eyebrow,
-.subpage-badge {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
-  font-size: 0.72rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.12em !important;
-  text-transform: uppercase !important;
-  padding: 6px 14px !important;
-  border-radius: 9999px !important;
-  background: rgba(14, 165, 233, 0.08) !important;
-  border: 1px solid rgba(56, 189, 248, 0.25) !important;
-  backdrop-filter: blur(12px) !important;
-  color: #38bdf8 !important;
-}
-
+.subpage-badge,
 .editorial-eyebrow,
 #hero-kicker-eyebrow {
   display: inline-flex !important;
   align-items: center !important;
   gap: 8px !important;
-  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-family: var(--font-sans) !important;
   font-size: 0.72rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.12em !important;
   text-transform: uppercase !important;
   padding: 6px 16px !important;
-  border-radius: 9999px !important;
+  border-radius: var(--border-radius-full, 9999px) !important;
   background: linear-gradient(135deg, rgba(226, 184, 87, 0.12) 0%, rgba(15, 23, 42, 0.8) 50%, rgba(226, 184, 87, 0.06) 100%) !important;
   border: 1px solid rgba(226, 184, 87, 0.35) !important;
-  box-shadow: inset 0 1px 1px rgba(255, 240, 190, 0.25), 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 240, 190, 0.25), 0 4px 16px rgba(0, 0, 0, 0.3), 0 0 20px rgba(226, 184, 87, 0.08) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
   backdrop-filter: blur(14px) !important;
-  color: #e2b857 !important;
+  color: var(--accent-gold, #e2b857) !important;
 }
 
 #hero-kicker-text {
@@ -15145,6 +15132,454 @@ h3 .text-gradient {
   border: 1px solid rgba(239, 68, 68, 0.4) !important;
   color: #f87171 !important;
 }
+/* ==========================================================================
+   REFRACTIVE SIMULATION: INTERACTIVE BUTTONS & SINGLE-LINE LABEL
+/* ==========================================================================
+   REFRACTIVE SIMULATION: INTERACTIVE BUTTONS & MOBILE LAYOUT ARCHITECTURE
+   ========================================================================== */
 
+/* 1. Selector Label */
+.sim-selector-label {
+  white-space: nowrap !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: clamp(0.72rem, 1.1vw, 0.82rem) !important;
+  letter-spacing: 0.03em !important;
+  color: var(--accent-gold, #e2b857) !important;
+  text-transform: none !important;
+  margin-bottom: 12px !important;
+  min-width: 0 !important;
+}
 
+.sim-selector-dot {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50% !important;
+  background: rgba(226, 184, 87, 0.15) !important;
+  border: 1px solid rgba(226, 184, 87, 0.4) !important;
+  color: var(--accent-gold, #e2b857) !important;
+  font-size: 10px !important;
+  flex-shrink: 0 !important;
+}
 
+.sim-selector-text-desktop {
+  display: inline;
+}
+.sim-selector-text-mobile {
+  display: none;
+}
+
+/* 2. Desktop Grid of Buttons */
+.diopter-selector-btns {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+  margin-bottom: 0 !important;
+}
+
+.diopter-btn {
+  background: linear-gradient(180deg, rgba(16, 26, 46, 0.85) 0%, rgba(9, 16, 30, 0.95) 100%) !important;
+  border: 1px solid rgba(0, 240, 255, 0.24) !important;
+  color: var(--text-primary, #f8fafc) !important;
+  padding: 10px 12px !important;
+  text-align: left !important;
+  border-radius: var(--border-radius-sm, 10px) !important;
+  cursor: pointer !important;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: 3px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  min-height: 58px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.diopter-btn-title-wrap {
+  display: flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  min-width: 0 !important;
+  margin-bottom: 2px !important;
+}
+
+.diopter-btn-title {
+  font-size: 0.86rem !important;
+  font-weight: 700 !important;
+  color: var(--text-primary, #f8fafc) !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+}
+
+.diopter-radio-ring {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 50% !important;
+  border: 1.8px solid rgba(255, 255, 255, 0.35) !important;
+  background: transparent !important;
+  flex-shrink: 0 !important;
+  transition: all 0.2s ease !important;
+}
+
+.diopter-radio-core {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  transition: all 0.2s ease !important;
+}
+
+.diopter-btn-sub {
+  font-size: 0.72rem !important;
+  color: var(--text-dim, #94a3b8) !important;
+  padding-left: 21px !important;
+  font-weight: 500 !important;
+  line-height: 1.25 !important;
+  white-space: nowrap !important;
+  transition: color 0.2s ease !important;
+}
+
+.diopter-btn:hover {
+  background: linear-gradient(180deg, rgba(22, 38, 68, 0.92) 0%, rgba(13, 22, 42, 0.98) 100%) !important;
+  border-color: var(--accent-gold, #e2b857) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.55), 0 0 16px var(--gold-glow, rgba(226, 184, 87, 0.2)), inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+}
+
+.diopter-btn:hover .diopter-radio-ring {
+  border-color: var(--accent-gold, #e2b857) !important;
+  box-shadow: 0 0 6px var(--gold-glow, rgba(226, 184, 87, 0.4)) !important;
+}
+
+.diopter-btn:hover .diopter-btn-sub {
+  color: var(--text-secondary, #cbd5e1) !important;
+}
+
+.diopter-btn.active {
+  background: linear-gradient(135deg, rgba(226, 184, 87, 0.18) 0%, rgba(15, 24, 45, 0.95) 100%) !important;
+  border: 1.5px solid var(--accent-gold, #e2b857) !important;
+  box-shadow: 0 0 20px var(--gold-glow, rgba(226, 184, 87, 0.28)), 0 4px 14px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+}
+
+.diopter-btn.active .diopter-btn-title {
+  color: #ffffff !important;
+}
+
+.diopter-btn.active .diopter-radio-ring {
+  border-color: var(--accent-gold, #e2b857) !important;
+  background: rgba(226, 184, 87, 0.2) !important;
+  box-shadow: 0 0 8px var(--gold-glow, rgba(226, 184, 87, 0.5)) !important;
+}
+
+.diopter-btn.active .diopter-radio-core {
+  background: var(--accent-gold, #e2b857) !important;
+  box-shadow: 0 0 6px var(--accent-gold, #e2b857) !important;
+}
+
+.diopter-btn.active .diopter-btn-sub {
+  color: #e2e8f0 !important;
+  font-weight: 600 !important;
+}
+
+.diopter-btn:focus-visible {
+  outline: 2px solid #e2b857 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 16px rgba(226, 184, 87, 0.4) !important;
+}
+
+.diopter-btn:active {
+  transform: scale(0.98) !important;
+}
+
+/* 3. Mobile / Responsive Architecture (<= 900px) */
+@media (max-width: 900px) {
+  .surgical-card-master {
+    padding: 22px 16px !important;
+    border-radius: 20px !important;
+    margin-bottom: 36px !important;
+  }
+
+  .section-sub-editorial {
+    font-size: 0.9rem !important;
+    line-height: 1.52 !important;
+    margin-bottom: 18px !important;
+  }
+
+  .refractive-sim-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 16px 14px !important;
+    border-radius: 16px !important;
+    gap: 16px !important;
+    margin-top: 16px !important;
+  }
+
+  /* Natural Visual Order:
+     1: Buttons (Controls)
+     2: Eye Ray-Tracing Simulation (Instant Visual Feedback)
+     3: Corneal Reshaping Laser Animation (Mechanism of Action)
+     4: Educational Insight HUD (Detailed Physiological Guide) */
+  .sim-col-top-left {
+    order: 1 !important;
+    width: 100% !important;
+  }
+
+  .sim-diagram-col {
+    order: 2 !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .optical-bench-canvas {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 590 / 320 !important;
+    min-height: 180px !important;
+    max-height: 250px !important;
+    border-radius: 12px !important;
+  }
+
+  .sim-reshaping-card {
+    order: 3 !important;
+    width: 100% !important;
+    padding: 12px 14px !important;
+    border-radius: 14px !important;
+    box-sizing: border-box !important;
+  }
+
+  .reshaping-canvas-wrap {
+    height: 76px !important;
+  }
+
+  .reshaping-telemetry-bar {
+    flex-wrap: wrap !important;
+    gap: 6px 12px !important;
+  }
+
+  .sim-edu-col {
+    order: 4 !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .telemetry-hud-box.clinical-edu-card {
+    height: auto !important;
+    max-height: none !important;
+    padding: 16px 14px !important;
+    border-radius: 14px !important;
+    box-sizing: border-box !important;
+  }
+
+  .edu-card-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    padding-bottom: 8px !important;
+  }
+
+  .edu-card-title {
+    font-size: 0.78rem !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  .edu-badge {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    font-size: 0.7rem !important;
+  }
+
+  .edu-para-secondary,
+  .edu-para-primary {
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .edu-heading-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .edu-dot-cyan,
+  .edu-dot-gold {
+    flex-shrink: 0 !important;
+  }
+
+  .edu-heading-gold,
+  .edu-heading-cyan {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.04em !important;
+    line-height: 1.25 !important;
+    white-space: nowrap !important;
+  }
+
+  #refraction-title,
+  .refractive-sim-wrapper,
+  .surgical-card-master {
+    scroll-margin-top: 80px !important;
+  }
+}
+
+/* 4. Compact Mobile Sizing (<= 640px) */
+@media (max-width: 640px) {
+  .sim-selector-text-desktop {
+    display: none !important;
+  }
+
+  .sim-selector-text-mobile {
+    display: inline !important;
+    white-space: nowrap !important;
+  }
+
+  .sim-selector-label {
+    font-size: 0.74rem !important;
+    margin-bottom: 10px !important;
+    letter-spacing: 0.02em !important;
+  }
+
+  .diopter-selector-btns {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+
+  .diopter-btn {
+    padding: 8px 10px !important;
+    min-height: 52px !important;
+    border-radius: 9px !important;
+  }
+
+  .diopter-btn-title-wrap {
+    gap: 6px !important;
+    margin-bottom: 1px !important;
+  }
+
+  .diopter-btn-title {
+    font-size: 0.78rem !important;
+    letter-spacing: -0.01em !important;
+    white-space: nowrap !important;
+  }
+
+  .diopter-radio-ring {
+    width: 12px !important;
+    height: 12px !important;
+    border-width: 1.5px !important;
+  }
+
+  .diopter-radio-core {
+    width: 5px !important;
+    height: 5px !important;
+  }
+
+  .diopter-btn-sub {
+    font-size: 0.65rem !important;
+    padding-left: 18px !important;
+    letter-spacing: 0 !important;
+    line-height: 1.2 !important;
+    white-space: normal !important;
+  }
+
+  .edu-pills-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+}
+
+/* 5. Ultra-Small Phones (<= 380px) */
+@media (max-width: 380px) {
+  .surgical-card-master {
+    padding: 16px 10px !important;
+  }
+
+  .refractive-sim-wrapper {
+    padding: 12px 8px !important;
+  }
+
+  .sim-selector-label {
+    font-size: 0.68rem !important;
+    gap: 6px !important;
+  }
+
+  .sim-selector-dot {
+    width: 15px !important;
+    height: 15px !important;
+    font-size: 8px !important;
+  }
+
+  .sim-selector-text-mobile {
+    white-space: normal !important;
+  }
+
+  .diopter-btn {
+    padding: 6px 6px !important;
+    min-height: 48px !important;
+  }
+
+  .diopter-btn-title {
+    font-size: 0.65rem !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  .diopter-btn-sub {
+    font-size: 0.58rem !important;
+    padding-left: 15px !important;
+    letter-spacing: -0.01em !important;
+  }
+}
+
+/* 6. Navigation Adaptation for Small Phones (<= 400px) */
+@media (max-width: 400px) {
+  .header-cta-btn {
+    padding: 6px 10px !important;
+    font-size: 0.75rem !important;
+    gap: 6px !important;
+  }
+  .header-cta-btn .btn-icon-bubble {
+    width: 24px !important;
+    height: 24px !important;
+  }
+}
+
+@media (max-width: 340px) {
+  .header-cta-btn {
+    padding: 5px 8px !important;
+    font-size: 0.7rem !important;
+  }
+  .header-cta-btn .btn-icon-bubble {
+    display: none !important;
+  }
+}
+
+/* 7. Topography Card Tabs Adaptation */
+@media (max-width: 480px) {
+  .topo-view-tabs {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* 8. Typographic & Motion Polish Pass */
+.section-heading-editorial,
+.editorial-page-title,
+.sim-selector-label {
+  text-wrap: balance !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

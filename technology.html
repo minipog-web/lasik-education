@@ -241,11 +241,11 @@
         letter-spacing: 0.14em;
         text-transform: uppercase;
         font-weight: 700;
-        color: #93c5fd;
-        background: rgba(30, 58, 95, 0.45);
-        border: 1px solid rgba(147, 197, 253, 0.25);
-        padding: 5px 16px;
-        border-radius: 6px;
+        color: var(--accent-gold, #e2b857);
+        background: rgba(226, 184, 87, 0.08);
+        border: 1px solid rgba(226, 184, 87, 0.28);
+        padding: 6px 16px;
+        border-radius: 9999px;
         margin-bottom: 20px;
       }
 
@@ -413,17 +413,40 @@
 
       @media (max-width: 900px) {
         .refractive-sim-wrapper {
-          grid-template-columns: 1fr;
-          grid-template-rows: auto;
-          gap: 20px;
+          display: flex !important;
+          flex-direction: column !important;
+          padding: 16px 14px !important;
+          border-radius: 16px !important;
+          gap: 16px !important;
         }
-        .refractive-sim-wrapper > * {
-          grid-column: 1 !important;
-          grid-row: auto !important;
+        .sim-col-top-left {
+          order: 1 !important;
+          width: 100% !important;
+        }
+        .sim-diagram-col {
+          order: 2 !important;
+          width: 100% !important;
+          margin: 0 !important;
         }
         .optical-bench-canvas {
-          height: 320px !important;
-          max-height: none !important;
+          width: 100% !important;
+          height: auto !important;
+          aspect-ratio: 590 / 320 !important;
+          min-height: 180px !important;
+          max-height: 250px !important;
+          border-radius: 12px !important;
+        }
+        .sim-reshaping-card {
+          order: 3 !important;
+          width: 100% !important;
+          padding: 12px 14px !important;
+          border-radius: 14px !important;
+          box-sizing: border-box !important;
+        }
+        .sim-edu-col {
+          order: 4 !important;
+          width: 100% !important;
+          height: auto !important;
         }
         .telemetry-hud-box {
           height: auto !important;
@@ -434,34 +457,116 @@
       .diopter-selector-btns {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 10px;
+        gap: 12px;
         margin-bottom: 0;
       }
 
       .diopter-btn {
-        background: rgba(255, 255, 255, 0.025);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: #94a3b8;
-        padding: 12px 14px;
-        text-align: center;
-        border-radius: 8px;
-        font-size: 0.82rem;
-        font-weight: 600;
-        cursor: pointer;
+        background: linear-gradient(180deg, rgba(16, 26, 46, 0.85) 0%, rgba(9, 16, 30, 0.95) 100%) !important;
+        border: 1px solid rgba(0, 240, 255, 0.24) !important;
+        color: #f1f5f9 !important;
+        padding: 12px 14px !important;
+        text-align: left !important;
+        border-radius: 10px !important;
+        cursor: pointer !important;
+        transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        gap: 4px !important;
+        position: relative !important;
+        overflow: hidden !important;
+        min-height: 64px !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+      }
+
+      .diopter-btn-title-wrap {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+        margin-bottom: 2px;
+      }
+
+      .diopter-btn-title {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: #f8fafc;
+        line-height: 1.2;
+        white-space: nowrap;
+      }
+
+      .diopter-radio-ring {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 1.8px solid rgba(255, 255, 255, 0.35);
+        background: transparent;
+        flex-shrink: 0;
         transition: all 0.2s ease;
       }
 
+      .diopter-radio-core {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: transparent;
+        transition: all 0.2s ease;
+      }
+
+      .diopter-btn-sub {
+        font-size: 0.74rem;
+        color: #94a3b8;
+        padding-left: 22px;
+        font-weight: 500;
+        line-height: 1.25;
+        white-space: nowrap;
+        transition: color 0.2s ease;
+      }
+
       .diopter-btn:hover {
-        border-color: rgba(226, 184, 87, 0.4);
-        color: #ffffff;
-        background: rgba(226, 184, 87, 0.04);
+        background: linear-gradient(180deg, rgba(22, 38, 68, 0.92) 0%, rgba(13, 22, 42, 0.98) 100%) !important;
+        border-color: rgba(226, 184, 87, 0.65) !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.55), 0 0 16px rgba(226, 184, 87, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+      }
+
+      .diopter-btn:hover .diopter-radio-ring {
+        border-color: #e2b857;
+        box-shadow: 0 0 6px rgba(226, 184, 87, 0.4);
+      }
+
+      .diopter-btn:hover .diopter-btn-sub {
+        color: #cbd5e1;
       }
 
       .diopter-btn.active {
-        background: rgba(226, 184, 87, 0.1);
-        border-color: #e2b857;
+        background: linear-gradient(135deg, rgba(226, 184, 87, 0.18) 0%, rgba(15, 24, 45, 0.95) 100%) !important;
+        border: 1.5px solid #e2b857 !important;
+        box-shadow: 0 0 20px rgba(226, 184, 87, 0.28), 0 4px 14px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+      }
+
+      .diopter-btn.active .diopter-btn-title {
         color: #ffffff;
-        box-shadow: 0 0 14px rgba(226, 184, 87, 0.18), inset 0 1px 0 rgba(226, 184, 87, 0.25);
+      }
+
+      .diopter-btn.active .diopter-radio-ring {
+        border-color: #e2b857;
+        background: rgba(226, 184, 87, 0.2);
+        box-shadow: 0 0 8px rgba(226, 184, 87, 0.5);
+      }
+
+      .diopter-btn.active .diopter-radio-core {
+        background: #e2b857;
+        box-shadow: 0 0 6px #e2b857;
+      }
+
+      .diopter-btn.active .diopter-btn-sub {
+        color: #e2e8f0;
+        font-weight: 600;
       }
 
       /* Optical Bench SVG Diagram */
@@ -814,7 +919,7 @@
         font-weight: 700;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: #64748b;
+        color: #94a3b8;
         margin-bottom: 6px;
       }
 
@@ -1128,15 +1233,43 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        min-width: 0;
       }
 
       .sim-selector-label {
-        font-size: 0.78rem;
+        font-size: clamp(0.72rem, 1.1vw, 0.82rem);
         font-weight: 700;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.03em;
         color: var(--accent-gold);
-        text-transform: uppercase;
-        margin-bottom: 10px;
+        text-transform: none;
+        margin-bottom: 12px;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+      }
+
+      .sim-selector-dot {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: rgba(226, 184, 87, 0.15);
+        border: 1px solid rgba(226, 184, 87, 0.4);
+        color: var(--accent-gold);
+        font-size: 10px;
+        flex-shrink: 0;
+      }
+
+      @media (max-width: 480px) {
+        .sim-selector-label {
+          font-size: 0.68rem;
+          letter-spacing: 0.01em;
+          white-space: nowrap;
+        }
       }
 
       /* Corneal Reshaping Interactive Visualizer (Top-Right of Refractive Simulation) */
@@ -1701,7 +1834,7 @@
         color: #94a3b8;
       }
     </style>
-    <link rel="stylesheet" href="./assets/custom-styles.css?v=194">
+    <link rel="stylesheet" href="./assets/custom-styles.css?v=195">
   </head>
   <body>
     <!-- Persistent Floating Navbar (Matches index.html) -->
@@ -1786,12 +1919,51 @@
         <div class="refractive-sim-wrapper">
           <!-- Top Left: Select Clinical Refractive Condition -->
           <div class="sim-col-top-left">
-            <div class="sim-selector-label">Select a Vision Condition to See How Light Enters the Eye:</div>
+            <div class="sim-selector-label">
+              <span class="sim-selector-dot" aria-hidden="true">✦</span>
+              <span class="sim-selector-text-desktop">Select a Vision Condition to See How Light Enters the Eye:</span>
+              <span class="sim-selector-text-mobile">Tap a Condition to See How Light Focuses:</span>
+            </div>
             <div class="diopter-selector-btns" role="tablist" aria-label="Vision Condition Selector">
-              <button type="button" role="tab" aria-selected="true" class="diopter-btn active" id="btn-myopia" onclick="setRefraction('myopia')">Nearsightedness (Blurry Distance)</button>
-              <button type="button" role="tab" aria-selected="false" class="diopter-btn" id="btn-hyperopia" onclick="setRefraction('hyperopia')">Farsightedness (Blurry Up-Close)</button>
-              <button type="button" role="tab" aria-selected="false" class="diopter-btn" id="btn-astigmatism" onclick="setRefraction('astigmatism')">Astigmatism (Stretched or Distorted)</button>
-              <button type="button" role="tab" aria-selected="false" class="diopter-btn" id="btn-emmetropia" onclick="setRefraction('emmetropia')">LASIK Corrected (Sharp 20/20 Focus)</button>
+              <button type="button" role="tab" aria-selected="true" class="diopter-btn active" id="btn-myopia" onclick="setRefraction('myopia')">
+                <div class="diopter-btn-title-wrap">
+                  <span class="diopter-radio-ring" aria-hidden="true">
+                    <span class="diopter-radio-core"></span>
+                  </span>
+                  <span class="diopter-btn-title">Nearsightedness</span>
+                </div>
+                <div class="diopter-btn-sub">Blurry Distance (Myopia)</div>
+              </button>
+
+              <button type="button" role="tab" aria-selected="false" class="diopter-btn" id="btn-hyperopia" onclick="setRefraction('hyperopia')">
+                <div class="diopter-btn-title-wrap">
+                  <span class="diopter-radio-ring" aria-hidden="true">
+                    <span class="diopter-radio-core"></span>
+                  </span>
+                  <span class="diopter-btn-title">Farsightedness</span>
+                </div>
+                <div class="diopter-btn-sub">Blurry Up-Close (Hyperopia)</div>
+              </button>
+
+              <button type="button" role="tab" aria-selected="false" class="diopter-btn" id="btn-astigmatism" onclick="setRefraction('astigmatism')">
+                <div class="diopter-btn-title-wrap">
+                  <span class="diopter-radio-ring" aria-hidden="true">
+                    <span class="diopter-radio-core"></span>
+                  </span>
+                  <span class="diopter-btn-title">Astigmatism</span>
+                </div>
+                <div class="diopter-btn-sub">Distorted at All Distances</div>
+              </button>
+
+              <button type="button" role="tab" aria-selected="false" class="diopter-btn" id="btn-emmetropia" onclick="setRefraction('emmetropia')">
+                <div class="diopter-btn-title-wrap">
+                  <span class="diopter-radio-ring" aria-hidden="true">
+                    <span class="diopter-radio-core"></span>
+                  </span>
+                  <span class="diopter-btn-title">LASIK Corrected</span>
+                </div>
+                <div class="diopter-btn-sub">Sharp 20/20 Retinal Focus</div>
+              </button>
             </div>
           </div>
 
@@ -2563,7 +2735,7 @@
     <script src="./assets/telemetry.js?v=3" defer></script>
     <script type="text/javascript" src="https://cdn.callrail.com/companies/764798499/aff735ebb2e830b3a6df/12/swap.js" defer></script>
 
-    <script src="./assets/corneal-topography.js?v=20" defer></script>
+    <script src="./assets/corneal-topography.js?v=21" defer></script>
     <script>
       // Interactive Ray-Tracing State Engine
       var refractionData = {

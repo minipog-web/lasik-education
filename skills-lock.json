@@ -5,13 +5,13 @@
       "source": "obra/superpowers",
       "sourceType": "github",
       "skillPath": "skills/brainstorming/SKILL.md",
-      "computedHash": "fef7f05d17a88e6b498f24d1b2081880a4666a664cc49881f56527808f26fbd6"
+      "computedHash": "9c462616182917fb389d7d630c59000cff31ed18081baaa644ff148d4c967390"
     },
     "design-taste-frontend": {
       "source": "leonxlnx/taste-skill",
       "sourceType": "github",
       "skillPath": "skills/taste-skill/SKILL.md",
-      "computedHash": "899b84384f74f540ea5284d9b2e9234e050998b42eacc805410b518d4226c0b3"
+      "computedHash": "048a9bff8064f1efa51c2733558428ac93a0d8398e33ad11e7b68500f8e0525f"
     },
     "improve-codebase-architecture": {
       "source": "mattpocock/skills",

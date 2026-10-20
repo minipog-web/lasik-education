@@ -47,18 +47,6 @@
 
     container.innerHTML = `
       <div class="topo-wrapper">
-        <!-- Section Header -->
-        <div class="topo-header">
-          <div class="topo-badge-wrapper">
-            <span class="topo-badge">Livingston Surgical &amp; Diagnostic Suite • Livingston, NJ</span>
-          </div>
-          <h3 class="topo-title" style="white-space: nowrap;">How CustomVue® LASIK Corrects Astigmatism in 3D</h3>
-          <p class="topo-subtitle">
-            Astigmatism means your cornea curves unevenly like a <strong>football</strong> instead of a symmetrical <strong>basketball</strong>, warping light rays into multiple blurry focal points. 
-            See how <strong>CustomVue® wavefront mapping</strong> guides the excimer laser to smooth and equalize every microscopic meridian in just 10 seconds.
-          </p>
-        </div>
-
         <!-- Main Workspace (3D Stage with Embedded Controls + Astigmatism Treatment Education) -->
         <div class="topo-workspace-grid">
           <!-- Left: 3D Corneal Topography Viewport & Integrated Controls -->
@@ -83,9 +71,9 @@
               <div class="topo-stage-overlay-top">
                 <div class="topo-status-tag" id="topo-status-tag">
                   <span class="topo-status-pulse"></span>
-                  <span id="topo-status-label">PRE-OP: Astigmatic Bowtie Warping</span>
+                  <span id="topo-status-label">PRE-OP: Uneven Oval Curvature (Astigmatism)</span>
                 </div>
-                <div class="topo-scan-device-badge">WaveScan 3D Aberrometry</div>
+                <div class="topo-scan-device-badge">WaveScan 3D Digital Eye Mapping</div>
               </div>
 
               <!-- Animated Laser Crosshair Overlay (Visible during ablation) -->
@@ -114,8 +102,12 @@
             <!-- Primary Wavefront Reshaping Trigger Button -->
             <div class="topo-action-bar">
               <button type="button" id="topo-btn-simulate-laser" class="btn-topo-laser">
-                <span class="topo-laser-icon">⚡</span>
-                <span id="topo-btn-laser-text">Simulate 10-Second CustomVue® Reshaping</span>
+                <span class="topo-laser-icon">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                  </svg>
+                </span>
+                <span id="topo-btn-laser-text">Simulate 10-Second Custom Laser Reshaping</span>
                 <span class="topo-laser-pulse-ring"></span>
               </button>
             </div>
@@ -142,7 +134,7 @@
                 </button>
                 <button type="button" class="topo-preset-btn topo-preset-hd" data-preset="customvue">
                   <span class="topo-preset-dot dot-emerald"></span>
-                  <span>✨ CustomVue® HD</span>
+                  <span>CustomVue® High-Definition</span>
                 </button>
               </div>
 
@@ -150,7 +142,7 @@
               <div class="topo-sliders-compact-grid">
                 <div class="topo-slider-item">
                   <div class="topo-slider-header">
-                    <label for="topo-astig-slider">Astigmatism Degree (Cylinder)</label>
+                    <label for="topo-astig-slider">Amount of Astigmatism (Uneven Curve)</label>
                     <span id="topo-astig-val" class="topo-slider-badge">-1.75 D</span>
                   </div>
                   <input type="range" id="topo-astig-slider" min="-4.50" max="0.00" step="0.25" value="-1.75" aria-label="Astigmatism Diopters" />
@@ -158,7 +150,7 @@
 
                 <div class="topo-slider-item">
                   <div class="topo-slider-header">
-                    <label for="topo-axis-slider">Steep Meridian Angle (Axis)</label>
+                    <label for="topo-axis-slider">Angle of the Curve (Axis Angle)</label>
                     <span id="topo-axis-val" class="topo-slider-badge">90°</span>
                   </div>
                   <input type="range" id="topo-axis-slider" min="0" max="180" step="5" value="90" aria-label="Astigmatism Axis Degrees" />
@@ -176,21 +168,33 @@
             <!-- Astigmatism Visual Education Cards -->
             <div class="topo-education-flow">
               <div class="topo-edu-card">
-                <div class="topo-edu-icon">🏈</div>
+                <div class="topo-edu-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <ellipse cx="12" cy="12" rx="9" ry="5.5" transform="rotate(-25 12 12)"></ellipse>
+                    <line x1="4" y1="12" x2="20" y2="12" stroke-dasharray="2 2" stroke-opacity="0.6"></line>
+                    <line x1="12" y1="5" x2="12" y2="19" stroke-opacity="0.8"></line>
+                  </svg>
+                </div>
                 <div class="topo-edu-body">
-                  <strong class="topo-edu-heading">The Astigmatic Cornea (Football Shape)</strong>
+                  <strong class="topo-edu-heading">Asymmetric Toroidal Curvature (Astigmatism)</strong>
                   <p class="topo-edu-desc">
-                    Notice the red and orange "bowtie" pattern on the 3D map. Light passing through the steeper vertical curve focuses at a different point than light passing through the flatter horizontal curve, causing ghosting, halos, and distorted edges.
+                    Notice the steep red and orange zones on the 3D elevation map. Because the cornea is shaped like the side of an oval rather than a spherical dome, light splits into dual focal planes—producing shadow doubling, halos, and unsharp letter boundaries.
                   </p>
                 </div>
               </div>
 
               <div class="topo-edu-card">
-                <div class="topo-edu-icon">🏀</div>
+                <div class="topo-edu-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="8.5"></circle>
+                    <circle cx="12" cy="12" r="4.5" stroke-dasharray="2 2" stroke-opacity="0.7"></circle>
+                    <path d="M12 2v3 M12 19v3 M2 12h3 M19 12h3" stroke-opacity="0.6"></path>
+                  </svg>
+                </div>
                 <div class="topo-edu-body">
-                  <strong class="topo-edu-heading">CustomVue® Wavefront Smoothing (Basketball Shape)</strong>
+                  <strong class="topo-edu-heading">Wavefront Spherocylindrical Regularization</strong>
                   <p class="topo-edu-desc">
-                    Unlike standard LASIK that applies an average stencil, CustomVue® measures over 1,200 optical coordinates. The cool excimer beam vaporizes microscopic imperfections along the steep meridian, equalizing the surface into a uniform optical dome.
+                    Unlike conventional LASIK relying on basic sphere-cylinder averages, CustomVue® calculates 1,200+ distinct elevation coordinates. The cool excimer beam gently flattens only the steeper meridian, reconstructing a uniform, spherocylindrical optical surface.
                   </p>
                 </div>
               </div>
@@ -625,9 +629,9 @@
 
       if (hudAcuitySub) {
         if (state.ablationProgress > 0.8) {
-          hudAcuitySub.textContent = '✓ Astigmatic bowtie eliminated • Symmetrical prolate dome';
+          hudAcuitySub.textContent = '✓ Uneven curves eliminated • Smooth, natural round dome';
         } else if (state.ablationProgress > 0.4) {
-          hudAcuitySub.textContent = '⚡ Wavefront smoothing in progress • Meridians equalizing...';
+          hudAcuitySub.textContent = '⚡ 3D laser smoothing in progress • Uneven curves balancing...';
         } else {
           hudAcuitySub.textContent = 'Target post-CustomVue®: 20/20 to 20/15 High-Definition';
         }
@@ -654,15 +658,15 @@
 
       if (statusLabel && statusTag) {
         if (state.isAblating) {
-          statusLabel.textContent = 'PULSING: Equalizing Astigmatic Curvature...';
+          statusLabel.textContent = 'PULSING: Smoothing Uneven Eye Curves...';
           statusTag.className = 'topo-status-tag status-pulsing';
         } else if (state.ablationProgress > 0.8) {
-          statusLabel.textContent = 'POST-OP: Symmetrical Basketball Curve (20/15 HD)';
+          statusLabel.textContent = 'POST-OP: Smooth, Round Focus (20/15 HD)';
           statusTag.className = 'topo-status-tag status-success';
         } else {
           var label = Math.abs(currentAstig) > 0 
-            ? 'PRE-OP: Astigmatic Bowtie Warping'
-            : 'PRE-OP: Symmetrical Surface';
+            ? 'PRE-OP: Uneven Oval Curvature (Astigmatism)'
+            : 'PRE-OP: Smooth, Balanced Surface';
           statusLabel.textContent = label;
           statusTag.className = Math.abs(currentAstig) > 0 ? 'topo-status-tag status-preop' : 'topo-status-tag status-success';
         }
@@ -676,7 +680,7 @@
         btnLaser.classList.add('completed');
       }
       if (btnLaserText) {
-        btnLaserText.textContent = '✓ 10-Sec Wavefront Ablation Complete (Reset)';
+        btnLaserText.textContent = '✓ 10-Second Laser Smoothing Complete (Click to Reset)';
       }
       updateTelemetryHUD();
     }
@@ -687,7 +691,7 @@
         state.ablationProgress = 0;
         state.isAblating = false;
         if (btnLaser) btnLaser.classList.remove('completed', 'ablating');
-        if (btnLaserText) btnLaserText.textContent = 'Simulate 10-Second CustomVue® Reshaping';
+        if (btnLaserText) btnLaserText.textContent = 'Simulate 10-Second Custom Laser Reshaping';
         updateTelemetryHUD();
         return;
       }
@@ -696,7 +700,7 @@
       state.ablationProgress = 0;
       if (laserCrosshairs) laserCrosshairs.style.display = 'flex';
       if (btnLaser) btnLaser.classList.add('ablating');
-      if (btnLaserText) btnLaserText.textContent = '⚡ Excimer Laser Pulse Active (500Hz)...';
+      if (btnLaserText) btnLaserText.textContent = '⚡ Cool Laser Reshaping in Progress...';
       updateTelemetryHUD();
     }
 

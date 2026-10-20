@@ -640,7 +640,7 @@
     <link rel="prefetch" as="image" href="/assets/lasik_24hr_recovery.webp" type="image/webp">
     <link rel="prefetch" as="image" href="/assets/hd_night_highway_scene.webp?v=6" type="image/webp">
     <link rel="stylesheet" href="/assets/index-DhXpI4H_.css?v=29">
-    <link rel="stylesheet" href="/assets/custom-styles.css?v=174">
+    <link rel="stylesheet" href="/assets/custom-styles.css?v=194">
     <script src="/assets/vision-simulator.min.js?v=22" defer></script>
     <script src="/assets/corneal-topography.js?v=17" defer></script>
     <!-- Comprehensive GTM, GA4, & Google Ads Event Tracking Architecture -->
@@ -697,8 +697,13 @@
               </p>
             </div>
             <div class="responsive-flex-col animate-fade-up delay-4">
-              <a href="#quiz" onclick="scrollToElement('quiz')" class="btn btn-primary hero-cta-btn-shell">Check Your Candidacy →</a>
-              <a href="#lasik-education-hook" onclick="scrollToElement('lasik-education-hook')" class="btn btn-secondary hero-cta-btn-shell" data-wired="true">How the Technology Works</a>
+              <a href="#quiz" onclick="scrollToElement('quiz')" class="btn btn-primary hero-cta-btn-shell hero-cta-dominant-primary">
+                <span>Check Your Candidacy</span>
+                <span class="btn-icon-bubble" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+              </a>
+              <a href="#lasik-education-hook" onclick="scrollToElement('lasik-education-hook')" class="btn btn-secondary hero-cta-btn-shell hero-cta-understated-ghost" data-wired="true">How the Technology Works</a>
             </div>
           </div>
           <div class="hero-image-wrapper animate-fade-up delay-5" id="hero-image-interactive-wrap">
@@ -1110,7 +1115,7 @@
                   <li class="criteria-item">
                     <div class="criteria-icon criteria-icon-caution">→</div>
                     <div class="criteria-text">
-                      <strong>Extreme High Prescriptions (&gt; −11.00 D to −12.00 D):</strong> If your prescription exceeds safe laser tissue limits, Dr. Marano and Dr. Raouf will counsel you honestly on non-laser options to protect your corneal health.</div>
+                      <strong>Extreme High Prescriptions (&lt;-11.00 D or &gt;+5.00 D):</strong> If your prescription exceeds safe corneal reshaping limits (beyond −11.00 D of nearsightedness or +5.00 D of farsightedness), Dr. Marano and Dr. Raouf will counsel you honestly on proven alternatives to protect your corneal health.</div>
                   </li>
                   <li class="criteria-item">
                     <div class="criteria-icon criteria-icon-caution">⏱</div>
@@ -2842,18 +2847,18 @@
                   <h3 class="text-gradient hero-mc-title">Priority Reservation</h3>
                   <p class="text-secondary hero-mc-subtitle">Lock in your complimentary 1-on-1 diagnostic consultation.</p>
                 </div>
-                <div class="nav-links-group hero-mc-trust-badges">
-                  <div class="hero-mc-badge-item">
+                <div class="nav-links-group hero-mc-trust-badges" id="hero-mc-step-indicators">
+                  <div class="hero-mc-badge-item active" id="mc-badge-step-1">
                     <span class="hero-mc-badge-dot">1</span>
                     <span class="hero-mc-badge-text">Your Vision</span>
                   </div>
-                  <div class="ui-extracted-78">
-                    <span class="ui-extracted-79">2</span>
-                    <span class="ui-extracted-80">Timeline</span>
+                  <div class="hero-mc-badge-item" id="mc-badge-step-2">
+                    <span class="hero-mc-badge-dot">2</span>
+                    <span class="hero-mc-badge-text">Timeline</span>
                   </div>
-                  <div class="ui-extracted-78">
-                    <span class="ui-extracted-79">3</span>
-                    <span class="ui-extracted-80">Location</span>
+                  <div class="hero-mc-badge-item" id="mc-badge-step-3">
+                    <span class="hero-mc-badge-dot">3</span>
+                    <span class="hero-mc-badge-text">Location</span>
                   </div>
                 </div>
                 <div id="hero-mc-card" class="micro-commitment-card" aria-live="polite" aria-atomic="true">
@@ -3619,22 +3624,33 @@
     var panels = faq.querySelectorAll('.glass-panel');
     panels.forEach(function(panel) {
       var btn = panel.querySelector('button[type="button"]');
-      var answerOuter = panel.querySelector('.faq-collapse-drawer, div[style*="max-height"], div[style*="maxHeight"]');
+      var drawer = panel.querySelector('.faq-collapse-drawer');
       var svg = btn ? btn.querySelector('svg') : null;
 
-      if (btn && answerOuter) {
+      if (btn && drawer) {
+        // Clear any stale inline maxHeight
+        drawer.style.maxHeight = '';
+
         if (!btn.hasAttribute('aria-expanded')) {
           btn.setAttribute('aria-expanded', 'false');
         }
+
+        if (btn._faqBound) return;
+        btn._faqBound = true;
+
         btn.addEventListener('click', function() {
           var isExpanded = btn.getAttribute('aria-expanded') === 'true';
           if (isExpanded) {
+            panel.classList.remove('open');
+            drawer.classList.remove('open');
             btn.setAttribute('aria-expanded', 'false');
-            answerOuter.style.maxHeight = '0px';
+            drawer.style.maxHeight = '0px';
             if (svg) svg.style.transform = 'rotate(0deg)';
           } else {
+            panel.classList.add('open');
+            drawer.classList.add('open');
             btn.setAttribute('aria-expanded', 'true');
-            answerOuter.style.maxHeight = (answerOuter.scrollHeight + 30) + 'px';
+            drawer.style.maxHeight = '500px';
             if (svg) svg.style.transform = 'rotate(180deg)';
           }
         });
@@ -3642,7 +3658,8 @@
     });
 
     var toggleBtn = document.getElementById('faq-toggle-btn');
-    if (toggleBtn) {
+    if (toggleBtn && !toggleBtn._faqBound) {
+      toggleBtn._faqBound = true;
       toggleBtn.addEventListener('click', function() {
         var isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
         var nextState = !isExpanded;
@@ -4132,6 +4149,47 @@
     mcCard.setAttribute('role', 'region');
     mcCard.setAttribute('aria-label', 'Free Consultation Candidacy Assessment');
 
+    function updateStepIndicators(step) {
+      var b1 = document.getElementById('mc-badge-step-1');
+      var b2 = document.getElementById('mc-badge-step-2');
+      var b3 = document.getElementById('mc-badge-step-3');
+      if (!b1 || !b2 || !b3) return;
+
+      var dot1 = b1.querySelector('.hero-mc-badge-dot');
+      var dot2 = b2.querySelector('.hero-mc-badge-dot');
+      var dot3 = b3.querySelector('.hero-mc-badge-dot');
+
+      if (step > 1) {
+        b1.className = 'hero-mc-badge-item completed';
+        if (dot1) dot1.innerHTML = '✓';
+      } else {
+        b1.className = 'hero-mc-badge-item active';
+        if (dot1) dot1.innerHTML = '1';
+      }
+
+      if (step > 2) {
+        b2.className = 'hero-mc-badge-item completed';
+        if (dot2) dot2.innerHTML = '✓';
+      } else if (step === 2) {
+        b2.className = 'hero-mc-badge-item active';
+        if (dot2) dot2.innerHTML = '2';
+      } else {
+        b2.className = 'hero-mc-badge-item';
+        if (dot2) dot2.innerHTML = '2';
+      }
+
+      if (step >= 4) {
+        b3.className = 'hero-mc-badge-item completed';
+        if (dot3) dot3.innerHTML = '✓';
+      } else if (step === 3) {
+        b3.className = 'hero-mc-badge-item active';
+        if (dot3) dot3.innerHTML = '3';
+      } else {
+        b3.className = 'hero-mc-badge-item';
+        if (dot3) dot3.innerHTML = '3';
+      }
+    }
+
     function render() {
       var html = '';
 
@@ -4305,6 +4363,7 @@
       }
 
       mcCard.innerHTML = html;
+      updateStepIndicators(state.step);
       bindEvents();
     }
 

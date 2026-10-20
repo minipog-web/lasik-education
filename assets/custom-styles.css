@@ -5,8 +5,8 @@
 
 .proof-testimonials {
   display: grid !important;
-  grid-template-columns: repeat(6, 1fr) !important;
-  gap: 28px !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 24px !important;
   width: 100% !important;
   max-width: 1200px !important;
   margin: 30px auto 0px !important;
@@ -14,89 +14,27 @@
   box-sizing: border-box !important;
 }
 
-@media (min-width: 1081px) {
-  .proof-card:nth-child(1) {
-    grid-column: span 4 !important;
-  }
-
-  .proof-card:nth-child(2) {
-    grid-column: span 2 !important;
-  }
-
-  .proof-card:nth-child(3) {
-    grid-column: span 2 !important;
-  }
-
-  .proof-card:nth-child(4) {
-    grid-column: span 4 !important;
-  }
-
-  .proof-card:nth-child(5) {
-    grid-column: span 3 !important;
-  }
-
-  .proof-card:nth-child(6) {
-    grid-column: span 3 !important;
-  }
-
-  .proof-card:nth-child(7) {
-    grid-column: span 4 !important;
-  }
-
-  .proof-card:nth-child(8) {
-    grid-column: span 2 !important;
-  }
-
-  .proof-card:nth-child(9) {
-    grid-column: span 4 !important;
-  }
-
-  .proof-card:nth-child(10) {
-    grid-column: span 2 !important;
-  }
-
-  .proof-card:nth-child(11) {
-    grid-column: span 2 !important;
-  }
-
-  .proof-card:nth-child(12) {
-    grid-column: span 4 !important;
-  }
-
-  .proof-card:nth-child(13) {
-    grid-column: span 3 !important;
-  }
-
-  .proof-card:nth-child(14), .proof-card:last-child {
-    grid-column: span 3 !important;
-  }
-
-  .proof-card:nth-child(1) .proof-quote, .proof-card:nth-child(4) .proof-quote, .proof-card:nth-child(7) .proof-quote, .proof-card:nth-child(9) .proof-quote, .proof-card:nth-child(12) .proof-quote {
-    font-size: 1.02rem !important;
-    line-height: 1.76 !important;
-    color: rgb(248, 250, 252) !important;
-  }
+.proof-card,
+.proof-card:nth-child(n) {
+  grid-column: span 1 !important;
+  height: 100% !important;
 }
 
-@media (max-width: 1080px) and (min-width: 681px) {
-  .proof-testimonials {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 22px !important;
-  }
-
-  .proof-card {
-    grid-column: span 1 !important;
-  }
+.proof-card .proof-quote {
+  font-size: 1.02rem !important;
+  line-height: 1.76 !important;
+  color: rgb(248, 250, 252) !important;
 }
 
-@media (max-width: 680px) {
+@media (max-width: 768px) {
   .proof-testimonials {
     grid-template-columns: 1fr !important;
     gap: 16px !important;
     margin-top: 28px !important;
   }
 
-  .proof-card {
+  .proof-card,
+  .proof-card:nth-child(n) {
     grid-column: span 1 !important;
   }
 }
@@ -336,8 +274,7 @@
 }
 
 h1:not(.sr-only), h2:not(.text-gradient), h3:not(.text-gradient), .hero-display-title, .hero-serif-title, .bio-heading, .section-title, .static-hero-h2, .static-pillars-h3, .sim-title, .timeline-title, .faq-title, .lifestyle-pane-grid h3 {
-  text-shadow: none !important;
-  filter: none !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 6px 18px rgba(0, 0, 0, 0.45) !important;
 }
 
 .bio-heading {
@@ -346,7 +283,7 @@ h1:not(.sr-only), h2:not(.text-gradient), h3:not(.text-gradient), .hero-display-
 
 .text-gradient, .bio-heading-accent, .proof-title-accent, h1 .bio-heading-accent, h2 .bio-heading-accent, h3 .bio-heading-accent, h1 .text-gradient, h2 .text-gradient, h3 .text-gradient {
   text-shadow: none !important;
-  filter: drop-shadow(rgba(0, 0, 0, 0.8) 0px 4px 12px) !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.55)) !important;
 }
 
 .proof-title {
@@ -638,9 +575,9 @@ h1:not(.sr-only), h2:not(.text-gradient), h3:not(.text-gradient), .hero-display-
 }
 
 :root {
-  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Outfit', 'Playfair Display', -apple-system, sans-serif;
+  --font-serif: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --bg-primary: #080b11;
   --bg-secondary: #0d121d;
@@ -699,10 +636,11 @@ h1:not(.sr-only), h2:not(.text-gradient), h3:not(.text-gradient), .hero-display-
   --text-muted: #cbd5e1 !important;
 }
 
-h1, h2, h3, .hero-display-title, .hero-serif-title, .bio-heading, .section-title, .static-hero-h2, .static-pillars-h3 {
-  font-family: var(--font-serif) !important;
-  letter-spacing: -0.02em !important;
-  font-weight: 600 !important;
+h1, h2, h3, h4, h5, h6, .hero-display-title, .hero-serif-title, .bio-heading, .section-title, .static-hero-h2, .static-pillars-h3, .editorial-page-title {
+  font-family: var(--font-display) !important;
+  letter-spacing: -0.028em !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
   color: rgb(255, 255, 255) !important;
 }
 
@@ -4700,52 +4638,72 @@ div[style*="height: 1px"], div[style*="height:1px"], div[style*="height: 0px"], 
 }
 
 .hero-pop-title, h1.hero-pop-title, h2.hero-pop-title, .hero-serif-title, .hero-display-title {
-  font-family: var(--font-serif, "Playfair Display", "Cormorant Garamond", Georgia, serif) !important;
+  font-family: var(--font-display) !important;
   font-size: clamp(2.5rem, 3.2vw, 3.45rem) !important;
-  font-weight: 900 !important;
-  line-height: 1.1 !important;
-  letter-spacing: -0.03em !important;
-  margin-bottom: 24px !important;
+  font-weight: 800 !important;
+  line-height: 1.18 !important;
+  letter-spacing: -0.035em !important;
+  margin-bottom: 20px !important;
   max-width: 100% !important;
   position: relative !important;
   z-index: 2 !important;
+  overflow: visible !important;
 }
 
 .hero-pop-primary {
   display: block !important;
-  font-family: var(--font-serif, "Playfair Display", "Cormorant Garamond", Georgia, serif) !important;
-  font-weight: 900 !important;
-  background: linear-gradient(rgb(255, 255, 255) 0%, rgb(248, 250, 252) 35%, rgb(226, 232, 240) 70%, rgb(213, 224, 236) 100%) text !important;
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  padding-bottom: 0.25em !important;
+  margin-bottom: -0.18em !important;
+  overflow: visible !important;
+  background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 60%, #cbd5e1 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  color: rgb(241, 245, 249) !important;
+  color: #ffffff !important;
   -webkit-text-stroke: 0px !important;
   text-shadow: none !important;
   filter: none !important;
-  letter-spacing: -0.025em !important;
+  letter-spacing: -0.035em !important;
 }
 
 .hero-pop-accent {
   display: block !important;
   position: relative !important;
-  margin-top: 6px !important;
-  padding-bottom: 0.12em !important;
+  margin-top: 4px !important;
+  padding-bottom: 0.05em !important;
   padding-right: 0.15em !important;
-  font-family: var(--font-serif, "Playfair Display", "Cormorant Garamond", Georgia, serif) !important;
-  font-style: italic !important;
-  font-weight: 900 !important;
-  letter-spacing: -0.02em !important;
+  font-family: var(--font-display) !important;
+  font-style: normal !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.035em !important;
   filter: none !important;
   text-shadow: none !important;
 }
 
+.hero-pop-accent .hero-pop-line {
+  background: linear-gradient(135deg, #ffffff 0%, #ffe293 45%, #e2b857 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #ffe293 !important;
+  font-style: normal !important;
+  font-weight: 800 !important;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45)) !important;
+}
+
 .hero-pop-accent .editorial-italic-accent {
   display: inline-block !important;
-  font-weight: 600 !important;
-  background: linear-gradient(rgb(255, 255, 255) 0%, rgb(254, 240, 138) 25%, rgb(245, 158, 11) 65%, rgb(217, 119, 6) 100%) text !important;
+  font-style: normal !important;
+  font-weight: 800 !important;
+  background: linear-gradient(135deg, #ffffff 0%, #ffe293 45%, #e2b857 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  color: rgb(253, 224, 71) !important;
-  text-shadow: none !important;
-  filter: none !important;
+  color: #ffe293 !important;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45)) !important;
 }
 
 .hero-pop-line {
@@ -5666,12 +5624,16 @@ body {
 }
 
 .editorial-italic-accent, .bio-heading-accent, .edu-hook-title-accent {
-  font-family: var(--font-serif, "Cormorant Garamond", "Playfair Display", Georgia, serif) !important;
-  font-style: italic !important;
-  font-weight: 600 !important;
-  color: rgb(253, 224, 71) !important;
+  font-family: var(--font-display) !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  background: linear-gradient(135deg, #ffffff 0%, #ffe293 45%, #e2b857 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #ffe293 !important;
   text-shadow: none !important;
-  filter: none !important;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45)) !important;
   display: inline-block !important;
   padding-right: 0.05em !important;
 }
@@ -6025,28 +5987,40 @@ input[type="range"]#roi-monthly-slider:active::-webkit-slider-thumb {
   position: relative !important;
 }
 
-#main-navigation .nav-links-group button:hover, #main-navigation .nav-link-item:hover, button.nav-link-item:hover {
-  color: rgb(226, 184, 87) !important;
-  background: rgba(255, 255, 255, 0.06) !important;
-}
-
-#main-navigation .nav-links-group button.active-nav-link, #main-navigation .nav-link-item.active-nav-link, button.nav-link-item.active-nav-link {
-  color: rgb(226, 184, 87) !important;
-  font-weight: 600 !important;
+#main-navigation .nav-links-group button:hover,
+#main-navigation .nav-links-group a:hover,
+#main-navigation .nav-link-item:hover,
+button.nav-link-item:hover,
+a.nav-link-item:hover {
+  color: #ffe293 !important;
   background: rgba(226, 184, 87, 0.08) !important;
 }
 
-#main-navigation .nav-links-group button.active-nav-link::after, #main-navigation .nav-link-item.active-nav-link::after, button.nav-link-item.active-nav-link::after {
+#main-navigation .nav-links-group button.active-nav-link,
+#main-navigation .nav-links-group a.active-nav-link,
+#main-navigation .nav-link-item.active-nav-link,
+button.nav-link-item.active-nav-link,
+a.nav-link-item.active-nav-link {
+  color: #ffe293 !important;
+  font-weight: 600 !important;
+  background: rgba(226, 184, 87, 0.12) !important;
+}
+
+#main-navigation .nav-links-group button.active-nav-link::after,
+#main-navigation .nav-links-group a.active-nav-link::after,
+#main-navigation .nav-link-item.active-nav-link::after,
+button.nav-link-item.active-nav-link::after,
+a.nav-link-item.active-nav-link::after {
   content: "";
   position: absolute;
   bottom: 2px;
   left: 50%;
   transform: translateX(-50%);
-  width: 14px;
+  width: 16px;
   height: 2px;
-  background: rgb(226, 184, 87);
+  background: #e2b857 !important;
   border-radius: 2px;
-  box-shadow: rgba(226, 184, 87, 0.8) 0px 0px 8px;
+  box-shadow: 0 0 10px rgba(226, 184, 87, 0.8) !important;
 }
 
 @media (max-width: 960px) {
@@ -6503,19 +6477,19 @@ header, section.hero-section-shell, .hero-section-shell {
 
 .topo-wrapper {
   width: 100% !important;
-  max-width: 1100px !important;
+  max-width: 100% !important;
   margin: 0px auto !important;
   box-sizing: border-box !important;
-  border: 1px solid rgba(226, 184, 87, 0.22) !important;
-  background: linear-gradient(165deg, rgba(13, 20, 32, 0.94) 0%, rgba(6, 11, 20, 0.98) 100%) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  backdrop-filter: blur(20px) !important;
-  border-radius: 28px !important;
-  padding: clamp(24px, 3.5vw, 44px) !important;
-  box-shadow: rgba(0, 0, 0, 0.7) 0px 30px 80px, rgba(255, 255, 255, 0.15) 0px 1px 1px inset !important;
+  border: none !important;
+  background: transparent !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border-radius: 0px !important;
+  padding: 0px !important;
+  box-shadow: none !important;
   text-align: left !important;
   position: relative !important;
-  overflow: hidden !important;
+  overflow: visible !important;
 }
 
 .topo-header {
@@ -6802,30 +6776,31 @@ header, section.hero-section-shell, .hero-section-shell {
 
 .btn-topo-laser {
   width: 100% !important;
-  background: linear-gradient(135deg, rgb(2, 132, 199) 0%, rgb(3, 105, 161) 100%) !important;
-  border: 1px solid rgba(56, 189, 248, 0.5) !important;
-  color: rgb(255, 255, 255) !important;
-  padding: 14px 20px !important;
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.16) 0%, rgba(2, 132, 199, 0.28) 100%) !important;
+  border: 1px solid rgba(56, 189, 248, 0.45) !important;
+  color: #f0f9ff !important;
+  padding: 13px 20px !important;
   border-radius: 12px !important;
-  font-size: 0.95rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.2px !important;
+  font-size: 0.92rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px !important;
   cursor: pointer !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   gap: 10px !important;
-  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  box-shadow: rgba(2, 132, 199, 0.35) 0px 4px 20px !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
   position: relative !important;
   overflow: hidden !important;
 }
 
 .btn-topo-laser:hover {
-  background: linear-gradient(135deg, rgb(3, 105, 161) 0%, rgb(2, 132, 199) 100%) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: rgba(2, 132, 199, 0.55) 0px 8px 30px !important;
-  border-color: rgb(56, 189, 248) !important;
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.25) 0%, rgba(2, 132, 199, 0.4) 100%) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 24px rgba(2, 132, 199, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(56, 189, 248, 0.7) !important;
+  color: #ffffff !important;
 }
 
 .btn-topo-laser.ablating {
@@ -7094,10 +7069,15 @@ header, section.hero-section-shell, .hero-section-shell {
 }
 
 .topo-edu-icon {
-  font-size: 1.6rem !important;
-  line-height: 1 !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 10px !important;
+  background: rgba(15, 23, 42, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   flex-shrink: 0 !important;
-  padding-top: 2px !important;
 }
 
 .topo-edu-body {
@@ -7328,8 +7308,10 @@ header, section.hero-section-shell, .hero-section-shell {
 
 @media (max-width: 640px) {
   .topo-wrapper {
-    padding: 20px 14px !important;
-    border-radius: 20px !important;
+    padding: 0px !important;
+    border-radius: 0px !important;
+    border: none !important;
+    box-shadow: none !important;
   }
 
   .topo-viewport-card, .topo-telemetry-card {
@@ -9390,9 +9372,9 @@ header, section.hero-section-shell, .hero-section-shell {
 }
 
 .card-raouf .executive-photo-badge {
-  border-color: rgba(56, 189, 248, 0.45);
-  color: rgb(224, 242, 254);
-  box-shadow: rgba(0, 0, 0, 0.75) 0px 12px 30px -4px, rgba(255, 255, 255, 0.25) 0px 1px 1.5px inset, rgba(56, 189, 248, 0.18) 0px 0px 18px;
+  border-color: rgba(226, 184, 87, 0.45);
+  color: rgb(255, 229, 153);
+  box-shadow: rgba(0, 0, 0, 0.75) 0px 12px 30px -4px, rgba(255, 255, 255, 0.25) 0px 1px 1.5px inset, rgba(226, 184, 87, 0.18) 0px 0px 18px;
 }
 
 .executive-micro-metrics {
@@ -9411,10 +9393,11 @@ header, section.hero-section-shell, .hero-section-shell {
   background: linear-gradient(rgba(255, 255, 255, 0.05) 0%, rgba(10, 16, 30, 0.75) 100%);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  padding: 9px 6px;
+  padding: 8px 4px !important;
   text-align: center;
   box-shadow: rgba(255, 255, 255, 0.12) 0px 1px 1px inset, rgba(0, 0, 0, 0.35) 0px 4px 12px;
   transition: 0.25s;
+  min-width: 0 !important;
 }
 
 .executive-micro-metric-item:hover {
@@ -9424,16 +9407,19 @@ header, section.hero-section-shell, .hero-section-shell {
 }
 
 .card-raouf .executive-micro-metric-item:hover {
-  border-color: rgba(56, 189, 248, 0.4);
+  border-color: rgba(226, 184, 87, 0.45);
 }
 
 .executive-micro-metric-val {
   display: block;
   font-family: var(--font-display, var(--font-sans, system-ui));
-  font-size: 0.92rem;
+  font-size: 0.9rem !important;
   font-weight: 800;
   color: rgb(255, 215, 120);
   line-height: 1.1;
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+  letter-spacing: -0.01em !important;
 }
 
 .card-raouf .executive-micro-metric-val {
@@ -9448,6 +9434,7 @@ header, section.hero-section-shell, .hero-section-shell {
   letter-spacing: 0.08em;
   margin-top: 3px;
   font-weight: 600;
+  white-space: nowrap !important;
 }
 
 .executive-content-column {
@@ -10378,23 +10365,25 @@ header, section.hero-section-shell, .hero-section-shell {
 }
 
 .criteria-card-ideal {
-  background: radial-gradient(120% 120% at 50% 0%, rgba(13, 29, 36, 0.85) 0%, rgba(6, 14, 20, 0.95) 100%);
-  border: 1px solid rgba(0, 240, 255, 0.32);
+  background: linear-gradient(180deg, rgba(16, 24, 39, 0.75) 0%, rgba(10, 15, 26, 0.9) 100%) !important;
+  border: 1px solid rgba(16, 185, 129, 0.38) !important;
+  box-shadow: 0 0 22px -3px rgba(16, 185, 129, 0.18), 0 20px 40px -15px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
 }
 
 .criteria-card-ideal:hover {
-  border-color: rgba(0, 240, 255, 0.6);
-  box-shadow: rgba(0, 0, 0, 0.85) 0px 30px 70px -12px, rgba(0, 240, 255, 0.12) 0px 0px 30px;
+  border-color: rgba(52, 211, 153, 0.65) !important;
+  box-shadow: 0 0 30px 0px rgba(16, 185, 129, 0.28), 0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
 }
 
 .criteria-card-caution {
-  background: radial-gradient(120% 120% at 50% 0%, rgba(32, 22, 18, 0.85) 0%, rgba(16, 11, 10, 0.95) 100%);
-  border: 1px solid rgba(226, 184, 87, 0.32);
+  background: linear-gradient(180deg, rgba(16, 24, 39, 0.75) 0%, rgba(10, 15, 26, 0.9) 100%) !important;
+  border: 1px solid rgba(239, 68, 68, 0.38) !important;
+  box-shadow: 0 0 22px -3px rgba(239, 68, 68, 0.18), 0 20px 40px -15px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
 }
 
 .criteria-card-caution:hover {
-  border-color: rgba(226, 184, 87, 0.6);
-  box-shadow: rgba(0, 0, 0, 0.85) 0px 30px 70px -12px, rgba(226, 184, 87, 0.12) 0px 0px 30px;
+  border-color: rgba(248, 113, 113, 0.65) !important;
+  box-shadow: 0 0 30px 0px rgba(239, 68, 68, 0.28), 0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
 }
 
 .criteria-card-badge {
@@ -10987,6 +10976,8 @@ header, section.hero-section-shell, .hero-section-shell {
   background: rgba(0, 0, 0, 0.35) !important;
 }
 
+
+
 .btn-secondary {
   display: inline-flex !important;
   align-items: center !important;
@@ -11092,24 +11083,26 @@ header, section.hero-section-shell, .hero-section-shell {
 }
 
 .editorial-italic-accent, .bio-heading-accent, .edu-hook-title-accent, .proof-title-accent {
-  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
-  font-style: italic !important;
-  font-weight: 600 !important;
-  letter-spacing: -0.01em !important;
+  font-family: var(--font-display) !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.025em !important;
   display: inline-block !important;
   padding-right: 0.08em !important;
   padding-left: 0.02em !important;
-  background: linear-gradient(rgb(255, 255, 255) 0%, rgb(254, 240, 138) 25%, rgb(245, 158, 11) 65%, rgb(217, 119, 6) 100%) text !important;
+  background: linear-gradient(135deg, #ffffff 0%, #ffe293 45%, #e2b857 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  color: rgb(253, 224, 71) !important;
-  filter: none !important;
+  color: #ffe293 !important;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45)) !important;
   text-shadow: none !important;
 }
 
 .hero-pop-title {
-  font-family: var(--font-serif, "Playfair Display", Georgia, serif) !important;
-  letter-spacing: -0.025em !important;
-  line-height: 1.1 !important;
+  font-family: var(--font-display) !important;
+  letter-spacing: -0.035em !important;
+  line-height: 1.08 !important;
   filter: none !important;
   text-shadow: none !important;
 }
@@ -11123,11 +11116,12 @@ header, section.hero-section-shell, .hero-section-shell {
 }
 
 .hero-pop-line {
-  background: linear-gradient(rgb(255, 255, 255) 0%, rgb(254, 240, 138) 25%, rgb(245, 158, 11) 65%, rgb(217, 119, 6) 100%) text !important;
+  background: linear-gradient(135deg, #ffffff 0%, #ffe293 45%, #e2b857 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  color: rgb(253, 224, 71) !important;
-  filter: none !important;
-  text-shadow: none !important;
+  color: #ffe293 !important;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45)) !important;
   display: inline-block !important;
   padding-bottom: 0.18em !important;
   margin-bottom: -0.18em !important;
@@ -11135,11 +11129,12 @@ header, section.hero-section-shell, .hero-section-shell {
 }
 
 .hero-pop-accent .editorial-italic-accent {
-  background: linear-gradient(rgb(255, 255, 255) 0%, rgb(254, 240, 138) 25%, rgb(245, 158, 11) 65%, rgb(217, 119, 6) 100%) text !important;
+  background: linear-gradient(135deg, #ffffff 0%, #ffe293 45%, #e2b857 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  color: rgb(253, 224, 71) !important;
-  filter: none !important;
-  text-shadow: none !important;
+  color: #ffe293 !important;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.45)) !important;
   font-weight: 800 !important;
 }
 
@@ -11839,6 +11834,15 @@ footer.footer-subpage-master,
   transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.faq-card-panel.open .faq-collapse-drawer,
+.faq-collapse-drawer.open {
+  max-height: 500px;
+}
+
+.faq-card-panel.open .faq-chevron-icon {
+  transform: rotate(180deg);
+}
+
 .faq-answer-content {
   border-top: 1px solid rgba(255, 255, 255, 0.04);
   padding: 18px 28px 26px !important;
@@ -12194,13 +12198,23 @@ footer.footer-subpage-master,
 .contact-offices-office-card {
   background: rgba(255, 255, 255, 0.024);
   border-radius: 14px;
-  padding: 14px 18px;
+  padding: 14px 16px;
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 20px;
   transition: border-color 0.3s;
+}
+
+@media (max-width: 640px) {
+  .contact-offices-office-card {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .contact-offices-action-btn {
+    width: 100% !important;
+  }
 }
 
 .contact-offices-badge {
@@ -12220,10 +12234,10 @@ footer.footer-subpage-master,
   font-weight: 700;
   font-size: 0.92rem;
   text-decoration: none;
-  padding: 8px 14px;
+  padding: 8px 12px;
   border-radius: 8px;
   min-height: 44px;
-  min-width: 155px;
+  min-width: 145px;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -13143,6 +13157,7 @@ footer.footer-subpage-master,
   margin-top: 2px;
   font-style: italic;
   line-height: 1.35;
+  white-space: nowrap !important;
 }
 
 .ui-extracted-69 {
@@ -13351,7 +13366,6 @@ footer.footer-subpage-master,
 .criteria-card,
 .doppelrand-shell,
 #roi-calc-card,
-.dossier-split-card,
 .accordion-card,
 .cred-box,
 .guideline-card,
@@ -13369,6 +13383,14 @@ footer.footer-subpage-master,
               box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
               border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
   will-change: transform, box-shadow;
+}
+
+.dossier-split-card,
+.dossier-split-card:hover {
+  box-shadow: none !important;
+  border: none !important;
+  background: transparent !important;
+  transform: none !important;
 }
 
 /* Refined Subtle Lift & Optical Glow Bloom on Hover */
@@ -13601,14 +13623,22 @@ select:focus-visible,
 }
 
 /* 2. Headline & Subtitle Typography Refinement (WCAG AAA High Contrast against Dark Blue BG) */
+#hero-kicker-eyebrow, .editorial-eyebrow {
+  background: rgba(14, 165, 233, 0.08) !important;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+  backdrop-filter: blur(12px) !important;
+  border-radius: 9999px !important;
+}
+
 #hero-kicker-text {
-  background: linear-gradient(135deg, #ffffff 0%, #ffe7a9 35%, #ffd778 65%, #c89c38 100%) !important;
+  background: linear-gradient(90deg, #38bdf8 0%, #93c5fd 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  color: #ffd778 !important;
+  color: #38bdf8 !important;
+  font-size: 0.72rem !important;
   font-weight: 700 !important;
-  letter-spacing: 0.09em !important;
+  letter-spacing: 0.14em !important;
   text-shadow: none !important;
 }
 
@@ -14376,3 +14406,745 @@ select.mc-input-field option {
 .topography-scan-card {
   contain: layout style;
 }
+
+/* ==========================================================================
+   SURGICAL PRECISION DARK LUXURY MASTER LAYER
+   Complete Anti-Amateur Polish: Razor-Sharp Modern Sans Typography,
+   Optical Cyan & Sapphire High-Tech CTAs, Hardware Double-Bezels,
+   and Restrained Metallic Accreditations.
+   ========================================================================== */
+
+/* 1. Universal Typography Unification (Eliminating Clashing Serifs & Gimmicky Italics) */
+:root {
+  --font-serif: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  --font-display: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.hero-pop-title,
+.hero-serif-title,
+.hero-display-title,
+.editorial-page-title,
+.section-title,
+.section-heading-editorial,
+.bio-heading,
+.history-card h3,
+.tech-pillar-title,
+.criteria-card h3,
+.quiz-question-title,
+.static-hero-h2,
+.static-pillars-h3 {
+  font-family: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-style: normal !important;
+  letter-spacing: -0.028em !important;
+  font-weight: 700 !important;
+}
+
+/* 2. Hero Headline Modernization */
+.hero-pop-title {
+  font-size: clamp(2.4rem, 3.2vw, 3.5rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.18 !important;
+  letter-spacing: -0.035em !important;
+  margin-bottom: 18px !important;
+  overflow: visible !important;
+  filter: none !important;
+  text-shadow: none !important;
+}
+
+.hero-pop-primary {
+  display: block !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  padding-bottom: 0.25em !important;
+  margin-bottom: -0.18em !important;
+  overflow: visible !important;
+  background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 60%, #cbd5e1 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  letter-spacing: -0.035em !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.75)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5)) !important;
+}
+
+.hero-pop-accent {
+  display: block !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-style: normal !important;
+  font-weight: 800 !important;
+  margin-top: 4px !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.75)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5)) !important;
+}
+
+.hero-pop-accent .hero-pop-line,
+.hero-pop-accent .editorial-italic-accent {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-style: normal !important;
+  font-weight: 800 !important;
+  background: linear-gradient(135deg, #ffffff 0%, #ffe293 45%, #e2b857 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #ffe293 !important;
+  letter-spacing: -0.03em !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.75)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5)) !important;
+}
+
+/* 3. Eyebrow Badges & Clinical Telemetry Tags */
+.superiority-eyebrow,
+.subpage-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  padding: 6px 14px !important;
+  border-radius: 9999px !important;
+  background: rgba(14, 165, 233, 0.08) !important;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+  backdrop-filter: blur(12px) !important;
+  color: #38bdf8 !important;
+}
+
+.editorial-eyebrow,
+#hero-kicker-eyebrow {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  padding: 6px 16px !important;
+  border-radius: 9999px !important;
+  background: linear-gradient(135deg, rgba(226, 184, 87, 0.12) 0%, rgba(15, 23, 42, 0.8) 50%, rgba(226, 184, 87, 0.06) 100%) !important;
+  border: 1px solid rgba(226, 184, 87, 0.35) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 240, 190, 0.25), 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  backdrop-filter: blur(14px) !important;
+  color: #e2b857 !important;
+}
+
+#hero-kicker-text {
+  background: linear-gradient(135deg, #ffffff 0%, #ffe7a9 35%, #e2b857 70%, #d4a02c 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #e2b857 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+}
+
+
+/* 5. Navigation Bar & Active Tab Precision */
+#main-navigation {
+  background: rgba(7, 11, 20, 0.88) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+#nav-item-active-bar {
+  background: #e2b857 !important;
+  box-shadow: 0 0 10px rgba(226, 184, 87, 0.8) !important;
+  height: 2px !important;
+  border-radius: 2px !important;
+}
+
+.header-phone-pill,
+#header-phone-link {
+  background: rgba(15, 23, 42, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 9999px !important;
+  color: #e2e8f0 !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+.header-phone-pill:hover,
+#header-phone-link:hover {
+  border-color: rgba(226, 184, 87, 0.45) !important;
+  color: #ffe293 !important;
+  box-shadow: 0 0 14px rgba(226, 184, 87, 0.2) !important;
+}
+
+/* 6. Hardware Double-Bezel Card Enclosures */
+.history-card,
+.tech-pillar-card,
+.surgical-card-master,
+.proof-card,
+.criteria-card,
+.glass-panel {
+  background: linear-gradient(180deg, rgba(16, 24, 39, 0.75) 0%, rgba(10, 15, 26, 0.9) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(20px) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.history-card:hover,
+.tech-pillar-card:hover,
+.pillar-card:hover,
+.trust-pillar-card:hover,
+.trust-pillar-wrapper:hover,
+.surgical-card-master:hover,
+.proof-card:hover,
+.proof-director-card:hover,
+.criteria-card:hover:not(.criteria-card-ideal):not(.criteria-card-caution),
+.glass-panel:hover,
+.timeline-card:hover,
+.lifestyle-card:hover,
+.lifestyle-card-box:hover,
+.lifestyle-pane-grid:hover,
+.roi-card:hover,
+#roi-calc-card:hover,
+.roi-hsa-card:hover,
+.roi-breakdown-card:hover,
+.surgeon-card-frame:hover,
+.surgeon-tab-card:hover,
+.dossier-card:hover,
+.executive-dossier-card:hover,
+.edu-hook-card:hover,
+.hero-stat-card:hover,
+.stat-card:hover,
+.editorial-stat-card:hover,
+.hero-trust-card-frame:hover,
+.accordion-card:hover,
+.faq-card-panel:hover,
+.contact-offices-office-card:hover,
+.contact-lens-warning-card:hover,
+.hero-mc-card-shell:hover,
+.micro-commitment-card:hover,
+.mc-option-card:hover,
+.laser-metric-card:hover,
+.laser-pane-image-card:hover,
+.facility-card:hover,
+.contrast-panel:hover,
+.spec-card:hover,
+.process-card:hover,
+.comp-card:hover {
+  border-color: rgba(226, 184, 87, 0.45) !important;
+  box-shadow: 0 24px 50px -12px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 0 28px rgba(226, 184, 87, 0.14) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 7. Subpage Editorial Headers */
+.editorial-hero-header {
+  background: radial-gradient(120% 120% at 50% 0%, rgba(20, 32, 54, 0.75) 0%, rgba(10, 16, 28, 0.9) 60%, rgba(6, 9, 17, 0.98) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+}
+
+.editorial-page-title {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-weight: 800 !important;
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem) !important;
+  letter-spacing: -0.03em !important;
+  color: #ffffff !important;
+  line-height: 1.15 !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 6px 18px rgba(0, 0, 0, 0.45) !important;
+  filter: none !important;
+}
+
+.hero-deepdive-subtitle {
+  display: block !important;
+  font-size: clamp(0.92rem, 1.35vw, 1.25rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.015em !important;
+  margin-top: 10px !important;
+  white-space: normal;
+  background: linear-gradient(135deg, #ffffff 0%, #ffe293 45%, #e2b857 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #ffe293 !important;
+  text-shadow: none !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.55)) !important;
+}
+
+@media (min-width: 992px) {
+  .hero-deepdive-subtitle {
+    white-space: nowrap !important;
+  }
+}
+
+.hero-surgeons-subtitle {
+  display: block !important;
+  font-size: clamp(1.2rem, 2.4vw, 2.2rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.02em !important;
+  margin-top: 10px !important;
+  white-space: normal;
+  background: linear-gradient(135deg, #ffffff 0%, #ffe293 45%, #e2b857 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #ffe293 !important;
+  text-shadow: none !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.55)) !important;
+}
+
+@media (min-width: 640px) {
+  .hero-surgeons-subtitle {
+    white-space: nowrap !important;
+  }
+}
+
+/* 8. Restrained Metallic Champagne for Clinical Credentials & Ratings */
+.star-rating,
+.proof-stars,
+.credential-seal,
+.hero-proof-dot {
+  color: #f3d89d !important;
+}
+
+.credential-gold-pill {
+  background: rgba(243, 216, 157, 0.08) !important;
+  border: 1px solid rgba(243, 216, 157, 0.25) !important;
+  color: #f3d89d !important;
+}
+
+/* 9. Telemetry & Diagnostic HUD Polish */
+.hero-hud-pill {
+  background: rgba(10, 15, 26, 0.85) !important;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+  backdrop-filter: blur(14px) !important;
+  border-radius: 9999px !important;
+}
+
+.hero-hud-title {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+}
+
+.hero-hud-meta {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-weight: 500 !important;
+  color: #94a3b8 !important;
+}
+
+.hero-hud-tag-cyan {
+  background: rgba(56, 189, 248, 0.15) !important;
+  color: #38bdf8 !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+}
+
+
+/* 11. Diagnostic Sliders & Assessment Form Polish */
+input[type="range"] {
+  accent-color: #38bdf8 !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2) !important;
+}
+
+/* ==========================================================================
+   COGNITIVE PSYCHOLOGY & UX ENHANCEMENT ARCHITECTURE
+   Evidence-Based Mental Models, Hick's Law, Fitts's Law & Zeigarnik Effect
+   ========================================================================== */
+
+/* 1. Cognitive Ease: Perceptual Color Ramp Guidance Key */
+.topo-perceptual-key-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 20px !important;
+  background: rgba(10, 16, 28, 0.85) !important;
+  border: 1px solid rgba(56, 189, 248, 0.22) !important;
+  border-radius: 14px !important;
+  padding: 12px 20px !important;
+  margin: 0 auto 28px auto !important;
+  max-width: 860px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+.topo-key-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-size: 0.84rem !important;
+  color: #cbd5e1 !important;
+}
+
+.topo-key-indicator {
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 4px !important;
+  flex-shrink: 0 !important;
+}
+
+.indicator-blue {
+  background: linear-gradient(135deg, #0284c7 0%, #10b981 100%) !important;
+  box-shadow: 0 0 10px rgba(2, 132, 199, 0.6) !important;
+}
+
+.indicator-red {
+  background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%) !important;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.6) !important;
+}
+
+.topo-key-content strong {
+  display: inline-block !important;
+  font-weight: 700 !important;
+  margin-right: 4px !important;
+}
+
+.key-cool .topo-key-title {
+  color: #38bdf8 !important;
+}
+
+.key-warm .topo-key-title {
+  color: #fbbf24 !important;
+}
+
+.topo-key-divider {
+  color: rgba(255, 255, 255, 0.25) !important;
+  font-size: 1rem !important;
+  user-select: none !important;
+}
+
+@media (max-width: 680px) {
+  .topo-perceptual-key-bar {
+    flex-direction: column !important;
+    gap: 10px !important;
+    text-align: left !important;
+    align-items: flex-start !important;
+    padding: 14px 16px !important;
+  }
+  .topo-key-divider {
+    display: none !important;
+  }
+}
+
+/* 2. Hick's Law: Asymmetric Hero CTA Hierarchy */
+.hero-cta-dominant-primary {
+  background: linear-gradient(180deg, #fde48b 0%, #f1c34a 45%, #e2b857 100%) !important;
+  color: #0b1120 !important;
+  font-weight: 700 !important;
+  border: none !important;
+  outline: none !important;
+  text-shadow: none !important;
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.75), 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+  letter-spacing: 0.01em !important;
+  transform: translateY(0) !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease !important;
+}
+
+.hero-cta-dominant-primary:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  background: linear-gradient(180deg, #fff0aa 0%, #fad268 45%, #eabf60 100%) !important;
+  border: none !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9), 0 12px 28px rgba(0, 0, 0, 0.5) !important;
+  color: #000000 !important;
+}
+
+.hero-cta-understated-ghost {
+  background: rgba(15, 23, 42, 0.6) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+  backdrop-filter: blur(14px) !important;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease !important;
+}
+
+.hero-cta-understated-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.32) !important;
+  color: #ffffff !important;
+  background: rgba(30, 41, 59, 0.85) !important;
+}
+
+/* 3. Fitts's Law: Mobile Motor Ergonomics (44px Minimum Touch Envelopes) */
+@media (max-width: 768px) {
+  .topo-tab-btn {
+    min-height: 44px !important;
+    padding: 10px 14px !important;
+    font-size: 0.84rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .topo-preset-btn {
+    min-height: 44px !important;
+    padding: 10px 14px !important;
+    font-size: 0.84rem !important;
+  }
+
+  .btn-topo-laser {
+    min-height: 48px !important;
+    font-size: 0.94rem !important;
+    padding: 14px 18px !important;
+  }
+
+  .topo-view-tabs {
+    gap: 6px !important;
+    padding: 6px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .topo-presets-grid {
+    gap: 8px !important;
+  }
+}
+
+/* 4. Cognitive Chunking: Comparison Table Category Subheaders */
+.comp-table-category-row td {
+  background: linear-gradient(90deg, rgba(14, 165, 233, 0.14) 0%, rgba(15, 23, 42, 0.85) 50%, rgba(14, 165, 233, 0.06) 100%) !important;
+  border-top: 1px solid rgba(56, 189, 248, 0.28) !important;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.18) !important;
+  padding: 14px 20px !important;
+  text-align: left !important;
+}
+
+.comp-category-title-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+}
+
+.category-pill-num {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
+  color: #38bdf8 !important;
+  background: rgba(56, 189, 248, 0.16) !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  padding: 3px 8px !important;
+  border-radius: 6px !important;
+}
+
+.category-pill-name {
+  font-size: 0.84rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: #f8fafc !important;
+}
+
+/* 5. Zeigarnik Effect: Micro-Commitment Dynamic Step Indicators */
+.hero-mc-trust-badges {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  margin-bottom: 20px !important;
+  padding: 8px 12px !important;
+  background: rgba(10, 15, 26, 0.7) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px !important;
+}
+
+.hero-mc-badge-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  color: #64748b !important;
+  transition: all 0.3s ease !important;
+}
+
+.hero-mc-badge-item.active {
+  color: #f1f5f9 !important;
+}
+
+.hero-mc-badge-item.active .hero-mc-badge-dot {
+  background: #38bdf8 !important;
+  color: #030712 !important;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.7) !important;
+}
+
+.hero-mc-badge-item.completed {
+  color: #10b981 !important;
+}
+
+.hero-mc-badge-item.completed .hero-mc-badge-dot {
+  background: rgba(16, 185, 129, 0.2) !important;
+  border: 1px solid #10b981 !important;
+  color: #10b981 !important;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4) !important;
+}
+
+.hero-mc-badge-dot {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #94a3b8 !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  transition: all 0.25s ease !important;
+}
+
+/* ==========================================================================
+   6. SUBTLE TITLE POP-OUT & ELEVATION SHADOW SYSTEM
+   Multi-tier optical elevation shadow for dimensional separation & pop
+   ========================================================================== */
+
+/* Universal Title Shadow: Crisp edge separation + soft spatial depth */
+h1, h2, h3, h4, h5, h6,
+h1:not(.text-gradient),
+h2:not(.text-gradient),
+h3:not(.text-gradient),
+.hero-serif-title,
+.hero-display-title,
+.editorial-page-title,
+.section-display-title,
+.section-title,
+.section-heading-editorial,
+.bio-heading,
+.dossier-doctor-name,
+.cta-heading,
+.facility-location-name,
+.accordion-q-text,
+.stage-title,
+.scrubber-title,
+.history-card h3,
+.history-card-title,
+.tech-pillar-title,
+.pillar-title,
+.criteria-card h3,
+.quiz-question-title,
+.static-hero-h2,
+.static-pillars-h3,
+.cta-title,
+.timeline-title,
+.sim-title,
+.faq-title,
+.proof-title,
+.lifestyle-pane-grid h3 {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 6px 18px rgba(0, 0, 0, 0.45) !important;
+  filter: none !important;
+}
+
+/* Hero Title Container: Keep clean without compounding filters or downward shadow clouds */
+.hero-pop-title,
+.hero-h1-shell {
+  text-shadow: none !important;
+  filter: none !important;
+  overflow: visible !important;
+}
+
+/* Gradient-Clipped Text Elements: Dual-tier drop-shadow for rich dimensional pop */
+.text-gradient,
+.bio-heading-accent,
+.proof-title-accent,
+.hero-deepdive-subtitle,
+.hero-surgeons-subtitle,
+.editorial-page-title .hero-surgeons-subtitle,
+h1 .hero-surgeons-subtitle,
+.hero-pop-primary,
+.hero-pop-accent,
+.hero-pop-accent .hero-pop-line,
+.hero-pop-accent .editorial-italic-accent,
+h1 .bio-heading-accent,
+h2 .bio-heading-accent,
+h3 .bio-heading-accent,
+h1 .text-gradient,
+h2 .text-gradient,
+h3 .text-gradient {
+  text-shadow: none !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8)) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.55)) !important;
+}
+
+/* Ensure descenders (g, j, p, q, y, commas) on hero display lines never get clipped */
+.hero-pop-primary {
+  display: block !important;
+  line-height: 1.25 !important;
+  padding-bottom: 0.25em !important;
+  margin-bottom: -0.18em !important;
+  overflow: visible !important;
+}
+
+.hero-pop-title,
+.hero-h1-shell {
+  overflow: visible !important;
+}
+
+/* ==========================================================================
+   7. CANDIDACY CRITERIA CARD CHROMATIC OUTLINES
+   Faint Green Outline for Ideal Candidates | Faint Red Outline for Non-Recommended
+   Neutral Dark Backgrounds with Faint Colored Glows
+   ========================================================================== */
+
+.criteria-card.criteria-card-ideal,
+.criteria-card-ideal {
+  background: linear-gradient(180deg, rgba(16, 24, 39, 0.75) 0%, rgba(10, 15, 26, 0.9) 100%) !important;
+  border: 1px solid rgba(16, 185, 129, 0.38) !important;
+  box-shadow: 0 0 22px -3px rgba(16, 185, 129, 0.18), 0 20px 40px -15px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+.criteria-card.criteria-card-ideal:hover,
+.criteria-card-ideal:hover {
+  border-color: rgba(52, 211, 153, 0.65) !important;
+  box-shadow: 0 0 30px 0px rgba(16, 185, 129, 0.28), 0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-4px) !important;
+}
+
+.criteria-card.criteria-card-caution,
+.criteria-card-caution {
+  background: linear-gradient(180deg, rgba(16, 24, 39, 0.75) 0%, rgba(10, 15, 26, 0.9) 100%) !important;
+  border: 1px solid rgba(239, 68, 68, 0.38) !important;
+  box-shadow: 0 0 22px -3px rgba(239, 68, 68, 0.18), 0 20px 40px -15px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+.criteria-card.criteria-card-caution:hover,
+.criteria-card-caution:hover {
+  border-color: rgba(248, 113, 113, 0.65) !important;
+  box-shadow: 0 0 30px 0px rgba(239, 68, 68, 0.28), 0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-4px) !important;
+}
+
+.footer-ideal .footer-metric-highlight {
+  color: #34d399 !important;
+}
+
+.footer-caution .footer-metric-highlight {
+  color: #f87171 !important;
+}
+
+.criteria-badge-caution {
+  background: rgba(239, 68, 68, 0.12) !important;
+  border: 1px solid rgba(239, 68, 68, 0.38) !important;
+  color: #f87171 !important;
+}
+
+.criteria-badge-caution .badge-dot,
+.badge-dot.dot-amber {
+  background: #ef4444 !important;
+  box-shadow: #ef4444 0px 0px 8px !important;
+}
+
+.criteria-icon-caution {
+  background: rgba(239, 68, 68, 0.16) !important;
+  border: 1px solid rgba(239, 68, 68, 0.4) !important;
+  color: #f87171 !important;
+}
+
+
+

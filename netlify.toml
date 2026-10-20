@@ -40,6 +40,7 @@
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+    X-Robots-Tag = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
 
 # Global Security Headers
 [[headers]]

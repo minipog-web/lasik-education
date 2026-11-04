@@ -26,7 +26,6 @@
   // Ensure all authoritative tracking IDs are configured
   var TRACKING_CONFIGS = {
     ga4: 'G-71SK3LQF49',
-    gtm: 'GT-WKTZM5GN',
     gadsPrimary: 'AW-18197167741',
     gadsConversion: 'AW-17962563730'
   };
@@ -36,9 +35,12 @@
     leadForm: 'AW-17962563730/P12NCJ6IgdwcEJLxm_VC'
   };
 
-  // Self-register configs if not already done
-  window.gtag('config', TRACKING_CONFIGS.ga4);
-  window.gtag('config', TRACKING_CONFIGS.gtm);
+  // Self-register configs with strict domain and cookie isolation
+  window.gtag('config', TRACKING_CONFIGS.ga4, {
+    cookie_domain: 'lasik.maranoeye.com',
+    cookie_prefix: 'mec_lasik',
+    cookie_flags: 'SameSite=None;Secure'
+  });
   window.gtag('config', TRACKING_CONFIGS.gadsPrimary);
   window.gtag('config', TRACKING_CONFIGS.gadsConversion);
 

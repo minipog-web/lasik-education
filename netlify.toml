@@ -80,6 +80,19 @@ publish = "."
   [build.processing]
     skip_processing = false
 
+# Force 301 redirect from default Netlify subdomain to primary custom domain
+[[redirects]]
+  from = "https://lasik-education-mec.netlify.app/*"
+  to = "https://lasik.maranoeye.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://lasik-education-mec.netlify.app/*"
+  to = "https://lasik.maranoeye.com/:splat"
+  status = 301
+  force = true
+
 # Canonical Extensionless URL 301 Redirects (Preserves Link Equity & Prevents Soft-404 Ambiguity)
 [[redirects]]
   from = "/technology"

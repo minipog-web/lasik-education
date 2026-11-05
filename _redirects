@@ -1,0 +1,14 @@
+# ====================================================================
+# Netlify Redirects for Marano Eye Care - Custom LASIK Center
+# 301 Permanent Redirect default .netlify.app subdomain to custom domain
+# ====================================================================
+
+https://lasik-education-mec.netlify.app/*  https://lasik.maranoeye.com/:splat  301!
+http://lasik-education-mec.netlify.app/*   https://lasik.maranoeye.com/:splat  301!
+
+# Canonical Extensionless URL 301 Redirects
+/technology           /technology.html           301!
+/procedure-journey    /procedure-journey.html    301!
+/surgeons             /surgeons.html             301!
+/pricing-financing    /pricing-financing.html    301!
+/sitemap              /sitemap.html              301!

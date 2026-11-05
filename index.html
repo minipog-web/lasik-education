@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Subdomain Canonical Redirect -->
+    <script>
+      if (window.location.hostname === 'lasik-education-mec.netlify.app') {
+        window.location.replace('https://lasik.maranoeye.com' + window.location.pathname + window.location.search + window.location.hash);
+      }
+    </script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-71SK3LQF49"></script>
     <script>
